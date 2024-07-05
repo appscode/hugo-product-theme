@@ -1,4 +1,6 @@
-// sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css
+// dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css
+// release: sass ./assets/sass/main.scss:./assets/css/main.css
+
 @import "../../node_modules/bulma/bulma.sass";
 //BASE - Base styles, variables, mixins
 @import "base/utilities/_root";
