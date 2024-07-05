@@ -1,0 +1,41 @@
+{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
+
+<!DOCTYPE html>
+<html>
+
+    {{- partial "head.html" . -}}
+
+    <body class="{{$p.key}}">
+        {{- block "body" . -}} 
+
+            {{- block "header" . -}} {{- end -}}
+
+            <div id="content">
+            {{- block "main" . }}{{- end -}}
+            </div>
+            {{- block "hide-bottom-content" . -}}
+                {{- partial "testimonial.html" . -}}
+                {{- partial "faq.html" . -}}
+                {{- partial "cta.html" . -}}
+            {{ end }}
+            
+            {{- partial "footer" . -}}
+
+            <div class="modal-backdrop"></div>
+            
+            {{- partial "helpers/script-bundle.html" . -}}
+
+            <!-- Meilisearch -->
+            {{ block "footer-script" . }}
+            {{ end }}
+
+            <button class="go-to-top" id="goTop">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </button>
+
+        {{- end -}}
+
+    </body>
+    
+</html>
