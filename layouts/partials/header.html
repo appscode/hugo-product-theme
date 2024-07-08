@@ -427,8 +427,7 @@
                       {{ range .Children }}
                       {{ if eq .Parent $.Site.Params.main_menu_dropdown_item }}
                       <!-- single product start  -->
-                      <a href="/kubernetes/databases/run-and-manage-{{ .Identifier }}-on-kubernetes
-" class="single-product">
+                      <a href="{{ if eq $.Site.Params.product_key "kubevault" }}/features/{{ .Identifier }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier }}-on-kubernetes{{ end }}" class="single-product">
                         {{ if .Pre }}
                         <div class="product-logo">
                           <img src="{{ .Pre }}" alt="{{ .Name }}" >
