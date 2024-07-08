@@ -404,7 +404,12 @@
           <!-- navbar right start  -->
           <div class="navbar-right">
             <ul>
+
+              {{ $addons := "" }}
               {{ range .Site.Menus.main }}
+                {{ if eq .Name "Addons" }}
+                  {{ $addons = . }}
+                {{ end }}
               {{ if .HasChildren }}
               <li class="nav-item">
                 <button href="#" class="link">{{ .Name }} <i class="fa fa-angle-down"></i></button>
@@ -427,7 +432,8 @@
                       {{ range .Children }}
                       {{ if eq .Parent $.Site.Params.main_menu_dropdown_item }}
                       <!-- single product start  -->
-                      <a href="{{ if eq $.Site.Params.product_key "kubevault" }}/features/{{ .Identifier }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier }}-on-kubernetes{{ end }}" class="single-product">
+                  
+                      <a href="{{ if eq $.Site.Params.product_key "kubevault" }}/features/{{ .Identifier }}{{ else if $addons }}{{ .PageRef }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier }}{{ end }}" class="single-product">
                         {{ if .Pre }}
                         <div class="product-logo">
                           <img src="{{ .Pre }}" alt="{{ .Name }}" >
