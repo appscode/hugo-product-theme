@@ -33,8 +33,8 @@
         <h1>{{.title | markdownify }}</h1>
         <p>{{.summary | markdownify }}</p>
         <div class="buttons">
-          <a href="/docs/{{ $p.latestVersion }}/guides/{{if eq .id "opensearch"}}elasticsearch/quickstart/overview/opensearch{{else}}{{.id}}{{end}}/" class="button ac-button is-primary"
-           >USER GUIDES</a>
+          <a href="/docs/{{ $p.latestVersion }}/{{- if (where site.Menus.main "Name" "Addons") }}addons{{- else }}guides{{- end }}/{{if eq .id "opensearch"}}elasticsearch/quickstart/overview/opensearch{{else}}{{.id}}{{end}}/" class="button ac-button is-primary"
+          >USER GUIDES</a>
         </div>
       </div>
       <div class="column is-6 is-full-touch">
