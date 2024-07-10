@@ -17,6 +17,7 @@ $ac-primary: var(--ac-primary);
 // $voyager-primary:	hsl(242, 48%, 32%); // #2d2a78;
 // $configsyncer: 	hsl(209, 77%, 47%); //#1c7bd4;
 // $kubestash: hsl(256, 74%, 40%) //#431BB1
+// $gateway: hsl(331, 51%, 40%) //#9b3264
 
 body {
 
@@ -116,9 +117,9 @@ body {
     --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
   }
   &.gateway {
-    --primary-h: 242;
-    --primary-s: 48%;
-    --primary-l: 32%;
+    --primary-h: 331;
+    --primary-s: 51%;
+    --primary-l: 40%;
     --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
   }
   &.configsyncer {

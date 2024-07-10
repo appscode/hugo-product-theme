@@ -13736,9 +13736,9 @@ body.voyager {
   --primary-l: 32%;
   --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l)); }
 body.gateway {
-  --primary-h: 242;
-  --primary-s: 48%;
-  --primary-l: 32%;
+  --primary-h: 331;
+  --primary-s: 51%;
+  --primary-l: 40%;
   --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l)); }
 body.configsyncer {
   --primary-h: 209;
