@@ -239,13 +239,38 @@
                         <h6>RESOURCES</h6>
                         <ul>
                           <!-- <li><a href="#" target="_blank">Forum</a></li> -->
-                          <li><a href="{{.Site.Params.blog_url}}">Blog</a></li>
-                          <li><a href="{{.Site.Params.docs_url}}">Docs</a></li>
+                          <li><a href="{{.Site.Params.blog_url}}" class="is-flex is-gap-4">
+                            <span>Blog</span>
+                            <span class="is-flex is-align-items-center">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                            </span>
+                          </a></li>
+                          <li><a href="{{.Site.Params.docs_url}}" class="is-flex is-gap-4">
+                            <span>Docs</span>
+                            <span class="is-flex is-align-items-center">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                            </span>
+                          </a></li>
                           <li><a
                               href="https://www.youtube.com/watch?v=4lkBt5UUEAQ&list=PLoiT1Gv2KR1hAtDDW7fHEi-s2y2H3DOgx"
-                              target="_blank">Webinars</a></li>
-                          <li><a href="{{.Site.Params.learn_url}}">Learn</a></li>
-                          <li><a href="{{.Site.Params.youtube_url}}" target="_blank">Demos</a></li>
+                              target="_blank">
+                              <span>Webinars</span>
+                              <span class="is-flex is-align-items-center">
+                                <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                              </span>
+                            </a></li>
+                          <li><a href="{{.Site.Params.learn_url}}" class="is-flex is-gap-4">
+                            <span>Learn</span>
+                            <span class="is-flex is-align-items-center">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                            </span>
+                          </a></li>
+                          <li><a href="{{.Site.Params.youtube_url}}" target="_blank" class="is-flex is-gap-4">
+                            <span>Demos</span>
+                            <span class="is-flex is-align-items-center">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                            </span>
+                          </a></li>
                           <!-- <li><a
                               href="https://www.youtube.com/watch?v=xSq0OdlVLRI&list=PLoiT1Gv2KR1gE-WK7dIQ5bsJ_RAVZnzP8"
                               target="_blank">Tutorials</a></li> -->
@@ -308,8 +333,10 @@
                 <!-- <a id="ac-sign-in-button" href="https://accounts.appscode.com/user/login"
                 class="button ac-button is-loading {{ if eq $currentPageType "docs" }} is-hidden {{ end }}"><span>SIGN IN</span></a> -->
                 <a href="{{ $.Site.Params.domain_appscode }}/contact/"
-                  class="button ac-button is-primary {{ if eq $currentPageType "docs" }} is-outlined {{ end }}">CONTACT
-                  SALES</a>
+                  class="button ac-button is-primary {{ if eq $currentPageType "docs" }} is-outlined {{ end }}">
+                  <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon></span>
+                  <span>CONTACT SALES</span>
+                </a>
               </div>
 
             </div>
@@ -448,7 +475,7 @@
                     <div class="video-content">
                       <div class="yt-thumbnail">
                         <a href="https://www.youtube.com/watch?v=hBHxMtSjKo4" class="play-icon yt-video">
-                          <iconify-icon icon="heroicons:play-circle"  style="color: white"></iconify-icon>
+                          <iconify-icon icon="heroicons:play-circle"  style="color: white" width="48" height="48"></iconify-icon>
                         </a>
                         <img loading="lazy" src="https://img.youtube.com/vi/hBHxMtSjKo4/sddefault.jpg"
                           alt="kubedb-youtube-intro">
