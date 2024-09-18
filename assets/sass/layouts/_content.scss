@@ -150,6 +150,14 @@
           margin-bottom: 8px;
           display: block;
           color: $color-text;
+          position: relative;
+          z-index: 1;
+          padding-left: 24px;
+          &::before {
+            position: absolute;
+            left: 0;
+            top: 1px;
+          }
   
           p {
             display: inline-block;
@@ -167,11 +175,10 @@
   
         ul,
         ol {
+          margin-left: 1.5rem;
           li {
             font-size: 1rem !important;
           }
-  
-          margin-left: 1.5rem;
         }
   
       }
@@ -188,6 +195,8 @@
             color: $color-text;
             transform: translateY(-2px);
             display: inline-flex;
+            left: 4px;
+            top: 10px;
           }
   
           p {
@@ -276,12 +285,10 @@
         }
   
         a {
+          font-size: 1rem;
           svg {
             padding-left: 10px;
           }
-  
-          font-size: 1rem;
-  
           &.header-anchor {
             opacity: 0;
             visibility: hidden;

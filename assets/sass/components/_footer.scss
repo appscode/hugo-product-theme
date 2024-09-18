@@ -38,6 +38,7 @@
      height: 40px;
      position: relative;
      z-index: 1;
+     color: #f2f2f2;
      &::placeholder {
        color: #ADB2B0;
      }
@@ -47,8 +48,7 @@
    }
  
    .button {
-     font-family: $color-link;
-     color: $ac-primary;
+     color: hsl(var(--primary-h), var(--primary-s), 70%);
      font-size: 16px;
      height: 40px;
      box-shadow: none;

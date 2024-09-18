@@ -79,6 +79,7 @@
           overflow: inherit;
 
           li {
+            margin-left: 8px;
             &.is-active {
               position: relative;
               background: hsl(var(--primary-h), var(--primary-s), 95%);
