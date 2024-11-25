@@ -10,6 +10,9 @@
   margin-top: 110px;
   position: relative;
   z-index: 1;
+  @media (max-width:368px) {
+    margin-top: 90px !important;
+  }
   &.is-feature {
     height: 400px;
     p {
