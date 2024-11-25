@@ -19336,26 +19336,6 @@ video {
   z-index: 99;
   background-color: #ffffff;
 }
-@media (min-width: 250px) and (max-width: 316px) {
-  .navbar-area iframe#notification {
-    height: 108px;
-  }
-}
-@media (min-width: 317px) and (max-width: 590px) {
-  .navbar-area iframe#notification {
-    height: 90px;
-  }
-}
-@media (min-width: 591px) and (max-width: 731px) {
-  .navbar-area iframe#notification {
-    height: 70px;
-  }
-}
-@media (min-width: 732px) {
-  .navbar-area iframe#notification {
-    height: 38px;
-  }
-}
 
 .navbar-appscode-wrapper {
   background-color: #ffffff;
@@ -20070,11 +20050,23 @@ video {
 .headroom--unpinned {
   transform: translateY(-156px);
 }
+.headroom--unpinned iframe#notification {
+  display: none !important;
+}
 .headroom--unpinned .navbar-appscode-wrapper.navbar-product {
   transform: translateY(94px);
 }
 .headroom--unpinned .navbar-appscode-wrapper.navbar-product.is-docs-page {
   transform: translateY(94px);
+}
+
+iframe#notification {
+  height: 40px;
+}
+@media (max-width: 368px) {
+  iframe#notification {
+    height: 70px;
+  }
 }
 
 .navbar-burger {
@@ -20906,6 +20898,11 @@ Responsive Classes
   margin-top: 110px;
   position: relative;
   z-index: 1;
+}
+@media (max-width: 368px) {
+  .hero-area.is-product {
+    margin-top: 90px !important;
+  }
 }
 .hero-area.is-product.is-feature {
   height: 400px;
