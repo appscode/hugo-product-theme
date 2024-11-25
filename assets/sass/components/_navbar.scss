@@ -3,20 +3,20 @@
   position: relative;
   z-index: 99;
   background-color: $ac-white;
-  iframe#notification {
-    @media (min-width: 250px) and (max-width:316px) {
-     height: 108px;
-    }
-    @media (min-width: 317px) and (max-width:590px) {
-      height: 90px;
-     }
-    @media (min-width: 591px) and (max-width: 731px) {
-      height: 70px;
-    }
-    @media (min-width: 732px) {
-      height: 38px;
-    }
-  }
+  // iframe#notification {
+  //   @media (min-width: 250px) and (max-width:316px) {
+  //    height: 108px;
+  //   }
+  //   @media (min-width: 317px) and (max-width:590px) {
+  //     height: 90px;
+  //    }
+  //   @media (min-width: 591px) and (max-width: 731px) {
+  //     height: 70px;
+  //   }
+  //   @media (min-width: 732px) {
+  //     height: 38px;
+  //   }
+  // }
 }
 
 .navbar-appscode-wrapper {
@@ -932,6 +932,9 @@
 
 .headroom--unpinned {
   transform: translateY(-156px);
+  iframe#notification {
+    display: none !important;
+  }
 
   .navbar-appscode-wrapper {
     &.navbar-product {
@@ -942,7 +945,12 @@
     }
   }
 }
-
+iframe#notification {
+  height: 40px;
+  @media (max-width:368px) {
+    height: 70px;
+  }
+}
 .navbar-burger {
   height: 30px;
   width: 30px;
