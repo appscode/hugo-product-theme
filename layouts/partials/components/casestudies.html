@@ -1,0 +1,46 @@
+{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+
+<!-- product features area start  -->
+<section class="casestudies-area section-padding">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="section-title has-text-centered">
+          <h2 class="is-gradient">Discover Real Success Stories</h2>
+          <p>
+            Explore how customers across industries have transformed their database operations with KubeDB. From automating workflows to achieving seamless scalability and high availability, see the real-world impact of KubeDB on businesses like yours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- is-centered -->
+    <div class="columns is-multiline is-centered">
+      {{ range where .Site.RegularPages "Section" "case-studies" }}
+      <!-- single feature information start  -->
+      <div class="column is-half-tablet is-one-third-widescreen">
+        <a href="{{ .Permalink }}" class="single-case-study">
+          <div class="brand-logo">
+            <img src="{{.Params.logo}}" alt="brand-logo">
+          </div>
+          <div class="bottom-content">
+            <div class="tag">{{.Params.tag}}</div>
+            <h2>{{ .Params.Title }}</h2>
+            <p class="is-ellipsis-2">{{ .Params.Description }}Summary</p>
+            <button>
+              <span>Read More</span>
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </a>
+      </div>
+     {{ end }}
+    </div>
+  </div>
+</section>
+<!-- product features area end -->
