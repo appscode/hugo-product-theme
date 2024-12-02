@@ -1,3 +1,7 @@
+.casestudies-area {
+  background-color: #fffbfb;
+}
+
 .single-case-study {
   border: 1px solid $color-border;
   border-radius: 4px;
@@ -5,6 +9,7 @@
   transition: 0.3s ease-in-out;
   position: relative;
   z-index: 1;
+  background-color: #fff;
 
   &::after{
     position: absolute;
@@ -166,7 +171,7 @@
 .user-message-wrapper {
   display: flex;
   gap: 48px;
-  margin-top: 64px;
+  margin-top: 32px;
   @include mobile {
     flex-direction: column;
     margin-top: 16px;
@@ -187,6 +192,7 @@
     img {
       width: 100%;
       height: 100%;
+      border-radius: 8px;
     }
     &:after{
       position: absolute;
@@ -197,6 +203,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      border-radius: 8px;
     }
   }
   .user-message{
@@ -287,6 +294,10 @@
       font-weight: 500;
       color: $ac-primary;
       text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      margin-top: 0 !important;
     }
   }
   .right-content {
@@ -338,5 +349,29 @@
     height: 100%;
     background-image: url("/assets/images/shape/circle-el.svg");
     background-repeat: no-repeat;
+  }
+}
+.company-intro {
+  background-color: #F8F8FC;
+  margin-top: 32px;
+  border-radius: 16px;
+  padding: 16px;
+  .intro {
+    background-color: #fff;
+    height: 100%;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+
+
+    p{
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    h6{
+      margin: 0 auto;
+      font-size: 16px;
+      margin-top: 4px;
+    }
   }
 }

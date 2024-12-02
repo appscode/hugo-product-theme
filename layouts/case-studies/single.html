@@ -6,7 +6,7 @@
       <div class="column is-6">
         <div class="left-content">
           <img src="{{ .Params.logo }}" alt="{{ .Params.alt }}">
-          <h1>{{ .Title }}</h1>
+          <h1>{{ .Title | safeHTML }}</h1>
         </div>
       </div>
 
@@ -31,13 +31,33 @@
       </div>
     </div>
 
+    <!-- company intro  -->
+     <div class="company-intro">
+      <div class="columns is-centered is-multiline">
+        {{ if .Params.company }}
+        {{ range .Params.company }}
+        <div class="column is-4">
+          <div class="intro">
+            <p>{{.label}}</p>
+            <h6>{{.value | safeHTML}}</h6>
+          </div>
+        </div>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+
     <!-- Testimonial Section -->
+     {{if .Params.testimonial}}
     <div class="columns">
       <div class="column">
         <div class="user-message-wrapper">
+          {{ if .Params.testimonial.avatar }}
           <div class="avatar">
             <img src="{{ .Params.testimonial.avatar }}" alt="{{ .Params.testimonial.name }}">
           </div>
+          {{ end }}
+          {{ if .Params.testimonial.text }}
           <div class="user-message">
             <p>“{{ .Params.testimonial.text }}”</p>
             <div class="user">
@@ -45,17 +65,20 @@
               <p>{{ .Params.testimonial.designation }}</p>
             </div>
           </div>
+          {{ end }}
         </div>
       </div>
     </div>
+    {{end}}
 
     <!-- Call to Action -->
+     {{ if  .Params.cta.title }}
     <div class="columns call-to-action">
       <div class="column is-8-tablet is-9-desktop">
-        <h3>Ready to Transform Your Database Operations?</h3>
+        <h3>{{ .Params.cta.title }}</h3>
       </div>
       <div class="column is-4-tablet is-3-desktop">
-        <a href="#" class="button ac-button is-primary height-50 is-fullwidth is-align-items-center">
+        <a href="{{ .Params.cta.url }}" class="button ac-button is-primary height-50 is-fullwidth is-align-items-center">
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
@@ -65,6 +88,7 @@
         </a>
       </div>
     </div>
+    {{ end }}
   </div>
 </section>
 
@@ -86,12 +110,15 @@
       </div>
 
       <!-- Right Column -->
+       {{if .Params.metrics }}
       <div class="column is-6">
         <div class="right-content">
           <div class="card">
+            {{ if .Params.logo }}
             <div class="product-img">
               <img src="{{ .Params.logo }}" alt="{{ .Params.alt }}">
             </div>
+            {{ end }}
 
             {{ range .Params.metrics }}
             <div class="improvement">
@@ -102,6 +129,7 @@
           </div>
         </div>
       </div>
+      {{ end }}
     </div>
   </div>
 </section>
