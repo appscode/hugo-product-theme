@@ -1,0 +1,109 @@
+{{ define "main" }}
+<section class="case-studies hero-area">
+  <div class="container">
+    <div class="columns is-multiline">
+      <!-- Left Column -->
+      <div class="column is-6">
+        <div class="left-content">
+          <img src="{{ .Params.logo }}" alt="{{ .Params.alt }}">
+          <h1>{{ .Title }}</h1>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="column is-6 mt-auto">
+        <div class="right-content">
+          {{ range $index, $item := .Params.metrics }}
+          {{ if lt $index 2 }}
+              <div class="measurement">
+                <h2>{{ $item.value }}</h2>
+                <p>{{ $item.label }}</p>
+              </div>
+          
+              <!-- Render separator only after the first item -->
+              {{ if eq $index 0 }}
+                <span class="separator"></span>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial Section -->
+    <div class="columns">
+      <div class="column">
+        <div class="user-message-wrapper">
+          <div class="avatar">
+            <img src="{{ .Params.testimonial.avatar }}" alt="{{ .Params.testimonial.name }}">
+          </div>
+          <div class="user-message">
+            <p>“{{ .Params.testimonial.text }}”</p>
+            <div class="user">
+              <h4>{{ .Params.testimonial.name }}</h4>
+              <p>{{ .Params.testimonial.designation }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="columns call-to-action">
+      <div class="column is-8-tablet is-9-desktop">
+        <h3>Ready to Transform Your Database Operations?</h3>
+      </div>
+      <div class="column is-4-tablet is-3-desktop">
+        <a href="#" class="button ac-button is-primary height-50 is-fullwidth is-align-items-center">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+            </svg>
+          </span>
+          <span>SCHEDULE A MEETING</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="descriptive-area">
+  <div class="container">
+    <div class="columns">
+      <!-- Left Column -->
+      <div class="column is-6">
+        <div class="left-content">
+          <div class="single-block">
+           <div class="content">
+            <div class="full-info content-body">
+              {{ .Content }}
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="column is-6">
+        <div class="right-content">
+          <div class="card">
+            <div class="product-img">
+              <img src="{{ .Params.logo }}" alt="{{ .Params.alt }}">
+            </div>
+
+            {{ range .Params.metrics }}
+            <div class="improvement">
+              <h5>{{ .value }}</h5>
+              <p>{{ .label }}</p>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
