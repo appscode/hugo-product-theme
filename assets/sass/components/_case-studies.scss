@@ -222,7 +222,7 @@
     background-color: #F8F8FC;
     padding: 32px;
     width: calc(100% - 316px);
-    border-radius: 24px;
+    border-radius: 8px;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -364,17 +364,29 @@
   }
 }
 .company-intro {
-  background-color: #F8F8FC;
+  background-color: #ffffff;
   margin-top: 32px;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 16px;
+  border: 1px solid $color-border;
+  .column:last-child{
+    .intro {
+      border-right: none;
+      @include mobile {
+        border-bottom: none;
+      }
+    }
+  }
   .intro {
     background-color: #fff;
     height: 100%;
     padding: 16px;
-    border-radius: 8px;
     text-align: center;
-
+    border-right: 1px solid $color-border;
+    @include mobile {
+      border-bottom: 1px solid $color-border;
+      border-right: none;
+    }
 
     p{
       text-transform: uppercase;
