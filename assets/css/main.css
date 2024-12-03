@@ -15575,7 +15575,18 @@ Responsive Classes
   .single-case-study .brand-logo {
     display: flex;
     align-items: center;
-    height: 240px; }
+    height: 240px;
+    position: relative;
+    z-index: 1; }
+    .single-case-study .brand-logo::after {
+      position: absolute;
+      content: "";
+      right: 0;
+      bottom: 0;
+      width: 145px;
+      height: 145px;
+      background-image: url(/assets/images/shape/squire-shape.svg);
+      z-index: -1; }
     .single-case-study .brand-logo img {
       height: 3rem;
       margin: 0 auto;
