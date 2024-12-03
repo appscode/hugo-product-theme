@@ -17,7 +17,7 @@
       {{ range where .Site.RegularPages "Section" "case-studies" }}
       <!-- single feature information start  -->
       <div class="column is-half-tablet is-one-third-widescreen">
-        <a href="{{ .Permalink }}" class="single-case-study">
+        <a href="{{ .RelPermalink }}" class="single-case-study">
           <div class="brand-logo">
             <img src="{{.Params.logo}}" alt="brand-logo">
           </div>
