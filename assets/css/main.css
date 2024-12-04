@@ -15541,6 +15541,9 @@ Responsive Classes
 .casestudies-area {
   background-color: #fffbfb; }
 
+.case-studies.hero-area {
+  padding-top: 210px; }
+
 .single-case-study {
   border: 1px solid hsl(var(--secondary-h), 10%, 90%);
   border-radius: 4px;
@@ -15722,7 +15725,7 @@ Responsive Classes
     background-color: #F8F8FC;
     padding: 32px;
     width: calc(100% - 316px);
-    border-radius: 24px;
+    border-radius: 8px;
     overflow: hidden;
     position: relative;
     z-index: 1; }
@@ -15839,16 +15842,26 @@ Responsive Classes
     background-repeat: no-repeat; }
 
 .company-intro {
-  background-color: #F8F8FC;
+  background-color: #ffffff;
   margin-top: 32px;
-  border-radius: 16px;
-  padding: 16px; }
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid hsl(var(--secondary-h), 10%, 90%); }
+  .company-intro .column:last-child .intro {
+    border-right: none; }
+    @media screen and (max-width: 768px) {
+      .company-intro .column:last-child .intro {
+        border-bottom: none; } }
   .company-intro .intro {
     background-color: #fff;
     height: 100%;
     padding: 16px;
-    border-radius: 8px;
-    text-align: center; }
+    text-align: center;
+    border-right: 1px solid hsl(var(--secondary-h), 10%, 90%); }
+    @media screen and (max-width: 768px) {
+      .company-intro .intro {
+        border-bottom: 1px solid hsl(var(--secondary-h), 10%, 90%);
+        border-right: none; } }
     .company-intro .intro p {
       text-transform: uppercase;
       font-size: 14px; }
