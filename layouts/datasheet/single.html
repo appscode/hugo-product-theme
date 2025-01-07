@@ -12,7 +12,7 @@
     <div class="is-flex is-justify-content-space-between">
       <div class="navbar-left">
         <a href="/" class="navbar-brand">
-          <img src="/assets/images/products/kubedb/kubedb.svg" alt="KubeDB" loading="lazy">
+          <img src="/assets/images/products/kubedb/kubedb.svg" style="height: 1.58rem;" alt="KubeDB" loading="lazy">
           <span>by</span>
           <img src="/assets/images/logo/appscode/ac-logo-color.svg" alt="appscode-logo"
             class="appscode-logo is-hidden-mobile" loading="lazy">
@@ -83,45 +83,7 @@
     <div class="columns">
       <div class="column is-12">
         <h2 class="mb-16">Our Selected Customers</h2>
-        <div class="owl-carousel is-flex is-align-items-center customers-logo">
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/100-furtune.png" alt="100-furtune">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/nokia.png" alt="nokia">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/greenhouse.png" alt="greenhouse">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/orange.png" alt="orange">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/oak-ridge.png" alt="oak-ridge">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/emerson.png" alt="emerson">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/huma.png" alt="huma">
-          </div>
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/dataloop.png" alt="dataloop">
-          </div>
-
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/vaimo.png" alt="vaimo">
-          </div>
-
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/carro.png" alt="carro">
-          </div>
-
-          <div class="single-brand">
-            <img src="/assets/images/ads/customers/clewmed.png" alt="clewmed">
-          </div>
-
-        </div>
+        {{ partial "components/social-prove.html" .}}
       </div>
     </div>
   </div>
@@ -591,10 +553,10 @@
 
 <script>
   // owl owlCarousel JS
-  var owlSocialProve = $('.customers-logo');
+  var owlSocialProve = $('.brand-image-wrapper');
   owlSocialProve.owlCarousel({
     loop: true,
-    margin: 40,
+    margin: 20,
     autoHeight: true,
     autoplay: true,
     nav: false,
