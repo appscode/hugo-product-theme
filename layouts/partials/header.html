@@ -3,8 +3,17 @@
   {{ block "header-top" . }}
   <!-- new navbar area start  -->
   <div class="navbar-area active-headroom header--fixed">
+  
+  
+    {{ $currentPageType := index (split .Page.Permalink "/") 3 }} 
+
+    <!-- notification message  -->
+    {{ $partial := partial "components/notification-message.html" . | default "" }}
+    {{ if and $partial (ne $currentPageType "docs") }}
+      {{ partial "components/notification-message.html" . }}
+    {{ end }}
+  
     <!-- iframe  -->
-    {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
     <iframe src="https://appscode.com/notification-top/" id="notification" class="{{ if eq $currentPageType "docs" }} is-hidden {{ end }}" frameborder="0" scrolling="no" onload="resizeIframe()" style="width: 100%; display: none; overflow: hidden;" title="Notification"></iframe>
     
     <script>

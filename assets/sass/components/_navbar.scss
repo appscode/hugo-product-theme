@@ -945,6 +945,20 @@
     }
   }
 }
+.navbar-area:has(.notification-area) {
+  &.headroom--unpinned {
+    .navbar-appscode-wrapper {
+      &.navbar-product {
+        transform: translateY(55px);
+        @media only screen and (max-width: 500px) {
+          transform: translateY(40px);
+        }
+      }
+    }
+  }
+}
+
+
 iframe#notification {
   height: 40px;
   @media (max-width:368px) {
