@@ -20074,7 +20074,7 @@ video {
 }
 
 .navbar-area:has(.notification-area).headroom--unpinned .navbar-appscode-wrapper.navbar-product {
-  transform: translateY(55px);
+  transform: translateY(60px);
 }
 @media only screen and (max-width: 500px) {
   .navbar-area:has(.notification-area).headroom--unpinned .navbar-appscode-wrapper.navbar-product {
@@ -20962,7 +20962,6 @@ Responsive Classes
 }
 .notification-area.notification {
   padding: 6px 0;
-  min-height: 40px;
   border-radius: 0;
   margin-bottom: 0;
 }

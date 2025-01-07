@@ -949,7 +949,7 @@
   &.headroom--unpinned {
     .navbar-appscode-wrapper {
       &.navbar-product {
-        transform: translateY(55px);
+        transform: translateY(60px);
         @media only screen and (max-width: 500px) {
           transform: translateY(40px);
         }
