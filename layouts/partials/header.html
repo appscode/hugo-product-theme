@@ -8,9 +8,10 @@
     {{ $currentPageType := index (split .Page.Permalink "/") 3 }} 
 
     <!-- notification message  -->
-    {{ $partial := partial "components/notification-message.html" . | default "" }}
-    {{ if and $partial (ne $currentPageType "docs") }}
-      {{ partial "components/notification-message.html" . }}
+    {{ if fileExists (printf "layouts/partials/components/notification-message.html") }}
+      {{ if ne $currentPageType "docs" }}
+        {{ partial "components/notification-message.html" . }}
+      {{ end }}
     {{ end }}
   
     <!-- iframe  -->
