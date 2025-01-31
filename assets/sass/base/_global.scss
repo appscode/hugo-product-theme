@@ -471,6 +471,39 @@
     gap: #{$i}px;
   }
 }
+
+// Scrollbar mixin
+@mixin scrollbar-styles($direction) {
+  transition: 0.3s ease-in-out;
+  overflow-#{$direction}: auto;
+
+  &::-webkit-scrollbar {
+    border-radius: 50px;
+    #{if($direction == "y", width, height)}: 3px;
+  }
+
+  &::-webkit-scrollbar:hover {
+    #{if($direction == "y", width, height)}: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #A8A8A8;
+    border-radius: 50px;
+  }
+
+  &:hover::-webkit-scrollbar-corner {
+    #{if($direction == "y", width, height)}: 40px;
+  }
+}
+
+// Scrollbar utilities
+.ac-vscrollbar {
+  @include scrollbar-styles("y");
+}
+.ac-hscrollbar {
+  @include scrollbar-styles("x");
+}
+
 /****************************************
 Responsive Classes
 *****************************************/
