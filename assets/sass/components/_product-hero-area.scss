@@ -350,6 +350,11 @@
       padding-right: 20px;
     }
   }
+  .highlight {
+    max-height: clamp(180px, 50vh, 500px);
+    overflow-y: auto;
+    @include scrollbar-styles("y");
+  }
 }
 
 @-webkit-keyframes gradient {
