@@ -56,18 +56,19 @@
     border-radius: 0.5rem;
 
     li {
-      display: flex;
+      display: grid;
+      grid-template-columns: 24px auto;
+      gap: 12px;
       align-items: center;
       font-size: 1rem;
       margin-bottom: 0.8rem;
+      
 
       &:last-child {
         margin-bottom: 0;
       }
 
       span {
-        font-size: 16px;
-        margin-right: 0.8rem;
         color: $color-text;
       }
     }
