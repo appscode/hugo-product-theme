@@ -14304,6 +14304,34 @@ strong {
 .is-gap-32 {
   gap: 32px; }
 
+.ac-vscrollbar {
+  transition: 0.3s ease-in-out;
+  overflow-y: auto; }
+  .ac-vscrollbar::-webkit-scrollbar {
+    border-radius: 50px;
+    width: 3px; }
+  .ac-vscrollbar::-webkit-scrollbar:hover {
+    width: 7px; }
+  .ac-vscrollbar::-webkit-scrollbar-thumb {
+    background-color: #A8A8A8;
+    border-radius: 50px; }
+  .ac-vscrollbar:hover::-webkit-scrollbar-corner {
+    width: 40px; }
+
+.ac-hscrollbar {
+  transition: 0.3s ease-in-out;
+  overflow-x: auto; }
+  .ac-hscrollbar::-webkit-scrollbar {
+    border-radius: 50px;
+    height: 3px; }
+  .ac-hscrollbar::-webkit-scrollbar:hover {
+    height: 7px; }
+  .ac-hscrollbar::-webkit-scrollbar-thumb {
+    background-color: #A8A8A8;
+    border-radius: 50px; }
+  .ac-hscrollbar:hover::-webkit-scrollbar-corner {
+    height: 40px; }
+
 /****************************************
 Responsive Classes
 *****************************************/
@@ -16369,6 +16397,21 @@ Responsive Classes
     .hero-area-code-editor pre code {
       padding-left: 0px;
       padding-right: 20px; }
+  .hero-area-code-editor .highlight {
+    max-height: clamp(180px, 50vh, 500px);
+    overflow-y: auto;
+    transition: 0.3s ease-in-out;
+    overflow-y: auto; }
+    .hero-area-code-editor .highlight::-webkit-scrollbar {
+      border-radius: 50px;
+      width: 3px; }
+    .hero-area-code-editor .highlight::-webkit-scrollbar:hover {
+      width: 7px; }
+    .hero-area-code-editor .highlight::-webkit-scrollbar-thumb {
+      background-color: #A8A8A8;
+      border-radius: 50px; }
+    .hero-area-code-editor .highlight:hover::-webkit-scrollbar-corner {
+      width: 40px; }
 
 @-webkit-keyframes gradient {
   0% {
@@ -16527,15 +16570,15 @@ Responsive Classes
   box-shadow: 0px 2px 30px rgba(44, 60, 74, 0.08);
   border-radius: 0.5rem; }
   .features-area .check-list li {
-    display: flex;
+    display: grid;
+    grid-template-columns: 24px auto;
+    gap: 12px;
     align-items: center;
     font-size: 1rem;
     margin-bottom: 0.8rem; }
     .features-area .check-list li:last-child {
       margin-bottom: 0; }
     .features-area .check-list li span {
-      font-size: 16px;
-      margin-right: 0.8rem;
       color: hsl(var(--secondary-h), 10%, 20%); }
 
 .single-features-item {
