@@ -18376,7 +18376,7 @@ Responsive Classes
   .ads-hero-area:after {
     content: url("/assets/images/ads/hero-7.png"); } }
 .article-hero-area {
-  padding: 220px 0 60px;
+  padding: 180px 0 60px;
   background-color: #F1F9F5; }
   @media screen and (max-width: 768px) {
     .article-hero-area {
