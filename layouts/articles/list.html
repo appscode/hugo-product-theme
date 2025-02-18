@@ -121,22 +121,34 @@
             </a>
           {{end}}
         </div>
+
+        <div class="no-data" style="display: none;"> No data available</div>
       </div>
+
 
       <div class="column is-3">
         <div class="recommended-topics">
           <h4>Recommended topics</h4>
           <div class="tags">
-            <div class="tag is-clickable">druid</div>
-            <div class="tag is-clickable">stash</div>
-            <div class="tag is-clickable">kubestash</div>
-            <div class="tag is-clickable">clickhouse</div>
-            <div class="tag is-clickable">mysql</div>
-            <div class="tag is-clickable">druid</div>
-            <div class="tag is-clickable">stash</div>
-            <div class="tag is-clickable">kubestash</div>
-            <div class="tag is-clickable">clickhouse</div>
-            <div class="tag is-clickable">mysql</div>
+            <div class="tag is-clickable">Cassandra</div>
+            <div class="tag is-clickable">Druid</div>
+            <div class="tag is-clickable">Elasticsearch</div>
+            <div class="tag is-clickable">FerretDB</div>
+            <div class="tag is-clickable">Kafka</div>
+            <div class="tag is-clickable">MariaDB</div>
+            <div class="tag is-clickable">Memcached</div>
+            <div class="tag is-clickable">MSSQL</div>
+            <div class="tag is-clickable">MongoDB</div>
+            <div class="tag is-clickable">MySQL</div>
+            <div class="tag is-clickable">OpenSearch</div>
+            <!-- <div class="tag is-clickable">PerconaXtraDB</div> -->
+            <div class="tag is-clickable">PgBouncer</div>
+            <div class="tag is-clickable">Pgpool</div>
+            <div class="tag is-clickable">PostgreSQL</div>
+            <div class="tag is-clickable">Redis</div>
+            <div class="tag is-clickable">SingleStore</div>
+            <div class="tag is-clickable">Solr</div>
+            <div class="tag is-clickable">Zookeeper</div>
           </div>
         </div>
       </div>
@@ -145,13 +157,8 @@
   </div>
 </section>
 <!-- articles area for page end -->
-
-<!-- <script type="text/javascript">
-  let blogList = document.querySelectorAll(".left-articles-list .single-article-card");
-  blogList.forEach((item) => {
-    console.log(12 + item);
-  });
-  
-</script> -->
+  {{ with $script := resources.Get "/js/search.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" defer></script>
+  {{ end }}
 
 {{ end }}
