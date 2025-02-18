@@ -18378,6 +18378,9 @@ Responsive Classes
 .article-hero-area {
   padding: 220px 0 60px;
   background-color: #F1F9F5; }
+  @media screen and (max-width: 768px) {
+    .article-hero-area {
+      padding: 160px 0 60px; } }
   .article-hero-area h1 {
     font-size: 44px; }
     @media screen and (max-width: 1215px) {
@@ -18409,6 +18412,9 @@ Responsive Classes
 
 .features-articles {
   padding: 60px 0; }
+  @media screen and (max-width: 768px) {
+    .features-articles h6 span.icon {
+      display: none; } }
 
 .single-article-card {
   display: block;
@@ -18456,6 +18462,10 @@ Responsive Classes
     margin-right: 32px;
     gap: 16px;
     padding: 24px 0; }
+    @media screen and (max-width: 768px) {
+      .single-article-card.list-view {
+        flex-direction: column;
+        margin-right: 0; } }
     .single-article-card.list-view:last-child {
       border-bottom: none; }
     .single-article-card.list-view:hover {
@@ -18468,10 +18478,17 @@ Responsive Classes
       border-radius: 4px;
       overflow: hidden;
       transition: 0.3s ease-in-out; }
+      @media screen and (max-width: 768px) {
+        .single-article-card.list-view .thumbnail {
+          width: 100%;
+          height: auto; } }
       .single-article-card.list-view .thumbnail img {
         height: auto; }
     .single-article-card.list-view .article-content {
       width: calc(100% - 200px); }
+      @media screen and (max-width: 768px) {
+        .single-article-card.list-view .article-content {
+          width: 100%; } }
   .single-article-card:hover {
     border: 1px solid var(--ac-primary);
     box-shadow: 1px 11px 114px rgba(0, 0, 0, 0.15); }
@@ -18487,12 +18504,18 @@ Responsive Classes
 .left-articles-list {
   padding-top: 16px;
   border-right: 1px solid hsl(var(--secondary-h), 10%, 90%); }
+  @media screen and (max-width: 768px) {
+    .left-articles-list {
+      border-right: none; } }
 
 .recommended-topics {
   position: sticky;
   top: 140px;
   margin-top: 32px;
   transition: 0.1s ease-in-out; }
+  @media screen and (max-width: 768px) {
+    .recommended-topics {
+      margin-top: 0; } }
   .recommended-topics h4 {
     font-size: 18px;
     margin-bottom: 8px; }
@@ -18540,10 +18563,10 @@ Responsive Classes
         outline: none; }
 
 body:has(.headroom--pinned) .search-filter-area {
-  top: 156px; }
+  top: 117px; }
   @media screen and (max-width: 1023px) {
     body:has(.headroom--pinned) .search-filter-area {
-      top: 148px; } }
+      top: 107px; } }
 body:has(.headroom--pinned) .recommended-topics {
   top: 230px; }
 

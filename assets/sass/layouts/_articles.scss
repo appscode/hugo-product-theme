@@ -1,6 +1,9 @@
 .article-hero-area {
   padding: 220px 0 60px;
   background-color: #F1F9F5;
+  @include mobile {
+    padding: 160px 0 60px;
+  }
   
   h1 {
     font-size: 44px;
@@ -39,6 +42,13 @@
 
 .features-articles {
   padding: 60px 0;
+  h6{
+    span.icon {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
 }
 
 .single-article-card {
@@ -102,6 +112,10 @@
     margin-right: 32px;
     gap: 16px;
     padding: 24px 0;
+    @include mobile {
+      flex-direction: column;
+      margin-right: 0;
+    }
 
     &:last-child {
       border-bottom: none;
@@ -119,12 +133,19 @@
       border-radius: 4px;
       overflow: hidden;
       transition: 0.3s ease-in-out;
+      @include mobile {
+        width: 100%;
+        height: auto;
+      }
       img {
         height: auto;
       }
     }
     .article-content {
       width: calc(100% - 200px);
+      @include mobile {
+        width: 100%;
+      }
     }
   }
 
@@ -150,6 +171,9 @@
 .left-articles-list {
   padding-top: 16px;
   border-right: 1px solid $color-border;
+  @include mobile {
+    border-right: none;
+  }
 }
 
 .recommended-topics {
@@ -157,6 +181,10 @@
   top: 140px;
   margin-top: 32px;
   transition: 0.1s ease-in-out;
+
+  @include mobile {
+    margin-top: 0;
+  }
 
   h4 {
     font-size: 18px;
@@ -221,9 +249,9 @@
 body {
   &:has(.headroom--pinned) {
     .search-filter-area {
-      top: 156px;
+      top: 117px;
       @include touch {
-        top: 148px;
+        top: 107px;
       }
     }
 
