@@ -124,6 +124,10 @@
     &:hover {
       border: none;
       box-shadow: none;
+      border-bottom: 1px dotted $color-border;
+      &:last-child {
+        border-bottom: none;
+      }
     }
 
     .thumbnail {

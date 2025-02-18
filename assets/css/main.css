@@ -18470,7 +18470,10 @@ Responsive Classes
       border-bottom: none; }
     .single-article-card.list-view:hover {
       border: none;
-      box-shadow: none; }
+      box-shadow: none;
+      border-bottom: 1px dotted hsl(var(--secondary-h), 10%, 90%); }
+      .single-article-card.list-view:hover:last-child {
+        border-bottom: none; }
     .single-article-card.list-view .thumbnail {
       width: 180px;
       height: 135px;
