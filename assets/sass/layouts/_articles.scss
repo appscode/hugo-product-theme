@@ -1,6 +1,28 @@
 .article-hero-area {
   padding: 180px 0 60px;
   background-color: #F1F9F5;
+  position: relative;
+  z-index: 1;
+
+  .decorative-shape img {
+    width: 500px;
+    position: absolute;
+    bottom: 0;
+    opacity: .5;
+    z-index: -1;
+  }
+  .decorative-shape {
+    img{
+      &.left-el {
+        transform: rotate(180deg);
+      }
+      &.right-el {
+        right: 0;
+        transform: rotate(90deg);
+      } 
+    }
+  }
+  
   @include mobile {
     padding: 160px 0 60px;
   }

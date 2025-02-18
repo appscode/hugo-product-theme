@@ -18377,7 +18377,20 @@ Responsive Classes
     content: url("/assets/images/ads/hero-7.png"); } }
 .article-hero-area {
   padding: 180px 0 60px;
-  background-color: #F1F9F5; }
+  background-color: #F1F9F5;
+  position: relative;
+  z-index: 1; }
+  .article-hero-area .decorative-shape img {
+    width: 500px;
+    position: absolute;
+    bottom: 0;
+    opacity: .5;
+    z-index: -1; }
+  .article-hero-area .decorative-shape img.left-el {
+    transform: rotate(180deg); }
+  .article-hero-area .decorative-shape img.right-el {
+    right: 0;
+    transform: rotate(90deg); }
   @media screen and (max-width: 768px) {
     .article-hero-area {
       padding: 160px 0 60px; } }
