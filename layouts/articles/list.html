@@ -13,7 +13,9 @@
     <div class="columns is-vcentered is-multiline">
       <div class="column is-full-tablet is-6-desktop">
         <div class="thumbnail">
-          <img src="http://kubedb.com/articles/how-to-deploy-single-store-using-kubernetes-single-store-operator/hero.jpg" alt="">
+          {{ $original := $lastItem.Resources.GetMatch "hero.jpg" }}
+          {{ $cropped := $original.Resize "x600" }}
+          <img src="{{ $cropped.RelPermalink }}" alt="{{ $lastItem.Title }}">
         </div>
       </div>
 
