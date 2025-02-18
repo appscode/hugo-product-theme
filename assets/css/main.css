@@ -18529,7 +18529,10 @@ Responsive Classes
     background-color: #F1F1F1;
     border-radius: 8px;
     font-size: 400;
-    color: hsl(var(--secondary-h), 10%, 10%); }
+    color: hsl(var(--secondary-h), 10%, 10%);
+    transition: 0.1s ease-in-out; }
+    .recommended-topics .tag:hover {
+      background-color: #dddddd; }
 
 .search-filter-area {
   z-index: 9;

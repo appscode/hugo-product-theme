@@ -203,6 +203,10 @@
     border-radius: 8px;
     font-size: 400;
     color: $color-heading;
+    transition: 0.1s ease-in-out;
+    &:hover {
+      background-color: #dddddd;
+    }
   }
 }
 
