@@ -33,7 +33,7 @@
         <h1>{{.title | markdownify }}</h1>
         <p>{{.summary | markdownify }}</p>
         <div class="buttons">
-          <a href="/docs/{{ $p.latestVersion }}/{{- if and (where site.Menus.main "Name" "Addons") (ne .id "kubedump")}}addons{{- else }}guides{{- end }}/{{if eq .id "opensearch"}}elasticsearch/quickstart/overview/opensearch{{else}}{{.id}}{{end}}/{{if eq .id "kubedump"}}overview/{{end}}" class="button ac-button is-primary">USER GUIDES</a>
+          <a href="/docs/{{ $p.latestVersion }}/{{- if and (where site.Menus.main "Name" "Addons") (ne .id "kubedump")}}addons{{- else }}guides{{- end }}/{{- if eq .id "opensearch"}}elasticsearch/quickstart/overview/opensearch{{- else}}{{.id}}{{- end}}/{{- if eq .id "kubedump"}}overview/{{- end}}" class="button ac-button is-primary">USER GUIDES</a>
         </div>
       </div>
       <div class="column is-6 is-full-touch">
