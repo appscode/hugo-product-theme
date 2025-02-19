@@ -41,7 +41,7 @@
 <section class="features-articles">
   <div class="container">
     <div class="columns is-multiline">
-      <div class="column is-12">
+      <div class="column is-12 pb-0">
         <div class="is-flex is-justify-content-space-between">
           <h6 class="is-flex is-align-items-center is-gap-8">
             <span class="icon">
@@ -102,7 +102,7 @@
 <section class="all-articles">
   <div class="container">
     <div class="columns is-multiline pb-0 mb-0">
-      <div class="column is-9">
+      <div class="column is-8 pb-0">
         <div class="left-articles-list">
           {{ range $idx, $p := $pages.ByDate.Reverse }}
             <a href="{{ $p.RelPermalink }}" class="single-article-card list-view">
@@ -132,7 +132,7 @@
       </div>
 
 
-      <div class="column is-3">
+      <div class="column is-4">
         <div class="recommended-topics">
           <h4>Recommended topics</h4>
           <div class="tags">

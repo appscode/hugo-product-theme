@@ -18396,6 +18396,9 @@ Responsive Classes
       padding: 160px 0 60px; } }
   .article-hero-area h1 {
     font-size: 44px; }
+    @media screen and (min-width: 1216px) and (max-width: 1407px) {
+      .article-hero-area h1 {
+        font-size: 36px; } }
     @media screen and (max-width: 1215px) {
       .article-hero-area h1 {
         font-size: 32px; } }
@@ -18409,6 +18412,9 @@ Responsive Classes
     border-radius: 8px;
     overflow: hidden;
     width: 90%; }
+    @media screen and (min-width: 1216px) and (max-width: 1407px) {
+      .article-hero-area .thumbnail {
+        width: 95%; } }
     @media screen and (max-width: 1215px) {
       .article-hero-area .thumbnail {
         width: 100%; } }
@@ -18416,6 +18422,9 @@ Responsive Classes
       height: 410px;
       width: 100%;
       object-fit: cover; }
+      @media screen and (min-width: 1216px) and (max-width: 1407px) {
+        .article-hero-area .thumbnail img {
+          height: 340px; } }
       @media screen and (min-width: 1024px) and (max-width: 1215px) {
         .article-hero-area .thumbnail img {
           height: 340px; } }
@@ -18445,7 +18454,7 @@ Responsive Classes
     padding: 0; }
   .single-article-card h2 {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 150%;
     color: #1c1c1c;
     margin-bottom: 8px;
@@ -18472,9 +18481,12 @@ Responsive Classes
     border: none;
     border-bottom: 1px dotted hsl(var(--secondary-h), 10%, 90%);
     border-radius: 0;
-    margin-right: 32px;
-    gap: 16px;
+    margin-right: 64px;
+    gap: 24px;
     padding: 24px 0; }
+    @media screen and (max-width: 1407px) {
+      .single-article-card.list-view {
+        margin-right: 32px; } }
     @media screen and (max-width: 768px) {
       .single-article-card.list-view {
         flex-direction: column;
@@ -18527,10 +18539,15 @@ Responsive Classes
   position: sticky;
   top: 140px;
   margin-top: 32px;
-  transition: 0.1s ease-in-out; }
+  transition: 0.1s ease-in-out;
+  padding-left: 32px; }
+  @media screen and (max-width: 1407px) {
+    .recommended-topics {
+      padding-left: 0; } }
   @media screen and (max-width: 768px) {
     .recommended-topics {
-      margin-top: 0; } }
+      margin-top: 0;
+      padding-left: 0; } }
   .recommended-topics h4 {
     font-size: 18px;
     margin-bottom: 8px; }

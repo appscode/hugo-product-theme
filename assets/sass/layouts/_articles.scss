@@ -29,6 +29,9 @@
   
   h1 {
     font-size: 44px;
+    @include widescreen-only {
+      font-size: 36px;
+    }
     @include until-widescreen {
       font-size: 32px;
     }
@@ -45,6 +48,9 @@
     border-radius: 8px;
     overflow: hidden;
     width: 90%;
+    @include widescreen-only {
+      width: 95%;
+    }
     @include until-widescreen {
       width: 100%;
     }
@@ -52,6 +58,9 @@
       height: 410px;
       width: 100%;
       object-fit: cover;
+      @include widescreen-only {
+        height: 340px;
+      }
       @include desktop-only {
         height: 340px;
       }
@@ -92,7 +101,7 @@
 
   h2 {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 150%;
     color: #1c1c1c;
     margin-bottom: 8px;
@@ -131,9 +140,14 @@
     border: none;
     border-bottom: 1px dotted $color-border;
     border-radius: 0;
-    margin-right: 32px;
-    gap: 16px;
+    margin-right: 64px;
+    gap: 24px;
     padding: 24px 0;
+
+    @include until-fullhd {
+      margin-right: 32px;
+    }
+
     @include mobile {
       flex-direction: column;
       margin-right: 0;
@@ -206,9 +220,13 @@
   top: 140px;
   margin-top: 32px;
   transition: 0.1s ease-in-out;
-
+  padding-left: 32px;
+  @include until-fullhd {
+    padding-left: 0;
+  }
   @include mobile {
     margin-top: 0;
+    padding-left: 0;
   }
 
   h4 {
