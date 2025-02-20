@@ -3,37 +3,168 @@
 {{- $pctx := . -}}
 {{- $pages := $pctx.RegularPages -}}
 
+{{ $p := .Pages.ByDate.Reverse }}
+{{ $p = shuffle $p }}
+
 <!-- articles area for page start -->
-<section class="articles-area">
+ {{ $lastItem := index $p (sub (len $p) 1) }}
+<section class="article-hero-area">
+  <span class="decorative-shape">
+    <img class="left-el" src="https://cdn.appscode.com/images/shape/decorative-el.svg" alt="decorative-el">
+    <img class="right-el" src="https://cdn.appscode.com/images/shape/decorative-el.svg" alt="decorative-el">
+  </span>
   <div class="container">
-    <div class="columns is-multiline pb-0 mb-0">
-      <div class="column is-12 pb-0 mb-0">
-        <h4>All Articles</h4>
+    <div class="columns is-vcentered is-multiline">
+      <div class="column is-full-tablet is-6-desktop">
+        <div class="thumbnail">
+          {{ $original := $lastItem.Resources.GetMatch "hero.jpg" }}
+          {{ $cropped := $original.Resize "x600" }}
+          <img src="{{ $cropped.RelPermalink }}" alt="{{ $lastItem.Title }}">
+        </div>
       </div>
-      {{ range $idx, $p := $pages.ByDate.Reverse }}
-      <div class="column is-3-fullhd is-4-widescreen is-6-tablet is-full-mobile">
-        <a href="{{ $p.RelPermalink }}" class="single-article-card">
-          <div class="thumbnail">
-            {{ $original := $p.Resources.GetMatch "hero.jpg" }}
-            {{ $cropped := $original.Resize "x220" }}
-            <img src="{{ $cropped.RelPermalink }}" alt="{{ .Params.alt }}" loading="lazy" decoding="async">
-          </div>
-          <div class="p-16">
-            <h2 class="is-ellipsis-2">{{ $p.Title }}</h2>
-            <p class="is-ellipsis-2">{{$p.Description }}</p>
-            <div class="card-bottom is-flex is-justify-content-space-between">
-              <div class="date-meta">{{ .Date.Format "2-Jan-2006" }}</div>
-              <div class="arrow-icon width-15">
-                <iconify-icon icon="heroicons:arrow-small-right-solid" width="18" height="18">
+
+      <div class="column is-full-tablet is-6-desktop">
+        <div class="content">
+          <!-- <div class="tag p-0 mb-8">SingleStore</div> -->
+          <h1 class="mb-4">{{ $lastItem.Title }}</h1>
+          <p>{{ $lastItem.Description }}</p>
+          <a href="{{ $lastItem.RelPermalink }}" class="button ac-button is-primary mt-8">
+            <span>CONTINUE READING</span> 
+            <span><iconify-icon icon="heroicons:arrow-small-right-solid" width="18" height="18"></iconify-icon></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features-articles">
+  <div class="container">
+    <div class="columns is-multiline">
+      <div class="column is-12 pb-0">
+        <div class="is-flex is-justify-content-space-between">
+          <h6 class="is-flex is-align-items-center is-gap-8">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M3.4 18L2 16.6l7.4-7.45l4 4L18.6 8H16V6h6v6h-2V9.4L13.4 16l-4-4z"/></svg>
+            </span> 
+            <span>FEATURED ARTICLES</span>
+          </h6>
+          <a href="#searchbar" class="button ac-button is-small">
+            <span>ALL ARTICLES</span>
+            <span><iconify-icon icon="heroicons:arrow-small-right-solid" width="18" height="18"></iconify-icon></span>
+          </a>
+        </div>
+      </div>
+
+      {{ range first 4 $p }}
+        <div class="column is-one-quarter-widescreen is-one-quarter-fullhd is-half-tablet is-full-mobile">
+          <a href="{{ .RelPermalink }}" class="single-article-card">
+            <div class="thumbnail">
+              {{ $original := .Resources.GetMatch "hero.jpg" }}
+              {{ $cropped := $original.Resize "x220" }}
+              <img src="{{ $cropped.RelPermalink }}" alt="{{ .Params.alt }}" loading="lazy" decoding="async">
+            </div>
+            <div class="article-content p-16">
+              <h2 class="is-ellipsis-2">{{ .Title }}</h2>
+              <p class="is-ellipsis-2">{{ .Description }}</p>
+              <div class="card-bottom is-flex is-justify-content-space-between">
+                <div class="button is-ghost">
+                  <span>Read More</span>
+                  <iconify-icon icon="heroicons:arrow-small-right-solid" width="18" height="18">
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+
+<div class="search-filter-area" id="searchbar">
+  <div class="container">
+     <div class="filter-wrapper">
+        <div class="search-area is-flex">
+           <label class="width-20 is-flex mr-16" for="search">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor" class="w-5 h-5">
+                 <path fill-rule="evenodd" d="M9 3.5a5.5 5.5.0 100 11 5.5 5.5.0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75.0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path>
+              </svg>
+           </label>
+           <input id="search" type="search" name="search" placeholder="Search 'MongoDB', 'PostgreSQL', 'MSSQL'">
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+<section class="all-articles">
+  <div class="container">
+    <div class="columns is-multiline pb-0 mb-0">
+      <div class="column is-8 pb-0">
+        <div class="left-articles-list">
+          {{ range $idx, $p := $pages.ByDate.Reverse }}
+            <a href="{{ $p.RelPermalink }}" class="single-article-card list-view">
+              <div class="thumbnail">
+                {{ $original := $p.Resources.GetMatch "hero.jpg" }}
+                {{ $cropped := $original.Resize "x220" }}
+                <img src="{{ $cropped.RelPermalink }}" alt="{{ .Params.alt }}" loading="lazy" decoding="async">
+              </div>
+              <div class="article-content">
+                <h2 class="is-ellipsis-2">{{ $p.Title }}</h2>
+                <p class="is-ellipsis-2">{{$p.Description }}</p>
+                <div class="card-bottom is-flex is-justify-content-space-between">
+                  <!-- <div class="date-meta">{{ .Date.Format "2-Jan-2006" }}</div> -->
+                  <div class="button is-ghost">
+                    <span>Read More</span>
+                    <iconify-icon icon="heroicons:arrow-small-right-solid" width="18" height="18">
+                  </div>
+                </div>
+              </div>
+            </a>
+          {{end}}
+        </div>
+
+        <div class="no-data height-200 mt-32 is-justify-content-center" style="display: none;">
+          <img src="https://cdn.appscode.com/images/no-data/no-data-cuate-light.svg" alt="No data available">
+        </div>
       </div>
-      {{end}}
+
+
+      <div class="column is-4">
+        <div class="recommended-topics">
+          <h4>Recommended topics</h4>
+          <div class="tags">
+            <div class="tag is-clickable">Cassandra</div>
+            <div class="tag is-clickable">Druid</div>
+            <div class="tag is-clickable">Elasticsearch</div>
+            <div class="tag is-clickable">FerretDB</div>
+            <div class="tag is-clickable">Kafka</div>
+            <div class="tag is-clickable">MariaDB</div>
+            <div class="tag is-clickable">Memcached</div>
+            <div class="tag is-clickable">MSSQL</div>
+            <div class="tag is-clickable">MongoDB</div>
+            <div class="tag is-clickable">MySQL</div>
+            <div class="tag is-clickable">OpenSearch</div>
+            <!-- <div class="tag is-clickable">PerconaXtraDB</div> -->
+            <div class="tag is-clickable">PgBouncer</div>
+            <div class="tag is-clickable">Pgpool</div>
+            <div class="tag is-clickable">PostgreSQL</div>
+            <div class="tag is-clickable">Redis</div>
+            <div class="tag is-clickable">SingleStore</div>
+            <div class="tag is-clickable">Solr</div>
+            <div class="tag is-clickable">Zookeeper</div>
+          </div>
+        </div>
+      </div>
+ 
     </div>
   </div>
 </section>
 <!-- articles area for page end -->
+  {{ with $script := resources.Get "/js/search.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" defer></script>
+  {{ end }}
 
 {{ end }}
