@@ -57,7 +57,7 @@
       </div>
 
       {{ range first 4 $p }}
-        <div class="column is-3-fullhd is-4-widescreen is-6-tablet is-full-mobile">
+        <div class="column is-one-quarter-widescreen is-one-quarter-fullhd is-half-tablet is-full-mobile">
           <a href="{{ .RelPermalink }}" class="single-article-card">
             <div class="thumbnail">
               {{ $original := .Resources.GetMatch "hero.jpg" }}
