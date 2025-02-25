@@ -26,7 +26,7 @@ const updateHitsDomElement = (searchData, listId) => {
 
   hitListElement.innerHTML = "";
 
-  if (searchData.length === 0) {
+  if (searchData?.length === 0) {
     const hitEl = createHitsElement("No results", "", "No documentation matched your search.");
     hitListElement.appendChild(hitEl);
   } else {
@@ -48,7 +48,7 @@ const showMeilisearchList = (event, listId, hideId) => {
   searchBox.classList.remove("is-hidden");
 
   // If searchtext available
-  if (trimedSearchText.length > 0) {
+  if (trimedSearchText?.length > 0) {
     // create body for the post request
     const payload = {
       q: trimedSearchText,
@@ -130,7 +130,7 @@ const activate_search = (index, searchToken, inputId, listId, hideId) => {
 
   // remove searchbox from body click
   $(document).on("click", function (event) {
-    if (!$(event.target).closest(".ac-searchbar").length) {
+    if (!$(event.target).closest(".ac-searchbar")?.length) {
       updateHitsDomElement([], listId);
       inputElement.value = "";
       $(".search-result-box").addClass("is-hidden");
