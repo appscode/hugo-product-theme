@@ -72,7 +72,7 @@ const showMeilisearchList = (event, listId, hideId) => {
       .then((res) => res.json())
       .then((data) => {
         const hitsarray = data.hits;
-        const formatedHits = hitsarray.map((hit) => hit._formatted);
+        const formatedHits = hitsarray?.map((hit) => hit._formatted);
 
         // update the don with search result
         updateHitsDomElement(formatedHits, listId);
