@@ -232,6 +232,13 @@
   <div class="documentation-body">
    
     <div class="left-content is-clipped">
+      <!-- notification message  -->
+      {{ if fileExists (printf "layouts/partials/components/notification-message.html") }}
+        <div class="mb-16" style="border-radius: 4px; overflow: hidden;">
+          {{ partial "components/notification-message.html" . }}
+        </div>
+      {{ end }}
+
       {{ if not (eq $p.latestVersion $currentBranch) }}
       <article class="message is-warning">
          <div class="icon" style="width: 52px; margin-right: 8px; height: auto;">
@@ -249,6 +256,7 @@
         </div>
       </article>
       {{ end }}
+
       <div class="content">
        <div class="full-info content-body">
         {{ .Content }}
