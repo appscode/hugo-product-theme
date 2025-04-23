@@ -1,9 +1,15 @@
 {{ define "body" }}
 
-{{ $data:=""}}
+{{ $example_code:=""}}
 {{ if .Params.data }}
-{{ $data = getJSON .Params.data }}
+  {{ $example_code = getJSON .Params.example_code }}
 {{ end }}
+
+{{ $data := dict }}
+{{ if .Params.data }}
+  {{ $data = getJSON .Params.data }}
+{{ end }}
+
 {{ $rtl := eq .Params.direction "rtl" }}
 
 <!-- header area start  -->
@@ -26,7 +32,7 @@
         <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
             <button class="button ac-button is-primary is-outlined" aria-haspopup="true" aria-controls="language-switch">
-                <span>{{ .Params.lang }}</span>
+                <span>{{ $data.lang }}</span>
                 <span class="icon width-16">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -47,7 +53,7 @@
         </div>
 
         <a href="https://appscode.com/contact/" target="_blank" class="button ac-button is-primary is-outlined">
-          {{ .Params.contact_sales }}
+          {{ $data.contact_sales }}
         </a>
       </div>
     </div>
@@ -65,7 +71,7 @@
           <p>{{ .Description }}</p>
     
           <ul class="check-list-items">
-            {{ range .Params.hero_features}}
+            {{ range $data.hero_features}}
             <li class="{{if $rtl }} is-flex-direction-row-reverse{{ end }}">{{ . }}</li>
             {{ end }}
   
@@ -79,7 +85,7 @@
                 </svg>
 
               </span>
-              <span>{{ .Params.contact_sales }}</span>
+              <span>{{ $data.contact_sales }}</span>
             </a>
 
             <!-- Calendly link widget begin -->
@@ -87,7 +93,7 @@
               onclick="Calendly.initPopupWidget({url: 'https://calendly.com/appscode/intro'});return false;">SCHEDULE
               DEMO</a> -->
             <!-- Calendly link widget end -->
-            <a href="/docs/latest/setup/install/kubedb/" class="button ac-button is-primary is-normal is-outlined">{{ .Params.try_now }}</a>
+            <a href="/docs/latest/setup/install/kubedb/" class="button ac-button is-primary is-normal is-outlined">{{ $data.try_now }}</a>
 
             <!-- <a href="https://appscode.com/contact/" target="_blank"
                 class="button ac-button is-primary is-outlined">REQUEST DEMO</a> -->
@@ -110,7 +116,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-12">
-        <h2 class="mb-8 {{if $rtl }} has-text-right {{ end }}">{{ .Params.social_prof_title }}</h2>
+        <h2 class="mb-8 {{if $rtl }} has-text-right {{ end }}">{{ $data.social_prof_title }}</h2>
         {{ partial "components/social-prove.html" .}}
       </div>
     </div>
@@ -123,13 +129,13 @@
   <div class="container">
     <div class="columns is-multiline is-vcentered">
       <div class="column is-6">
-        <h3 class="mb-16  {{if $rtl }} has-text-right {{ end }}">{{ .Params.features_section.title }}</h3>
+        <h3 class="mb-16  {{if $rtl }} has-text-right {{ end }}">{{ $data.features_section.title }}</h3>
         <ul class="check-list-items">
-          {{ range .Params.features_section.features }}
+          {{ range $data.features_section.features }}
           <li class="{{if $rtl }} is-flex-direction-row-reverse{{ end }}">{{ . }}</li>
           {{ end }}
       </div>
-      {{ with $data }}
+      {{ with $example_code }}
       <div class="column is-6">
         <div class="custom-code-editor">
           <div class="editor-header">
@@ -157,15 +163,15 @@
       </div>
       <div class="column is-6">
         <div class="right-content {{if $rtl }} has-text-right {{ end }}">
-          <h3 class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ .Params.kubernetes_platform.title }}</h3>
+          <h3 class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ $data.kubernetes_platform.title }}</h3>
 
           <ul class="check-list-items">
-            {{ range .Params.kubernetes_platform.platform_name }}
+            {{ range $data.kubernetes_platform.platform_name }}
             <li class="{{if $rtl }} is-flex-direction-row-reverse{{ end }}">{{ . }}</li>
             {{ end }}
           </ul>
 
-          <p>{{ .Params.kubernetes_platform.description }}</p>
+          <p>{{ $data.kubernetes_platform.description }}</p>
         </div>
       </div>
     </div>
@@ -190,8 +196,8 @@
   <div class="container">
     <div class="columns">
       <div class="column is-12">
-        <h3 class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ .Params.pricing_model.title }}</h3>
-        <p class="{{if $rtl }} has-text-right {{ end }}">{{ .Params.pricing_model.description | safeHTML }}</p>
+        <h3 class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ $data.pricing_model.title }}</h3>
+        <p class="{{if $rtl }} has-text-right {{ end }}">{{ $data.pricing_model.description | safeHTML }}</p>
       </div>
     </div>
   </div>
@@ -203,18 +209,18 @@
   <div class="container">
     <div class="columns">
       <div class="column is-12">
-        <h3 class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ .Params.support_plans.title }}</h3>
+        <h3 class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ $data.support_plans.title }}</h3>
         <div class="table-container">
           <table class="table is-fullwidth is-bordered {{if $rtl }} direction-rtl {{ end }}">
             <thead>
               <tr>
-                {{ range .Params.support_plans.features_table.thead }}
+                {{ range $data.support_plans.features_table.thead }}
                 <th>{{ . }}</th>
                 {{ end }}
               </tr>
             </thead>
             <tbody>
-              {{ range .Params.support_plans.features_table.tbody }}
+              {{ range $data.support_plans.features_table.tbody }}
               <tr>
                 <td class="{{if $rtl }} has-text-right {{ end }}">{{ .title }}</td>
                 <td>{{ .silver }}</td>
@@ -243,8 +249,8 @@
             <img src="/assets/images/illustrations/faq.png" alt="faq-image" loading="lazy">
           </div>
 
-          <h3 class="mb-8">{{ .Params.faq_area.title}}</h3>
-          <p>{{ .Params.faq_area.description }}</p>
+          <h3 class="mb-8">{{ $data.faq_area.title}}</h3>
+          <p>{{ $data.faq_area.description }}</p>
           <div class="buttons {{ if $rtl }} is-gap-8 is-flex-direction-row-reverse{{ end }}">
             <a href="https://appscode.com/contact/" target="_blank" class="button ac-button is-primary">
               <span class="icon">
@@ -252,12 +258,12 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
                 </svg>
               </span>
-              <span>{{ .Params.contact_sales }}</span>
+              <span>{{ $data.contact_sales }}</span>
             </a>
             <!-- <a href="#" class="button ac-button is-primary is-outlined"
               onclick="Calendly.initPopupWidget({url: 'https://calendly.com/appscode/intro'});return false;">SCHEDULE
               DEMO</a> -->
-            <a href="/docs/latest/setup/install/kubedb/" class="button ac-button is-primary is-outlined"> {{ .Params.try_now }}</a>
+            <a href="/docs/latest/setup/install/kubedb/" class="button ac-button is-primary is-outlined"> {{ $data.try_now }}</a>
           </div>
 
         </div>
@@ -265,7 +271,7 @@
       <div class="column is-6">
         <div class="faq-right">
           <div class="ac-accordion-wrapper">
-            {{ range $index, $item := .Params.faq_area.accordions }}
+            {{ range $index, $item := $data.faq_area.accordions }}
               <div class="single-accordion-item closed">
                 <div class="accordion-heading {{if $rtl }} is-flex-direction-row-reverse{{ end }}">
                   <h3>{{ $item.title }}</h3>
@@ -296,13 +302,13 @@
             <a href="https://appscode.com"><img src="/assets/images/products/appscode/appscode.svg" alt="AppsCode"
                 class="img" loading="lazy"></a>
           </div>
-          {{ range .Params.footer.about_appscode }}
+          {{ range $data.footer.about_appscode }}
           <p>{{ . }}</p>
           {{ end }}
         </div>
 
         <div class="column is-half-tablet is-one-quarter">
-          <label class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ .Params.footer.contact_us.title }}</label>
+          <label class="mb-16 {{if $rtl }} has-text-right {{ end }}">{{ $data.footer.contact_us.title }}</label>
           <div class="contact-info">
             <a href="mailto:sales@appscode.com" class="info-text mb-16"><span class="icon">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -328,7 +334,7 @@
     <div class="container">
       <div class="columns is-vcentered {{if $rtl }} is-flex-direction-row-reverse{{ end }}">
         <div class="column is-4 {{if $rtl }} has-text-right-mobile has-text-right-tablet is-paddingless{{ else }} has-text-left-mobile has-text-left-tablet is-paddingless {{ end }}">
-          <p><span class="icon"><i class="fa fa-copyright" aria-hidden="true"></i></span>{{ .Params.footer.copy_right}}</p>
+          <p><span class="icon"><i class="fa fa-copyright" aria-hidden="true"></i></span>{{ $data.footer.copy_right}}</p>
         </div>
         <div class="column is-4 is-mobile has-text-centered-tablet is-paddingless">
           <a href="https://x.com/AppsCodeHQ" target="_blank"
