@@ -24372,6 +24372,10 @@ body:has(.headroom--pinned) .recommended-topics {
   margin-top: 140px;
 }
 
+body:has(#notification[style*="display: flex"]) .article-details-area {
+  margin-top: 180px;
+}
+
 .sticky-social-menu {
   padding-bottom: 80px;
 }
