@@ -16,7 +16,7 @@
   
     <!-- iframe "display: flex | none" -->
     {{ if .Site.Params.appscode_notification_show }}
-    <iframe src="https://appscode.com/notification-top/" id="notification" class="{{ if eq $currentPageType "docs" }} is-hidden {{ end }}" frameborder="0" scrolling="no" onload="resizeIframe()" style="width: 100%; display: flex; overflow: hidden;" title="Notification"></iframe>
+    <iframe src="https://appscode.com/notification-top/" id="notification" class="{{ if eq $currentPageType "docs" }} is-hidden {{ end }}" frameborder="0" scrolling="no" onload="resizeIframe()" style="width: 100%; display:flex; overflow: hidden;" title="Notification"></iframe>
     
     <script>
         function resizeIframe() {

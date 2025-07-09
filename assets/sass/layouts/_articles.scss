@@ -313,7 +313,7 @@ body {
   margin-top: 140px;
 
 }
-body:has(#notification[style*="display: flex"]){
+body:has(#notification[style*="display:flex"]){
   .article-details-area {
     margin-top: 180px;
   }
