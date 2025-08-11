@@ -36,7 +36,18 @@
           <a href="/docs/{{ $p.latestVersion }}/{{- if or 
             (and (gt (len (where site.Menus.main "Name" "Addons")) 0) (ne (site.Params.product_key) "kubestash")) 
             (and (eq (site.Params.product_key) "kubestash") (ne .id "kubedump")) 
-          }}addons{{- else }}guides{{- end }}/{{- if eq .id "opensearch"}}elasticsearch/quickstart/overview/opensearch{{- else}}{{.id}}{{- end}}/{{- if eq .id "kubedump"}}overview/{{- end}}" class="button ac-button is-primary">USER GUIDES</a>
+            }}addons{{- else }}guides{{- end }}/
+            {{- if eq .id "opensearch"}}
+              elasticsearch/quickstart/overview/opensearch
+            {{- else if eq .id "valkey" -}}
+              redis/quickstart/overview/valkey
+            {{- else}}
+              {{.id}}
+            {{- end}}/
+            {{- if eq .id "kubedump"}}overview/{{- end}}" 
+            class="button ac-button is-primary">
+            USER GUIDES
+          </a>
         </div>
       </div>
       <div class="column is-6 is-full-touch">
