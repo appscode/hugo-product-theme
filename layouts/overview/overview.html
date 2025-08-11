@@ -42,7 +42,7 @@
             {{- else if eq .id "valkey" -}}
               redis/quickstart/overview/valkey
             {{- else}}
-              {{.id}}
+              {{- .id}}
             {{- end}}/
             {{- if eq .id "kubedump"}}overview/{{- end}}" 
             class="button ac-button is-primary">
