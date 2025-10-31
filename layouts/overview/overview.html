@@ -33,9 +33,35 @@
         <h1>{{.title | markdownify }}</h1>
         <p>{{.summary | markdownify }}</p>
         <div class="buttons">
-           <a href="/docs/{{ $p.latestVersion }}/{{- if or (and (gt (len (where site.Menus.main "Name" "Addons")) 0) (ne (site.Params.product_key) "kubestash")) (and (eq (site.Params.product_key) "kubestash") (ne .id "kubedump"))) -}}addons{{- else -}}guides{{- end -}}/{{- if eq .id "opensearch" -}}elasticsearch/quickstart/overview/opensearch{{- else if eq .id "valkey" -}}redis/quickstart/overview/valkey{{- else -}}{{ .id }}{{- end -}}/{{- if eq .id "kubedump" -}}overview/{{- end -}}" class="button ac-button is-primary">
-            USER GUIDES
-          </a>
+            {{- /* Determine helper variables for clarity */ -}}
+            {{- $latestVersion := $p.latestVersion -}}
+            {{- $hasAddons := gt (len (where site.Menus.main "Name" "Addons")) 0 -}}
+
+            {{- /* Decide whether to show Addons or Guides */ -}}
+            {{- $showAddons := or 
+              (and $hasAddons (ne site.Params.product_key "kubestash"))
+              (and (eq site.Params.product_key "kubestash") (ne .id "kubedump"))
+            -}}
+
+            {{- /* Predeclare $page to avoid scoping issue */ -}}
+            {{- $page := "" -}}
+            {{- if eq .id "opensearch" -}}
+              {{- $page = "elasticsearch/quickstart/overview/opensearch" -}}
+            {{- else if eq .id "valkey" -}}
+              {{- $page = "redis/quickstart/overview/valkey" -}}
+            {{- else -}}
+              {{- $page = .id -}}
+            {{- end -}}
+
+            {{- /* Determine overview part if needed */ -}}
+            {{- $overview := cond (eq .id "kubedump") "overview/" "" -}}
+
+            <a
+              href="/docs/{{ $latestVersion }}/{{ if $showAddons }}addons{{ else }}guides{{ end }}/{{ $page }}/{{ $overview }}"
+              class="button ac-button is-primary"
+            >
+              USER GUIDES
+            </a>
         </div>
       </div>
       <div class="column is-6 is-full-touch">
