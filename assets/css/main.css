@@ -1442,11 +1442,11 @@ a.box:active {
   border-color: transparent;
   color: hsl(348, 86%, 43%);
 }
-.button.is-small {
-  font-size: 0.75rem;
-}
 .button.is-small:not(.is-rounded) {
   border-radius: 2px;
+}
+.button.is-small {
+  font-size: 0.75rem;
 }
 .button.is-normal {
   font-size: 1rem;
@@ -1508,11 +1508,11 @@ a.box:active {
 .buttons:not(:last-child) {
   margin-bottom: 1rem;
 }
-.buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large) {
-  font-size: 0.75rem;
-}
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large):not(.is-rounded) {
   border-radius: 2px;
+}
+.buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large) {
+  font-size: 0.75rem;
 }
 .buttons.are-medium .button:not(.is-small):not(.is-normal):not(.is-large) {
   font-size: 1.25rem;
@@ -5084,7 +5084,6 @@ body.has-navbar-fixed-bottom {
   height: 3.25rem;
   position: relative;
   width: 3.25rem;
-  margin-left: auto;
 }
 .navbar-burger span {
   background-color: currentColor;
@@ -5118,6 +5117,9 @@ body.has-navbar-fixed-bottom {
 }
 .navbar-burger.is-active span:nth-child(3) {
   transform: translateY(-5px) rotate(-45deg);
+}
+.navbar-burger {
+  margin-left: auto;
 }
 
 .navbar-menu {
@@ -18273,6 +18275,12 @@ body.configsyncer {
   --primary-l: 47%;
   --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
 }
+body.kubeobj {
+  --primary-h: 281;
+  --primary-s: 57%;
+  --primary-l: 46%;
+  --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
+}
 
 html,
 body {
@@ -19978,11 +19986,13 @@ video {
 .product-version .dropdown .dropdown-menu {
   /* ===== Scrollbar CSS ===== */
   /* Firefox */
-  /* Chrome, Edge, and Safari */
 }
 .product-version .dropdown .dropdown-menu * {
   scrollbar-width: auto;
   scrollbar-color: #ebebeb #fafafd;
+}
+.product-version .dropdown .dropdown-menu {
+  /* Chrome, Edge, and Safari */
 }
 .product-version .dropdown .dropdown-menu *::-webkit-scrollbar {
   width: 12px;
@@ -20388,9 +20398,6 @@ Responsive Classes
   left: 0;
   top: 36px;
   padding: 8px 0;
-  /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  /* Chrome, Edge, and Safari */
 }
 .search-result-box .not-found {
   display: flex;
@@ -20398,9 +20405,16 @@ Responsive Classes
   justify-content: center;
   min-height: 200px;
 }
+.search-result-box {
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+}
 .search-result-box * {
   scrollbar-width: auto;
   scrollbar-color: #ebebeb #fafafd;
+}
+.search-result-box {
+  /* Chrome, Edge, and Safari */
 }
 .search-result-box *::-webkit-scrollbar {
   width: 12px;
@@ -24851,11 +24865,13 @@ code:not(pre code) {
   padding-top: 8px;
   /* ===== Scrollbar CSS ===== */
   /* Firefox */
-  /* Chrome, Edge, and Safari */
 }
 .documentation-area .left-sidebar-wrapper * {
   scrollbar-width: auto;
   scrollbar-color: #ebebeb #fafafd;
+}
+.documentation-area .left-sidebar-wrapper {
+  /* Chrome, Edge, and Safari */
 }
 .documentation-area .left-sidebar-wrapper *::-webkit-scrollbar {
   width: 12px;

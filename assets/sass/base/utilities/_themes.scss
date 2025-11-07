@@ -128,4 +128,10 @@ body {
     --primary-l: 47%;
     --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
   }
+  &.kubeobj {
+    --primary-h: 281;
+    --primary-s: 57%;
+    --primary-l: 46%;
+    --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
+  }
 }
