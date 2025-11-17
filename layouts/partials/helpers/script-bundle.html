@@ -5,6 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.12.0/headroom.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script>
 <!-- <script src="/js/jquery.serialscrolling.min.js" defer></script> -->
+ <script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
 
 {{ with $script := resources.Get "/js/main.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $script.RelPermalink }}" defer></script>

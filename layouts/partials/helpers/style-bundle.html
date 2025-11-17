@@ -20,6 +20,8 @@
 <!-- Calendly link widget begin -->
 <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
 
+<link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet" />
+
 <!-- Custom CSS -->
 {{ with $style := resources.Get "/css/main.css" | resources.PostCSS | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />

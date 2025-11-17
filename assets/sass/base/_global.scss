@@ -474,6 +474,16 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 // Scrollbar mixin
 @mixin scrollbar-styles($direction) {
   transition: 0.3s ease-in-out;
