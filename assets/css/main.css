@@ -17012,8 +17012,7 @@ table tr:nth-child(even) {
   object-fit: cover;
   left: 0;
   -o-object-position: left;
-  object-position: left;
-  animation: fadeIn 0.1s ease-in-out; }
+  object-position: left; }
 
 .single-ui-ss {
   position: relative;
