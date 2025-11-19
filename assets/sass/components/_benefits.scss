@@ -1,0 +1,29 @@
+.benefits-section {
+    background-color: hsl(var(--primary-h), 20%, 98%);
+    border-bottom: 1px solid $color-border;
+
+    .benefit-item {
+        padding: 1rem;
+    }
+
+    .benefit-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+
+        @include tablet {
+            font-size: 3rem;
+        }
+    }
+
+    .benefit-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: $color-heading;
+    }
+
+    .benefit-subtitle {
+        font-size: 0.75rem;
+        color: $color-text;
+    }
+}

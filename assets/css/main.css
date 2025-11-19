@@ -17086,14 +17086,76 @@ table tr:nth-child(even) {
       padding: 6px 12px;
       cursor: pointer;
       font-size: 14px;
-      border-radius: 4px 4px 0 0;
-      transition: 0.3s ease-in-out; }
+      border-radius: 4px 4px 0 0; }
       .hero-area-right .tabs-area ul li:hover {
         color: var(--ac-primary); }
       .hero-area-right .tabs-area ul li.active {
         background: linear-gradient(to bottom, hsl(var(--primary-h), var(--primary-s), 80%), hsla(var(--primary-h), var(--primary-s), 20%, 0));
         color: var(--ac-primary);
         box-shadow: 2px 2px 1px rgba(255, 255, 255, 0.1); }
+
+.supported-databases .card {
+  height: 100%;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 8px; }
+  .supported-databases .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); }
+  .supported-databases .card .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; }
+.supported-databases .tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px; }
+.supported-databases .max-w-3xl {
+  max-width: 48rem; }
+.supported-databases .mx-auto {
+  margin-left: auto;
+  margin-right: auto; }
+
+.benefits-section {
+  background-color: hsl(var(--primary-h), 20%, 98%);
+  border-bottom: 1px solid hsl(var(--secondary-h), 10%, 90%); }
+  .benefits-section .benefit-item {
+    padding: 1rem; }
+  .benefits-section .benefit-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2; }
+    @media screen and (min-width: 769px), print {
+      .benefits-section .benefit-number {
+        font-size: 3rem; } }
+  .benefits-section .benefit-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--secondary-h), 10%, 10%); }
+  .benefits-section .benefit-subtitle {
+    font-size: 0.75rem;
+    color: hsl(var(--secondary-h), 10%, 20%); }
+
+.why-kubedb-section .comparison-table thead tr {
+  border-bottom: 2px solid hsl(var(--secondary-h), 10%, 90%); }
+.why-kubedb-section .comparison-table tbody tr {
+  transition: background-color 0.2s ease; }
+  .why-kubedb-section .comparison-table tbody tr:hover {
+    background-color: hsl(var(--primary-h), 20%, 98%); }
+.why-kubedb-section .comparison-table td,
+.why-kubedb-section .comparison-table th {
+  padding: 1rem;
+  vertical-align: middle; }
+.why-kubedb-section .comparison-table .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; }
+.why-kubedb-section .card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden; }
+.why-kubedb-section .table-container {
+  overflow-x: auto; }
 
 .count-link-area {
   background-color: #fbfbfb;

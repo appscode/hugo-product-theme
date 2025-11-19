@@ -177,15 +177,14 @@
     .text {
       font-weight: bolder;
       font-size: 2rem;
-      background: linear-gradient(
-        -45deg,
-        var(--ac-primary),
-        #940148,
-        #4c346f,
-        var(--ac-primary)
-      );
+      background: linear-gradient(-45deg,
+          var(--ac-primary),
+          #940148,
+          #4c346f,
+          var(--ac-primary));
       background-clip: text;
       color: transparent;
+
       @include touch {
         font-size: 1.5rem;
       }
@@ -196,6 +195,7 @@
 .core-capabilities-of-kubedb {
   background-color: hsl(var(--primary-h), 20%, 98%);
 }
+
 .hero-area-right {
   .tab-content-item {
     margin-top: -1px;
@@ -220,7 +220,7 @@
         cursor: pointer;
         font-size: 14px;
         border-radius: 4px 4px 0 0;
-        transition: 0.3s ease-in-out;
+
         &:hover {
           color: $ac-primary;
         }
