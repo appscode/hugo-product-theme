@@ -196,3 +196,37 @@
 .core-capabilities-of-kubedb {
   background-color: hsl(var(--primary-h), 20%, 98%);
 }
+.hero-area-right {
+  .tab-content-item {
+    margin-top: -1px;
+  }
+
+  .tabs-area {
+    position: relative;
+    z-index: 9;
+
+    ul {
+      display: flex;
+      align-items: center;
+      background-color: hsl(var(--primary-h), var(--primary-s), 98%);
+      border-bottom: 1px solid $color-border;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      padding: 4px;
+
+      li {
+        display: block;
+        padding: 6px 12px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 4px 4px 0 0;
+
+        &.active {
+          background: linear-gradient(to bottom, hsl(var(--primary-h), var(--primary-s), 80%), hsla(var(--primary-h), var(--primary-s), 20%, 0));
+          color: $ac-primary;
+          box-shadow: 2px 2px 1px rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+}
