@@ -17086,7 +17086,10 @@ table tr:nth-child(even) {
       padding: 6px 12px;
       cursor: pointer;
       font-size: 14px;
-      border-radius: 4px 4px 0 0; }
+      border-radius: 4px 4px 0 0;
+      transition: 0.3s ease-in-out; }
+      .hero-area-right .tabs-area ul li:hover {
+        color: var(--ac-primary); }
       .hero-area-right .tabs-area ul li.active {
         background: linear-gradient(to bottom, hsl(var(--primary-h), var(--primary-s), 80%), hsla(var(--primary-h), var(--primary-s), 20%, 0));
         color: var(--ac-primary);

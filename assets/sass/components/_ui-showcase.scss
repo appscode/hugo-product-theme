@@ -220,6 +220,10 @@
         cursor: pointer;
         font-size: 14px;
         border-radius: 4px 4px 0 0;
+        transition: 0.3s ease-in-out;
+        &:hover {
+          color: $ac-primary;
+        }
 
         &.active {
           background: linear-gradient(to bottom, hsl(var(--primary-h), var(--primary-s), 80%), hsla(var(--primary-h), var(--primary-s), 20%, 0));
