@@ -13957,9 +13957,15 @@ strong {
   position: relative;
   z-index: 8; }
   .section-title h1 {
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 130%; }
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: hsl(var(--secondary-h), 10%, 10%);
+    text-align: center; }
+    @media screen and (min-width: 769px), print {
+      .section-title h1 {
+        font-size: 3.75rem; } }
     .section-title h1.is-outlined-text {
       color: hsl(var(--secondary-h), 10%, 90%);
       -webkit-text-fill-color: white;
@@ -13974,11 +13980,17 @@ strong {
       text-align: center;
       width: 100%; }
   .section-title h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 10px; }
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: hsl(var(--secondary-h), 10%, 10%);
+    text-align: center; }
+    @media screen and (min-width: 769px), print {
+      .section-title h2 {
+        font-size: 3.75rem; } }
   .section-title p {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 160%;
     letter-spacing: 0px;
     text-wrap: balance; }

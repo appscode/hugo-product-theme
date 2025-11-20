@@ -4,6 +4,7 @@
 .is-fullwidth {
   width: 100% !important;
 }
+
 .navbar-right {
   .whats-new {
     position: absolute;
@@ -15,18 +16,22 @@
     padding: 0.2rem 0.3rem;
     line-height: 1.2;
     display: none;
+
     &.bubble {
-      &::after, &::before {
+
+      &::after,
+      &::before {
         width: 12px;
         height: 12px;
         border-radius: 50%;
       }
+
       &::after {
         width: 8px;
         height: 8px;
       }
     }
-  
+
     &:before {
       content: "";
       position: absolute;
@@ -41,7 +46,7 @@
       border-radius: 2px;
       animation: pulse-border 1500ms ease-out infinite;
     }
-  
+
     &:after {
       content: "";
       position: absolute;
@@ -55,24 +60,22 @@
       background: $ac-primary;
       transition: all 200ms;
     }
-  
+
     @keyframes pulse-border {
       0% {
-        transform: translateX(-50%) translateY(-50%) translateZ(0)
-          scale(1);
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
         opacity: 1;
       }
-  
+
       100% {
-        transform: translateX(-50%) translateY(-50%) translateZ(0)
-          scale(1.5);
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
         opacity: 0;
       }
     }
   }
 }
 
-.direction-rtl{
+.direction-rtl {
   direction: rtl;
 }
 
@@ -136,9 +139,16 @@
   z-index: 8;
 
   h1 {
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 130%;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: $color-heading;
+    text-align: center;
+
+    @include tablet {
+      font-size: 3.75rem;
+    }
 
     &.is-outlined-text {
       color: $color-border;
@@ -157,26 +167,36 @@
   }
 
   h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: $color-heading;
+    text-align: center;
+
+    @include tablet {
+      font-size: 3.75rem;
+    }
   }
 
   p {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 160%;
     letter-spacing: 0px;
     text-wrap: balance;
+
     @include touch {
       text-wrap: auto;
     }
   }
 }
+
+
 .decorative-el {
   position: relative;
   z-index: 1;
 
-  &::after{
+  &::after {
     position: absolute;
     content: "";
     left: -54px;
@@ -186,12 +206,14 @@
     z-index: -1;
     background-image: url("https://cdn.appscode.com/images/shape/decorative-el.svg");
     background-repeat: no-repeat;
+
     @include mobile {
       width: 120px;
       height: 120px;
     }
   }
 }
+
 .decorative-el-large {
   background-image: url("https://cdn.appscode.com/images/shape/decorative-el-large-2.png");
   background-size: cover;
@@ -201,6 +223,7 @@
 // dark background
 .dark-bg {
   background-color: hsl(var(--primary-h), var(--primary-s), 2%);
+
   h1,
   h2,
   h3,
@@ -211,26 +234,32 @@
   label {
     color: #e6e7e6;
   }
+
   p {
     color: #d4d6d5 !important;
   }
+
   .footer-top {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
+
   .footer-inline-link,
   .subscription-form label,
   .all-contact-info li a,
   p.spam-message {
     color: #adb2b0;
+
     a {
       color: #adb2b0;
       transition: 0.3s ease-in-out;
+
       &:hover {
         color: $ac-primary;
       }
     }
   }
 }
+
 .left-0 {
   left: 0 !important;
 }
@@ -468,6 +497,7 @@
     }
   }
 }
+
 @for $i from 0 through 32 {
   .is-gap-#{$i} {
     gap: #{$i}px;
@@ -479,11 +509,13 @@
     opacity: 0;
     transform: translateY(5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 // Scrollbar mixin
 @mixin scrollbar-styles($direction) {
   transition: 0.3s ease-in-out;
@@ -512,6 +544,7 @@
 .ac-vscrollbar {
   @include scrollbar-styles("y");
 }
+
 .ac-hscrollbar {
   @include scrollbar-styles("x");
 }
@@ -558,8 +591,7 @@ Responsive Classes
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 768px) {
-}
+@media (min-width: 576px) and (max-width: 768px) {}
 
 // Medium devices (tablets, 769px and up)
 @media (min-width: 769px) and (max-width: 1023.98px) {
