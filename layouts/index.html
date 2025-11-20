@@ -2,12 +2,16 @@
 {{ partial "components/heroarea.html" . }}
 {{ partial "components/social-prove.html" .}}
 {{ partial "components/features.html" .}}
-{{ partial "components/benifits.html" .}}
+{{ partial "components/benefits.html" .}}
 {{ partial "components/ui-showcase.html" . }}
+{{ partial "components/roi.html" . }}
+{{ partial "components/build-for-team.html" . }}
+{{ partial "components/how-its-work.html" . }}
 {{ partial "components/supported-databases.html"}}
 {{ partial "components/core-capabilities-of-kubedb.html" .}}
 {{ partial "components/why-kubedb.html" .}}
 {{ if .Site.GetPage "section" "case-studies" }}
-  {{ partial "components/casestudies.html" . }}
+{{ partial "components/casestudies.html" . }}
 {{ end }}
+{{ partial "components/success-story.html" .}}
 {{ end }}
