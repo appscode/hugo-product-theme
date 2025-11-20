@@ -5,12 +5,13 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="section-title has-text-centered">
-          <h2 class="is-gradient">Special Features</h2>
-          {{ if $p.summary }}
-          <p>
-            {{ $p.summary | plainify }}
-          </p>
-          {{ end }}
+          <h2 class="is-gradient">{{- if $p.features_title }}{{ $p.features_title }}{{ else }}Special Features{{ end -}}
+          </h2>
+          {{- if $p.features_summary }}
+          <p>{{ $p.features_summary | plainify }}</p>
+          {{- else if $p.summary }}
+          <p>{{ $p.summary | plainify }}</p>
+          {{- end }}
         </div>
       </div>
     </div>
@@ -19,28 +20,28 @@
     <!-- is-centered -->
     <div class="columns is-multiline is-centered">
       <!-- single feature information start  -->
-      {{ range $f := $p.features }}
+      {{- range $f := $p.features }}
       <div class="column is-half-tablet is-one-third-widescreen">
         <a href="/features/{{ $f.url }}" class="single-features-item">
           <div class="feature-icon">
-            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy"/>
+            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy" />
           </div>
           <div class="feature-information">
-          
             <h3>{{ $f.title }}</h3>
-            {{  if $f.summary }} 
+            {{- if $f.summary }}
             <p class="is-ellipsis-2">{{ $f.summary }}</p>
-            {{ end }}
+            {{- end }}
             <p class="is-ellipsis-2">{{ $f.description }}</p>
             <button class="readmore-button"><span>Read More</span><span class="icon">
-              <iconify-icon icon="heroicons:arrow-small-right"></iconify-icon>
-            </span></button>
+                <iconify-icon icon="heroicons:arrow-small-right"></iconify-icon>
+              </span></button>
           </div>
         </a>
       </div>
-      {{end}}
+      {{- end }}
       <!-- single feature information end -->
     </div>
   </div>
 </section>
 <!-- product features area end -->
+ 

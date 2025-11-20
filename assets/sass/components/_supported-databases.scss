@@ -3,6 +3,9 @@
         height: 100%;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid $color-border;
+        background-color: hsl(var(--primary-h), 40%, 98%);
 
         &:hover {
             transform: translateY(-4px);
