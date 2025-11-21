@@ -2,121 +2,393 @@
 
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 
-<!-- ==========================new hero area start ==========================   -->
-<!-- style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);" -->
-<section class="hero-area is-product is-dark has-image-bg is-feature"
+<!-- Ultra-Premium Hero Area -->
+<section class="hero-area is-product is-dark has-image-bg is-feature ultra-premium-hero"
   style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);">
-  <div class="shape">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
+
+  <!-- Animated Mesh Gradient Background -->
+  <div class="hero-mesh-gradient"></div>
+
+  <!-- Premium Gradient Overlay with Animation -->
+  <div class="hero-gradient-overlay animated"></div>
+
+  <!-- Floating Geometric Shapes -->
+  <div class="floating-shapes">
+    <div class="shape-item shape-1"></div>
+    <div class="shape-item shape-2"></div>
+    <div class="shape-item shape-3"></div>
+    <div class="shape-item shape-4"></div>
+    <div class="shape-item shape-5"></div>
+    <div class="shape-item shape-6"></div>
   </div>
-  <div class="shape">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
+
+  <!-- Particle System -->
+  <div class="particles-container">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
-  <div class="container">
+
+  <!-- Enhanced Animated Shapes -->
+  <div class="shape enhanced-shapes premium-cubes">
+    <div class="cube glow pulse"></div>
+    <div class="cube glow pulse"></div>
+    <div class="cube glow pulse"></div>
+    <div class="cube glow pulse"></div>
+    <div class="cube glow pulse"></div>
+    <div class="cube glow pulse"></div>
+  </div>
+  <div class="shape enhanced-shapes premium-circles">
+    <div class="circle glow pulse"></div>
+    <div class="circle glow pulse"></div>
+    <div class="circle glow pulse"></div>
+    <div class="circle glow pulse"></div>
+    <div class="circle glow pulse"></div>
+    <div class="circle glow pulse"></div>
+    <div class="circle glow pulse"></div>
+  </div>
+
+  <!-- Spotlight Effect -->
+  <div class="hero-spotlight"></div>
+
+  <div class="container hero-content-wrapper">
     <div class="columns has-text-centered is-centered is-vcentered is-multiline">
-      <div class="column is-8 is-centered is-full-touch">
-        <h1>{{ $p.name }} Features</h1>
-        <p>{{ $p.summary }}</p>
-        <div class="buttons is-justify-content-center">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white"
-           >Install Now Free</a>
+      <div class="column is-10 is-centered is-full-touch">
+        <!-- Premium Badge -->
+        <div class="hero-badge ">
+          <iconify-icon icon="heroicons:sparkles" width="16" height="16"></iconify-icon>
+          <span>Powerful Database Management</span>
+        </div>
+
+        <!-- Hero Title with Gradient Text -->
+        <h1 class="hero-title ">
+          <span class="gradient-text">{{ $p.name }}</span>
+          <span class="title-highlight">Features</span>
+        </h1>
+
+        <!-- Hero Subtitle with Glassmorphism -->
+        <div class="hero-subtitle-wrapper">
+          <p class="hero-subtitle">{{ $p.summary }}</p>
+        </div>
+
+        <!-- Premium CTA Buttons -->
+        <div class="hero-cta-group ">
+          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button hero-cta-primary">
+            <span class="cta-text">Get Started Free</span>
+            <iconify-icon icon="heroicons:arrow-right" width="20" height="20" class="cta-icon"></iconify-icon>
+            <span class="cta-shine"></span>
+          </a>
+          <a href="#features" class="button hero-cta-secondary">
+            <iconify-icon icon="heroicons:play-circle" width="20" height="20"></iconify-icon>
+            <span>Explore Features</span>
+          </a>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="hero-highlights animate-in">
+          <div class="highlight-item">
+            <iconify-icon icon="heroicons:check-circle" width="20" height="20"></iconify-icon>
+            <span>Production Ready</span>
+          </div>
+          <div class="highlight-item">
+            <iconify-icon icon="heroicons:check-circle" width="20" height="20"></iconify-icon>
+            <span>Enterprise Grade</span>
+          </div>
+          <div class="highlight-item">
+            <iconify-icon icon="heroicons:check-circle" width="20" height="20"></iconify-icon>
+            <span>Cloud Native</span>
+          </div>
         </div>
       </div>
-     
     </div>
   </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-icon">
+      <iconify-icon icon="heroicons:chevron-down" width="24" height="24"></iconify-icon>
+    </div>
+    <span class="scroll-text">Scroll to explore</span>
   </div>
 </section>
-<!-- ========================== new hero area end ==========================  -->
 
-
-<!-- <section class="hero-area is-product is-dark"
-  style="background-image: url(/assets/images/products/kubedb/features/hero-images.png); height: calc(100vh - 110px);">
-  <div class="container">
-    <div class="columns has-text-centered is-centered is-vcentered is-multiline">
-      <div class="column is-8 is-full-touch">
-        <h1>{{ $p.name }} Features</h1>
-        <p>{{ $p.summary }}</p>
-        <div class="buttons is-justify-content-center">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary is-outlined">Install Now FREE</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-</section> -->
-<!-- new hero area end   -->
-
-<!-- all featured section start -->
-<section class="features-area">
+<!-- Premium Features Section -->
+<section class="features-area premium-features">
   {{ range $idx, $f := $p.features }}
-  <!-- single feature start -->
-  <div class="container pb-32 pt-32">
-   <div class="columns">
-     <div class="column is-12">
-        <div>
-          {{ if (modBool $idx 2) }}
-          <div class="columns is-vcentered is-flex-direction-row-reverse-mobile">
-            <div class="column is-6">
-              <div class="feature-wrapper d-table">
-                <div class="feature-content pr-140 d-table-cell">
-                  <h3>{{ $f.title }}</h3>
-                  <p>
-                    {{ $f.description }}
-                  </p>
-                  {{ if $f.url }}
-                  <a href="/features/{{ $f.url }}" class="button ac-button is-primary is-outlined mt-32">See More</a>
-                  {{ end }}
-                </div>
-              </div>
+  <!-- Premium Feature Item -->
+  <div class="container feature-container" data-index="{{ $idx }}">
+    <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
+      {{ if (modBool $idx 2) }}
+      <!-- Right-aligned Image Layout -->
+      <div class="columns is-vcentered is-variable is-8 feature-row reverse-mobile">
+        <!-- Content Column -->
+        <div class="column is-6">
+          <div class="feature-content-wrapper">
+            <div class="feature-badge" data-number="{{ add $idx 1 }}">
+              <span class="badge-number">{{ printf "%02d" (add $idx 1) }}</span>
             </div>
-            <div class="column is-6">
-              <div class="features-thumbnail has-text-right" data-aos="flip-left"
-               >
-                <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" class="img" />
-              </div>
-            </div>
-          </div>
-          {{ else }}
-          <div class="columns is-vcentered">
-            <div class="column is-6">
-              <div class="features-thumbnail" data-aos="flip-left"
-               >
-                <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" class="img" />
-              </div>
-            </div>
-            <div class="column is-6">
-              <div class="feature-wrapper d-table" data-aos-duration="1000">
-                <div class="feature-content d-table-cell">
-                  <h3>{{ $f.title }}</h3>
-                  <p>
-                    {{ $f.description }}
-                  </p>
-                  {{ if $f.url }}
-                  <a href="/features/{{ $f.url }}" class="button ac-button is-primary is-outlined mt-32">See More</a>
-                  {{ end }}
-                </div>
-              </div>
-            </div>
+            <h3 class="feature-title">{{ $f.title }}</h3>
+            <p class="feature-description">{{ $f.description }}</p>
+            {{ if $f.url }}
+            <a href="/features/{{ $f.url }}" class="feature-cta-button">
+              <span>Learn More</span>
+              <iconify-icon icon="heroicons:arrow-right" width="20" height="20" class="arrow-icon"></iconify-icon>
+            </a>
             {{ end }}
           </div>
         </div>
-     </div>
-   </div>
+
+        <!-- Image Column -->
+        <div class="column is-6">
+          <div class="feature-image-wrapper right-align">
+            <div class="image-container">
+              <div class="image-overlay"></div>
+              <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" class="feature-image" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ else }}
+      <!-- Left-aligned Image Layout -->
+      <div class="columns is-vcentered is-variable is-8 feature-row">
+        <!-- Image Column -->
+        <div class="column is-6">
+          <div class="feature-image-wrapper left-align">
+            <div class="image-container">
+              <div class="image-overlay"></div>
+              <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" class="feature-image" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div class="column is-6">
+          <div class="feature-content-wrapper">
+            <div class="feature-badge" data-number="{{ add $idx 1 }}">
+              <span class="badge-number">{{ printf "%02d" (add $idx 1) }}</span>
+            </div>
+            <h3 class="feature-title">{{ $f.title }}</h3>
+            <p class="feature-description">{{ $f.description }}</p>
+            {{ if $f.url }}
+            <a href="/features/{{ $f.url }}" class="feature-cta-button">
+              <span>Learn More</span>
+              <iconify-icon icon="heroicons:arrow-right" width="20" height="20" class="arrow-icon"></iconify-icon>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
   </div>
-  <!-- single feature end -->
   {{ end }}
 </section>
-<!-- all featured section end -->
+
+<!-- Interactive JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Hero Animation - target all hero elements
+    setTimeout(() => {
+      const heroElements = [
+        '.hero-badge',
+        '.hero-title',
+        '.hero-subtitle-wrapper',
+        '.hero-cta-group',
+        '.hero-highlights'
+      ];
+
+      heroElements.forEach((selector, idx) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          setTimeout(() => {
+            element.classList.add('visible');
+          }, idx * 150);
+        }
+      });
+    }, 300);
+
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Apply theme on page load
+    if (currentTheme === 'dark') {
+      htmlElement.setAttribute('data-theme', 'dark');
+    }
+
+    // Remove no-transition class after initial load
+    setTimeout(() => {
+      document.body.classList.remove('no-transition');
+    }, 100);
+
+    // Theme toggle click handler
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        // Update theme
+        if (newTheme === 'dark') {
+          htmlElement.setAttribute('data-theme', 'dark');
+        } else {
+          htmlElement.removeAttribute('data-theme');
+        }
+
+        // Save preference
+        localStorage.setItem('theme', newTheme);
+
+        // Add animation class
+        this.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 300);
+      });
+    }
+
+    // Optional: Detect system preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Only apply system preference if no saved preference exists
+    if (!localStorage.getItem('theme')) {
+      if (prefersDarkScheme.matches) {
+        htmlElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Listen for system theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+      // Only auto-switch if user hasn't manually set a preference
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          htmlElement.setAttribute('data-theme', 'dark');
+        } else {
+          htmlElement.removeAttribute('data-theme');
+        }
+      }
+    });
+
+    // Feature Cards Scroll Animation
+    const featureCards = document.querySelectorAll('.feature-card');
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const featureObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Animate badge
+          const badge = entry.target.querySelector('.feature-badge');
+          if (badge) {
+            setTimeout(() => {
+              badge.classList.add('animate');
+            }, 300);
+          }
+
+          // Animate image
+          const imageContainer = entry.target.querySelector('.image-container');
+          if (imageContainer) {
+            setTimeout(() => {
+              imageContainer.classList.add('reveal');
+            }, 200);
+          }
+
+          // Stop observing after animation
+          featureObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    featureCards.forEach(card => {
+      featureObserver.observe(card);
+    });
+
+    // Image Hover Effects
+    const imageContainers = document.querySelectorAll('.image-container');
+    imageContainers.forEach(container => {
+      const image = container.querySelector('.feature-image');
+
+      container.addEventListener('mouseenter', function () {
+        image.style.transform = 'scale(1.08)';
+        this.querySelector('.image-overlay').style.opacity = '1';
+      });
+
+      container.addEventListener('mouseleave', function () {
+        image.style.transform = 'scale(1)';
+        this.querySelector('.image-overlay').style.opacity = '0';
+      });
+    });
+
+    // CTA Button Hover Effects
+    const ctaButtons = document.querySelectorAll('.feature-cta-button');
+    ctaButtons.forEach(button => {
+      button.addEventListener('mouseenter', function () {
+        const arrow = this.querySelector('.arrow-icon');
+        if (arrow) {
+          arrow.style.transform = 'translateX(5px)';
+        }
+      });
+
+      button.addEventListener('mouseleave', function () {
+        const arrow = this.querySelector('.arrow-icon');
+        if (arrow) {
+          arrow.style.transform = 'translateX(0)';
+        }
+      });
+    });
+
+    // Smooth Scroll for Internal Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Parallax Effect for Images (subtle)
+    let ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          const scrolled = window.pageYOffset;
+          const parallaxElements = document.querySelectorAll('.feature-image');
+
+          parallaxElements.forEach((el, idx) => {
+            const speed = 0.05;
+            const yPos = -(scrolled * speed);
+            el.style.transform = `translateY(${yPos}px) scale(1)`;
+          });
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  });
+</script>
+
 {{ end }}

@@ -1,47 +1,64 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 <!-- product features area start  -->
-<section class="product-feaures-area section-padding">
+<section class="product-features-area section-padding">
   <div class="container">
+    <!-- Section Header -->
     <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="section-title has-text-centered">
-          <h2 class="is-gradient">{{- if $p.features_title }}{{ $p.features_title }}{{ else }}Special Features{{ end -}}
+      <div class="column is-10-tablet is-8-desktop">
+        <div class="features-section-header">
+          <div class="section-badge">
+            <iconify-icon icon="heroicons:sparkles" width="18" height="18"></iconify-icon>
+            <span>Key Capabilities</span>
+          </div>
+          <h2 class="section-title">
+            {{- if $p.features_title }}{{ $p.features_title }}{{ else }}Special Features{{ end -}}
           </h2>
           {{- if $p.features_summary }}
-          <p>{{ $p.features_summary | plainify }}</p>
+          <p class="section-subtitle">{{ $p.features_summary | plainify }}</p>
           {{- else if $p.summary }}
-          <p>{{ $p.summary | plainify }}</p>
+          <p class="section-subtitle">{{ $p.summary | plainify }}</p>
           {{- end }}
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <!-- is-centered -->
-    <div class="columns is-multiline is-centered">
-      <!-- single feature information start  -->
-      {{- range $f := $p.features }}
-      <div class="column is-half-tablet is-one-third-widescreen">
-        <a href="/features/{{ $f.url }}" class="single-features-item">
-          <div class="feature-icon">
-            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy" />
+
+    <!-- Features Grid -->
+    <div class="features-grid">
+      {{- range $index, $f := $p.features }}
+      <a href="/features/{{ $f.url }}" class="feature-card" data-index="{{ add $index 1 }}">
+        <div class="feature-card-inner">
+          <!-- Number Badge -->
+          <div class="feature-number">{{ add $index 1 }}</div>
+
+          <!-- Icon -->
+          <div class="feature-icon-wrapper">
+            <div class="feature-icon">
+              <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy" />
+            </div>
+            <div class="icon-glow"></div>
           </div>
-          <div class="feature-information">
-            <h3>{{ $f.title }}</h3>
+
+          <!-- Content -->
+          <div class="feature-content">
+            <h3 class="feature-title">{{ $f.title }}</h3>
             {{- if $f.summary }}
-            <p class="is-ellipsis-2">{{ $f.summary }}</p>
+            <p class="feature-summary">{{ $f.summary }}</p>
             {{- end }}
-            <p class="is-ellipsis-2">{{ $f.description }}</p>
-            <button class="readmore-button"><span>Read More</span><span class="icon">
-                <iconify-icon icon="heroicons:arrow-small-right"></iconify-icon>
-              </span></button>
+            <p class="feature-description">{{ $f.description }}</p>
           </div>
-        </a>
-      </div>
+
+          <!-- CTA -->
+          <div class="feature-cta">
+            <span class="cta-text">Learn more</span>
+            <iconify-icon icon="heroicons:arrow-right" width="20" height="20" class="cta-icon"></iconify-icon>
+          </div>
+
+          <!-- Hover Effect -->
+          <div class="feature-hover-effect"></div>
+        </div>
+      </a>
       {{- end }}
-      <!-- single feature information end -->
     </div>
   </div>
 </section>
 <!-- product features area end -->
- 
