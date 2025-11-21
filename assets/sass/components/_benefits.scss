@@ -1,18 +1,91 @@
 .benefits-section {
     background-color: hsl(var(--primary-h), 20%, 98%);
     border-bottom: 1px solid $color-border;
+    overflow: hidden;
 
     .benefit-item {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        position: relative;
+
+        // Animated entrance
+        &.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        // Hover effect
+        &:hover,
+        &.hovered {
+            transform: translateY(-8px) scale(1.05);
+            background: linear-gradient(135deg,
+                    hsla(var(--primary-h), 95%, 98%, 0.8) 0%,
+                    hsla(var(--primary-h), 90%, 96%, 0.9) 100%);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08),
+                0 0 0 1px hsla(var(--primary-h), 70%, 60%, 0.2),
+                0 0 20px hsla(var(--primary-h), 70%, 60%, 0.15);
+
+            .benefit-number {
+                transform: scale(1.1);
+                text-shadow: 0 0 20px hsla(var(--primary-h), 70%, 60%, 0.3);
+            }
+
+            .benefit-title {
+                color: hsl(var(--primary-h), 70%, 45%);
+            }
+        }
+
+        // Subtle background pattern
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%,
+                    hsla(var(--primary-h), 70%, 60%, 0.03) 0%,
+                    transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
     }
 
     .benefit-number {
         font-size: 2.5rem;
         font-weight: 700;
         line-height: 1.2;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
+        position: relative;
 
         @include tablet {
             font-size: 3rem;
+        }
+
+        // Pulse animation when count completes
+        &.count-complete {
+            animation: numberPulse 0.6s ease-out;
+        }
+
+        // Gradient text effect on hover
+        .benefit-item:hover & {
+            background: linear-gradient(135deg,
+                    hsl(var(--primary-h), 70%, 50%) 0%,
+                    hsl(var(--primary-h), 80%, 60%) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     }
 
@@ -20,10 +93,50 @@
         font-size: 0.875rem;
         font-weight: 600;
         color: $color-heading;
+        transition: all 0.3s ease;
+        letter-spacing: 0.3px;
     }
 
     .benefit-subtitle {
         font-size: 0.75rem;
         color: $color-text;
+        transition: all 0.3s ease;
+        opacity: 0.8;
+
+        .benefit-item:hover & {
+            opacity: 1;
+        }
+    }
+}
+
+// Keyframe animations
+@keyframes numberPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .benefits-section {
+        .benefit-item {
+            padding: 1rem 0.5rem;
+
+            &:hover {
+                transform: translateY(-4px) scale(1.02);
+            }
+        }
+
+        .benefit-number {
+            font-size: 2rem;
+        }
     }
 }
