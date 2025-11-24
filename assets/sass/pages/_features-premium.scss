@@ -577,7 +577,6 @@
             hsl(var(--secondary-h), 0%, 100%) 0%,
             hsl(var(--secondary-h), 10%, 98%) 50%,
             hsl(var(--secondary-h), 0%, 100%) 100%);
-    padding: 8rem 0;
     position: relative;
     overflow: hidden;
 
@@ -593,10 +592,6 @@
                 transparent 0%,
                 hsla(var(--primary-h), 70%, 60%, 0.3) 50%,
                 transparent 100%);
-    }
-
-    @media (max-width: 768px) {
-        padding: 4rem 0;
     }
 }
 

@@ -4,10 +4,7 @@
 
 .premium-core-capabilities {
     position: relative;
-    background: linear-gradient(180deg,
-            hsl(var(--primary-h), 20%, 98%) 0%,
-            white 50%,
-            hsl(var(--primary-h), 20%, 98%) 100%);
+    background: #ffffff;
     overflow: hidden;
 
     // Decorative background
@@ -75,7 +72,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
     position: relative;
     z-index: 1;
 

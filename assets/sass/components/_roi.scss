@@ -1,65 +1,6 @@
 .roi-section {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, hsl(var(--primary-h), 20%, 98%) 0%, hsl(var(--secondary-h), 15%, 97%) 100%);
-
-    @include tablet {
-        padding: 8rem 0;
-    }
-
-    // Header Badge
-    .roi-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-        border: 2px solid #86efac;
-        border-radius: 9999px;
-        margin-bottom: 1.5rem;
-
-        svg {
-            width: 1.25rem;
-            height: 1.25rem;
-            color: #059669;
-        }
-
-        span {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #064e3b;
-        }
-    }
-
-    // Main Title
-    .roi-title {
-        font-size: 3rem;
-        font-weight: 900;
-        line-height: 1.1;
-        margin-bottom: 8px;
-        color: $color-heading;
-        text-align: center;
-
-        @include tablet {
-            font-size: 3.75rem;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, hsl(var(--primary-h), 80%, 50%) 0%, hsl(var(--primary-h), 70%, 40%) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    }
-
-    .roi-subtitle {
-        font-size: 1.25rem;
-        line-height: 1.6;
-        color: $color-text;
-        max-width: 48rem;
-        margin: 0 auto 4rem;
-        text-align: center;
-    }
-
+    background: #ffffff;
+  
     // Slider Controls
     .slider-control {
         margin-bottom: 2rem;
@@ -283,6 +224,7 @@
 
             &.is-active {
                 display: block;
+                border-radius: 20px;
             }
         }
     }
