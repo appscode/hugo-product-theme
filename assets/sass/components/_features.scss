@@ -40,15 +40,17 @@
   }
 
   .section-title {
-    font-size: 2.75rem;
-    font-weight: 900;
-    line-height: 1.15;
-    color: #0f172a;
-    margin-bottom: 1.25rem;
-    text-wrap: balance;
+    h2 {
+      font-size: 2.75rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: #0f172a;
+      margin-bottom: 1.25rem;
+      text-wrap: balance;
 
-    @media (max-width: 768px) {
-      font-size: 2rem;
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
   }
 

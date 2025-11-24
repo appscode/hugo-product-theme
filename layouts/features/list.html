@@ -3,7 +3,7 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 
 <!-- Ultra-Premium Hero Area -->
-<section class="hero-area is-product is-dark has-image-bg is-feature ultra-premium-hero"
+<section class="hero-area is-product has-image-bg is-feature ultra-premium-hero"
   style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);">
 
   <!-- Animated Mesh Gradient Background -->
@@ -219,69 +219,7 @@
       });
     }, 300);
 
-    // Theme Toggle Functionality
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement;
 
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-
-    // Apply theme on page load
-    if (currentTheme === 'dark') {
-      htmlElement.setAttribute('data-theme', 'dark');
-    }
-
-    // Remove no-transition class after initial load
-    setTimeout(() => {
-      document.body.classList.remove('no-transition');
-    }, 100);
-
-    // Theme toggle click handler
-    if (themeToggle) {
-      themeToggle.addEventListener('click', function () {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        // Update theme
-        if (newTheme === 'dark') {
-          htmlElement.setAttribute('data-theme', 'dark');
-        } else {
-          htmlElement.removeAttribute('data-theme');
-        }
-
-        // Save preference
-        localStorage.setItem('theme', newTheme);
-
-        // Add animation class
-        this.style.transform = 'rotate(360deg)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 300);
-      });
-    }
-
-    // Optional: Detect system preference
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-    // Only apply system preference if no saved preference exists
-    if (!localStorage.getItem('theme')) {
-      if (prefersDarkScheme.matches) {
-        htmlElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    }
-
-    // Listen for system theme changes
-    prefersDarkScheme.addEventListener('change', (e) => {
-      // Only auto-switch if user hasn't manually set a preference
-      if (!localStorage.getItem('theme')) {
-        if (e.matches) {
-          htmlElement.setAttribute('data-theme', 'dark');
-        } else {
-          htmlElement.removeAttribute('data-theme');
-        }
-      }
-    });
 
     // Feature Cards Scroll Animation
     const featureCards = document.querySelectorAll('.feature-card');
@@ -353,40 +291,6 @@
           arrow.style.transform = 'translateX(0)';
         }
       });
-    });
-
-    // Smooth Scroll for Internal Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Parallax Effect for Images (subtle)
-    let ticking = false;
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          const scrolled = window.pageYOffset;
-          const parallaxElements = document.querySelectorAll('.feature-image');
-
-          parallaxElements.forEach((el, idx) => {
-            const speed = 0.05;
-            const yPos = -(scrolled * speed);
-            el.style.transform = `translateY(${yPos}px) scale(1)`;
-          });
-
-          ticking = false;
-        });
-        ticking = true;
-      }
     });
   });
 </script>
