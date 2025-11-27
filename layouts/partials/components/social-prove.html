@@ -3,7 +3,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-12">
-        <div class="brand-image-wrapper owl-carousel">
+        <div class="brand-image-wrapper owl-carousel is-cllipped">
           {{ range $customer := $.Site.Data.customers }}
           {{ if $customer.show }}
           <div class="single-brand"><img src="{{ $customer.logo }}" alt="{{ $customer.name }}" loading="lazy"></div>
