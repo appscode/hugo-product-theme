@@ -708,6 +708,9 @@
 .premium-features .feature-content-wrapper {
     position: relative;
     z-index: 2;
+    @include touch {
+        text-align: center;
+    }
 }
 
 .premium-features .feature-badge {
@@ -1225,9 +1228,7 @@
 
 // Additional Responsive Breakpoints
 @media (max-width: 1024px) {
-    .feature-card {
-        padding: 2.5rem 2rem;
-    }
+   
 
     .feature-title {
         font-size: 2rem;
@@ -1270,10 +1271,6 @@
                 height: 120px;
             }
         }
-    }
-
-    .feature-card {
-        padding: 1.5rem 1rem;
     }
 
     .feature-badge {

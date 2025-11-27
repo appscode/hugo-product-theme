@@ -3,7 +3,7 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 
 <!-- Ultra-Premium Hero Area -->
-<section class="hero-area is-product has-image-bg is-feature ultra-premium-hero"
+<section class="hero-area is-product has-image-bg is-feature ultra-premium-hero is-clipped"
   style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);">
 
   <!-- Animated Mesh Gradient Background -->
@@ -125,7 +125,7 @@
 </section>
 
 <!-- Premium Features Section -->
-<section class="features-area premium-features section-padding">
+<section class="features-area premium-features section-padding is-clipped">
   {{ range $idx, $f := $p.features }}
   <!-- Premium Feature Item -->
   <div class="container feature-container" data-index="{{ $idx }}">
