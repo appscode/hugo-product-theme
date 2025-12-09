@@ -148,10 +148,6 @@
             padding: 10px 16px;
             font-size: 0.8125rem;
 
-            span {
-                display: none;
-            }
-
             iconify-icon {
                 width: 20px;
                 height: 20px;
@@ -164,11 +160,11 @@
 .showcase-content {
     background: white;
     padding: 16px;
-    min-height: 400px;
+    min-height: fit-content;
 
     @media (max-width: 768px) {
         padding: 24px;
-        min-height: 400px;
+        min-height: fit-content;
     }
 }
 

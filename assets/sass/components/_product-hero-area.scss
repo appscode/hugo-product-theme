@@ -233,7 +233,7 @@
     flex-direction: column;
     justify-content: center;
 
-    @include touch{
+    @include touch {
       padding-top: 52px;
     }
   }
@@ -278,30 +278,27 @@
     color: #fff !important;
   }
 
-  // Compact Grid Layout for Value Items
-  .hero-value-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+  // List Layout for Value Items
+  .hero-value-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     margin-bottom: 20px;
     animation: fadeInUp 0.6s ease-out 0.3s backwards;
+    list-style: none;
+    padding: 0;
 
     .value-item {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      text-align: center;
-      padding: 12px 8px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
+      gap: 12px;
+      padding: 8px 0;
       transition: all 0.3s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-4px);
+        transform: translateX(4px);
+        opacity: 0.9;
       }
 
       .value-icon-small {
@@ -310,16 +307,17 @@
         justify-content: center;
         width: 36px;
         height: 36px;
+        flex-shrink: 0;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 8px;
         color: #fff;
-        margin-bottom: 8px;
       }
 
       .value-text {
         display: flex;
         flex-direction: column;
         gap: 2px;
+        flex: 1;
 
         strong {
           font-family: $ac-font-inter;
@@ -656,26 +654,20 @@ Responsive Classes
         margin-right: auto;
       }
 
-      // Stack grid items on mobile
-      .hero-value-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
+      // List items on mobile - already in correct layout
+      .hero-value-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
 
         .value-item {
-          flex-direction: row;
-          text-align: left;
-          padding: 10px 12px;
-
           .value-icon-small {
-            margin-bottom: 0;
-            margin-right: 10px;
             width: 32px;
             height: 32px;
           }
 
           .value-text {
-            align-items: flex-start;
-
             strong {
               font-size: 0.8125rem;
             }

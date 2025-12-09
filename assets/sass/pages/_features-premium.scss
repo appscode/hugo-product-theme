@@ -1,11 +1,3 @@
-// ============================================
-// Premium Features Page Styles
-// ============================================
-
-// ============================================
-// Ultra-Premium Features Page Hero Styles
-// ============================================
-
 // Ultra-Premium Hero Section
 .ultra-premium-hero {
     position: relative;
@@ -708,6 +700,7 @@
 .premium-features .feature-content-wrapper {
     position: relative;
     z-index: 2;
+
     @include touch {
         text-align: center;
     }
@@ -1228,10 +1221,10 @@
 
 // Additional Responsive Breakpoints
 @media (max-width: 1024px) {
-   
+
 
     .feature-title {
-        font-size: 2rem;
+        font-size: 16px;
     }
 
     .feature-description {
@@ -1284,7 +1277,7 @@
     }
 
     .feature-title {
-        font-size: 1.5rem;
+        font-size: 16px;
     }
 
     .feature-description {

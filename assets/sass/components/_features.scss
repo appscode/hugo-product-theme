@@ -4,26 +4,28 @@
   background: hsl(var(--primary-h), 10%, 98%);
   position: relative;
 }
-  .section-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg,
-        hsla(var(--primary-h), 90%, 95%, 1) 0%,
-        hsla(var(--primary-h), 85%, 92%, 1) 100%);
-    border: 1px solid hsla(var(--primary-h), 70%, 85%, 1);
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: hsl(var(--primary-h), 80%, 40%);
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 12px hsla(var(--primary-h), 70%, 50%, 0.15);
 
-    iconify-icon {
-      color: hsl(var(--primary-h), 80%, 50%);
-    }
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg,
+      hsla(var(--primary-h), 90%, 95%, 1) 0%,
+      hsla(var(--primary-h), 85%, 92%, 1) 100%);
+  border: 1px solid hsla(var(--primary-h), 70%, 85%, 1);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: hsl(var(--primary-h), 80%, 40%);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px hsla(var(--primary-h), 70%, 50%, 0.15);
+
+  iconify-icon {
+    color: hsl(var(--primary-h), 80%, 50%);
   }
+}
+
 // Section Header
 .features-section-header {
   text-align: center;
@@ -111,6 +113,10 @@
   @media (max-width: 768px) {
     padding: 24px;
     gap: 20px;
+  }
+
+  @include desktop {
+    padding: 16px;
   }
 }
 
