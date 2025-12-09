@@ -221,7 +221,7 @@
             animation: sparkle 2s ease-in-out infinite;
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             font-size: 0.8125rem;
             padding: 10px 20px;
         }
@@ -275,14 +275,16 @@
             }
         }
 
-        @media (max-width: 1024px) {
+        @include desktop {
             font-size: 3.5rem;
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             font-size: 2.75rem;
         }
 
+        // Extra small mobile devices (below 480px)
+        // Note: This is a very specific breakpoint, keeping as raw media query
         @media (max-width: 480px) {
             font-size: 2.25rem;
         }
@@ -309,7 +311,7 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             padding: 1.25rem 1.5rem;
             margin-bottom: 2rem;
         }
@@ -322,10 +324,12 @@
         margin: 0;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 
-        @media (max-width: 768px) {
+        @include mobile {
             font-size: 1.125rem;
         }
 
+        // Extra small mobile devices (below 480px)
+        // Note: This is a very specific breakpoint, keeping as raw media query
         @media (max-width: 480px) {
             font-size: 1rem;
         }
@@ -348,7 +352,7 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             gap: 1rem;
             margin-bottom: 2rem;
         }
@@ -424,7 +428,7 @@
             transform: translateY(-1px) scale(0.98);
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             padding: 1rem 2rem;
             font-size: 1rem;
         }
@@ -462,7 +466,7 @@
             transform: translateY(-1px);
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             padding: 1rem 2rem;
             font-size: 1rem;
         }
@@ -484,7 +488,7 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             gap: 1.5rem;
         }
     }
@@ -513,7 +517,7 @@
             transform: translateY(-2px);
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             font-size: 0.875rem;
             padding: 6px 12px;
         }
@@ -553,7 +557,7 @@
             letter-spacing: 1px;
         }
 
-        @media (max-width: 768px) {
+        @include mobile {
             bottom: 2rem;
 
             .scroll-text {
@@ -607,7 +611,7 @@
                 transparent 100%);
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
         padding: 2.5rem 0;
     }
 }
@@ -685,7 +689,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
         padding: 2.5rem 1.75rem;
         border-radius: 20px;
 
@@ -760,7 +764,7 @@
         animation: gradientMove 3s ease-in-out infinite;
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
         width: 72px;
         height: 72px;
         border-radius: 18px;
@@ -809,7 +813,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
         font-size: 1.875rem;
         margin-bottom: 1.25rem;
     }
@@ -822,7 +826,7 @@
     margin-bottom: 2.5rem;
     text-wrap: pretty;
 
-    @media (max-width: 768px) {
+    @include mobile {
         font-size: 1.0625rem;
         margin-bottom: 2rem;
     }
@@ -901,7 +905,7 @@
         transition: transform 0.3s ease;
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
         padding: 0.875rem 1.75rem;
         font-size: 1rem;
     }
@@ -964,7 +968,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
         border-radius: 16px;
 
         &::before {
@@ -1007,7 +1011,7 @@
 
 // Responsive Adjustments
 .reverse-mobile {
-    @media (max-width: 768px) {
+    @include mobile {
         flex-direction: column-reverse;
     }
 }
@@ -1220,7 +1224,7 @@
 }
 
 // Additional Responsive Breakpoints
-@media (max-width: 1024px) {
+@include desktop {
 
 
     .feature-title {
@@ -1232,6 +1236,8 @@
     }
 }
 
+// Extra small mobile devices (below 480px)
+// Note: This is a very specific breakpoint, keeping as raw media query
 @media (max-width: 480px) {
     .ultra-premium-hero {
         min-height: 75vh;

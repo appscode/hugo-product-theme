@@ -65,7 +65,7 @@
   margin-bottom: 1rem;
   line-height: 1.2;
 
-  @media (max-width: 768px) {
+  @include mobile {
     font-size: 2rem;
   }
 }
@@ -84,7 +84,7 @@
   z-index: 1;
   gap: 3rem;
 
-  @media (max-width: 768px) {
+  @include mobile {
     gap: 2rem;
     margin-top: 2.5rem;
   }
@@ -467,7 +467,7 @@
 }
 
 // Responsive Design
-@media (max-width: 768px) {
+@include mobile {
   .showcase-content {
     margin-top: 2.5rem;
   }

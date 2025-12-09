@@ -39,7 +39,7 @@
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 32px;
 
-  @media (max-width: 768px) {
+  @include mobile {
     grid-template-columns: 1fr;
     gap: 24px;
   }
@@ -110,7 +110,7 @@
     0 4px 12px rgba(0, 0, 0, 0.05),
     0 2px 4px rgba(0, 0, 0, 0.03);
 
-  @media (max-width: 768px) {
+  @include mobile {
     padding: 24px;
     gap: 20px;
   }
@@ -207,7 +207,7 @@
   margin: 0;
   text-wrap: balance;
 
-  @media (max-width: 768px) {
+  @include mobile {
     font-size: 1.25rem;
   }
 }
@@ -271,13 +271,13 @@
 }
 
 // Responsive Adjustments
-@media (max-width: 1023px) {
+@include touch {
   .features-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
-@media (max-width: 768px) {
+@include mobile {
   .feature-card-inner {
     border-radius: 16px;
   }
@@ -513,8 +513,8 @@ a.single-features-item {
 /****************************************
 Responsive Classes
 *****************************************/
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 768px) {
+// Mobile devices
+@include mobile {
   .features-area {
     .features-image {
       .check-list {
@@ -583,7 +583,9 @@ Responsive Classes
   }
 }
 
-// Small devices (landscape phones, 576px and up)
+// Small landscape phones (within mobile range)
+// Note: Bulma's @include mobile covers up to 768px
+// This targets a specific subset within that range
 @media (min-width: 576px) and (max-width: 768px) {
   .single-features-item {
     padding: 15px 15px;
@@ -629,8 +631,8 @@ Responsive Classes
   }
 }
 
-// Medium devices (tablets, 769px and up)
-@media (min-width: 769px) and (max-width: 1023.98px) {
+// Tablets only (769px to 1023px)
+@include tablet-only {
   .single-features-item {
     grid-template-columns: auto;
     grid-gap: 10px;
@@ -671,8 +673,8 @@ Responsive Classes
   }
 }
 
-// Large devices (desktops, 1024px and up)
-@media (min-width: 1024px) and (max-width: 1215px) {
+// Desktop only (1024px to 1215px)
+@include desktop-only {
   .features-area {
     .features-image {
       .check-list {
@@ -692,9 +694,9 @@ Responsive Classes
   }
 }
 
-// Extra large devices (large desktops, 1216px and up)
-@media (min-width: 1216px) {}
-
+// Widescreen and up (1216px and up)
+// Note: Bulma's @include widescreen starts at 1216px
+// For custom range 1408px-1600px, keeping raw media query as it's very specific
 @media (min-width: 1408px) and (max-width: 1600px) {
   .features-area {
     .features-description {

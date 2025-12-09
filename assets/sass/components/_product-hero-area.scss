@@ -12,7 +12,9 @@
   position: relative;
   z-index: 1;
 
-  @media (max-width:368px) {
+  // Extra small mobile devices (below 368px)
+  // Note: This is a very specific breakpoint, keeping as raw media query
+  @media (max-width: 368px) {
     margin-top: 90px !important;
   }
 
@@ -621,7 +623,8 @@
 Responsive Classes
 *****************************************/
 
-@media (max-width: 1023.98px) {
+// Touch devices (up to 1023px)
+@include touch {
   .hero-area {
     &.is-product {
       height: 100%;
@@ -730,6 +733,8 @@ Responsive Classes
   }
 }
 
+// Extra small mobile devices (below 378px)
+// Note: This is a very specific breakpoint, keeping as raw media query
 @media (max-width: 378px) {
   .hero-area {
     &.is-product {
@@ -742,11 +747,8 @@ Responsive Classes
   }
 }
 
-// // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 768px) {}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 768px) and (max-width: 1023.98px) {
+// Tablet only (768px to 1023px)
+@include tablet-only {
   .hero-area {
     &.is-product {
       p {
@@ -769,11 +771,9 @@ Responsive Classes
   }
 }
 
-// @media (min-width: 769px) and (max-width: 1023.98px) {
-// }
 
-// Large devices (desktops, 1024px and up)
-@media (min-width: 1024px) and (max-width: 1215px) {
+// Desktop only (1024px to 1215px)
+@include desktop-only {
   .hero-area.is-product {
     h1 {
       font-size: 2.3rem;
@@ -787,8 +787,8 @@ Responsive Classes
   }
 }
 
-@media (min-width: 1216px) and (max-width: 1407px) {}
 
+// Custom range for ultra-wide screens (1408px to 1600px)
 @media (min-width: 1408px) and (max-width: 1600px) {
   .hero-area {
     &.is-product {
