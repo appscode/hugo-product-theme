@@ -343,7 +343,8 @@
       float: left;
 
       &.database-list {
-        grid-template-columns: auto auto auto;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 100% !important;
 
         .single-product {
           grid-template-columns: 40px auto 1.5rem;

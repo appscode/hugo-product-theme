@@ -7,7 +7,7 @@
 <div class="responsive-menu is-hidden-desktop is-flex is-justify-content-center">
   <div class="is-flex is-justify-content-space-between is-fullwidth pl-20 pr-20">
     <button class="button"><span class="icon">
-      <iconify-icon icon="heroicons:bars-3-bottom-left" width="18" height="18"></iconify-icon>
+        <iconify-icon icon="heroicons:bars-3-bottom-left" width="18" height="18"></iconify-icon>
 
       </span></button>
     <button class="button">Docs</button>
@@ -24,8 +24,8 @@
       <button class="button ac-button inline-button back-button">
         <span class="icon arrow-close p-0">
           <iconify-icon icon="heroicons:x-mark" width="18" height="18"></iconify-icon>
-      </span>
-      <span>Close</span>
+        </span>
+        <span>Close</span>
       </button>
       {{ $sectionMenuId := .Params.section_menu_id }}
       {{ if isset .Params "menu_name" }}
@@ -48,45 +48,29 @@
             <!-- product start  -->
             <div class="product-menu database-list">
               {{ range .Children }}
-                {{ if ne .Weight -1 }}
-                <!-- databases  start  -->
-                <a href="{{ .URL }}" class="single-product">
-                  <div class="product-logo">
-                    <img src="{{ partial "menu/get-logo.html" (dict "target" .Name "menus" site.Menus.main ) }}" alt="{{ .Name }}" loading="lazy">
-                  </div>
-                  <div class="product-info">
-                    <h6>{{ .Name }}</h6>
-                    <!-- <p>static content</p> -->
-                  </div>
-                  <div class="navigate-icon">
-                    <span class="icon arrow-forward">
-                      <iconify-icon icon="heroicons:arrow-small-right" width="18" height="18"></iconify-icon>
-                    </span>
-                  </div>
-                </a>
-                <!-- databases  end -->
-                {{ end }}
+              {{ if ne .Weight -1 }}
+              <!-- databases  start  -->
+              <a href="{{ .URL }}" class="single-product">
+                <div class="product-logo">
+                  <img src="{{ partial "menu/get-logo.html" (dict "target" .Name "menus" site.Menus.main ) }}"
+                    alt="{{ .Name }}" loading="lazy">
+                </div>
+                <div class="product-info">
+                  <h6>{{ .Name }}</h6>
+                  <!-- <p>static content</p> -->
+                </div>
+                <div class="navigate-icon">
+                  <span class="icon arrow-forward">
+                    <iconify-icon icon="heroicons:arrow-small-right" width="18" height="18"></iconify-icon>
+                  </span>
+                </div>
+              </a>
+              <!-- databases  end -->
+              {{ end }}
               {{ end }}
 
             </div>
             <!-- product end -->
-
-            <!-- product description start  -->
-            <!-- single product description start  -->
-            <div class="product-description is-block">
-               <div class="video-content">
-                 <div class="yt-thumbnail">
-                   <a href="https://www.youtube.com/watch?v=hBHxMtSjKo4" class="play-icon yt-video">
-                    <iconify-icon icon="heroicons:play-circle" width="48" height="48"  style="color: white"></iconify-icon>
-                   </a>
-                   <img
-                     src="https://img.youtube.com/vi/hBHxMtSjKo4/sddefault.jpg"
-                     alt="">
-                 </div>
-               </div>
-            </div>
-            <!-- single product description end  -->
-            <!-- product description end -->
           </div>
         </div>
         <script type="text/javascript">
@@ -114,9 +98,9 @@
     <!-- =============searchbar area start  ===========================-->
     <div class="ac-searchbar is-flex is-align-items-center">
       <label for="acSearch" class="is-flex">
-       <span class="icon">
-        <iconify-icon icon="heroicons:magnifying-glass" width="18" height="18"></iconify-icon>      
-       </span>
+        <span class="icon">
+          <iconify-icon icon="heroicons:magnifying-glass" width="18" height="18"></iconify-icon>
+        </span>
       </label>
 
       <input id="acSearch" type="search" placeholder="Search in {{ $p.name }} documentation!" autocomplete="off">
@@ -168,7 +152,7 @@
 
       {{ $.Scratch.Set "leftMenuHeadline" .Name }}
       {{ range .Children }}
-      {{ if and ( and .HasChildren $hasPreDropdown) ($currentPage.HasMenuCurrent $menu .)  }}
+      {{ if and ( and .HasChildren $hasPreDropdown) ($currentPage.HasMenuCurrent $menu .) }}
 
       {{ $.Scratch.Set "leftMenuHeadline" .Name }}
 
@@ -230,20 +214,21 @@
 
   <!-- documentation body start  -->
   <div class="documentation-body">
-   
+
     <div class="left-content is-clipped">
       <!-- notification message  -->
       {{ if fileExists (printf "layouts/partials/components/notification-message.html") }}
-        <div class="mb-16" style="border-radius: 4px; overflow: hidden;">
-          {{ partial "components/notification-message.html" . }}
-        </div>
+      <div class="mb-16" style="border-radius: 4px; overflow: hidden;">
+        {{ partial "components/notification-message.html" . }}
+      </div>
       {{ end }}
 
       {{ if not (eq $p.latestVersion $currentBranch) }}
       <article class="message is-warning">
-         <div class="icon" style="width: 52px; margin-right: 8px; height: auto;">
-          <iconify-icon icon="heroicons:exclamation-triangle" width="52" height="52"  style="color: #ffdd57"></iconify-icon>      
-         </div>
+        <div class="icon" style="width: 52px; margin-right: 8px; height: auto;">
+          <iconify-icon icon="heroicons:exclamation-triangle" width="52" height="52"
+            style="color: #ffdd57"></iconify-icon>
+        </div>
         <div class="message-body">
           {{ $url := urls.Parse (absURL .Permalink) }}
           {{ $nurl := "/docs/latest/" }}
@@ -251,35 +236,36 @@
           {{ if fileExists $nf }}
           {{ $nurl = replace $url.Path (print "/" $currentBranch) (print "/" $p.latestVersion) }}
           {{ end }}
-          You are looking at the documentation of a prior release. To read the documentation of the latest release, please
+          You are looking at the documentation of a prior release. To read the documentation of the latest release,
+          please
           visit <a href="{{ $nurl }}">here</a>.
         </div>
       </article>
       {{ end }}
 
       <div class="content">
-       <div class="full-info content-body">
-        {{ .Content }}
+        <div class="full-info content-body">
+          {{ .Content }}
+        </div>
       </div>
-      </div>
-  
+
       <!-- comments area start -->
       {{ if site.Params.comments.enable }}
-        <section class="comments-area">
-          <div class="container">
-            {{ partial "comments.html" . }}
-          </div>
-        </section>
+      <section class="comments-area">
+        <div class="container">
+          {{ partial "comments.html" . }}
+        </div>
+      </section>
       {{ end }}
       <!-- comments area end -->
 
     </div>
 
-      <!-- right sidebar start  -->
-      <div class="right-sidebar">
-        <div class="right-sidebar-area">
-          <!-- search item -->
-          <!-- <div class="search-area">
+    <!-- right sidebar start  -->
+    <div class="right-sidebar">
+      <div class="right-sidebar-area">
+        <!-- search item -->
+        <!-- <div class="search-area">
             <form action="#">
               <input id="acSearch" type="text" placeholder="Search..." />
               <button class="search-button">
@@ -287,23 +273,23 @@
               </button>
             </form>
           </div> -->
-          <!-- search item end -->
+        <!-- search item end -->
 
-          <!-- table of contents area start -->
-          <div class="tbl-of-contents">
-            <button class="button ac-button inline-button back-button is-hidden-desktop">
-              <span class="icon arrow-close p-0">
-                <iconify-icon icon="heroicons:x-mark" width="18" height="18"></iconify-icon>
+        <!-- table of contents area start -->
+        <div class="tbl-of-contents">
+          <button class="button ac-button inline-button back-button is-hidden-desktop">
+            <span class="icon arrow-close p-0">
+              <iconify-icon icon="heroicons:x-mark" width="18" height="18"></iconify-icon>
             </span>
             <span>Close</span>
-            </button>
-            <h4>What's on this Page</h4>
-            {{.TableOfContents}}
-          </div>
-          <!-- table of contents area end -->
+          </button>
+          <h4>What's on this Page</h4>
+          {{.TableOfContents}}
         </div>
+        <!-- table of contents area end -->
       </div>
-      <!-- right sidebar end  -->
+    </div>
+    <!-- right sidebar end  -->
 
   </div>
   <!-- documentation body end -->
@@ -326,8 +312,8 @@
 
 <div class="sidebar-search-area">
   <button class="button ac-button inline-button back-button">
-   <span class="icon arrow-close p-0">
-    <iconify-icon icon="heroicons:x-mark" width="1.2em" height="1.2em"></iconify-icon>
+    <span class="icon arrow-close p-0">
+      <iconify-icon icon="heroicons:x-mark" width="1.2em" height="1.2em"></iconify-icon>
     </span>
     <span>Close</span>
   </button>
@@ -338,7 +324,7 @@
       <input type="search" name="search" id="searchbox" placeholder="Search in {{ $p.name }} documentation!" />
       <button>
         <span class="icon">
-          <iconify-icon icon="heroicons:magnifying-glass" width="18" height="18"></iconify-icon>    
+          <iconify-icon icon="heroicons:magnifying-glass" width="18" height="18"></iconify-icon>
         </span>
       </button>
     </div>
@@ -388,7 +374,7 @@
 {{ $js := resources.Get "/js/meilisearch.js" | minify }}
 <script src="{{ $js.RelPermalink }}"></script>
 <script type="text/javascript">
-  activate_search({{ .Site.Params.product_key }}, {{ .Site.Params.search_api_key }}, "acSearch","meilisearch-hits", "meilisearch-hideid");
-  activate_search({{ .Site.Params.product_key }}, {{ .Site.Params.search_api_key }}, "searchbox","meilisearch-mobile-hits", "meilisearch-hideid-mobile");
+  activate_search({{ .Site.Params.product_key }}, {{ .Site.Params.search_api_key }}, "acSearch", "meilisearch-hits", "meilisearch-hideid");
+  activate_search({{ .Site.Params.product_key }}, {{ .Site.Params.search_api_key }}, "searchbox", "meilisearch-mobile-hits", "meilisearch-hideid-mobile");
 </script>
 {{ end }}

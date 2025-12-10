@@ -3,23 +3,25 @@
   {{ block "header-top" . }}
   <!-- new navbar area start  -->
   <div class="navbar-area active-headroom header--fixed">
-  
-  
-    {{ $currentPageType := index (split .Page.Permalink "/") 3 }} 
+
+
+    {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
 
     <!-- notification message  -->
     {{ if fileExists (printf "layouts/partials/components/notification-message.html") }}
-      {{ if ne $currentPageType "docs" }}
-        {{ partial "components/notification-message.html" . }}
-      {{ end }}
+    {{ if ne $currentPageType "docs" }}
+    {{ partial "components/notification-message.html" . }}
     {{ end }}
-  
+    {{ end }}
+
     <!-- iframe ".is-flex | is-hidden" -->
     {{ if .Site.Params.appscode_notification_show }}
-    <iframe src="https://appscode.com/notification-top/" id="notification" class="{{ if eq $currentPageType "docs" }} is-hidden {{ else }} is-flex {{ end }}" frameborder="0" scrolling="no" onload="resizeIframe()" style="width: 100%; overflow: hidden;" title="Notification"></iframe>
-    
+    <iframe src="https://appscode.com/notification-top/" id="notification" class="{{ if eq $currentPageType " docs" }}
+      is-hidden {{ else }} is-flex {{ end }}" frameborder="0" scrolling="no" onload="resizeIframe()"
+      style="width: 100%; overflow: hidden;" title="Notification"></iframe>
+
     <script>
-        function resizeIframe() {
+      function resizeIframe() {
         var iframe = document.getElementById("notification");
         iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
       }
@@ -30,13 +32,12 @@
     <div class="navbar-appscode-wrapper ">
       <!-- appscode navbar start  -->
       {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
-      <div class="navbar-appscode{{ if ne $currentPageType "docs" }} container {{ end }} height-60">
+      <div class="navbar-appscode{{ if ne $currentPageType " docs" }} container {{ end }} height-60">
         <div class="navbar-left">
           <!-- brand logo  -->
           <div class="navbar-brand">
             <a href="{{.Site.Params.domain_appscode}}">
-              <img src="{{$.Site.Data.products.appscode.logo.src}}"
-                alt="{{$.Site.Data.products.appscode.logo.alt}}" />
+              <img src="{{$.Site.Data.products.appscode.logo.src}}" alt="{{$.Site.Data.products.appscode.logo.alt}}" />
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"></span>
@@ -52,332 +53,343 @@
           <div class="is-flex is-justify-content-space-between is-fullwidth">
             <div class="navbar-left-group">
               <!-- navbar items start -->
-            <ul>
-              <li class="nav-item">
-                <button class="link">Products <i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                <div class="mega-menu-wrapper">
+              <ul>
+                <li class="nav-item">
+                  <button class="link">Products <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                  <div class="mega-menu-wrapper">
 
-                  <!-- ac-grid-container -->
-                  <div class="mega-menu-inner container">
-                    <button class="button ac-button inline-button back-button">
-                    <span
-                        class="icon back-icon">
-                        <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
-                      </span>Back</button>
-                    <!-- product start  -->
-                    <div class="product-menu">
+                    <!-- ac-grid-container -->
+                    <div class="mega-menu-inner container">
+                      <button class="button ac-button inline-button back-button">
+                        <span class="icon back-icon">
+                          <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
+                        </span>Back</button>
+                      <!-- product start  -->
+                      <div class="product-menu">
+                        {{ range $item := $.Site.Data.config.productMenu.c0 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                          </div>
+                          <div class="product-info">
+                            <h6 class="is-flex">{{ $p.name }}
+                              {{ if eq ($p.name) "KubeStash" }}
+                              <span class="whats-new is-relative is-block" style="right: -2px; top: -12px;">New</span>
+                              {{ end }}
+                            </h6>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon arrow-forward">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem"
+                                height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+
+                        {{ range $item := $.Site.Data.config.productMenu.c1 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                          </div>
+                          <div class="product-info">
+                            <h6>{{ $p.name }}</h6>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon arrow-forward">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem"
+                                height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+
+                        {{ range $item := $.Site.Data.config.productMenu.c2 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                          </div>
+                          <div class="product-info">
+                            <h6>{{ $p.name }}</h6>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon arrow-forward">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem"
+                                height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+
+                        {{ range $item := $.Site.Data.config.productMenu.c3 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                          </div>
+                          <div class="product-info">
+                            <h6>{{ $p.name }}</h6>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon arrow-forward">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem"
+                                height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+                      </div>
+                      <!-- product end -->
+
+                      <!-- product description start  -->
                       {{ range $item := $.Site.Data.config.productMenu.c0 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
                         </div>
-                        <div class="product-info">
-                          <h6 class="is-flex">{{ $p.name }}
-                            {{ if eq ($p.name) "KubeStash" }}
-                            <span class="whats-new is-relative is-block" style="right: -2px; top: -12px;">New</span>
-                            {{ end }}
-                          </h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                            
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        {{ $showAllFeatures := "false" }}
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li><span class="icon"><img loading="lazy"
+                                src="/assets/images/products/appscode/icons/global/check-box.webp"
+                                alt="check-box"></span><span>{{ $item.title }}</span></li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                        <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
+                    class="button ac-button inline-button">Learn More <span
+                      class="material-icons">arrow_forward</span></a> -->
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
 
                       {{ range $item := $.Site.Data.config.productMenu.c1 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
                         </div>
-                        <div class="product-info">
-                          <h6>{{ $p.name }}</h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                             
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li><span class="icon"><img loading="lazy"
+                                src="/assets/images/products/appscode/icons/global/check-box.webp"
+                                alt="check-box"></span><span>{{ $item.title }}</span></li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                        <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
+                    class="button ac-button inline-button">Learn More <span
+                      class="material-icons">arrow_forward</span></a> -->
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
+                      <!-- product description end -->
+
 
                       {{ range $item := $.Site.Data.config.productMenu.c2 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
                         </div>
-                        <div class="product-info">
-                          <h6>{{ $p.name }}</h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                            
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li><span class="icon"><img loading="lazy"
+                                src="/assets/images/products/appscode/icons/global/check-box.webp"
+                                alt="check-box"></span></span><span>{{ $item.title }}</span></li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                        <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
+                    class="button ac-button inline-button">Learn More <span
+                      class="material-icons">arrow_forward</span></a> -->
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
+                      <!-- product description end -->
 
                       {{ range $item := $.Site.Data.config.productMenu.c3 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
                         </div>
-                        <div class="product-info">
-                          <h6>{{ $p.name }}</h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                            
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li><span class="icon"><img loading="lazy"
+                                src="/assets/images/products/appscode/icons/global/check-box.webp"
+                                alt="check-box"></span></span><span>{{ $item.title }}</span></li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                        <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
+                    class="button ac-button inline-button">Learn More <span
+                      class="material-icons">arrow_forward</span></a> -->
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
+                      <!-- product description end -->
                     </div>
-                    <!-- product end -->
-
-                    <!-- product description start  -->
-                    {{ range $item := $.Site.Data.config.productMenu.c0 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      {{ $showAllFeatures := "false" }}
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-
-                    {{ range $item := $.Site.Data.config.productMenu.c1 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-                    <!-- product description end -->
-
-
-                    {{ range $item := $.Site.Data.config.productMenu.c2 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-                    <!-- product description end -->
-
-                    {{ range $item := $.Site.Data.config.productMenu.c3 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-                    <!-- product description end -->
                   </div>
-                </div>
-                <script type="text/javascript">
-                  const productDescriptions = document.querySelectorAll(".product-description");
-                  const products = document.querySelectorAll(".single-product");
+                  <script type="text/javascript">
+                    const productDescriptions = document.querySelectorAll(".product-description");
+                    const products = document.querySelectorAll(".single-product");
 
-                  productDescriptions[0].classList.add("is-block");
-                  products[0].classList.add('is-active');
+                    productDescriptions[0].classList.add("is-block");
+                    products[0].classList.add('is-active');
 
-                  products.forEach((product, index) => {
-                    product.addEventListener("mouseover", function () {
-                      const currentActiveProduct = document.querySelector(".product-description.is-block");
-                      const currentActiveItem = document.querySelector(".single-product.is-active");
+                    products.forEach((product, index) => {
+                      product.addEventListener("mouseover", function () {
+                        const currentActiveProduct = document.querySelector(".product-description.is-block");
+                        const currentActiveItem = document.querySelector(".single-product.is-active");
 
-                      currentActiveProduct.classList.remove("is-block");
-                      currentActiveItem.classList.remove('is-active');
+                        currentActiveProduct.classList.remove("is-block");
+                        currentActiveItem.classList.remove('is-active');
 
-                      productDescriptions[index].classList.add("is-block");
-                      products[index].classList.add("is-active");
+                        productDescriptions[index].classList.add("is-block");
+                        products[index].classList.add("is-active");
+                      });
                     });
-                  });
-                </script>
+                  </script>
 
-              </li>
+                </li>
 
-              <li class="nav-item">
-                <button class="link">Resources <i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                <div class="mega-menu-wrapper">
-                  <!-- ac-grid-container -->
-                  <div class="mega-menu-inner container">
-                    <button class="button ac-button inline-button back-button">
-                      <span class="icon">
-                        <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
-                      </span>
-                      <span>Back to Resources</span></button>
-                    <!-- list menu items start  -->
-                    <div class="resources-list">
-                      <!-- single resources list  -->
-                      <div class="list-items">
-                        <h6>RESOURCES</h6>
-                        <ul>
-                          <!-- <li><a href="#" target="_blank">Forum</a></li> -->
-                          <li><a href="{{.Site.Params.blog_url}}" class="is-flex is-gap-4">
-                            <span>Blog</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <li><a href="{{.Site.Params.docs_url}}" class="is-flex is-gap-4">
-                            <span>Docs</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <li><a
-                              href="https://www.youtube.com/watch?v=4lkBt5UUEAQ&list=PLoiT1Gv2KR1hAtDDW7fHEi-s2y2H3DOgx"
-                              target="_blank" class="is-flex is-gap-4">
-                              <span>Webinars</span>
-                              <span class="is-flex is-align-items-center">
-                                <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                              </span>
-                            </a></li>
-                          <li><a href="{{.Site.Params.learn_url}}" class="is-flex is-gap-4">
-                            <span>Learn</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <li><a href="{{.Site.Params.youtube_url}}" target="_blank" class="is-flex is-gap-4">
-                            <span>Demos</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <!-- <li><a
+                <li class="nav-item">
+                  <button class="link">Resources <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                  <div class="mega-menu-wrapper">
+                    <!-- ac-grid-container -->
+                    <div class="mega-menu-inner container">
+                      <button class="button ac-button inline-button back-button">
+                        <span class="icon">
+                          <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
+                        </span>
+                        <span>Back to Resources</span></button>
+                      <!-- list menu items start  -->
+                      <div class="resources-list">
+                        <!-- single resources list  -->
+                        <div class="list-items">
+                          <h6>RESOURCES</h6>
+                          <ul>
+                            <!-- <li><a href="#" target="_blank">Forum</a></li> -->
+                            <li><a href="{{.Site.Params.blog_url}}" class="is-flex is-gap-4">
+                                <span>Blog</span>
+                                <span class="is-flex is-align-items-center">
+                                  <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                                </span>
+                              </a></li>
+                            <li><a href="{{.Site.Params.docs_url}}" class="is-flex is-gap-4">
+                                <span>Docs</span>
+                                <span class="is-flex is-align-items-center">
+                                  <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                                </span>
+                              </a></li>
+                            <li><a
+                                href="https://www.youtube.com/watch?v=4lkBt5UUEAQ&list=PLoiT1Gv2KR1hAtDDW7fHEi-s2y2H3DOgx"
+                                target="_blank" class="is-flex is-gap-4">
+                                <span>Webinars</span>
+                                <span class="is-flex is-align-items-center">
+                                  <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                                </span>
+                              </a></li>
+                            <li><a href="{{.Site.Params.learn_url}}" class="is-flex is-gap-4">
+                                <span>Learn</span>
+                                <span class="is-flex is-align-items-center">
+                                  <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                                </span>
+                              </a></li>
+                            <li><a href="{{.Site.Params.youtube_url}}" target="_blank" class="is-flex is-gap-4">
+                                <span>Demos</span>
+                                <span class="is-flex is-align-items-center">
+                                  <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                                </span>
+                              </a></li>
+                            <!-- <li><a
                               href="https://www.youtube.com/watch?v=xSq0OdlVLRI&list=PLoiT1Gv2KR1gE-WK7dIQ5bsJ_RAVZnzP8"
                               target="_blank">Tutorials</a></li> -->
-                          <!-- <li><a href="#" target="_blank">Community</a></li> -->
-                        </ul>
+                            <!-- <li><a href="#" target="_blank">Community</a></li> -->
+                          </ul>
+                        </div>
+                        <!-- single resources list  -->
                       </div>
-                      <!-- single resources list  -->
+                      <!-- list menu items end -->
                     </div>
-                    <!-- list menu items end -->
                   </div>
-                </div>
-              </li>
-              
-              <li class="nav-item">
-                <a href="https://appscode.com/webinar" target="_blank" class="link">Webinar <span
-                    class="whats-new">New</span></a>
-              </li>
-            </ul>
-            <!-- navbar items end -->
-            <!-- if webinar exist script  -->
-            <script type="text/javascript">
-              (function () {
-                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-                xhr.onreadystatechange = function () {
-                  if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                      var result = JSON.parse(xhr.responseText);
-                      if (result.schedules) {
-                        let endDate = new Date(result.schedules[0]).getTime();
-                        let startDate = new Date().getTime();
-                        let timeRemaining = parseInt((endDate - startDate) / 1000);
-                        if (timeRemaining >= 0) {
-                          document.querySelector('.whats-new').classList.add('is-block')
+                </li>
+
+                <li class="nav-item">
+                  <a href="https://appscode.com/webinar" target="_blank" class="link">Webinar <span
+                      class="whats-new">New</span></a>
+                </li>
+              </ul>
+              <!-- navbar items end -->
+              <!-- if webinar exist script  -->
+              <script type="text/javascript">
+                (function () {
+                  var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                  xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                        var result = JSON.parse(xhr.responseText);
+                        if (result.schedules) {
+                          let endDate = new Date(result.schedules[0]).getTime();
+                          let startDate = new Date().getTime();
+                          let timeRemaining = parseInt((endDate - startDate) / 1000);
+                          if (timeRemaining >= 0) {
+                            document.querySelector('.whats-new').classList.add('is-block')
+                          }
                         }
                       }
                     }
-                  }
-                } //
-                console.error('GET', 'https://license-issuer.appscode.com/_/webinars/');
-                xhr.open('GET', 'https://license-issuer.appscode.com/_/webinars/');
-                xhr.send();
-              }());
-            </script>
-            <!-- navbar items start -->
+                  } //
+                  console.error('GET', 'https://license-issuer.appscode.com/_/webinars/');
+                  xhr.open('GET', 'https://license-issuer.appscode.com/_/webinars/');
+                  xhr.send();
+                }());
+              </script>
+              <!-- navbar items start -->
             </div>
             <div class="navbar-right-group">
               <ul>
@@ -392,18 +404,21 @@
 
               {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
               <div class="buttons">
-                <iframe src="https://appscode.com/embed/?color={{ .Site.Params.primary_color }}" frameborder="0" scrolling="no" style="height: 40px; margin-bottom: 8px; width: 185px;  overflow: hidden;" title="Console"></iframe>
+                <iframe src="https://appscode.com/embed/?color={{ .Site.Params.primary_color }}" frameborder="0"
+                  scrolling="no" style="height: 40px; margin-bottom: 8px; width: 185px;  overflow: hidden;"
+                  title="Console"></iframe>
                 <!-- <a id="ac-sign-in-button" href="https://accounts.appscode.com/user/login"
                 class="button ac-button is-loading {{ if eq $currentPageType "docs" }} is-hidden {{ end }}"><span>SIGN IN</span></a> -->
                 <a href="{{ $.Site.Params.domain_appscode }}/contact/"
-                  class="button ac-button is-primary {{ if eq $currentPageType "docs" }} is-outlined {{ end }}">
-                  <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon></span>
+                  class="button ac-button is-primary {{ if eq $currentPageType " docs" }} is-outlined {{ end }}">
+                  <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18"
+                      height="18"></iconify-icon></span>
                   <span>CONTACT SALES</span>
                 </a>
               </div>
 
             </div>
-          
+
           </div>
         </div>
       </div>
@@ -412,10 +427,9 @@
     {{ block "header-bottom" . }}
     {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
     {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
-    <div class="navbar-appscode-wrapper navbar-product {{ if eq $currentPageType "docs" }} is-docs-page {{ end }}">
+    <div class="navbar-appscode-wrapper navbar-product {{ if eq $currentPageType " docs" }} is-docs-page {{ end }}">
       <!-- product navbar start  -->
-      <div class="navbar-appscode{{ if eq $currentPageType "docs" }} bb-1 {{ else }}
-        container{{ end }}">
+      <div class="navbar-appscode{{ if eq $currentPageType " docs" }} bb-1 {{ else }} container{{ end }}">
         <!-- navbar left start  -->
         <div class="navbar-left">
           <div class="navbar-brand">
@@ -482,9 +496,9 @@
 
             {{ $addons := "" }}
             {{ range .Site.Menus.main }}
-              {{ if eq .Name "Addons" }}
-                {{ $addons = . }}
-              {{ end }}
+            {{ if eq .Name "Addons" }}
+            {{ $addons = . }}
+            {{ end }}
             {{ if .HasChildren }}
             <li class="nav-item">
               <button href="#" class="link">{{ .Name }} <i class="fa fa-angle-down"></i></button>
@@ -505,11 +519,13 @@
                     {{ range .Children }}
                     {{ if eq .Parent $.Site.Params.main_menu_dropdown_item }}
                     <!-- single product start  -->
-                
-                    <a href="{{ if eq $.Site.Params.product_key "kubevault" }}/features/{{ .Identifier }}{{ else if $addons }}{{ .PageRef }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier }}-on-kubernetes{{ end }}" class="single-product">
+
+                    <a href="{{ if eq $.Site.Params.product_key " kubevault" }}/features/{{ .Identifier }}{{ else if
+                      $addons }}{{ .PageRef }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier
+                      }}-on-kubernetes{{ end }}" class="single-product">
                       {{ if .Pre }}
                       <div class="product-logo">
-                        <img src="{{ .Pre }}" alt="{{ .Name }}" >
+                        <img src="{{ .Pre }}" alt="{{ .Name }}">
                       </div>
                       {{ end }}
                       <div class="product-info">
@@ -530,24 +546,6 @@
 
                   </div>
                   <!-- product end -->
-
-                  <!-- product description start  -->
-
-                  <!-- single product description start  -->
-                  <div class="product-description is-block">
-                    <div class="video-content">
-                      <div class="yt-thumbnail">
-                        <a href="https://www.youtube.com/watch?v=hBHxMtSjKo4" class="play-icon yt-video">
-                          <iconify-icon icon="heroicons:play-circle"  style="color: white" width="48" height="48"></iconify-icon>
-                        </a>
-                        <img loading="lazy" src="https://img.youtube.com/vi/hBHxMtSjKo4/sddefault.jpg"
-                          alt="kubedb-youtube-intro">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- single product description end  -->
-
-                  <!-- product description end -->
                 </div>
               </div>
               <!-- mega-menu wrapper -->
