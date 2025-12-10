@@ -257,6 +257,48 @@
   text-overflow: ellipsis;
 }
 
+.premium-ui-showcase {
+  @include desktop-only {
+    .feature-description {
+      display: none;
+    }
+
+    .card-inner {
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-icon {
+      height: 24px;
+      width: 24px;
+
+      img {
+        width: 16px;
+      }
+    }
+  }
+
+  @include widescreen-only {
+    .feature-description {
+      display: none;
+    }
+
+    .card-inner {
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-icon {
+      height: 36px;
+      width: 36px;
+
+      img {
+        width: 24px;
+      }
+    }
+  }
+}
+
 // Active Indicator
 .active-indicator {
   position: absolute;
