@@ -15264,6 +15264,9 @@ iframe#notification {
   @media (max-width: 368px) {
     iframe#notification {
       height: 70px; } }
+  @media screen and (min-width: 1024px) and (max-width: 1215px) {
+    iframe#notification {
+      height: 28px; } }
 
 .navbar-burger {
   height: 30px;
@@ -16394,6 +16397,14 @@ Responsive Classes
   .hero-area.is-product .hero-title {
     margin-bottom: 12px !important;
     animation: fadeInUp 0.6s ease-out 0.1s backwards; }
+    @media screen and (min-width: 1024px) and (max-width: 1215px) {
+      .hero-area.is-product .hero-title .hero-title {
+        font-size: 32px;
+        margin-bottom: 8px !important; } }
+    @media screen and (min-width: 1216px) and (max-width: 1407px) {
+      .hero-area.is-product .hero-title .hero-title {
+        font-size: 32px;
+        margin-bottom: 8px !important; } }
   .hero-area.is-product .hero-subtitle {
     font-size: 1rem !important;
     line-height: 1.6 !important;
@@ -16416,6 +16427,9 @@ Responsive Classes
       gap: 12px;
       padding: 8px 0;
       transition: all 0.3s ease; }
+      @media screen and (max-width: 1215px) {
+        .hero-area.is-product .hero-value-list .value-item {
+          padding: 4px 0 !important; } }
       .hero-area.is-product .hero-value-list .value-item:hover {
         transform: translateX(4px);
         opacity: 0.9; }
@@ -16497,6 +16511,9 @@ Responsive Classes
   padding: 3px 15px;
   border-radius: 2px;
   margin-bottom: 20px; }
+  @media screen and (max-width: 1407px) {
+    .news-message {
+      margin-bottom: 8px !important; } }
   .news-message:hover strong {
     text-decoration: underline; }
   .news-message strong {
@@ -16692,10 +16709,15 @@ Responsive Classes
       display: none; } }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
   .hero-area.is-product h1 {
-    font-size: 2.3rem; }
+    font-size: 32px;
+    margin-bottom: 4px; }
 
   .social-prove-brand-area .brand-image-wrapper {
     justify-content: center; } }
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .hero-area.is-product h1 {
+    font-size: 32px;
+    margin-bottom: 4px; } }
 @media (min-width: 1408px) and (max-width: 1600px) {
   .hero-area.is-product {
     height: calc(100vh - 195px); }
@@ -22447,95 +22469,95 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       animation: particleFloat 15s linear infinite; }
       .ultra-premium-hero .particles-container .particle:nth-child(1) {
-        left: 90%;
-        top: 47%;
-        animation-delay: 4.5s;
-        animation-duration: 17s;
+        left: 59%;
+        top: 68%;
+        animation-delay: 1s;
+        animation-duration: 12s;
         opacity: 0.7; }
       .ultra-premium-hero .particles-container .particle:nth-child(2) {
-        left: 96%;
-        top: 63%;
-        animation-delay: 1.5s;
-        animation-duration: 13s;
-        opacity: 0.5; }
-      .ultra-premium-hero .particles-container .particle:nth-child(3) {
-        left: 20%;
-        top: 9%;
-        animation-delay: 4s;
-        animation-duration: 15s;
-        opacity: 0.8; }
-      .ultra-premium-hero .particles-container .particle:nth-child(4) {
-        left: 53%;
-        top: 30%;
-        animation-delay: 1s;
-        animation-duration: 13s;
-        opacity: 1; }
-      .ultra-premium-hero .particles-container .particle:nth-child(5) {
-        left: 82%;
-        top: 68%;
+        left: 44%;
+        top: 8%;
         animation-delay: 4s;
         animation-duration: 12s;
-        opacity: 0.5; }
-      .ultra-premium-hero .particles-container .particle:nth-child(6) {
-        left: 10%;
-        top: 82%;
-        animation-delay: 5s;
+        opacity: 0.8; }
+      .ultra-premium-hero .particles-container .particle:nth-child(3) {
+        left: 39%;
+        top: 10%;
+        animation-delay: 3s;
         animation-duration: 20s;
         opacity: 1; }
-      .ultra-premium-hero .particles-container .particle:nth-child(7) {
-        left: 72%;
-        top: 50%;
-        animation-delay: 1s;
-        animation-duration: 19s;
-        opacity: 0.8; }
-      .ultra-premium-hero .particles-container .particle:nth-child(8) {
-        left: 46%;
-        top: 8%;
-        animation-delay: 0.5s;
-        animation-duration: 16s;
-        opacity: 1; }
-      .ultra-premium-hero .particles-container .particle:nth-child(9) {
-        left: 39%;
-        top: 66%;
-        animation-delay: 4.5s;
-        animation-duration: 18s;
-        opacity: 0.5; }
-      .ultra-premium-hero .particles-container .particle:nth-child(10) {
-        left: 55%;
-        top: 61%;
-        animation-delay: 1s;
-        animation-duration: 13s;
-        opacity: 0.9; }
-      .ultra-premium-hero .particles-container .particle:nth-child(11) {
-        left: 74%;
-        top: 26%;
-        animation-delay: 2.5s;
-        animation-duration: 12s;
-        opacity: 1; }
-      .ultra-premium-hero .particles-container .particle:nth-child(12) {
-        left: 69%;
-        top: 4%;
-        animation-delay: 3.5s;
-        animation-duration: 11s;
-        opacity: 0.5; }
-      .ultra-premium-hero .particles-container .particle:nth-child(13) {
-        left: 61%;
-        top: 7%;
+      .ultra-premium-hero .particles-container .particle:nth-child(4) {
+        left: 43%;
+        top: 54%;
         animation-delay: 1.5s;
+        animation-duration: 13s;
+        opacity: 0.5; }
+      .ultra-premium-hero .particles-container .particle:nth-child(5) {
+        left: 11%;
+        top: 87%;
+        animation-delay: 1.5s;
+        animation-duration: 12s;
+        opacity: 0.8; }
+      .ultra-premium-hero .particles-container .particle:nth-child(6) {
+        left: 55%;
+        top: 1%;
+        animation-delay: 5s;
         animation-duration: 14s;
+        opacity: 0.9; }
+      .ultra-premium-hero .particles-container .particle:nth-child(7) {
+        left: 19%;
+        top: 33%;
+        animation-delay: 4.5s;
+        animation-duration: 14s;
+        opacity: 0.7; }
+      .ultra-premium-hero .particles-container .particle:nth-child(8) {
+        left: 64%;
+        top: 81%;
+        animation-delay: 3.5s;
+        animation-duration: 15s;
+        opacity: 0.5; }
+      .ultra-premium-hero .particles-container .particle:nth-child(9) {
+        left: 2%;
+        top: 60%;
+        animation-delay: 2s;
+        animation-duration: 16s;
+        opacity: 0.6; }
+      .ultra-premium-hero .particles-container .particle:nth-child(10) {
+        left: 12%;
+        top: 18%;
+        animation-delay: 0.5s;
+        animation-duration: 11s;
+        opacity: 0.6; }
+      .ultra-premium-hero .particles-container .particle:nth-child(11) {
+        left: 88%;
+        top: 60%;
+        animation-delay: 1.5s;
+        animation-duration: 16s;
+        opacity: 0.4; }
+      .ultra-premium-hero .particles-container .particle:nth-child(12) {
+        left: 73%;
+        top: 78%;
+        animation-delay: 3s;
+        animation-duration: 20s;
+        opacity: 0.9; }
+      .ultra-premium-hero .particles-container .particle:nth-child(13) {
+        left: 29%;
+        top: 11%;
+        animation-delay: 3.5s;
+        animation-duration: 13s;
         opacity: 0.5; }
       .ultra-premium-hero .particles-container .particle:nth-child(14) {
-        left: 77%;
-        top: 54%;
-        animation-delay: 4s;
-        animation-duration: 15s;
-        opacity: 0.7; }
-      .ultra-premium-hero .particles-container .particle:nth-child(15) {
-        left: 35%;
-        top: 20%;
-        animation-delay: 5s;
+        left: 87%;
+        top: 66%;
+        animation-delay: 2s;
         animation-duration: 12s;
         opacity: 0.8; }
+      .ultra-premium-hero .particles-container .particle:nth-child(15) {
+        left: 59%;
+        top: 39%;
+        animation-delay: 0.5s;
+        animation-duration: 15s;
+        opacity: 0.5; }
   .ultra-premium-hero .enhanced-shapes {
     z-index: 2; }
     .ultra-premium-hero .enhanced-shapes.premium-cubes .cube.glow.pulse,

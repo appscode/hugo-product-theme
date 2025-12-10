@@ -269,6 +269,20 @@
   .hero-title {
     margin-bottom: 12px !important;
     animation: fadeInUp 0.6s ease-out 0.1s backwards;
+
+    @include desktop-only {
+      .hero-title {
+        font-size: 32px;
+        margin-bottom: 8px !important;
+      }
+    }
+
+    @include widescreen-only {
+      .hero-title {
+        font-size: 32px;
+        margin-bottom: 8px !important;
+      }
+    }
   }
 
   .hero-subtitle {
@@ -297,6 +311,10 @@
       gap: 12px;
       padding: 8px 0;
       transition: all 0.3s ease;
+
+      @include until-widescreen {
+        padding: 4px 0 !important;
+      }
 
       &:hover {
         transform: translateX(4px);
@@ -406,11 +424,15 @@
   line-height: 1.6;
   color: #3e393e;
   background: $ac-white;
-
   border: 1px solid $color-border;
   padding: 3px 15px;
   border-radius: 2px;
   margin-bottom: 20px;
+
+  @include until-fullhd {
+    margin-bottom: 8px !important;
+  }
+
 
   &:hover {
     strong {
@@ -776,13 +798,23 @@ Responsive Classes
 @include desktop-only {
   .hero-area.is-product {
     h1 {
-      font-size: 2.3rem;
+      font-size: 32px;
+      margin-bottom: 4px;
     }
   }
 
   .social-prove-brand-area {
     .brand-image-wrapper {
       justify-content: center;
+    }
+  }
+}
+
+@include widescreen-only {
+  .hero-area.is-product {
+    h1 {
+      font-size: 32px;
+      margin-bottom: 4px;
     }
   }
 }
