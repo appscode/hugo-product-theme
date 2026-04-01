@@ -1,0 +1,69 @@
+// Bulma-compatible responsive mixins
+// These replace Bulma's built-in mixins with identical breakpoints so
+// all existing @include touch/mobile/desktop/etc. calls continue to work.
+
+@mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (min-width: 769px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin touch {
+  @media screen and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media screen and (min-width: 1024px) and (max-width: 1215px) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @media screen and (min-width: 1216px) {
+    @content;
+  }
+}
+
+@mixin widescreen-only {
+  @media screen and (min-width: 1216px) and (max-width: 1407px) {
+    @content;
+  }
+}
+
+@mixin until-widescreen {
+  @media screen and (max-width: 1215px) {
+    @content;
+  }
+}
+
+@mixin fullhd {
+  @media screen and (min-width: 1408px) {
+    @content;
+  }
+}
+
+@mixin until-fullhd {
+  @media screen and (max-width: 1407px) {
+    @content;
+  }
+}

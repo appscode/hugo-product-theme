@@ -20,7 +20,8 @@
 <!-- Calendly link widget begin -->
 <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-{{ with $style := resources.Get "/css/main.css" | resources.PostCSS | resources.Minify | resources.Fingerprint }}
+<!-- Custom CSS: compiled from SCSS via Hugo + processed through Tailwind PostCSS -->
+{{ $scssOpts := (dict "targetPath" "css/main.css" "outputStyle" "expanded") }}
+{{ with $style := resources.Get "sass/main.scss" | resources.ToCSS $scssOpts | resources.PostCSS | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 {{ end }}

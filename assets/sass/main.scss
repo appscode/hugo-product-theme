@@ -1,7 +1,13 @@
-// dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css
-// release: sass ./assets/sass/main.scss:./assets/css/main.css
+// Tailwind CSS directives – processed by PostCSS tailwindcss plugin.
+// These replace Bulma as the base CSS framework.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "../../node_modules/bulma/bulma.sass";
+// Bulma-compatible responsive mixins (exact same breakpoints as Bulma v0.9.4)
+// Must be imported FIRST so all subsequent component files can use them.
+@import "mixins/_breakpoints";
+
 //BASE - Base styles, variables, mixins
 @import "base/utilities/_root";
 @import "base/utilities/_initial-variable";
@@ -9,8 +15,12 @@
 @import "base/utilities/_themes";
 @import "base/utilities/_typography";
 
-// mixins
+// project mixins
 @import "mixins/_mixin";
+
+// Bulma-compatible grid, layout, and utility classes recreated with raw CSS.
+// This ensures existing HTML class names continue to work without Bulma.
+@import "base/_bulma-compat";
 
 // @import "base/_variables";
 @import "base/_global";

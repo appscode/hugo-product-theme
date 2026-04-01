@@ -13,6 +13,11 @@ body {
   scroll-behavior: smooth;
 }
 
+// Restore common browser defaults removed by Tailwind preflight
+strong, b { font-weight: bold; }
+em, i     { font-style: italic; }
+a         { color: inherit; }
+
 p {
   font-size: 1rem;
   font-family: $ac-font-paragraph;
