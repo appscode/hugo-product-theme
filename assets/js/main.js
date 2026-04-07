@@ -287,6 +287,31 @@ owlSocialProve.owlCarousel({
   }
 });
 
+// management console screenshot carousel
+var owlConsoleScreens = $('.console-screenshot-carousel');
+owlConsoleScreens.owlCarousel({
+  loop: true,
+  items: 1,
+  margin: 0,
+  autoplay: true,
+  autoplayTimeout: 4500,
+  autoplayHoverPause: true,
+  smartSpeed: 800,
+  nav: false,
+  dots: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: true
+});
+
+$('.console-prev-btn').click(function () {
+  $(this).closest('.console-wrap').find('.console-screenshot-carousel').trigger('prev.owl.carousel');
+});
+
+$('.console-next-btn').click(function () {
+  $(this).closest('.console-wrap').find('.console-screenshot-carousel').trigger('next.owl.carousel');
+});
+
 // Modal js video init plugin
 $(".yt-video").magnificPopup({
   type: 'iframe'

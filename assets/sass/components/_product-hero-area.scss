@@ -7,7 +7,7 @@
   display: flex;
   background-size: cover;
   background-position: center;
-  margin-top: 110px;
+  margin-top: 60px;
   position: relative;
   z-index: 1;
   @media (max-width:368px) {
@@ -414,6 +414,14 @@
 }
 
 .social-prove-brand-area {
+  h4 {
+    line-height: 1.2;
+    font-weight: 600;
+    color: $color-text;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
   .brand-image-wrapper {
     padding: 16px 0;
     display: flex;

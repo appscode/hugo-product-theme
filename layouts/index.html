@@ -1,8 +1,17 @@
 {{ define "main"}}
-  {{ partial "components/heroarea.html" . }}
-  {{ partial "components/social-prove.html" .}}
-  {{ partial "components/features.html" .}}
-  {{ if .Site.GetPage "section" "case-studies" }}
-    {{ partial "components/casestudies.html" . }}
-  {{ end }}
+
+<div class="homepage-redesign">
+	{{ partial "homepage/hero.html" . }}
+	{{ partial "homepage/core-platform.html" . }}
+	{{ partial "homepage/deployment-flexibility.html" . }}
+	{{ partial "homepage/database-support.html" . }}
+	{{ partial "homepage/security.html" . }}
+	{{ partial "homepage/own-dbaas.html" . }}
+	{{ partial "homepage/stats.html" . }}
+	{{ partial "homepage/management-console.html" . }}
+	{{ partial "homepage/case-studies.html" . }}
+	{{ partial "homepage/cta-section.html" . }}
+</div>
+
 {{ end }}
+
