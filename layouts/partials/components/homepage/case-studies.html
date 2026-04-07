@@ -1,0 +1,67 @@
+{{ $d := index $.Site.Data.products.kubedb.homepage "case-studies" }}
+
+<section class="home-section home-section-white use-cases-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">
+        <iconify-icon icon="heroicons:arrow-trending-up" width="16" height="16" style="color:#4948A3;"></iconify-icon>
+        <span class="badge-text">{{ $d.badge }}</span>
+      </div>
+      <h2 class="section-header-title">{{ $d.title }}</h2>
+      <p class="section-header-desc">{{ $d.description }}</p>
+    </div>
+
+    <div class="columns is-variable is-5">
+      {{ range $d.case_studies }}
+      {{ $gradient := .metric_gradient }}
+      <div class="column is-4-desktop">
+        <div class="case-card">
+          <div class="case-card-header is-flex is-align-items-center">
+            <div class="case-card-logo">{{ .logo }}</div>
+            <div>
+              <h3 class="case-card-company">{{ .company }}</h3>
+              <p class="case-card-industry">{{ .industry }}</p>
+            </div>
+          </div>
+          <div class="case-card-section">
+            <h4 class="case-card-label">Challenge</h4>
+            <p class="case-card-text">{{ .challenge }}</p>
+          </div>
+          <div class="case-card-section">
+            <h4 class="case-card-label">Solution</h4>
+            <p class="case-card-text">{{ .solution }}</p>
+          </div>
+          <div class="case-card-metrics">
+            {{ range .metrics }}
+            <div class="case-card-metric">
+              <div class="case-card-metric-icon" style="background: {{ $gradient | safeCSS }};">
+                {{ printf `<iconify-icon icon="%s" width="16" height="16"></iconify-icon>` .icon | safeHTML }}
+              </div>
+              <div class="case-card-metric-val">{{ .val }}</div>
+              <div class="case-card-metric-sub">{{ .sub }}</div>
+            </div>
+            {{ end }}
+          </div>
+          <blockquote class="case-card-quote">
+            <p>"{{ .quote }}"</p>
+            <footer>
+              <strong>{{ .author }}</strong> — {{ .role }}, {{ .company }}
+            </footer>
+          </blockquote>
+          <a href="{{ $.Site.Params.domain_appscode }}/case-studies/" class="case-card-link">
+            Read Full Case Study
+            <iconify-icon icon="heroicons:arrow-right" width="14" height="14"></iconify-icon>
+          </a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="has-text-centered" style="margin-top: 2.5rem;">
+      <a href="{{ $.Site.Params.domain_appscode }}/case-studies/" class="button is-primary">
+        {{ $d.cta_button }}
+        <iconify-icon icon="heroicons:arrow-right" width="16" height="16"></iconify-icon>
+      </a>
+    </div>
+  </div>
+</section>

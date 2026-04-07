@@ -1,0 +1,46 @@
+{{ $d := index $.Site.Data.products.kubedb.homepage "database-support" }}
+
+<section class="home-section home-section-light">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">
+        <iconify-icon icon="heroicons:circle-stack" width="16" height="16" style="color:#4948A3;"></iconify-icon>
+        <span class="badge-text">{{ $d.badge }}</span>
+      </div>
+      <h2 class="section-header-title">
+        <span class="text-gradient">{{ $d.title_gradient }}</span><br>
+        {{ $d.title_plain }}
+      </h2>
+      <p class="section-header-desc">{{ $d.description }}</p>
+    </div>
+
+    <div class="db-grid-wrap">
+      <div class="db-grid">
+        {{ range $d.databases }}
+        <div class="db-card is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+          <div class="db-card-logo">
+            <img src="{{ .logo }}" alt="{{ .name }}" loading="lazy">
+          </div>
+          <span class="db-card-name">{{ .name }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="db-cta is-flex is-justify-content-center">
+      <div class="db-cta-inner is-flex is-align-items-center is-justify-content-space-between">
+        <div class="db-cta-icon">
+          <iconify-icon icon="heroicons:sparkles" width="20" height="20"></iconify-icon>
+        </div>
+        <div class="db-cta-text is-flex is-flex-direction-column">
+          <strong>{{ $d.cta_text }}</strong>
+          <span>{{ $d.cta_sub }}</span>
+        </div>
+        <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button is-primary is-small">
+          {{ $d.cta_button }}
+          <iconify-icon icon="heroicons:arrow-right" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
