@@ -1717,12 +1717,8 @@ $section-bg-white:
     margin: 1rem 0 0;
     padding: 1rem;
     border-radius: 16px;
-    background: linear-gradient(
-      135deg,
-      rgba($ac-primary, 0.05),
-      rgba($hp-secondary, 0.08)
-    );
-    border-left: 4px solid $ac-primary;
+    background: #F6F6FB;
+    border-left: 4px solid $ac-primary !important;
 
     p {
       font-size: 0.88rem;
