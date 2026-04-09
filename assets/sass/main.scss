@@ -1,5 +1,5 @@
 // dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css or npm run sass:watch
-// release: sass ./assets/sass/main.scss:./assets/css/main.css
+// release: sass ./assets/sass/main.scss:./assets/css/main.css or npm run sass:watch
 
 @import "../../node_modules/bulma/bulma.sass";
 //BASE - Base styles, variables, mixins
@@ -37,7 +37,6 @@
 @import "components/_services";
 @import "components/_video-gallery";
 @import "components/_cta";
-@import "components/_pricing";
 @import "components/_faq";
 @import "components/_ac-accordion";
 @import "components/_back-to-top";
@@ -56,6 +55,7 @@
 // @import "pages/_contactus";
 // @import "pages/_homepage";
 @import "pages/homepage-v2";
+@import "components/_pricing"; // after homepage-v2 so $hp-* vars and mixins are available
 // @import "pages/_innerpage";
 @import "pages/_documentation";
 @import "pages/_features-plan";

@@ -751,7 +751,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2px;
+    border-radius: 8px;
     width: 2.5rem;
     height: 2.5rem;
     margin-right: 0.5rem;
@@ -843,6 +843,8 @@
         .dropdown-item {
           font-size: 0.813rem;
           color: $color-heading;
+          padding-right: 8px;
+          flex-direction: row;
         }
       }
     }
