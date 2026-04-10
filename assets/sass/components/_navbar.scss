@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+
 // new navbar area start
 .navbar-area {
   position: relative;
@@ -57,21 +58,25 @@
             flex-direction: row;
             align-items: center;
           }
+
           img {
             height: 1.58rem;
           }
-          h4{
-            color:#193D4B;
+
+          h4 {
+            color: #193D4B;
             font-weight: 500;
             line-height: 1;
             font-size: 0.75rem;
             margin-top: 2px;
             color: $color-text;
+
             span {
               font-size: 1rem;
               font-family: "Oleo Script", system-ui;
+
               &.green {
-              color: #35A651;
+                color: #35A651;
               }
             }
           }
@@ -142,11 +147,13 @@
       }
     }
   }
+
   .nav-item {
     .link {
       font-family: $ac-font-heading !important;
     }
   }
+
   .navbar-left {
     display: flex;
     align-items: center;
@@ -176,6 +183,7 @@
     .navbar-left-group {
       display: flex;
       align-items: center;
+
       @media (min-width: 0px) and (max-width: 1023px) {
         align-items: flex-start;
       }
@@ -185,18 +193,22 @@
       display: flex;
       align-items: center;
       gap: 32px;
+
       .buttons {
         iframe {
           transition: 0.3s ease-in-out;
+
           &:hover {
             box-shadow: 2px 4px 24px rgba(0, 0, 0, 0.3) !important;
             transform: translateY(-2px);
           }
         }
+
         .button {
           &:has(.tag) {
             gap: 4px;
           }
+
           .tag {
             background-color: $ac-primary;
             color: $ac-white;
@@ -209,8 +221,10 @@
         align-items: flex-start;
         gap: 16px;
         width: 100%;
+
         .buttons {
           width: 100%;
+
           .button {
             width: 100%;
             margin-right: 0;
@@ -814,6 +828,7 @@
     }
 
     .dropdown-menu {
+
       /* ===== Scrollbar CSS ===== */
       /* Firefox */
       * {
@@ -874,10 +889,12 @@
       color: $color-heading;
     }
   }
+
   .icon {
     width: 22px;
     height: 22px;
     color: #999;
+
     svg {
       width: 1rem;
       height: 1rem;
@@ -922,10 +939,11 @@
 // modal-backdrop end
 .header--fixed {
   position: fixed;
-  z-index: 10;
+  z-index: 999;
   right: 0;
   left: 0;
   top: 0;
+
   &::after {
     position: absolute;
     content: "";
@@ -937,6 +955,7 @@
     z-index: -1;
     transition: 0.5s ease-in-out;
   }
+
   &.headroom--unpinned {
     &::after {
       transition: transform 500ms linear;
@@ -956,6 +975,7 @@
 
 .headroom--unpinned {
   transform: translateY(-156px);
+
   iframe#notification {
     display: none !important;
   }
@@ -963,17 +983,20 @@
   .navbar-appscode-wrapper {
     &.navbar-product {
       transform: translateY(94px);
+
       &.is-docs-page {
         transform: translateY(94px);
       }
     }
   }
 }
+
 .navbar-area:has(.notification-area) {
   &.headroom--unpinned {
     .navbar-appscode-wrapper {
       &.navbar-product {
         transform: translateY(60px);
+
         @media only screen and (max-width: 500px) {
           transform: translateY(40px);
         }
@@ -984,14 +1007,17 @@
 
 iframe#notification {
   height: 40px;
+
   @media (max-width: 368px) {
     height: 70px;
   }
 }
+
 .navbar-burger {
   height: 30px;
   width: 30px;
   border-radius: 4px;
+
   &.is-active {
     i.fa {
       transform: rotate(-180deg);
@@ -1037,11 +1063,13 @@ Responsive Classes
     &.documentation-menu {
       margin-left: 0;
       padding: 0;
+
       ul .nav-item {
         .link.is-active:after {
           display: none;
         }
       }
+
       .navbar-right {
         position: fixed;
         // top: -60px !important;
@@ -1190,12 +1218,14 @@ Responsive Classes
       }
     }
   }
+
   .press-wrapper {
     .button.inline-button {
       margin-left: 0 !important;
       background-color: transparent;
     }
   }
+
   .navbar-appscode-wrapper.navbar-product {
     .navbar-appscode .navbar-right {
       top: 47px;
@@ -1236,8 +1266,7 @@ Responsive Classes
 // }
 
 // Medium devices (tablets, 769px and up)
-@media (min-width: 769px) and (max-width: 1023.98px) {
-}
+@media (min-width: 769px) and (max-width: 1023.98px) {}
 
 // Large devices (desktops, 1024px and up)
 @media (min-width: 1024px) and (max-width: 1215px) {
@@ -1250,24 +1279,29 @@ Responsive Classes
       margin-left: 0;
       border-left: none;
     }
+
     .navbar-left {
       .navbar-brand {
         margin-right: 1rem;
       }
     }
+
     .navbar-right {
       width: calc(100% - 180px);
 
       .community-items.ml-70 {
         margin-left: 10px !important;
       }
+
       .button.ac-button {
         padding: 0.5rem 1rem;
       }
     }
+
     .navbar-right-group {
       gap: 8px !important;
     }
+
     ul {
       .nav-item {
         margin-right: 1rem;
@@ -1312,11 +1346,13 @@ Responsive Classes
   .navbar-burger {
     display: none !important;
   }
+
   .navbar-appscode {
     &.documentation-menu {
       margin-left: 0;
       border-left: none;
     }
+
     .navbar-right {
       width: calc(100% - 180px);
 
@@ -1331,6 +1367,7 @@ Responsive Classes
       }
     }
   }
+
   .mega-menu-wrapper {
     .mega-menu-inner {
       .product-menu {
