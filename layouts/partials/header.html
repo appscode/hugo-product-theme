@@ -215,7 +215,7 @@
           <!-- action button start  -->
           {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
           {{ if eq $currentPageType "docs" }}
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary ml-8 height-40">TRY NOW
+          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary ml-8 !height-40">TRY NOW
             FREE</a>
           {{ end }}
           <!-- action button end -->

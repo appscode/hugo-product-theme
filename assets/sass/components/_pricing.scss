@@ -14,7 +14,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   background:
     radial-gradient(
       circle at 20% 20%,
-      rgba($hp-secondary, 0.08),
+      rgba($ac-secondary, 0.08),
       transparent 28%
     ),
     radial-gradient(
@@ -23,7 +23,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
       transparent 28%
     ),
     linear-gradient(180deg, #f6f7fb, $ac-white);
-  border-bottom: 1px solid rgba($hp-secondary, 0.1);
+  border-bottom: 1px solid rgba($ac-secondary, 0.1);
 
   .container {
     max-width: 860px;
@@ -46,21 +46,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   }
 }
 
-.pricing-badge {
-  @extend .ds-badge;
-  gap: 0.5rem;
-  color: $ac-primary;
-  font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 0.01em;
-  // React-style: simple gradient bg + primary border, no glass blur
-  background: linear-gradient(to right, rgba($ac-primary, 0.08), rgba($hp-secondary, 0.08));
-  border-color: rgba($ac-primary, 0.2);
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  padding: 0.375rem 0.875rem;
-}
+// .pricing-badge extracted to utilities
 
 
 
@@ -85,21 +71,21 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   @extend .ds-icon-box;
   width: 3rem;
   height: 3rem;
-  border-radius: $hp-radius-sm;
+  border-radius: $ac-radius-sm;
   margin-bottom: 1rem;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
 .pricing-feature-card {
   border: 1px solid $color-border;
-  border-radius: $hp-radius-sm;
+  border-radius: $ac-radius-sm;
   background: $ac-white;
-  transition: $hp-transition;
+  transition: $ac-transition;
   height: 100%;
 
   &:hover {
     border-color: $ac-primary;
-    box-shadow: $hp-shadow-soft;
+    box-shadow: $ac-shadow-soft;
   }
 
   .card-content {
@@ -138,7 +124,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   background:
     radial-gradient(
       circle at 20% 20%,
-      rgba($hp-secondary, 0.08),
+      rgba($ac-secondary, 0.08),
       transparent 25%
     ),
     linear-gradient(180deg, #f6f7fb, $ac-white);
@@ -150,7 +136,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
 
 .pricing-model-box {
   @extend .ds-card-base;
-  border-radius: $hp-radius-lg;
+  border-radius: $ac-radius-lg;
   padding: 2rem; // override Bulma .box default 1.25rem to match React p-8
   box-shadow: 0 25px 70px rgba(39, 46, 77, 0.18); // React shadow-2xl equivalent
 }
@@ -188,10 +174,10 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   @extend .ds-card-base;
   height: 100%;
   padding: 2rem;
-  border-radius: $hp-radius-lg;
+  border-radius: $ac-radius-lg;
   border: 2px solid $color-border;
   background: $ac-white;
-  transition: $hp-transition;
+  transition: $ac-transition;
 
   &:hover {
     border-color: $ac-primary;
@@ -230,7 +216,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
     }
 
     .button.is-primary {
-      background: linear-gradient(to right, $ac-primary, $hp-secondary);
+      background: linear-gradient(to right, $ac-primary, $ac-secondary);
       border-color: transparent;
 
       &:hover {
@@ -328,7 +314,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
 .pricing-severity-box {
   background: $ac-white;
   border: 1px solid $color-border;
-  border-radius: $hp-radius-lg;
+  border-radius: $ac-radius-lg;
   padding: 2rem;
   margin-bottom: 2rem;
 }
@@ -374,9 +360,9 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   flex-direction: column;
   background: $ac-white;
   border: 1px solid $color-border;
-  border-radius: $hp-radius-lg;
+  border-radius: $ac-radius-lg;
   overflow: hidden;
-  transition: $hp-transition;
+  transition: $ac-transition;
 
   .sla-card-body {
     flex: 1;
@@ -490,10 +476,10 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
 
 .pricing-faq-item {
   border: 1px solid $color-border;
-  border-radius: $hp-radius-sm;
+  border-radius: $ac-radius-sm;
   background: $ac-white;
   overflow: hidden;
-  transition: $hp-transition;
+  transition: $ac-transition;
 
   &:hover {
     border-color: $ac-primary;
@@ -523,14 +509,14 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
     top: 50%;
     width: 7px;
     height: 7px;
-    border-right: 2px solid rgba($hp-secondary, 0.7);
-    border-bottom: 2px solid rgba($hp-secondary, 0.7);
+    border-right: 2px solid rgba($ac-secondary, 0.7);
+    border-bottom: 2px solid rgba($ac-secondary, 0.7);
     transform: translateY(-65%) rotate(45deg);
     transition: transform 0.22s ease;
   }
 
   &[open] {
-    border-color: rgba($hp-secondary, 0.35);
+    border-color: rgba($ac-secondary, 0.35);
     box-shadow: 0 8px 24px rgba($ac-primary, 0.08);
   }
 
@@ -602,7 +588,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
     color: $ac-primary;
     gap: 0.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: $hp-transition;
+    transition: $ac-transition;
 
     &:hover {
       background: #f3f4f6;
@@ -641,6 +627,6 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   .pricing-support-card,
   .pricing-sla-card,
   .pricing-faq-item {
-    border-radius: $hp-radius-sm;
+    border-radius: $ac-radius-sm;
   }
 }

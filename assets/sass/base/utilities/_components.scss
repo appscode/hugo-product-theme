@@ -1,0 +1,142 @@
+// ============================================================
+// DESIGN SYSTEM COMPONENTS
+// KubeDB Component Library — built on design-system.pdf tokens
+// ============================================================
+
+// ============================================================
+// BUTTONS
+// ============================================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  border-radius: $ds-radius-lg;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: $ds-transition;
+  font-family: inherit;
+
+  &:focus-visible {
+    outline: 2px solid $ds-primary;
+    outline-offset: 2px;
+  }
+
+  iconify-icon, svg { flex-shrink: 0; }
+
+  // ── Sizes ──
+  &.btn-sm {
+    font-size: 0.75rem;
+    height: 2rem;
+    padding: 0 0.875rem;
+    border-radius: $ds-radius-md;
+  }
+
+  &.btn-lg {
+    font-size: 1rem;
+    height: 3rem;
+    padding: 0 1.75rem;
+    border-radius: $ds-radius-xl;
+  }
+
+  // ── Variants ──
+  &.btn-primary {
+    background: linear-gradient(135deg, $ds-primary, $ds-secondary);
+    color: #fff;
+    box-shadow: $ds-shadow-md;
+    &:hover {
+      box-shadow: $ds-shadow-colored;
+      transform: translateY(-1px);
+    }
+    &:active { transform: translateY(0); }
+  }
+
+  &.btn-secondary {
+    background-color: $ds-gray-100;
+    color: $ds-gray-700;
+    border-color: $ds-gray-200;
+    &:hover { background-color: $ds-gray-200; color: $ds-gray-800; }
+  }
+
+  &.btn-outline {
+    background-color: transparent;
+    color: $ds-primary;
+    border-color: $ds-primary;
+    &:hover { background-color: hsl(var(--ds-primary) / 0.06); }
+  }
+
+  &.btn-ghost {
+    background-color: transparent;
+    color: $ds-gray-600;
+    border-color: transparent;
+    &:hover { background-color: $ds-gray-100; color: $ds-gray-800; }
+  }
+
+  &.btn-success {
+    background-color: $ds-success;
+    color: #fff;
+    &:hover { background-color: hsl(var(--ds-success-hover)); transform: translateY(-1px); }
+  }
+
+  &.btn-danger {
+    background-color: $ds-error;
+    color: #fff;
+    &:hover { background-color: hsl(var(--ds-error-hover)); transform: translateY(-1px); }
+  }
+}
+
+// ============================================================
+// SPINNERS & LOADING
+// ============================================================
+
+@keyframes ds-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ds-pulse-dot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.7); }
+  40%           { opacity: 1;   transform: scale(1); }
+}
+
+.spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid hsl(var(--ds-primary) / 0.15);
+  border-top-color: $ds-primary;
+  animation: ds-spin 0.65s linear infinite;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+
+  &.spinner-sm { width: 1rem;   height: 1rem;   border-width: 1.5px; }
+  &.spinner-lg { width: 2rem;   height: 2rem;   border-width: 2.5px; }
+  &.spinner-border {
+    border-color: transparent;
+    border-top-color: $ds-primary;
+    border-right-color: $ds-primary;
+  }
+}
+
+.spinner-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  span {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: $ds-primary;
+    border-radius: 50%;
+    animation: ds-pulse-dot 1.2s ease-in-out infinite;
+    &:nth-child(2) { animation-delay: 0.16s; }
+    &:nth-child(3) { animation-delay: 0.32s; }
+  }
+}

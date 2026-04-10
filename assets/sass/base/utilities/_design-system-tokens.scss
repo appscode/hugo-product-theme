@@ -1,0 +1,77 @@
+:root {
+	--ds-primary: 241 39% 46%;
+	--ds-secondary: 240 73% 68%;
+	--ds-success: 160 84% 39%;
+	--ds-success-hover: 160 84% 33%;
+	--ds-warning: 38 92% 50%;
+	--ds-error: 0 84% 60%;
+	--ds-error-hover: 0 84% 54%;
+	--ds-info: 217 91% 60%;
+
+	--ds-gray-50: 210 20% 98%;
+	--ds-gray-100: 220 14% 96%;
+	--ds-gray-200: 220 13% 91%;
+	--ds-gray-300: 216 12% 84%;
+	--ds-gray-400: 218 11% 65%;
+	--ds-gray-500: 220 9% 46%;
+	--ds-gray-600: 215 14% 34%;
+	--ds-gray-700: 217 19% 27%;
+	--ds-gray-800: 215 28% 17%;
+	--ds-gray-900: 221 39% 11%;
+
+	--ds-shadow-sm: 0 1px 2px rgba(2, 6, 23, 0.04);
+	--ds-shadow-md: 0 1px 2px rgba(2, 6, 23, 0.06), 0 4px 10px rgba(2, 6, 23, 0.06);
+	--ds-shadow-lg: 0 2px 4px rgba(2, 6, 23, 0.06), 0 10px 24px rgba(2, 6, 23, 0.08);
+	--ds-shadow-xl: 0 4px 10px rgba(2, 6, 23, 0.08), 0 18px 40px rgba(2, 6, 23, 0.12);
+	--ds-shadow-2xl: 0 10px 24px rgba(2, 6, 23, 0.1), 0 28px 60px rgba(2, 6, 23, 0.16);
+	--ds-shadow-colored: 0 10px 28px hsl(var(--ds-secondary) / 0.22), 0 2px 6px hsl(var(--ds-primary) / 0.12);
+	--ds-shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.06);
+	--ds-shadow-brand: 0 16px 42px rgba(15, 23, 42, 0.12);
+
+	--ds-radius-sm: 4px;
+	--ds-radius-md: 6px;
+	--ds-radius-lg: 8px;
+	--ds-radius-xl: 12px;
+	--ds-radius-2xl: 16px;
+	--ds-radius-full: 9999px;
+
+	--ds-transition: all 0.2s ease;
+	--ds-transition-shadow: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+$ds-primary: hsl(var(--ds-primary)) !default;
+$ds-secondary: hsl(var(--ds-secondary)) !default;
+$ds-success: hsl(var(--ds-success)) !default;
+$ds-warning: hsl(var(--ds-warning)) !default;
+$ds-error: hsl(var(--ds-error)) !default;
+$ds-info: hsl(var(--ds-info)) !default;
+
+$ds-gray-50: hsl(var(--ds-gray-50)) !default;
+$ds-gray-100: hsl(var(--ds-gray-100)) !default;
+$ds-gray-200: hsl(var(--ds-gray-200)) !default;
+$ds-gray-300: hsl(var(--ds-gray-300)) !default;
+$ds-gray-400: hsl(var(--ds-gray-400)) !default;
+$ds-gray-500: hsl(var(--ds-gray-500)) !default;
+$ds-gray-600: hsl(var(--ds-gray-600)) !default;
+$ds-gray-700: hsl(var(--ds-gray-700)) !default;
+$ds-gray-800: hsl(var(--ds-gray-800)) !default;
+$ds-gray-900: hsl(var(--ds-gray-900)) !default;
+
+$ds-shadow-sm: var(--ds-shadow-sm) !default;
+$ds-shadow-md: var(--ds-shadow-md) !default;
+$ds-shadow-lg: var(--ds-shadow-lg) !default;
+$ds-shadow-xl: var(--ds-shadow-xl) !default;
+$ds-shadow-2xl: var(--ds-shadow-2xl) !default;
+$ds-shadow-colored: var(--ds-shadow-colored) !default;
+$ds-shadow-soft: var(--ds-shadow-soft) !default;
+$ds-shadow-brand: var(--ds-shadow-brand) !default;
+
+$ds-radius-sm: var(--ds-radius-sm) !default;
+$ds-radius-md: var(--ds-radius-md) !default;
+$ds-radius-lg: var(--ds-radius-lg) !default;
+$ds-radius-xl: var(--ds-radius-xl) !default;
+$ds-radius-2xl: var(--ds-radius-2xl) !default;
+$ds-radius-full: var(--ds-radius-full) !default;
+
+$ds-transition: var(--ds-transition) !default;
+$ds-transition-shadow: var(--ds-transition-shadow) !default;

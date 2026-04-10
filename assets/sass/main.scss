@@ -1,13 +1,18 @@
 // dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css or npm run sass:watch
 // release: sass ./assets/sass/main.scss:./assets/css/main.css or npm run sass:watch
 
+$spacing-shortcuts: ();
+
 @import "../../node_modules/bulma/bulma.sass";
 //BASE - Base styles, variables, mixins
 @import "base/utilities/_root";
 @import "base/utilities/_initial-variable";
+@import "base/utilities/_design-system-tokens";
 @import "base/utilities/_default";
 @import "base/utilities/_themes";
 @import "base/utilities/_typography";
+@import "base/utilities/_utilities";
+@import "base/utilities/_components";
 
 // mixins
 @import "mixins/_mixin";
@@ -20,7 +25,6 @@
 @import "components/_navbar";
 @import "components/search-result-box";
 @import "components/_cookie";
-@import "components/_case-studies";
 @import "components/_notificationbar";
 @import "components/_button";
 @import "components/_video-palyer";
@@ -55,10 +59,11 @@
 // @import "pages/_contactus";
 // @import "pages/_homepage";
 @import "pages/homepage-v2";
-@import "components/_pricing"; // after homepage-v2 so $hp-* vars and mixins are available
+@import "components/_pricing"; // after homepage-v2 so $ac-* vars and mixins are available
 // @import "pages/_innerpage";
 @import "pages/_documentation";
 @import "pages/_features-plan";
+@import "pages/_case-studies";
 
 
 // @import "themes/_kubeci";
