@@ -1,0 +1,1080 @@
+.ac-ui {
+  font-size: 16px;
+
+  $ac-transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+
+  @mixin gradient-text {
+    background: linear-gradient(135deg, $ac-primary, $ds-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @mixin gradient-bg {
+    background: linear-gradient(135deg, $ac-primary, $ds-secondary);
+  }
+
+  @mixin glass($alpha: 0.86, $blur: 14px) {
+    background: rgba($ac-white, $alpha);
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+  }
+
+  @mixin gen($suffix, $prop, $val) {
+    .#{$suffix} {
+      #{$prop}: $val;
+    }
+    .\!#{$suffix} {
+      #{$prop}: $val !important;
+    }
+  }
+
+  @mixin gen-color($suffix, $prop, $val) {
+    .#{$suffix} {
+      #{$prop}: $val !important;
+    }
+    .\!#{$suffix} {
+      #{$prop}: $val !important;
+    }
+  }
+
+  $breakpoints: (
+    sm: 769px,
+    md: 1024px,
+    lg: 1216px,
+    xl: 1408px,
+  );
+
+  @mixin gen-r($suffix, $prop, $val) {
+    .#{$suffix} {
+      #{$prop}: $val;
+    }
+    .\!#{$suffix} {
+      #{$prop}: $val !important;
+    }
+    @each $bp, $min in $breakpoints {
+      @media (min-width: $min) {
+        .#{$bp}\:#{$suffix} {
+          #{$prop}: $val;
+        }
+        .\!#{$bp}\:#{$suffix} {
+          #{$prop}: $val !important;
+        }
+      }
+    }
+  }
+
+  $ac-spacing: (
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    8: 2rem,
+    10: 2.5rem,
+    12: 3rem,
+    16: 4rem,
+    20: 5rem,
+  );
+
+  // ── Display ──────────────────────────────────────────────────
+  @include gen(is-block, display, block);
+  @include gen(is-inline, display, inline);
+  @include gen(is-inline-block, display, inline-block);
+  @include gen(is-flex, display, flex);
+  @include gen(is-inline-flex, display, inline-flex);
+  @include gen(is-grid, display, grid);
+  @include gen(is-hidden, display, none);
+
+  // ── Flex direction ───────────────────────────────────────────
+  @include gen(is-flex-direction-row, flex-direction, row);
+  @include gen(is-flex-direction-column, flex-direction, column);
+  @include gen(is-flex-direction-row-reverse, flex-direction, row-reverse);
+  @include gen(is-flex-direction-column-reverse, flex-direction, column-reverse);
+
+  // ── Flex wrap ────────────────────────────────────────────────
+  @include gen(is-flex-wrap-wrap, flex-wrap, wrap);
+  @include gen(is-flex-wrap-nowrap, flex-wrap, nowrap);
+  @include gen(is-flex-wrap-reverse, flex-wrap, wrap-reverse);
+
+  // ── Align items ──────────────────────────────────────────────
+  @include gen(is-align-items-flex-start, align-items, flex-start);
+  @include gen(is-align-items-center, align-items, center);
+  @include gen(is-align-items-flex-end, align-items, flex-end);
+  @include gen(is-align-items-stretch, align-items, stretch);
+  @include gen(is-align-items-baseline, align-items, baseline);
+  // self
+  @include gen(is-align-self-flex-start, align-self, flex-start);
+  @include gen(is-align-self-center, align-self, center);
+  @include gen(is-align-self-flex-end, align-self, flex-end);
+  @include gen(is-align-self-stretch, align-self, stretch);
+
+  // ── Justify content ──────────────────────────────────────────
+  @include gen(is-justify-content-flex-start, justify-content, flex-start);
+  @include gen(is-justify-content-center, justify-content, center);
+  @include gen(is-justify-content-flex-end, justify-content, flex-end);
+  @include gen(is-justify-content-space-between, justify-content, space-between);
+  @include gen(is-justify-content-space-around, justify-content, space-around);
+  @include gen(is-justify-content-space-evenly, justify-content, space-evenly);
+
+  // ── Flex sizing ──────────────────────────────────────────────
+  @include gen(is-flex-grow-1, flex, 1 1 0%);
+  @include gen(is-flex-auto, flex, 1 1 auto);
+  @include gen(is-flex-none, flex, none);
+  @include gen(is-flex-shrink-0, flex-shrink, 0);
+  @include gen(is-flex-grow, flex-grow, 1);
+
+  // ── Gap ──────────────────────────────────────────────────────
+  $ac-gaps: (
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    8: 2rem,
+    10: 2.5rem,
+    12: 3rem,
+  );
+  @each $key, $val in $ac-gaps {
+    @include gen(has-gap-#{$key}, gap, $val);
+  }
+
+  // ── Sizing ───────────────────────────────────────────────────
+  @include gen(is-fullwidth, width, 100%);
+  @include gen(is-width-auto, width, auto);
+  @include gen(is-half, width, 50%);
+  @include gen(is-fullheight, height, 100%);
+  @include gen(is-height-auto, height, auto);
+  @include gen(has-min-width-0, min-width, 0);
+
+  // ── Max-width scale ──────────────────────────────────────────
+  $ac-max-widths: (
+    xs: 20rem,
+    sm: 30rem,
+    md: 40rem,
+    lg: 52rem,
+    xl: 64rem,
+    2xl: 80rem,
+    full: 100%,
+  );
+  @each $key, $val in $ac-max-widths {
+    @include gen(has-max-width-#{$key}, max-width, $val);
+  }
+
+  // ── Margin auto ──────────────────────────────────────────────
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .\!mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .ml-auto {
+    margin-left: auto;
+  }
+  .\!ml-auto {
+    margin-left: auto !important;
+  }
+  .mr-auto {
+    margin-right: auto;
+  }
+  .\!mr-auto {
+    margin-right: auto !important;
+  }
+  .my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .\!my-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+  }
+
+  // ── Margin & padding loops ────────────────────────────────────
+  @each $key, $val in $ac-spacing {
+    @include gen(m-#{$key}, margin, $val);
+    @include gen(mt-#{$key}, margin-top, $val);
+    @include gen(mb-#{$key}, margin-bottom, $val);
+    @include gen(ml-#{$key}, margin-left, $val);
+    @include gen(mr-#{$key}, margin-right, $val);
+    @include gen(p-#{$key}, padding, $val);
+    @include gen(pt-#{$key}, padding-top, $val);
+    @include gen(pb-#{$key}, padding-bottom, $val);
+    @include gen(pl-#{$key}, padding-left, $val);
+    @include gen(pr-#{$key}, padding-right, $val);
+
+    .mx-#{$key} {
+      margin-left: $val;
+      margin-right: $val;
+    }
+    .\!mx-#{$key} {
+      margin-left: $val !important;
+      margin-right: $val !important;
+    }
+    .my-#{$key} {
+      margin-top: $val;
+      margin-bottom: $val;
+    }
+    .\!my-#{$key} {
+      margin-top: $val !important;
+      margin-bottom: $val !important;
+    }
+    .px-#{$key} {
+      padding-left: $val;
+      padding-right: $val;
+    }
+    .\!px-#{$key} {
+      padding-left: $val !important;
+      padding-right: $val !important;
+    }
+    .py-#{$key} {
+      padding-top: $val;
+      padding-bottom: $val;
+    }
+    .\!py-#{$key} {
+      padding-top: $val !important;
+      padding-bottom: $val !important;
+    }
+  }
+
+  // ── Text alignment ───────────────────────────────────────────
+  @include gen(has-text-left, text-align, left);
+  @include gen(has-text-centered, text-align, center);
+  @include gen(has-text-right, text-align, right);
+
+  // ── Text transform ───────────────────────────────────────────
+  @include gen(is-uppercase, text-transform, uppercase);
+  @include gen(is-lowercase, text-transform, lowercase);
+  @include gen(is-capitalized, text-transform, capitalize);
+  @include gen(is-italic, font-style, italic);
+  @include gen(is-normal-case, text-transform, none);
+
+  // ── Font weight ──────────────────────────────────────────────
+  $ac-font-weights: (
+    thin: 100,
+    light: 300,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+    black: 900,
+  );
+  @each $name, $val in $ac-font-weights {
+    @include gen(has-text-weight-#{$name}, font-weight, $val);
+  }
+
+  // ── Font size (size + paired line-height) ────────────────────
+  $ac-text-sizes: (
+    xs: (
+      0.75rem,
+      1rem,
+    ),
+    sm: (
+      0.875rem,
+      1.25rem,
+    ),
+    base: (
+      1rem,
+      1.5rem,
+    ),
+    lg: (
+      1.125rem,
+      1.75rem,
+    ),
+    xl: (
+      1.25rem,
+      1.75rem,
+    ),
+    2xl: (
+      1.5rem,
+      2rem,
+    ),
+    3xl: (
+      1.875rem,
+      2.25rem,
+    ),
+    4xl: (
+      2.25rem,
+      2.5rem,
+    ),
+  );
+  @each $name, $pair in $ac-text-sizes {
+    $fs: nth($pair, 1);
+    $lh: nth($pair, 2);
+    .is-text-#{$name} {
+      font-size: $fs;
+      line-height: $lh;
+    }
+    .\!is-text-#{$name} {
+      font-size: $fs !important;
+      line-height: $lh !important;
+    }
+  }
+
+  // ── Letter spacing ───────────────────────────────────────────
+  $ac-tracking: (
+    tight: -0.025em,
+    normal: 0,
+    wide: 0.025em,
+    wider: 0.05em,
+    widest: 0.1em,
+  );
+  @each $name, $val in $ac-tracking {
+    @include gen(has-tracking-#{$name}, letter-spacing, $val);
+  }
+
+  // ── Line height ──────────────────────────────────────────────
+  $ac-leading: (
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
+  );
+  @each $name, $val in $ac-leading {
+    @include gen(has-line-height-#{$name}, line-height, $val);
+  }
+
+  // ── Text gradient ────────────────────────────────────────────
+  .has-text-gradient {
+    @include gradient-text;
+  }
+
+  // ── Text colors ──────────────────────────────────────────────
+  @include gen-color(has-text-primary, color, $ac-primary);
+  @include gen-color(has-text-secondary, color, $ds-secondary);
+  @include gen-color(has-text-heading, color, $color-heading);
+  @include gen-color(has-text-body, color, $color-text);
+  @include gen-color(has-text-muted, color, $color-label);
+  @include gen(has-text-white, color, $ac-white);
+  @include gen(has-text-black, color, $ds-gray-900);
+  @include gen(has-text-grey, color, $ds-gray-500);
+  @include gen-color(has-text-link, color, $ac-primary);
+  @include gen-color(has-text-info, color, $ds-info);
+  @include gen-color(has-text-success, color, $ds-success);
+  @include gen-color(has-text-warning, color, $ds-warning);
+  @include gen-color(has-text-danger, color, $ds-error);
+
+  a.has-text-primary:hover,
+  a.has-text-primary:focus {
+    color: $ac-primary !important;
+  }
+
+  a.has-text-secondary:hover,
+  a.has-text-secondary:focus {
+    color: $ds-secondary !important;
+  }
+
+  // ── Backgrounds ──────────────────────────────────────────────
+  @include gen-color(has-background-primary, background-color, $ac-primary);
+  @include gen-color(has-background-secondary, background-color, $ds-secondary);
+  @include gen-color(has-background-link, background-color, $ac-primary);
+  @include gen-color(has-background-info, background-color, $ds-info);
+  @include gen-color(has-background-success, background-color, $ds-success);
+  @include gen-color(has-background-warning, background-color, $ds-warning);
+  @include gen-color(has-background-danger, background-color, $ds-error);
+  @include gen(has-background-white, background-color, $ac-white);
+  @include gen(has-background-black, background-color, $ds-gray-900);
+  @include gen(has-background-light, background-color, $ds-gray-50);
+  @include gen(has-background-transparent, background-color, transparent);
+  .has-background-gradient {
+    @include gradient-bg;
+  }
+  .has-background-glass {
+    @include glass;
+  }
+
+  // ── Font size (Bulma is-size-* scale) ────────────────────────
+  @include gen(is-size-1, font-size, 3rem);
+  @include gen(is-size-2, font-size, 2.5rem);
+  @include gen(is-size-3, font-size, 2rem);
+  @include gen(is-size-4, font-size, 1.5rem);
+  @include gen(is-size-5, font-size, 1.25rem);
+  @include gen(is-size-6, font-size, 1rem);
+  @include gen(is-size-7, font-size, 0.875rem);
+
+  // ── Visibility ───────────────────────────────────────────────
+  @include gen(is-invisible, visibility, hidden);
+  @include gen(is-visible, visibility, visible);
+
+  // ── Border radius ────────────────────────────────────────────
+  @include gen(is-radiusless, border-radius, 0);
+  @include gen(is-radius-small, border-radius, 4px);
+  @include gen(is-radius-normal, border-radius, 6px);
+  @include gen(is-radius-large, border-radius, 8px);
+  @include gen(is-radius-xlarge, border-radius, 12px);
+  @include gen(is-radius-2xlarge, border-radius, 16px);
+  @include gen(is-rounded, border-radius, 9999px);
+
+  // ── Responsive visibility ────────────────────────────────────
+  @media (max-width: 768px) {
+    .is-hidden-mobile {
+      display: none !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .is-hidden-tablet {
+      display: none !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .is-hidden-desktop {
+      display: none !important;
+    }
+  }
+
+  // ── Border ───────────────────────────────────────────────────
+  .has-border {
+    border: 1px solid $color-border;
+  }
+  .\!has-border {
+    border: 1px solid $color-border !important;
+  }
+  .has-border-light {
+    border: 1px solid $color-border-light;
+  }
+  .\!has-border-light {
+    border: 1px solid $color-border-light !important;
+  }
+  .has-border-primary {
+    border: 1px solid hsl(var(--ds-primary) / 0.25);
+  }
+  .\!has-border-primary {
+    border: 1px solid hsl(var(--ds-primary) / 0.25) !important;
+  }
+  .has-border-secondary {
+    border: 1px solid hsl(var(--ds-secondary) / 0.25);
+  }
+  .has-no-border {
+    border: none;
+  }
+  .\!has-no-border {
+    border: none !important;
+  }
+  .has-border-top {
+    border-top: 1px solid $color-border;
+  }
+  .has-border-bottom {
+    border-bottom: 1px solid $color-border;
+  }
+
+  // ── Shadow ───────────────────────────────────────────────────
+  @include gen(has-shadow-none, box-shadow, none);
+  @include gen(has-shadow-small, box-shadow, $shadow-sm);
+  @include gen(has-shadow, box-shadow, $ds-shadow-soft);
+  @include gen(has-shadow-medium, box-shadow, $ds-shadow-md);
+  @include gen(has-shadow-large, box-shadow, $ds-shadow-brand);
+  @include gen(has-shadow-xlarge, box-shadow, $shadow-xl);
+  @include gen(has-shadow-2xlarge, box-shadow, $ds-shadow-2xl);
+  @include gen(has-shadow-colored, box-shadow, $ds-shadow-colored);
+
+  // ── Position ─────────────────────────────────────────────────
+  @include gen(is-relative, position, relative);
+  @include gen(is-absolute, position, absolute);
+  @include gen(is-fixed, position, fixed);
+  @include gen(is-sticky, position, sticky);
+  @include gen(is-static, position, static);
+
+  // ── Overflow ─────────────────────────────────────────────────
+  @include gen(is-overflow-hidden, overflow, hidden);
+  @include gen(is-overflow-auto, overflow, auto);
+  @include gen(is-overflow-visible, overflow, visible);
+  @include gen(is-overflow-x-auto, overflow-x, auto);
+  @include gen(is-overflow-y-auto, overflow-y, auto);
+
+  // ── Z-index ──────────────────────────────────────────────────
+  $ac-z-levels: (
+    0: 0,
+    10: 10,
+    20: 20,
+    30: 30,
+    auto: auto,
+  );
+  @each $key, $val in $ac-z-levels {
+    @include gen(has-z-index-#{$key}, z-index, $val);
+  }
+
+  // ── Opacity ──────────────────────────────────────────────────
+  $ac-opacities: (
+    0: 0,
+    25: 0.25,
+    50: 0.5,
+    75: 0.75,
+    100: 1,
+  );
+  @each $key, $val in $ac-opacities {
+    @include gen(has-opacity-#{$key}, opacity, $val);
+  }
+
+  // ── Cursor ───────────────────────────────────────────────────
+  @include gen(is-cursor-pointer, cursor, pointer);
+  @include gen(is-cursor-default, cursor, default);
+  @include gen(is-cursor-text, cursor, text);
+  @include gen(is-unselectable, user-select, none);
+
+  // ── Transition ───────────────────────────────────────────────
+  @include gen(has-transition, transition, $ac-transition);
+  @include gen(has-transition-all, transition, all 0.22s ease);
+  @include gen(has-no-transition, transition, none);
+
+  // ── Hover lift ───────────────────────────────────────────────
+  .has-hover-lift {
+    transition: $ac-transition;
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: $ds-shadow-brand;
+    }
+  }
+
+  // ── Multi-property utilities ─────────────────────────────────
+  .has-text-truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .\!has-text-truncated {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  @include gen(is-nowrap, white-space, nowrap);
+  @include gen(has-word-break, word-break, break-word);
+
+  .has-no-bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .\!has-no-bullets {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  // ── Screen-reader only (accessible hide) ─────────────────────
+  .is-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  // ============================================================
+  // DESIGN SYSTEM — EXTENDED UTILITIES
+  // Based on KubeDB Design System (design-system.pdf)
+  // ============================================================
+
+  // ── Responsive display / flex (gen-r) ────────────────────────
+  @include gen-r(is-block, display, block);
+  @include gen-r(is-inline-block, display, inline-block);
+  @include gen-r(is-flex, display, flex);
+  @include gen-r(is-inline-flex, display, inline-flex);
+  @include gen-r(is-grid, display, grid);
+  @include gen-r(is-hidden, display, none);
+  @include gen-r(is-flex-direction-row, flex-direction, row);
+  @include gen-r(is-flex-direction-column, flex-direction, column);
+  @include gen-r(is-flex-wrap-wrap, flex-wrap, wrap);
+  @include gen-r(is-flex-wrap-nowrap, flex-wrap, nowrap);
+  @include gen-r(is-align-items-flex-start, align-items, flex-start);
+  @include gen-r(is-align-items-center, align-items, center);
+  @include gen-r(is-align-items-flex-end, align-items, flex-end);
+  @include gen-r(is-justify-content-flex-start, justify-content, flex-start);
+  @include gen-r(is-justify-content-center, justify-content, center);
+  @include gen-r(is-justify-content-flex-end, justify-content, flex-end);
+  @include gen-r(is-justify-content-space-between, justify-content, space-between);
+
+  // ── Semantic text colors (also in has-text-* section above) ──
+  // (covered by has-text-success/warning/danger/info in the main text-colors block)
+
+  // ── Semantic background colors ────────────────────────────────
+  // Soft (10 % alpha) semantic backgrounds
+  @include gen(has-background-success-soft, background-color, hsl(var(--ds-success) / 0.1));
+  @include gen(has-background-warning-soft, background-color, hsl(var(--ds-warning) / 0.1));
+  @include gen(has-background-danger-soft, background-color, hsl(var(--ds-error) / 0.1));
+  @include gen(has-background-info-soft, background-color, hsl(var(--ds-info) / 0.1));
+
+  // Soft primary/secondary backgrounds (badges, chips)
+  @include gen(has-background-primary-soft, background-color, hsl(var(--ds-primary) / 0.08));
+  @include gen(has-background-secondary-soft, background-color, hsl(var(--ds-secondary) / 0.1));
+
+  // ── Semantic border colors ────────────────────────────────────
+  @include gen(has-border-success, border-color, $ds-success);
+  @include gen(has-border-warning, border-color, $ds-warning);
+  @include gen(has-border-danger, border-color, $ds-error);
+  @include gen(has-border-info, border-color, $ds-info);
+
+  // ── Gray scale — text / bg / border ──────────────────────────
+  $ac-gray-scale: (
+    50: $ds-gray-50,
+    100: $ds-gray-100,
+    200: $ds-gray-200,
+    300: $ds-gray-300,
+    400: $ds-gray-400,
+    500: $ds-gray-500,
+    600: $ds-gray-600,
+    700: $ds-gray-700,
+    800: $ds-gray-800,
+    900: $ds-gray-900,
+  );
+  @each $step, $val in $ac-gray-scale {
+    @include gen(has-text-grey-#{$step}, color, $val);
+    @include gen(has-background-grey-#{$step}, background-color, $val);
+    @include gen(has-border-grey-#{$step}, border-color, $val);
+  }
+
+  // ── Grid system ───────────────────────────────────────────────
+  // grid-cols-{1-12}  — responsive via gen-r
+  @for $i from 1 through 12 {
+    @include gen-r(
+      grid-cols-#{$i},
+      grid-template-columns,
+      repeat($i, minmax(0, 1fr))
+    );
+    @include gen(col-span-#{$i}, grid-column, span #{$i} / span #{$i});
+  }
+  @include gen(col-span-full, grid-column, 1 / -1);
+  @include gen(col-start-1, grid-column-start, 1);
+  @include gen(col-start-2, grid-column-start, 2);
+  @include gen(col-start-3, grid-column-start, 3);
+
+  // ── Extended font sizes (Display scale) ───────────────────────
+  // text-5xl → text-7xl; responsive via gen-r
+  $ac-display-sizes: (
+    5xl: (
+      3rem,
+      1,
+    ),
+    6xl: (
+      3.75rem,
+      1,
+    ),
+    7xl: (
+      4.5rem,
+      1,
+    ),
+  );
+  @each $name, $pair in $ac-display-sizes {
+    $fs: nth($pair, 1);
+    $lh: nth($pair, 2);
+    @include gen-r(is-text-#{$name}, font-size, $fs);
+    .is-text-#{$name} {
+      line-height: $lh;
+    }
+    .\!is-text-#{$name} {
+      line-height: $lh !important;
+    }
+  }
+
+  // ── Typography display classes (design system type scale) ─────
+  .display-xl {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .display-lg {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .heading-xl {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .heading-lg {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+  .heading-md {
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  .heading-sm {
+    font-size: 1.125rem;
+    font-weight: 900;
+    line-height: 1.4;
+  }
+  .body-lg {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+  .body-md {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .body-sm {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  // ── Fixed dimension scale (rem, 4px base) ─────────────────────
+  // w-{n} and h-{n}; responsive via gen-r
+  $ac-fixed-sizes: (
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    7: 1.75rem,
+    8: 2rem,
+    9: 2.25rem,
+    10: 2.5rem,
+    11: 2.75rem,
+    12: 3rem,
+    14: 3.5rem,
+    16: 4rem,
+    20: 5rem,
+    24: 6rem,
+    28: 7rem,
+    32: 8rem,
+    36: 9rem,
+    40: 10rem,
+    44: 11rem,
+    48: 12rem,
+    56: 14rem,
+    64: 16rem,
+  );
+  @each $key, $val in $ac-fixed-sizes {
+    @include gen-r(has-width-#{$key}, width, $val);
+    @include gen-r(has-height-#{$key}, height, $val);
+  }
+
+  // size-{n}: square shorthand (w + h together)
+  $ac-size-scale: (
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.25rem,
+    6: 1.5rem,
+    8: 2rem,
+    10: 2.5rem,
+    12: 3rem,
+    14: 3.5rem,
+    16: 4rem,
+  );
+  @each $key, $val in $ac-size-scale {
+    .has-size-#{$key} {
+      width: $val;
+      height: $val;
+    }
+    .\!has-size-#{$key} {
+      width: $val !important;
+      height: $val !important;
+    }
+  }
+
+  // ── Named gradient backgrounds (design system gradients) ──────
+  .has-background-gradient-primary {
+    background: linear-gradient(135deg, $ac-primary, $ds-secondary);
+  }
+  .has-background-gradient-blue {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  }
+  .has-background-gradient-green {
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+  .has-background-gradient-red {
+    background: linear-gradient(135deg, #ef4444, #f97316);
+  }
+  .has-background-gradient-purple {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+  }
+  .has-background-gradient-yellow {
+    background: linear-gradient(135deg, #eab308, #f97316);
+  }
+
+  // Gradient directions
+  .has-background-gradient-to-right {
+    background-image: linear-gradient(to right, $ac-primary, $ds-secondary);
+  }
+  .has-background-gradient-to-left {
+    background-image: linear-gradient(to left, $ac-primary, $ds-secondary);
+  }
+  .has-background-gradient-to-bottom {
+    background-image: linear-gradient(to bottom, $ac-primary, $ds-secondary);
+  }
+  .has-background-gradient-to-top {
+    background-image: linear-gradient(to top, $ac-primary, $ds-secondary);
+  }
+  .has-background-gradient-to-bottom-right {
+    background-image: linear-gradient(
+      to bottom right,
+      $ac-primary,
+      $ds-secondary
+    );
+  }
+  .has-background-gradient-to-bottom-left {
+    background-image: linear-gradient(
+      to bottom left,
+      $ac-primary,
+      $ds-secondary
+    );
+  }
+  .has-background-gradient-to-top-right {
+    background-image: linear-gradient(to top right, $ac-primary, $ds-secondary);
+  }
+  .has-background-gradient-to-top-left {
+    background-image: linear-gradient(to top left, $ac-primary, $ds-secondary);
+  }
+
+  // ── Hover utilities ───────────────────────────────────────────
+  .has-hover-shadow-small {
+    &:hover { box-shadow: $shadow-sm; }
+  }
+  .has-hover-shadow {
+    &:hover { box-shadow: $ds-shadow-soft; }
+  }
+  .has-hover-shadow-medium {
+    &:hover { box-shadow: $ds-shadow-md; }
+  }
+  .has-hover-shadow-large {
+    &:hover { box-shadow: $ds-shadow-brand; }
+  }
+  .has-hover-shadow-xlarge {
+    &:hover { box-shadow: $shadow-xl; }
+  }
+  .has-hover-shadow-2xlarge {
+    &:hover { box-shadow: $ds-shadow-2xl; }
+  }
+  .has-hover-shadow-colored {
+    &:hover { box-shadow: $ds-shadow-colored; }
+  }
+  .has-hover-shadow-none {
+    &:hover { box-shadow: none; }
+  }
+  .has-hover-scale-105 {
+    &:hover { transform: scale(1.05); }
+  }
+  .has-hover-scale-110 {
+    &:hover { transform: scale(1.1); }
+  }
+  .has-hover-lift-small {
+    &:hover { transform: translateY(-0.25rem); }
+  }
+  .has-hover-lift {
+    &:hover { transform: translateY(-0.5rem); }
+  }
+  .has-hover-background-primary {
+    &:hover { background-color: $ac-primary; }
+  }
+  .has-hover-background-secondary {
+    &:hover { background-color: $ds-secondary; }
+  }
+  .has-hover-background-primary-soft {
+    &:hover { background-color: hsl(var(--ds-primary) / 0.08); }
+  }
+  .has-hover-background-secondary-soft {
+    &:hover { background-color: hsl(var(--ds-secondary) / 0.1); }
+  }
+  .has-hover-text-primary {
+    &:hover { color: $ac-primary; }
+  }
+  .has-hover-text-secondary {
+    &:hover { color: $ds-secondary; }
+  }
+  .has-hover-text-white {
+    &:hover { color: $ac-white; }
+  }
+  .has-hover-opacity-80 {
+    &:hover { opacity: 0.8; }
+  }
+  .has-hover-opacity-90 {
+    &:hover { opacity: 0.9; }
+  }
+  .has-hover-border-primary {
+    &:hover { border-color: $ac-primary; }
+  }
+  .has-hover-background-grey-100 {
+    &:hover { background-color: $ds-gray-100; }
+  }
+  .has-hover-background-grey-50 {
+    &:hover { background-color: $ds-gray-50; }
+  }
+
+  // ── Focus ring (accessibility) ────────────────────────────────
+  .has-focus-ring-primary {
+    &:focus,
+    &:focus-visible {
+      outline: 2px solid $ac-primary;
+      outline-offset: 2px;
+    }
+  }
+  .has-focus-ring-secondary {
+    &:focus,
+    &:focus-visible {
+      outline: 2px solid $ds-secondary;
+      outline-offset: 2px;
+    }
+  }
+  .has-no-focus-outline {
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  // ── Aspect ratio ─────────────────────────────────────────────
+  @include gen(has-aspect-auto, aspect-ratio, auto);
+  @include gen(has-aspect-square, aspect-ratio, 1 / 1);
+  @include gen(has-aspect-video, aspect-ratio, 16 / 9);
+
+  // ── Object fit ───────────────────────────────────────────────
+  @include gen(is-object-contain, object-fit, contain);
+  @include gen(is-object-cover, object-fit, cover);
+  @include gen(is-object-fill, object-fit, fill);
+
+  // ── Text decoration ───────────────────────────────────────────
+  @include gen(is-underlined, text-decoration, underline);
+  @include gen(is-strikethrough, text-decoration, line-through);
+  @include gen(has-no-underline, text-decoration, none);
+  @include gen(has-text-balance, text-wrap, balance);
+
+  // ── Vertical align ────────────────────────────────────────────
+  @include gen(is-align-top, vertical-align, top);
+  @include gen(is-align-middle, vertical-align, middle);
+  @include gen(is-align-bottom, vertical-align, bottom);
+  @include gen(is-align-baseline, vertical-align, baseline);
+
+  // ── Background helpers ────────────────────────────────────────
+  @include gen(has-background-cover, background-size, cover);
+  @include gen(has-background-contain, background-size, contain);
+  @include gen(has-background-centered, background-position, center);
+  @include gen(has-background-top, background-position, top);
+  @include gen(has-background-bottom, background-position, bottom);
+  @include gen(has-no-repeat, background-repeat, no-repeat);
+
+  // ── Pointer events ────────────────────────────────────────────
+  @include gen(is-pointer-events-none, pointer-events, none);
+  @include gen(is-pointer-events-auto, pointer-events, auto);
+
+  // ── Inset / position offsets ──────────────────────────────────
+  @include gen(has-top-0, top, 0);
+  @include gen(has-top-24, top, 6rem);
+  @include gen(has-right-0, right, 0);
+  @include gen(has-bottom-0, bottom, 0);
+  @include gen(has-left-0, left, 0);
+  @include gen(has-top-auto, top, auto);
+  @include gen(has-right-auto, right, auto);
+  @include gen(has-bottom-auto, bottom, auto);
+  @include gen(has-left-auto, left, auto);
+  .has-inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .\!has-inset-0 {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+  }
+
+  .has-border-right-soft {
+    border-right: 1px solid rgba(var(--color-border-rgb), 0.3);
+  }
+  .has-inset-x-0 {
+    left: 0;
+    right: 0;
+  }
+  .has-inset-y-0 {
+    top: 0;
+    bottom: 0;
+  }
+
+  // ── Container sizes (design system) ──────────────────────────
+  .is-container-small {
+    max-width: 640px;
+    width: 100%;
+  }
+  .is-container-medium {
+    max-width: 768px;
+    width: 100%;
+  }
+  .is-container-large {
+    max-width: 1024px;
+    width: 100%;
+  }
+  .is-container-xlarge {
+    max-width: 1280px;
+    width: 100%;
+  }
+  .is-container-2xlarge {
+    max-width: 1536px;
+    width: 100%;
+  }
+
+  // ── Dark mode (via [data-theme="dark"] or .is-dark ancestor) ──
+  .has-dark-text-white {
+    .is-dark &,
+    [data-theme="dark"] & {
+      color: $ac-white;
+    }
+  }
+  .has-dark-text-grey-light {
+    .is-dark &,
+    [data-theme="dark"] & {
+      color: $ds-gray-300;
+    }
+  }
+  .has-dark-text-grey {
+    .is-dark &,
+    [data-theme="dark"] & {
+      color: $ds-gray-400;
+    }
+  }
+  .has-dark-background-grey-dark {
+    .is-dark &,
+    [data-theme="dark"] & {
+      background-color: $ds-gray-700;
+    }
+  }
+  .has-dark-background-darker {
+    .is-dark &,
+    [data-theme="dark"] & {
+      background-color: $ds-gray-800;
+    }
+  }
+  .has-dark-background-darkest {
+    .is-dark &,
+    [data-theme="dark"] & {
+      background-color: $ds-gray-900;
+    }
+  }
+  .has-dark-border-grey {
+    .is-dark &,
+    [data-theme="dark"] & {
+      border-color: $ds-gray-600;
+    }
+  }
+  .has-dark-border-grey-dark {
+    .is-dark &,
+    [data-theme="dark"] & {
+      border-color: $ds-gray-700;
+    }
+  }
+}

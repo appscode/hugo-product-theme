@@ -3,24 +3,29 @@
 // Scope: .homepage-redesign wrapper (index page only)
 // ─────────────────────────────────────────────────────────────
 
+// ── Shared reusable classes (homepage + pricing) ──────────
+// Utility classes (.ds-badge, cards, section headers, buttons)
+// have been extracted to base/utilities/_utl.scss
+
+// common style
 // ── Variables ─────────────────────────────────────────────────
-$hp-secondary: #7272e9;
-$hp-shadow: 0 28px 80px rgba(39, 46, 77, 0.12);
-$hp-shadow-soft: 0 18px 45px rgba(39, 46, 77, 0.08);
-$hp-grid:
+$ac-secondary: #7272e9;
+$ac-shadow: 0 28px 80px rgba(39, 46, 77, 0.12);
+$ac-shadow-soft: 0 18px 45px rgba(39, 46, 77, 0.08);
+$ac-grid:
   linear-gradient(rgba($ac-primary, 0.05) 1px, transparent 1px),
   linear-gradient(90deg, rgba($ac-primary, 0.05) 1px, transparent 1px);
 
 // Radius scale
-$hp-radius-xs: 10px;
-$hp-radius-sm: 14px;
-$hp-radius-md: 18px;
-$hp-radius-lg: 22px;
-$hp-radius-xl: 28px;
-$hp-radius-2xl: 34px;
+$ac-radius-xs: 10px;
+$ac-radius-sm: 14px;
+$ac-radius-md: 18px;
+$ac-radius-lg: 22px;
+$ac-radius-xl: 28px;
+$ac-radius-2xl: 34px;
 
 // Standard transition
-$hp-transition:
+$ac-transition:
   transform 0.22s ease,
   box-shadow 0.22s ease,
   border-color 0.22s ease;
@@ -29,7 +34,7 @@ $hp-transition:
 $section-bg-light:
   radial-gradient(
     circle at 20% 20%,
-    rgba($hp-secondary, 0.08),
+    rgba($ac-secondary, 0.08),
     transparent 25%
   ),
   linear-gradient(
@@ -60,14 +65,14 @@ $section-bg-white:
 }
 
 @mixin gradient-text {
-  background: linear-gradient(135deg, $ac-primary, $hp-secondary);
+  background: linear-gradient(135deg, $ac-primary, $ac-secondary);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 @mixin gradient-bg {
-  background: linear-gradient(135deg, $ac-primary, $hp-secondary);
+  background: linear-gradient(135deg, $ac-primary, $ac-secondary);
 }
 
 @mixin glass($alpha: 0.86, $blur: 14px) {
@@ -79,7 +84,7 @@ $section-bg-white:
 @mixin frosted-panel(
   $alpha: 0.86,
   $blur: 14px,
-  $border: rgba($hp-secondary, 0.22),
+  $border: rgba($ac-secondary, 0.22),
   $shadow: 0 10px 30px rgba($ac-primary, 0.08)
 ) {
   @include glass($alpha, $blur);
@@ -90,14 +95,14 @@ $section-bg-white:
 @mixin card-base {
   position: relative;
   border: 1px solid $color-border;
-  box-shadow: $hp-shadow-soft;
+  box-shadow: $ac-shadow-soft;
 }
 
 @mixin card-hover {
   &:hover {
     transform: translateY(-6px);
     box-shadow: 0 22px 50px rgba($ac-primary, 0.14);
-    border-color: rgba($hp-secondary, 0.28);
+    border-color: rgba($ac-secondary, 0.28);
   }
 }
 
@@ -120,8 +125,37 @@ $section-bg-white:
   );
   border: 1px solid rgba($ac-black, 0.06);
 }
+// ============================================================
+// SHARED UTILITIES
+// Unified from homepage, pricing, and case-studies pages
+// ============================================================
 
-// ── Shared reusable classes (homepage + pricing) ──────────
+.section-padding {
+  padding: 90px 0;
+
+  @include tablet-only {
+    padding: 72px 0;
+  }
+  @include mobile {
+    padding: 56px 0;
+  }
+}
+
+.mb-20 {
+  margin-bottom: 1.25rem !important;
+}
+.mb-24 {
+  margin-bottom: 1.5rem !important;
+}
+.mb-32 {
+  margin-bottom: 2rem !important;
+}
+
+// ============================================================
+// BADGES
+// ============================================================
+
+.badge,
 .ds-badge {
   display: inline-flex;
   align-items: center;
@@ -131,14 +165,50 @@ $section-bg-white:
   @include frosted-panel(
     0.86,
     14px,
-    rgba($hp-secondary, 0.22),
+    rgba($ac-secondary, 0.22),
     0 10px 30px rgba($ac-primary, 0.08)
   );
 }
 
+.pricing-badge,
+.cs-d-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(
+    135deg,
+    rgba($ac-secondary, 0.1),
+    rgba($ac-secondary, 0.06)
+  );
+  border: 1px solid rgba($ac-secondary, 0.26);
+  color: darken($ac-secondary, 6%);
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba($ac-secondary, 0.1);
+
+  iconify-icon {
+    color: $ac-secondary;
+    flex-shrink: 0;
+  }
+}
+
+.cs-d-challenge-badge,
+.cs-d-timeline-badge,
+.cs-d-results-badge {
+  @extend .cs-d-section-badge;
+}
+
+// ============================================================
+// CARDS & ICONS
+// ============================================================
+
 .ds-card-base {
   @include card-base;
-  transition: $hp-transition;
+  transition: $ac-transition;
   background-color: $ac-white;
 }
 
@@ -147,33 +217,60 @@ $section-bg-white:
 }
 
 .ds-icon-box {
-  @include icon-box(44px, $hp-radius-sm);
+  @include icon-box(44px, $ac-radius-sm);
 }
 
-.ds-section-header {
+// ============================================================
+// SECTION HEADERS
+// ============================================================
+
+.section-header,
+.ds-section-header,
+.cs-d-section-header {
   text-align: center;
   max-width: 760px;
   margin: 0 auto 2.75rem;
+
+  @include mobile {
+    margin-bottom: 2rem;
+  }
 }
 
-.ds-section-title {
+.section-header-title,
+.ds-section-title,
+.cs-d-section-title {
   margin: 1rem 0 0.85rem;
   color: $color-heading;
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(1.75rem, 3.5vw, 3.25rem);
   font-weight: 900;
-  line-height: 1.02;
+  line-height: 1.08;
   letter-spacing: -0.03em;
 }
 
-.ds-section-desc {
+.section-header-desc,
+.ds-section-desc,
+.section-subtitle,
+.cs-d-sol-desc {
   color: $color-text;
   font-size: 1rem;
   line-height: 1.75;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
 }
 
-.section-subtitle {
-  @extend .ds-section-desc;
+.cs-d-steps-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: $ac-secondary;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
 }
+
+// ============================================================
+// BUTTONS
+// ============================================================
 
 .ds-button-group {
   display: flex;
@@ -192,6 +289,7 @@ $section-bg-white:
     gap: 0.65rem;
   }
 }
+// common style 
 
 // ── Keyframes ─────────────────────────────────────────────────
 @keyframes hero-float {
@@ -260,7 +358,7 @@ $section-bg-white:
     border: none;
     @include gradient-bg;
     box-shadow: 0 18px 36px rgba($ac-primary, 0.28);
-    border-radius: $hp-radius-sm;
+    border-radius: $ac-radius-sm;
     font-weight: 700;
     transition:
       transform 0.2s ease,
@@ -278,7 +376,7 @@ $section-bg-white:
     @include glass(0.88, 0px);
     border: 1px solid $ac-primary;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
-    border-radius: $hp-radius-sm;
+    border-radius: $ac-radius-sm;
     font-weight: 700;
     transition:
       transform 0.2s ease,
@@ -299,7 +397,7 @@ $section-bg-white:
     background: rgba($ac-white, 0.1);
     border: 1.5px solid rgba($ac-white, 0.3);
     backdrop-filter: blur(6px);
-    border-radius: $hp-radius-sm;
+    border-radius: $ac-radius-sm;
     font-weight: 700;
     transition:
       transform 0.2s ease,
@@ -332,7 +430,7 @@ $section-bg-white:
     content: "";
     position: absolute;
     inset: 0;
-    background-image: $hp-grid;
+    background-image: $ac-grid;
     background-size: 64px 64px;
     opacity: 0.28;
     pointer-events: none;
@@ -381,7 +479,7 @@ $section-bg-white:
     height: 0.5rem;
     border-radius: 999px;
     @include gradient-bg;
-    box-shadow: 0 0 0 6px rgba($hp-secondary, 0.15);
+    box-shadow: 0 0 0 6px rgba($ac-secondary, 0.15);
   }
 
   &-text {
@@ -474,7 +572,7 @@ $section-bg-white:
     height: 800px;
     background: radial-gradient(
       circle at 40% 40%,
-      $hp-secondary,
+      $ac-secondary,
       $ac-purple,
       transparent 70%
     );
@@ -535,7 +633,7 @@ $section-bg-white:
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  border: 4px solid rgba($hp-secondary, 0.25);
+  border: 4px solid rgba($ac-secondary, 0.25);
   animation: hero-spin-slow 30s linear infinite;
 }
 
@@ -549,7 +647,7 @@ $section-bg-white:
   background: linear-gradient(
     135deg,
     rgba($ac-primary, 0.1),
-    rgba($hp-secondary, 0.1)
+    rgba($ac-secondary, 0.1)
   );
   transform: rotate(12deg);
   animation: hero-float 8s ease-in-out infinite;
@@ -564,7 +662,7 @@ $section-bg-white:
   border-radius: 50%;
   background: linear-gradient(
     135deg,
-    rgba($hp-secondary, 0.2),
+    rgba($ac-secondary, 0.2),
     rgba($ac-purple, 0.2)
   );
   animation: hero-float-delayed 10s ease-in-out infinite;
@@ -591,7 +689,7 @@ $section-bg-white:
   border-radius: 1rem;
   background: linear-gradient(
     225deg,
-    rgba($hp-secondary, 0.1),
+    rgba($ac-secondary, 0.1),
     rgba($ac-primary, 0.1)
   );
   transform: rotate(-12deg);
@@ -635,7 +733,7 @@ $section-bg-white:
   right: 25%;
   width: 24rem;
   height: 24rem;
-  background: rgba($hp-secondary, 0.05);
+  background: rgba($ac-secondary, 0.05);
   animation-duration: 6s;
   animation-delay: 1s;
 }
@@ -673,7 +771,7 @@ $section-bg-white:
     left: 5rem;
     width: 0.5rem;
     height: 0.5rem;
-    background: rgba($hp-secondary, 0.6);
+    background: rgba($ac-secondary, 0.6);
   }
 
   &-2 {
@@ -793,7 +891,7 @@ $section-bg-white:
   @include frosted-panel(
     0.9,
     12px,
-    rgba($hp-secondary, 0.2),
+    rgba($ac-secondary, 0.2),
     0 10px 24px rgba(39, 46, 77, 0.08)
   );
 
@@ -853,13 +951,13 @@ $section-bg-white:
     background: $ac-white;
     color: $ac-primary;
     border: none;
-    border-radius: $hp-radius-sm;
+    border-radius: $ac-radius-sm;
     font-weight: 700;
     box-shadow: 0 18px 36px rgba($ac-white, 0.18);
 
     &:hover {
       background: rgba($ac-white, 0.92);
-      color: $hp-secondary;
+      color: $ac-secondary;
     }
   }
 
@@ -869,7 +967,7 @@ $section-bg-white:
     font-size: 0.75rem;
     font-weight: 700;
     line-height: 1;
-    border-radius: $hp-radius-xs !important;
+    border-radius: $ac-radius-xs !important;
   }
 
   &.is-primary.is-small,
@@ -879,7 +977,7 @@ $section-bg-white:
     font-size: 0.75rem;
     font-weight: 700;
     line-height: 1;
-    border-radius: $hp-radius-xs !important;
+    border-radius: $ac-radius-xs !important;
   }
 
   @include mobile {
@@ -907,7 +1005,7 @@ $section-bg-white:
   @include frosted-panel(
     0.82,
     18px,
-    rgba($hp-secondary, 0.18),
+    rgba($ac-secondary, 0.18),
     0 24px 56px rgba(39, 46, 77, 0.12)
   );
 
@@ -1004,9 +1102,9 @@ $section-bg-white:
 .feature-card {
   height: 100%;
   padding: 1.65rem;
-  border-radius: $hp-radius-lg;
+  border-radius: $ac-radius-lg;
   @include glass(0.86, 14px);
-  transition: $hp-transition;
+  transition: $ac-transition;
 
   @include mobile {
     padding: 1rem;
@@ -1049,7 +1147,7 @@ $section-bg-white:
 .card-wrap,
 .code-wrap {
   padding: 3rem;
-  border-radius: $hp-radius-2xl;
+  border-radius: $ac-radius-2xl;
   @include glass(0.78, 14px);
 
   @include mobile {
@@ -1090,7 +1188,7 @@ $section-bg-white:
   left: -5%;
   width: 500px;
   height: 500px;
-  background: $hp-secondary;
+  background: $ac-secondary;
 }
 
 .bg-orb-br {
@@ -1105,9 +1203,9 @@ $section-bg-white:
 // ── Database grid ─────────────────────────────────────────
 .db-grid-wrap {
   padding: 1rem;
-  border-radius: $hp-radius-xl;
+  border-radius: $ac-radius-xl;
   background: rgba($ac-white, 0.68);
-  box-shadow: $hp-shadow;
+  box-shadow: $ac-shadow;
 }
 
 .db-grid {
@@ -1127,9 +1225,9 @@ $section-bg-white:
   gap: 0.7rem;
   min-height: 108px;
   padding: 1rem 0.85rem;
-  border-radius: $hp-radius-md;
+  border-radius: $ac-radius-md;
   background: rgba($ac-white, 0.92);
-  transition: $hp-transition;
+  transition: $ac-transition;
 
   @include card-hover;
 }
@@ -1245,7 +1343,7 @@ $section-bg-white:
   position: relative;
   z-index: 1;
   overflow: hidden;
-  border-radius: $hp-radius-xl;
+  border-radius: $ac-radius-xl;
   border: 1px solid rgba($ac-primary, 0.28);
   @include glass(0.88, 16px);
 }
@@ -1298,7 +1396,7 @@ $section-bg-white:
   display: block;
   width: 100%;
   height: auto;
-  border-radius: $hp-radius-md;
+  border-radius: $ac-radius-md;
   border: 1px solid rgba($ac-primary, 0.18);
   background: rgba($ac-white, 0.96);
 }
@@ -1435,7 +1533,7 @@ $section-bg-white:
 .console-nav-item {
   gap: 0.6rem;
   padding: 0.82rem 0.9rem;
-  border-radius: $hp-radius-sm;
+  border-radius: $ac-radius-sm;
   color: #5f6574;
   font-size: 1rem;
   font-weight: 700;
@@ -1517,7 +1615,7 @@ $section-bg-white:
 
 .console-metric {
   padding: 1rem;
-  border-radius: $hp-radius-md;
+  border-radius: $ac-radius-md;
   @include surface-card;
 
   &-val {
@@ -1564,11 +1662,11 @@ $section-bg-white:
 
 .console-chart-card {
   padding: 1rem;
-  border-radius: $hp-radius-md;
+  border-radius: $ac-radius-md;
   background: linear-gradient(
     135deg,
     rgba($ac-primary, 0.94),
-    rgba($hp-secondary, 0.96)
+    rgba($ac-secondary, 0.96)
   );
   color: $ac-white;
 }
@@ -1677,7 +1775,7 @@ $section-bg-white:
   padding: 1.5rem;
   border-radius: 24px;
   background: rgba($ac-white, 0.9);
-  transition: $hp-transition;
+  transition: $ac-transition;
 
   @include mobile {
     padding: 1rem;
@@ -1699,7 +1797,7 @@ $section-bg-white:
   background: linear-gradient(
     135deg,
     rgba($ac-primary, 0.08),
-    rgba($hp-secondary, 0.12)
+    rgba($ac-secondary, 0.12)
   );
   font-size: 1.5rem;
 }
@@ -1901,7 +1999,7 @@ $section-bg-white:
 
   li {
     gap: 0.6rem;
-    color: rgba($ac-white, 0.74);
+    color: $color-text;
     font-size: 1rem;
     font-weight: 600;
 
