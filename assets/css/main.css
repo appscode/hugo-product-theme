@@ -23546,6 +23546,17 @@ strong {
     border-color: hsl(var(--ds-gray-600)); }
   .is-dark .ac-ui .has-dark-border-grey-dark, [data-theme="dark"] .ac-ui .has-dark-border-grey-dark {
     border-color: hsl(var(--ds-gray-700)); }
+  .ac-ui .is-opacity-80 {
+    opacity: 0.8; }
+  .ac-ui .\!is-opacity-80 {
+    opacity: 0.8 !important; }
+  .ac-ui .is-opacity-60 {
+    opacity: 0.6; }
+  .ac-ui .\!is-opacity-60 {
+    opacity: 0.6 !important; }
+  .ac-ui .is-size-100 {
+    width: 100px;
+    height: 100px; }
 
 .btn {
   display: inline-flex;
