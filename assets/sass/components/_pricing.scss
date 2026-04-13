@@ -540,74 +540,7 @@ $pr-shadow-card: 0 22px 50px rgba(39, 46, 77, 0.14);
   line-height: 1.7;
 }
 
-.pricing-cta-section {
-  @include gradient-bg;
-
-  .pricing-cta-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-
-    iconify-icon {
-      color: $ac-white;
-    }
-  }
-
-  .pricing-cta-title {
-    font-size: 2.25rem;
-    font-weight: 900;
-    color: $ac-white;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 1rem;
-  }
-
-  .pricing-cta-subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 36rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cta-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .pricing-cta-btn {
-    height: 3rem;
-    padding: 0 2rem;
-    font-weight: 700;
-    font-size: 1rem;
-    color: $ac-primary;
-    gap: 0.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: $ac-transition;
-
-    &:hover {
-      background: #f3f4f6;
-      color: $ac-primary;
-    }
-
-    iconify-icon {
-      flex-shrink: 0;
-    }
-  }
-
-  .cta-footnote {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-    margin: 0;
-  }
-}
+// Pricing CTA Section styles removed in favor of global home-section / cta-section utilities
 
 @include touch {
   .pricing-hero {
