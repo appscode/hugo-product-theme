@@ -48,7 +48,7 @@
               <strong>{{ .author }}</strong> — {{ .role }}, {{ .company }}
             </footer>
           </blockquote>
-          <a href="{{ default "/case-studies/" .link }}" class="case-card-link">
+          <a href="{{ default " /case-studies/" .link }}" class="case-card-link">
             Read Full Case Study
             <iconify-icon icon="heroicons:arrow-right" width="14" height="14"></iconify-icon>
           </a>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="has-text-centered" style="margin-top: 2.5rem;">
-      <a href="/case-studies/" class="button is-primary">
+      <a href="/case-studies/" class="button is-primary height-50">
         {{ $d.cta_button }}
         <iconify-icon icon="heroicons:arrow-right" width="16" height="16"></iconify-icon>
       </a>
