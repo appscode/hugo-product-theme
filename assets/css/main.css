@@ -29690,7 +29690,8 @@ code:not(pre code) {
     font-size: 1.05rem;
     line-height: 1.7;
     color: #667085;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    margin: 0 auto; }
 
 .pricing-support-section > .container > .section-header,
 .pricing-sla-section > .container > .section-header,
