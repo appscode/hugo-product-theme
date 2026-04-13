@@ -1077,4 +1077,13 @@
       border-color: $ds-gray-700;
     }
   }
+
+  // ── Custom additions ─────────────────────────────────────────
+  @include gen(is-opacity-80, opacity, 0.8);
+  @include gen(is-opacity-60, opacity, 0.6);
+
+  .is-size-100 {
+    width: 100px;
+    height: 100px;
+  }
 }
