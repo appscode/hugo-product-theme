@@ -22,8 +22,9 @@
 
             <ul class="cta-checklist">
               {{ range $d.checklist }}
-              <li class="is-flex is-align-items-center">
-                <iconify-icon icon="heroicons:check-circle" width="16" height="16" style="color:#7272E9;"></iconify-icon>
+              <li class="is-flex is-align-items-center has-text-white">
+                <iconify-icon icon="heroicons:check-circle" width="16" height="16"
+                  style="color:#7272E9;"></iconify-icon>
                 {{ . }}
               </li>
               {{ end }}

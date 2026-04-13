@@ -7,17 +7,17 @@
   {{/* ======================================================= */}}
   {{/* 1. HERO */}}
   {{/* ======================================================= */}}
-  <section class="cs-hero is-relative is-overflow-hidden">
-    <div class="cs-hero-orb-tr is-absolute is-rounded is-pointer-events-none"></div>
-    <div class="cs-hero-orb-bl is-absolute is-rounded is-pointer-events-none"></div>
+  <section class="cs-hero">
+    <div class="cs-hero-orb cs-hero-orb-1"></div>
+    <div class="cs-hero-orb cs-hero-orb-2"></div>
     <div class="cs-hero-noise"></div>
 
-    <div class="container is-relative has-z-index-10">
+    <div class="container">
 
       <a href="/case-studies/"
-        class="is-inline-flex is-align-items-center has-gap-2 is-text-sm has-text-grey-500 mb-6 has-no-underline has-transition">
-        <iconify-icon icon="lucide:arrow-left" width="14" height="14"></iconify-icon>
-        <span>All Case Studies</span>
+        class="is-inline-flex is-align-items-center has-gap-2 is-text-xs has-text-weight-bold has-text-grey-500 mb-10 has-transition has-hover-text-primary">
+        <iconify-icon icon="lucide:arrow-left" width="16" height="16"></iconify-icon>
+        <span>Back to success stories</span>
       </a>
 
       <div class="columns is-variable is-8 is-vcentered">
@@ -25,100 +25,93 @@
         <div class="column is-7-desktop">
 
           {{ with $p.badge }}
-          <div
-            class="is-inline-flex is-align-items-center has-gap-2 is-rounded has-border has-border-secondary has-background-secondary-soft has-text-secondary is-text-xs has-text-weight-extrabold is-uppercase has-tracking-widest px-4 py-2 mb-5">
-            <iconify-icon icon="lucide:zap" width="11" height="11"></iconify-icon>
+          <div class="badge badge-secondary mb-6">
+            <iconify-icon icon="lucide:zap" width="13" height="13"></iconify-icon>
             <span>{{ . }}</span>
           </div>
           {{ end }}
 
-          <h1 class="display-lg text-heading mb-5 has-text-balance">{{ $p.tagline | safeHTML }}</h1>
+          <h1 class="display-lg has-text-heading mb-6 has-text-balance">{{ $p.tagline | safeHTML }}</h1>
 
           {{ with $p.description }}
-          <p class="body-lg text-body mb-6 has-max-width-md">{{ . }}</p>
+          <p class="body-lg has-text-grey-600 mb-10 has-max-width-md">{{ . }}</p>
           {{ end }}
 
           {{ with $p.hero_metrics }}
-          <div class="is-flex is-flex-wrap-wrap has-gap-3 mb-6">
+          <div class="is-grid grid-cols-1 md:grid-cols-2 has-gap-5 mb-10">
             {{ range . }}
             <div
-              class="is-inline-flex is-align-items-center has-gap-3 has-background-white has-border is-radius-xlarge px-4 py-3 has-shadow-small has-hover-lift has-transition">
+              class="has-background-white has-border has-border-grey-100 is-radius-2xlarge px-6 py-5 has-shadow-soft has-hover-lift has-transition is-flex is-align-items-center has-gap-4">
               <div
-                class="is-inline-flex is-align-items-center is-justify-content-center has-size-8 is-radius-large has-background-gradient-primary is-flex-shrink-0">
-                <iconify-icon icon="lucide:trending-up" width="14" height="14" class="has-text-white"></iconify-icon>
+                class="has-size-11 is-radius-xlarge has-background-primary-soft has-text-primary is-inline-flex is-align-items-center is-justify-content-center is-flex-shrink-0">
+                <iconify-icon icon="lucide:trending-up" width="20" height="20"></iconify-icon>
               </div>
-              <div class="is-flex is-flex-direction-column has-gap-1">
-                <span
-                  class="has-text-gradient has-text-weight-black has-tracking-tight has-line-height-none is-size-4">{{
-                  .value }}</span>
-                <span class="is-text-xs has-text-weight-bold has-text-heading is-uppercase has-tracking-wider">{{ .label
+              <div class="is-flex is-flex-direction-column">
+                <span class="has-text-weight-black is-size-3 has-text-heading has-line-height-none mb-1">{{ .value
                   }}</span>
-                <span class="is-text-xs has-text-grey-500">{{ .sublabel }}</span>
+                <span class="is-text-xs has-text-weight-bold has-text-grey-500 is-uppercase has-tracking-wider">{{
+                  .label }}</span>
               </div>
             </div>
             {{ end }}
           </div>
           {{ end }}
 
-          <div class="is-flex is-align-items-center has-gap-4 is-flex-wrap-wrap mb-6">
-            <a href="#cs-results" class="btn btn-lg cs-btn-hero is-relative is-overflow-hidden">
-              <iconify-icon icon="lucide:book-open" width="16" height="16"></iconify-icon>
-              Read the full story
-              <iconify-icon icon="lucide:arrow-right" width="16" height="16"></iconify-icon>
+          <div class="is-flex is-align-items-center has-gap-4 is-flex-wrap-wrap mb-10">
+            <a href="#cs-results" class="btn btn-lg btn-primary">
+              <iconify-icon icon="lucide:book-open" width="18" height="18"></iconify-icon>
+              <span>Read the full story</span>
+              <iconify-icon icon="lucide:arrow-right" width="18" height="18"></iconify-icon>
             </a>
-            <a href="https://github.com/kubedb" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <iconify-icon icon="lucide:github" width="16" height="16"></iconify-icon>
-              <span>Open source on GitHub</span>
+            <a href="https://github.com/kubedb" target="_blank" rel="noopener noreferrer"
+              class="has-text-grey-600 has-text-weight-bold is-text-sm is-inline-flex is-align-items-center has-gap-2 has-hover-text-primary has-transition">
+              <iconify-icon icon="lucide:github" width="20" height="20"></iconify-icon>
+              <span>View Source</span>
             </a>
           </div>
 
-          <div class="is-inline-flex is-align-items-center has-gap-2 is-flex-wrap-wrap">
-            <span
-              class="cs-ping-dot is-inline-block has-width-2 has-height-2 is-rounded has-background-gradient-primary is-flex-shrink-0"></span>
-            <span class="is-text-xs has-text-grey-500">Powered by <strong class="has-text-heading">KubeDB</strong> &amp;
-              <strong class="has-text-heading">KubeStash</strong></span>
-            <span class="is-text-xs has-text-grey-400">&middot;</span>
-            <span class="is-text-xs has-text-grey-500">Enterprise Support</span>
+          <div class="badge badge-neutral mb-0 py-3 px-5">
+            <span class="cs-ping-dot"></span>
+            <span class="is-text-xs has-text-grey-500 is-normal-case has-tracking-normal">Industry Standard Architecture
+              &middot; <strong class="has-text-heading">KubeDB Enterprise</strong></span>
           </div>
 
         </div>
 
         <div class="column is-5-desktop">
           <div
-            class="has-background-white has-border is-radius-2xlarge is-overflow-hidden cs-summary-card has-hover-lift has-transition">
-            <div class="cs-summary-accent is-block"></div>
-
+            class="has-background-white has-background-glass has-border has-border-grey-200 is-radius-2xlarge is-overflow-hidden has-shadow-large">
             <div
-              class="is-flex is-align-items-flex-start is-justify-content-space-between has-gap-3 px-5 py-4 has-border-bottom">
-              <div class="is-flex is-align-items-center has-gap-3 is-flex-grow-1 has-min-width-0">
+              class="p-6 has-border-bottom has-border-grey-100 is-flex is-align-items-center is-justify-content-space-between has-gap-5">
+              <div class="is-flex is-align-items-center has-gap-4 has-min-width-0">
                 <div
-                  class="cs-logo-box has-size-10 is-radius-large is-inline-flex is-align-items-center is-justify-content-center is-flex-shrink-0 is-text-lg">
+                  class="has-size-14 has-background-white has-border has-border-grey-100 is-radius-xlarge is-inline-flex is-align-items-center is-justify-content-center has-shadow-small is-flex-shrink-0">
                   {{ with $p.hero_right_logo_emoji }}{{ . }}
                   {{ else }}{{ with $p.logo_emoji }}{{ . }}
                   {{ else }}{{ with $p.logo }}<img src="{{ . }}" alt="{{ default $p.company $p.alt }}"
-                    class="has-height-5 is-object-contain" style="width:1.35rem;">{{ end }}
+                    class="is-height-8 is-object-contain">{{ end }}
                   {{ end }}{{ end }}
                 </div>
-                <div class="min-w-0">
-                  <p class="is-text-sm has-text-weight-extrabold has-text-heading has-text-truncated mb-0">{{ default
+                <div class="has-min-width-0">
+                  <p class="is-text-sm has-text-weight-black has-text-heading has-text-truncated mb-0">{{ default
                     $p.company $p.hero_right_company }}</p>
-                  <p class="is-text-xs has-text-grey-500 mb-0">{{ default $p.industry $p.hero_right_industry }}</p>
+                  <div class="is-flex is-align-items-center has-gap-2">
+                    <span class="is-text-xs has-text-grey-500">{{ default $p.industry $p.hero_right_industry }}</span>
+                    <span class="is-text-xs has-text-grey-300">&bull;</span>
+                    <span class="tag tag-primary is-radius-large has-text-weight-bold">Profile</span>
+                  </div>
                 </div>
               </div>
-              <div
-                class="cs-live-chip is-flex-shrink-0 is-rounded is-text-xs has-text-weight-black has-tracking-widest is-uppercase is-nowrap">
-                {{ default "LIVE 24/7" $p.hero_live_badge }}</div>
+              <div class="badge badge-success is-flex-shrink-0">{{ default "LIVE 24/7" $p.hero_live_badge }}</div>
             </div>
 
             {{ with $p.hero_right_metrics }}
-            <div class="is-grid grid-cols-{{ len . }} has-border-bottom">
+            <div class="is-grid grid-cols-2 has-border-bottom has-border-grey-100">
               {{ range . }}
-              <div class="px-3 py-4 has-text-centered has-border-right-soft">
-                <div class="has-text-gradient has-text-weight-black has-tracking-tight has-line-height-none is-size-4">
-                  {{ .value }}</div>
-                <div
-                  class="is-text-xs has-text-weight-extrabold has-text-secondary is-uppercase has-tracking-wider mb-1">
-                  {{ .label }}</div>
+              <div class="p-6 has-border-right has-border-grey-100 last:has-no-border">
+                <div class="has-text-weight-black is-size-4 has-text-heading mb-1">{{ .value }}</div>
+                <div class="is-text-xs has-text-weight-bold has-text-primary is-uppercase has-tracking-widest mb-1">{{
+                  .label }}</div>
                 <div class="is-text-xs has-text-grey-400 has-line-height-snug">{{ .sublabel }}</div>
               </div>
               {{ end }}
@@ -126,19 +119,21 @@
             {{ end }}
 
             {{ with $p.hero_right_tags }}
-            <div class="is-flex is-flex-wrap-wrap has-gap-1 px-5 py-3 has-border-bottom">
-              {{ range . }}
-              <span
-                class="cs-tag is-inline-flex is-align-items-center has-gap-1 is-text-xs has-text-weight-semibold is-rounded px-2 py-1 has-transition">{{
-                . }}</span>
-              {{ end }}
+            <div class="px-6 py-5 has-border-bottom has-border-grey-100">
+              <p class="is-text-xs has-text-weight-extrabold has-text-grey-400 is-uppercase has-tracking-widest mb-4">
+                Core Technologies</p>
+              <div class="is-flex is-flex-wrap-wrap has-gap-2">
+                {{ range . }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+              </div>
             </div>
             {{ end }}
 
-            <div class="is-flex is-align-items-center has-gap-2 px-5 py-3 is-text-xs has-text-grey-500">
-              <iconify-icon icon="lucide:shield-check" width="12" height="12"
-                class="has-text-success is-flex-shrink-0"></iconify-icon>
-              <span>{{ default "Legacy DBs migrated &middot; Running on KubeDB" $p.hero_legacy_badge }}</span>
+            <div class="p-5 px-6 has-background-light has-opacity-75 is-flex is-align-items-center has-gap-2">
+              <iconify-icon icon="lucide:shield-check" width="16" height="16" class="has-text-success"></iconify-icon>
+              <span class="is-text-xs has-text-grey-500">{{ default "Enterprise Managed &middot; Verified Case Study"
+                $p.hero_legacy_badge }}</span>
             </div>
           </div>
         </div>
@@ -157,8 +152,7 @@
       <div class="columns is-vcentered is-variable is-8">
         <div class="column is-7-desktop">
           {{ with $p.customer_badge }}
-          <div
-            class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-20">
+          <div class="badge badge-secondary mb-5">
             <iconify-icon icon="lucide:building-2" width="13" height="13"></iconify-icon>
             <span>{{ . }}</span>
           </div>
@@ -180,10 +174,8 @@
             </a>
             {{ end }}
             {{ with $p.customer_status }}
-            <div
-              class="is-inline-flex is-align-items-center has-gap-2 is-text-sm has-text-weight-bold has-text-success has-background-success-soft has-border has-border-success is-radius-xlarge px-4 py-3">
-              <span
-                class="cs-ping-dot is-inline-block has-width-2 has-height-2 is-rounded has-background-gradient-primary is-flex-shrink-0"></span>
+            <div class="badge badge-success py-3 px-4">
+              <span class="cs-ping-dot"></span>
               <span>{{ . }}</span>
             </div>
             {{ end }}
@@ -203,8 +195,7 @@
     <div class="container">
       <div class="section-header is-relative has-z-index-10">
         {{ with $p.comparison_badge }}
-        <div
-          class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-20">
+        <div class="badge badge-secondary mb-5">
           <iconify-icon icon="lucide:git-compare" width="13" height="13"></iconify-icon>
           <span>{{ . }}</span>
         </div>
@@ -255,8 +246,7 @@
   <section class="section-padding has-background-grey-50 is-relative is-overflow-hidden">
     <div class="container">
 
-      <div
-        class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-32">
+      <div class="badge badge-secondary mb-8">
         <iconify-icon icon="lucide:alert-triangle" width="13" height="13"></iconify-icon>
         <span>{{ default "The Challenge" $p.challenge_badge }}</span>
       </div>
@@ -274,10 +264,9 @@
             {{ end }}
             {{ with $p.challenge_key_pains }}
             <div class="is-radius-xlarge has-border has-border-secondary has-background-secondary-soft px-5 py-4">
-              <div
-                class="is-inline-flex is-align-items-center has-gap-2 is-text-xs has-text-weight-extrabold has-text-secondary is-uppercase has-tracking-widest mb-2">
+              <div class="badge badge-secondary mb-2">
                 <span class="has-size-2 is-rounded has-background-secondary is-flex-shrink-0"></span>
-                Key pain points
+                <span>Key pain points</span>
               </div>
               <p class="body-sm text-body mb-0">{{ . }}</p>
             </div>
@@ -316,8 +305,7 @@
   <section class="section-padding has-background-white">
     <div class="container">
 
-      <div
-        class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-32">
+      <div class="badge badge-secondary mb-8">
         <iconify-icon icon="lucide:sparkles" width="13" height="13"></iconify-icon>
         <span>{{ default "The Solution" $p.solution_badge }}</span>
       </div>
@@ -332,10 +320,9 @@
           {{ end }}
           {{ with $p.solution_features }}
           <div class="is-radius-xlarge has-border has-border-primary has-background-primary-soft px-5 py-4 mt-6">
-            <div
-              class="is-inline-flex is-align-items-center has-gap-2 is-text-xs has-text-weight-extrabold is-uppercase has-tracking-widest has-text-primary mb-3">
+            <div class="badge badge-primary mb-3">
               <iconify-icon icon="lucide:database" width="12" height="12"></iconify-icon>
-              Powered by KubeDB
+              <span>Powered by KubeDB</span>
             </div>
             <ul class="has-no-bullets">
               {{ range . }}
@@ -388,8 +375,7 @@
       <div class="columns is-variable is-8">
         <div class="column is-5-desktop">
           {{ with $p.benefits_badge }}
-          <div
-            class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-20">
+          <div class="badge badge-secondary mb-5">
             <iconify-icon icon="lucide:check-circle-2" width="13" height="13"></iconify-icon>
             <span>{{ . }}</span>
           </div>
@@ -476,8 +462,7 @@
   <section class="section-padding has-background-white">
     <div class="container">
       <div class="section-header is-relative has-z-index-10">
-        <div
-          class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-20">
+        <div class="badge badge-secondary mb-5">
           <iconify-icon icon="lucide:map-pin" width="13" height="13"></iconify-icon>
           <span>{{ default "Journey" $p.timeline_badge }}</span>
         </div>
@@ -511,8 +496,7 @@
   <section id="cs-results" class="section-padding has-background-grey-50">
     <div class="container">
       <div class="section-header is-relative has-z-index-10">
-        <div
-          class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-20">
+        <div class="badge badge-secondary mb-5">
           <iconify-icon icon="lucide:trending-up" width="13" height="13"></iconify-icon>
           <span>{{ default "Measurable Impact" $p.results_badge }}</span>
         </div>
@@ -571,8 +555,7 @@
   <section class="section-padding has-background-white">
     <div class="container">
       <div class="section-header is-relative has-z-index-10">
-        <div
-          class="pricing-badge is-inline-flex is-align-items-center has-gap-2 is-rounded is-text-sm has-text-weight-bold has-text-secondary is-uppercase has-tracking-wider has-transition px-4 py-2 mb-20">
+        <div class="badge badge-secondary mb-5">
           <iconify-icon icon="lucide:star" width="13" height="13"></iconify-icon>
           <span>Why KubeDB</span>
         </div>
@@ -630,15 +613,15 @@
             </a>
             {{ end }}
           </div>
-          <p
-            class="is-inline-flex is-align-items-center has-gap-2 is-text-xs is-rounded px-4 py-2 mb-0 has-background-secondary-soft has-border has-border-secondary has-text-grey-100">
+          <div class="badge badge-secondary mb-0 py-2 px-4">
             <iconify-icon icon="lucide:shield-check" width="12" height="12"></iconify-icon>
-            Open-core &middot; Apache 2.0 &middot; Certified on OpenShift, Rancher, EKS, AKS, GKE &amp; more
-          </p>
+            <span class="is-normal-case has-tracking-normal has-text-grey-100">Open-core &middot; Apache 2.0 &middot;
+              Certified on OpenShift, Rancher, EKS, AKS, GKE &amp; more</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-</div>{{/* /.ac-ui */}}
+</div>
 {{ end }}
