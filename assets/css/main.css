@@ -30043,56 +30043,6 @@ code:not(pre code) {
   color: hsl(var(--secondary-h), 8%, 30%);
   line-height: 1.7; }
 
-.pricing-cta-section {
-  background: linear-gradient(135deg, var(--ac-primary), #7272e9); }
-  .pricing-cta-section .pricing-cta-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem; }
-    .pricing-cta-section .pricing-cta-icon iconify-icon {
-      color: #ffffff; }
-  .pricing-cta-section .pricing-cta-title {
-    font-size: 2.25rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 1rem; }
-  .pricing-cta-section .pricing-cta-subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 36rem;
-    margin-left: auto;
-    margin-right: auto; }
-  .pricing-cta-section .cta-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 1.5rem; }
-  .pricing-cta-section .pricing-cta-btn {
-    height: 3rem;
-    padding: 0 2rem;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--ac-primary);
-    gap: 0.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
-    .pricing-cta-section .pricing-cta-btn:hover {
-      background: #f3f4f6;
-      color: var(--ac-primary); }
-    .pricing-cta-section .pricing-cta-btn iconify-icon {
-      flex-shrink: 0; }
-  .pricing-cta-section .cta-footnote {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-    margin: 0; }
-
 @media screen and (max-width: 1023px) {
   .pricing-hero {
     padding-top: 80px;
