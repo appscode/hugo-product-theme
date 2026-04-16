@@ -1,98 +1,4 @@
 // ============================================================
-// DESIGN SYSTEM COMPONENTS
-// KubeDB Component Library — built on design-system.pdf tokens
-// ============================================================
-
-// ============================================================
-// BUTTONS
-// ============================================================
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1;
-  height: 2.5rem;
-  padding: 0 1.25rem;
-  border-radius: $ds-radius-lg;
-  border: 1.5px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: $ds-transition;
-  font-family: inherit;
-
-  &:focus-visible {
-    outline: 2px solid $ds-primary;
-    outline-offset: 2px;
-  }
-
-  iconify-icon, svg { flex-shrink: 0; }
-
-  // ── Sizes ──
-  &.btn-sm {
-    font-size: 0.75rem;
-    height: 2rem;
-    padding: 0 0.875rem;
-    border-radius: $ds-radius-md;
-  }
-
-  &.btn-lg {
-    font-size: 1rem;
-    height: 3rem;
-    padding: 0 1.75rem;
-    border-radius: $ds-radius-xl;
-  }
-
-  // ── Variants ──
-  &.btn-primary {
-    background: linear-gradient(135deg, $ds-primary, $ds-secondary);
-    color: #fff;
-    box-shadow: $ds-shadow-md;
-    &:hover {
-      box-shadow: $ds-shadow-colored;
-      transform: translateY(-1px);
-    }
-    &:active { transform: translateY(0); }
-  }
-
-  &.btn-secondary {
-    background-color: $ds-gray-100;
-    color: $ds-gray-700;
-    border-color: $ds-gray-200;
-    &:hover { background-color: $ds-gray-200; color: $ds-gray-800; }
-  }
-
-  &.btn-outline {
-    background-color: transparent;
-    color: $ds-primary;
-    border-color: $ds-primary;
-    &:hover { background-color: hsl(var(--ds-primary) / 0.06); }
-  }
-
-  &.btn-ghost {
-    background-color: transparent;
-    color: $ds-gray-600;
-    border-color: transparent;
-    &:hover { background-color: $ds-gray-100; color: $ds-gray-800; }
-  }
-
-  &.btn-success {
-    background-color: $ds-success;
-    color: #fff;
-    &:hover { background-color: hsl(var(--ds-success-hover)); transform: translateY(-1px); }
-  }
-
-  &.btn-danger {
-    background-color: $ds-error;
-    color: #fff;
-    &:hover { background-color: hsl(var(--ds-error-hover)); transform: translateY(-1px); }
-  }
-}
-
-// ============================================================
 // BADGES & TAGS
 // ============================================================
 
@@ -110,7 +16,10 @@
   white-space: nowrap;
   line-height: normal;
 
-  iconify-icon, svg { flex-shrink: 0; }
+  iconify-icon,
+  svg {
+    flex-shrink: 0;
+  }
 
   // ── Variants ──
   &.badge-primary {
@@ -178,7 +87,10 @@
     background-color: hsl(var(--ds-primary) / 0.05);
     color: $ds-primary;
     border-color: hsl(var(--ds-primary) / 0.1);
-    &:hover { background-color: hsl(var(--ds-primary) / 0.1); }
+
+    &:hover {
+      background-color: hsl(var(--ds-primary) / 0.1);
+    }
   }
 }
 
@@ -187,12 +99,23 @@
 // ============================================================
 
 @keyframes ds-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes ds-pulse-dot {
-  0%, 80%, 100% { opacity: 0.2; transform: scale(0.7); }
-  40%           { opacity: 1;   transform: scale(1); }
+  0%,
+  80%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .spinner {
@@ -205,8 +128,18 @@
   height: 1.5rem;
   flex-shrink: 0;
 
-  &.spinner-sm { width: 1rem;   height: 1rem;   border-width: 1.5px; }
-  &.spinner-lg { width: 2rem;   height: 2rem;   border-width: 2.5px; }
+  &.spinner-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 1.5px;
+  }
+
+  &.spinner-lg {
+    width: 2rem;
+    height: 2rem;
+    border-width: 2.5px;
+  }
+
   &.spinner-border {
     border-color: transparent;
     border-top-color: $ds-primary;
@@ -226,7 +159,207 @@
     background-color: $ds-primary;
     border-radius: 50%;
     animation: ds-pulse-dot 1.2s ease-in-out infinite;
-    &:nth-child(2) { animation-delay: 0.16s; }
-    &:nth-child(3) { animation-delay: 0.32s; }
+
+    &:nth-child(2) {
+      animation-delay: 0.16s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.32s;
+    }
+  }
+}
+
+// ============================================================
+// AC-UI SCOPED COMPONENTS
+// Uses $ac-* variables and mixins from _utilities.scss
+// ============================================================
+
+.ac-ui {
+  // ── Badges ──────────────────────────────────────────────────
+
+  .badge,
+  .ds-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    @include frosted-panel(
+      0.86,
+      14px,
+      rgba($ac-secondary, 0.22),
+      0 10px 30px rgba($ac-primary, 0.08)
+    );
+  }
+
+  .pricing-badge,
+  .cs-d-section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: linear-gradient(
+      135deg,
+      rgba($ac-secondary, 0.1),
+      rgba($ac-secondary, 0.06)
+    );
+    border: 1px solid rgba($ac-secondary, 0.26);
+    color: darken($ac-secondary, 6%);
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba($ac-secondary, 0.1);
+
+    iconify-icon {
+      color: $ac-secondary;
+      flex-shrink: 0;
+    }
+  }
+
+  .cs-d-challenge-badge,
+  .cs-d-timeline-badge,
+  .cs-d-results-badge {
+    @extend .cs-d-section-badge;
+  }
+
+  // ── Cards & Icons ────────────────────────────────────────────
+
+  .ds-card-base {
+    @include card-base;
+    transition: $ac-transition;
+    background-color: $ac-white;
+  }
+
+  .ds-card-hover {
+    @include card-hover;
+  }
+
+  .ds-icon-box {
+    @include icon-box(44px, $ac-radius-sm);
+  }
+
+  .cs-d-steps-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: $ac-secondary;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  // ── Buttons ──────────────────────────────────────────────────
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+    font-family: $ac-font-paragraph;
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &.is-primary {
+      color: $ac-white;
+      border: none;
+      @include gradient-bg;
+      box-shadow: 0 18px 36px rgba($ac-primary, 0.28);
+      border-radius: $ac-radius-sm;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 44px rgba($ac-primary, 0.38);
+        color: $ac-white;
+      }
+    }
+
+    &.is-outlined {
+      color: $color-heading;
+      @include glass(0.88, 0px);
+      border: 1px solid $ac-primary;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      border-radius: $ac-radius-sm;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        border-color: $ac-primary;
+        color: $ac-primary;
+        background: rgba($ac-primary, 0.04);
+      }
+    }
+
+    &.is-ghost {
+      color: $ac-white;
+      background: rgba($ac-white, 0.1);
+      border: 1.5px solid rgba($ac-white, 0.3);
+      backdrop-filter: blur(6px);
+      border-radius: $ac-radius-sm;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        background: rgba($ac-white, 0.18);
+        border-color: rgba($ac-white, 0.5);
+        color: $ac-white;
+        text-decoration: none;
+      }
+    }
+
+    &.is-white {
+      background: $ac-white;
+      color: $ac-primary;
+      border: none;
+      border-radius: $ac-radius-sm;
+      font-weight: 700;
+      box-shadow: 0 18px 36px rgba($ac-white, 0.18);
+
+      &:hover {
+        background: rgba($ac-white, 0.92);
+        color: $ac-secondary;
+      }
+    }
+
+    &.is-small {
+      height: 40px;
+      padding: 0 1.1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1;
+      border-radius: $ac-radius-xs !important;
+    }
+
+    &.is-primary.is-small,
+    &.is-outlined.is-small,
+    &.is-white.is-small,
+    &.is-ghost.is-small {
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1;
+      border-radius: $ac-radius-xs !important;
+    }
+
+    @include mobile {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }

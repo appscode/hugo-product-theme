@@ -1,27 +1,116 @@
+// ── $ac-* Variables ─────────────────────────────────────────────────
+$ac-secondary: #7272e9;
+$ac-shadow: 0 28px 80px rgba(39, 46, 77, 0.12);
+$ac-shadow-soft: 0 18px 45px rgba(39, 46, 77, 0.08);
+$ac-grid:
+  linear-gradient(rgba($ac-primary, 0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba($ac-primary, 0.05) 1px, transparent 1px);
+
+// Radius scale
+$ac-radius-xs: 10px;
+$ac-radius-sm: 14px;
+$ac-radius-md: 18px;
+$ac-radius-lg: 22px;
+$ac-radius-xl: 28px;
+$ac-radius-2xl: 34px;
+
+// Standard transition
+$ac-transition:
+  transform 0.22s ease,
+  box-shadow 0.22s ease,
+  border-color 0.22s ease;
+
+// Section background colors
+$section-bg-light:
+  radial-gradient(
+    circle at 20% 20%,
+    rgba($ac-secondary, 0.08),
+    transparent 25%
+  ),
+  linear-gradient(180deg, $secondary-light-grey, rgba($ac-white, 0.98));
+
+$section-bg-white:
+  radial-gradient(circle at 80% 0%, rgba($ac-primary, 0.08), transparent 22%),
+  linear-gradient(180deg, rgba($ac-white, 0.98), $primary-light-grey);
+
+// ── Mixins ────────────────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $ac-primary, $ac-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin gradient-bg {
+  background: linear-gradient(135deg, $ac-primary, $ac-secondary);
+}
+
+@mixin glass($alpha: 0.86, $blur: 14px) {
+  background: rgba($ac-white, $alpha);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin frosted-panel(
+  $alpha: 0.86,
+  $blur: 14px,
+  $border: rgba($ac-secondary, 0.22),
+  $shadow: 0 10px 30px rgba($ac-primary, 0.08)
+) {
+  @include glass($alpha, $blur);
+  border: 1px solid $border;
+  box-shadow: $shadow;
+}
+
+@mixin card-base {
+  position: relative;
+  border: 1px solid $color-border;
+  box-shadow: $ac-shadow-soft;
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba($ac-primary, 0.14);
+    border-color: rgba($ac-secondary, 0.28);
+  }
+}
+
+@mixin icon-box($size: 44px, $radius: 14px) {
+  @include flex-center;
+  width: $size;
+  height: $size;
+  border-radius: $radius;
+  color: $ac-white;
+
+  iconify-icon {
+    color: $ac-white;
+  }
+}
+
+@mixin surface-card {
+  background: linear-gradient(
+    180deg,
+    $secondary-light-grey,
+    rgba($ac-bg, 0.95)
+  );
+  border: 1px solid rgba($ac-black, 0.06);
+}
+
 .ac-ui {
   font-size: 16px;
-
-  $ac-transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease,
-    border-color 0.22s ease;
-
-  @mixin gradient-text {
-    background: linear-gradient(135deg, $ac-primary, $ds-secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  @mixin gradient-bg {
-    background: linear-gradient(135deg, $ac-primary, $ds-secondary);
-  }
-
-  @mixin glass($alpha: 0.86, $blur: 14px) {
-    background: rgba($ac-white, $alpha);
-    backdrop-filter: blur($blur);
-    -webkit-backdrop-filter: blur($blur);
-  }
 
   @mixin gen($suffix, $prop, $val) {
     .#{$suffix} {
@@ -95,7 +184,11 @@
   @include gen(is-flex-direction-row, flex-direction, row);
   @include gen(is-flex-direction-column, flex-direction, column);
   @include gen(is-flex-direction-row-reverse, flex-direction, row-reverse);
-  @include gen(is-flex-direction-column-reverse, flex-direction, column-reverse);
+  @include gen(
+    is-flex-direction-column-reverse,
+    flex-direction,
+    column-reverse
+  );
 
   // ── Flex wrap ────────────────────────────────────────────────
   @include gen(is-flex-wrap-wrap, flex-wrap, wrap);
@@ -118,7 +211,11 @@
   @include gen(is-justify-content-flex-start, justify-content, flex-start);
   @include gen(is-justify-content-center, justify-content, center);
   @include gen(is-justify-content-flex-end, justify-content, flex-end);
-  @include gen(is-justify-content-space-between, justify-content, space-between);
+  @include gen(
+    is-justify-content-space-between,
+    justify-content,
+    space-between
+  );
   @include gen(is-justify-content-space-around, justify-content, space-around);
   @include gen(is-justify-content-space-evenly, justify-content, space-evenly);
 
@@ -596,21 +693,49 @@
   @include gen-r(is-justify-content-flex-start, justify-content, flex-start);
   @include gen-r(is-justify-content-center, justify-content, center);
   @include gen-r(is-justify-content-flex-end, justify-content, flex-end);
-  @include gen-r(is-justify-content-space-between, justify-content, space-between);
+  @include gen-r(
+    is-justify-content-space-between,
+    justify-content,
+    space-between
+  );
 
   // ── Semantic text colors (also in has-text-* section above) ──
   // (covered by has-text-success/warning/danger/info in the main text-colors block)
 
   // ── Semantic background colors ────────────────────────────────
   // Soft (10 % alpha) semantic backgrounds
-  @include gen(has-background-success-soft, background-color, hsl(var(--ds-success) / 0.1));
-  @include gen(has-background-warning-soft, background-color, hsl(var(--ds-warning) / 0.1));
-  @include gen(has-background-danger-soft, background-color, hsl(var(--ds-error) / 0.1));
-  @include gen(has-background-info-soft, background-color, hsl(var(--ds-info) / 0.1));
+  @include gen(
+    has-background-success-soft,
+    background-color,
+    hsl(var(--ds-success) / 0.1)
+  );
+  @include gen(
+    has-background-warning-soft,
+    background-color,
+    hsl(var(--ds-warning) / 0.1)
+  );
+  @include gen(
+    has-background-danger-soft,
+    background-color,
+    hsl(var(--ds-error) / 0.1)
+  );
+  @include gen(
+    has-background-info-soft,
+    background-color,
+    hsl(var(--ds-info) / 0.1)
+  );
 
   // Soft primary/secondary backgrounds (badges, chips)
-  @include gen(has-background-primary-soft, background-color, hsl(var(--ds-primary) / 0.08));
-  @include gen(has-background-secondary-soft, background-color, hsl(var(--ds-secondary) / 0.1));
+  @include gen(
+    has-background-primary-soft,
+    background-color,
+    hsl(var(--ds-primary) / 0.08)
+  );
+  @include gen(
+    has-background-secondary-soft,
+    background-color,
+    hsl(var(--ds-secondary) / 0.1)
+  );
 
   // ── Semantic border colors ────────────────────────────────────
   @include gen(has-border-success, border-color, $ds-success);
@@ -843,76 +968,124 @@
 
   // ── Hover utilities ───────────────────────────────────────────
   .has-hover-shadow-small {
-    &:hover { box-shadow: $shadow-sm; }
+    &:hover {
+      box-shadow: $shadow-sm;
+    }
   }
   .has-hover-shadow {
-    &:hover { box-shadow: $ds-shadow-soft; }
+    &:hover {
+      box-shadow: $ds-shadow-soft;
+    }
   }
   .has-hover-shadow-medium {
-    &:hover { box-shadow: $ds-shadow-md; }
+    &:hover {
+      box-shadow: $ds-shadow-md;
+    }
   }
   .has-hover-shadow-large {
-    &:hover { box-shadow: $ds-shadow-brand; }
+    &:hover {
+      box-shadow: $ds-shadow-brand;
+    }
   }
   .has-hover-shadow-xlarge {
-    &:hover { box-shadow: $shadow-xl; }
+    &:hover {
+      box-shadow: $shadow-xl;
+    }
   }
   .has-hover-shadow-2xlarge {
-    &:hover { box-shadow: $ds-shadow-2xl; }
+    &:hover {
+      box-shadow: $ds-shadow-2xl;
+    }
   }
   .has-hover-shadow-colored {
-    &:hover { box-shadow: $ds-shadow-colored; }
+    &:hover {
+      box-shadow: $ds-shadow-colored;
+    }
   }
   .has-hover-shadow-none {
-    &:hover { box-shadow: none; }
+    &:hover {
+      box-shadow: none;
+    }
   }
   .has-hover-scale-105 {
-    &:hover { transform: scale(1.05); }
+    &:hover {
+      transform: scale(1.05);
+    }
   }
   .has-hover-scale-110 {
-    &:hover { transform: scale(1.1); }
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   .has-hover-lift-small {
-    &:hover { transform: translateY(-0.25rem); }
+    &:hover {
+      transform: translateY(-0.25rem);
+    }
   }
   .has-hover-lift {
-    &:hover { transform: translateY(-0.5rem); }
+    &:hover {
+      transform: translateY(-0.5rem);
+    }
   }
   .has-hover-background-primary {
-    &:hover { background-color: $ac-primary; }
+    &:hover {
+      background-color: $ac-primary;
+    }
   }
   .has-hover-background-secondary {
-    &:hover { background-color: $ds-secondary; }
+    &:hover {
+      background-color: $ds-secondary;
+    }
   }
   .has-hover-background-primary-soft {
-    &:hover { background-color: hsl(var(--ds-primary) / 0.08); }
+    &:hover {
+      background-color: hsl(var(--ds-primary) / 0.08);
+    }
   }
   .has-hover-background-secondary-soft {
-    &:hover { background-color: hsl(var(--ds-secondary) / 0.1); }
+    &:hover {
+      background-color: hsl(var(--ds-secondary) / 0.1);
+    }
   }
   .has-hover-text-primary {
-    &:hover { color: $ac-primary; }
+    &:hover {
+      color: $ac-primary;
+    }
   }
   .has-hover-text-secondary {
-    &:hover { color: $ds-secondary; }
+    &:hover {
+      color: $ds-secondary;
+    }
   }
   .has-hover-text-white {
-    &:hover { color: $ac-white; }
+    &:hover {
+      color: $ac-white;
+    }
   }
   .has-hover-opacity-80 {
-    &:hover { opacity: 0.8; }
+    &:hover {
+      opacity: 0.8;
+    }
   }
   .has-hover-opacity-90 {
-    &:hover { opacity: 0.9; }
+    &:hover {
+      opacity: 0.9;
+    }
   }
   .has-hover-border-primary {
-    &:hover { border-color: $ac-primary; }
+    &:hover {
+      border-color: $ac-primary;
+    }
   }
   .has-hover-background-grey-100 {
-    &:hover { background-color: $ds-gray-100; }
+    &:hover {
+      background-color: $ds-gray-100;
+    }
   }
   .has-hover-background-grey-50 {
-    &:hover { background-color: $ds-gray-50; }
+    &:hover {
+      background-color: $ds-gray-50;
+    }
   }
 
   // ── Focus ring (accessibility) ────────────────────────────────
@@ -1085,5 +1258,87 @@
   .is-size-100 {
     width: 100px;
     height: 100px;
+  }
+
+  // ============================================================
+  // SECTION LAYOUT
+  // ============================================================
+
+  .section-padding {
+    padding: 30px 0; // mobile
+
+    @include tablet {
+      padding: 40px 0;
+    }
+
+    @include desktop {
+      padding: 50px 0;
+    }
+
+    @include widescreen {
+      padding: 60px 0;
+    }
+  }
+
+  // ============================================================
+  // SECTION HEADERS
+  // ============================================================
+
+  .section-header,
+  .ds-section-header,
+  .cs-d-section-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 2.75rem;
+
+    @include mobile {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .section-header-title,
+  .ds-section-title,
+  .cs-d-section-title {
+    margin: 1rem 0 0.85rem;
+    color: $color-heading;
+    font-size: clamp(1.75rem, 3.5vw, 3.25rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .section-header-desc,
+  .ds-section-desc,
+  .section-subtitle,
+  .cs-d-sol-desc {
+    color: $color-text;
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  // ============================================================
+  // BUTTON GROUP
+  // ============================================================
+
+  .ds-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    align-items: center;
+
+    .button {
+      margin: 0;
+    }
+
+    @include mobile {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+    }
   }
 }

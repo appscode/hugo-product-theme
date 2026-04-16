@@ -44,7 +44,7 @@
     // }
 
     .mega-menu-wrapper {
-      top: 57px;
+      top: 60px;
     }
 
     .navbar-left {
@@ -54,10 +54,10 @@
           flex-direction: column;
           align-items: flex-start;
 
-          @include touch {
-            flex-direction: row;
-            align-items: center;
-          }
+          // @include touch {
+          //   flex-direction: row;
+          //   align-items: center;
+          // }
 
           img {
             height: 1.58rem;
@@ -1015,8 +1015,9 @@ iframe#notification {
 
 .navbar-burger {
   height: 30px;
-  width: 30px;
+  width: 70px;
   border-radius: 4px;
+  flex-direction: row !important;
 
   &.is-active {
     i.fa {
