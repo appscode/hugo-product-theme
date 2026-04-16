@@ -23782,7 +23782,8 @@ strong {
   border: 1px solid hsl(var(--secondary-h), 10%, 90%);
   box-shadow: 0 18px 45px rgba(39, 46, 77, 0.08);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  height: 100%; }
 .ac-ui .ds-card-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 22px 50px rgba(var(--ac-primary), 0.14);
