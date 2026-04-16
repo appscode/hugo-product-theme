@@ -231,6 +231,7 @@
     @include card-base;
     transition: $ac-transition;
     background-color: $ac-white;
+    height: 100%;
   }
 
   .ds-card-hover {
