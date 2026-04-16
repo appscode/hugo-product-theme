@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap");
 
 // new navbar area start
 .navbar-area {
@@ -64,7 +64,7 @@
           }
 
           h4 {
-            color: #193D4B;
+            color: #193d4b;
             font-weight: 500;
             line-height: 1;
             font-size: 0.75rem;
@@ -76,7 +76,7 @@
               font-family: "Oleo Script", system-ui;
 
               &.green {
-                color: #35A651;
+                color: #35a651;
               }
             }
           }
@@ -99,11 +99,14 @@
   padding: 0.5rem 1.25rem;
 
   &.container {
-    padding: 0.5rem 0;
+    // padding: 0.5rem 0;
 
     .mega-menu-wrapper {
       width: calc(100% + 100%);
       left: -50%;
+      @include desktop-only {
+        left: calc(-50% + 40px);
+      }
     }
   }
 
@@ -828,7 +831,6 @@
     }
 
     .dropdown-menu {
-
       /* ===== Scrollbar CSS ===== */
       /* Firefox */
       * {
@@ -1267,7 +1269,8 @@ Responsive Classes
 // }
 
 // Medium devices (tablets, 769px and up)
-@media (min-width: 769px) and (max-width: 1023.98px) {}
+@media (min-width: 769px) and (max-width: 1023.98px) {
+}
 
 // Large devices (desktops, 1024px and up)
 @media (min-width: 1024px) and (max-width: 1215px) {

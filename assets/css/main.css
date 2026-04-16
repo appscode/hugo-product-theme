@@ -24407,7 +24407,8 @@ Responsive Classes
     margin-bottom: 0; } }
 @media (min-width: 1024px) and (max-width: 1215px) {
   .container {
-    padding: 0 30px; }
+    padding: 0 30px;
+    max-width: 1170px; }
 
   .section-padding, .ac-ui .home-section {
     padding: 60px 0; }
@@ -24692,7 +24693,7 @@ video {
       .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a img {
         height: 1.58rem; }
       .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a h4 {
-        color: #193D4B;
+        color: #193d4b;
         font-weight: 500;
         line-height: 1;
         font-size: 0.75rem;
@@ -24702,7 +24703,7 @@ video {
           font-size: 1rem;
           font-family: "Oleo Script", system-ui; }
           .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a h4 span.green {
-            color: #35A651; }
+            color: #35a651; }
     .navbar-appscode-wrapper.navbar-product .buttons.has-addons .button {
       font-size: 14px; }
 
@@ -24711,11 +24712,12 @@ video {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1.25rem; }
-  .navbar-appscode.container {
-    padding: 0.5rem 0; }
-    .navbar-appscode.container .mega-menu-wrapper {
-      width: calc(100% + 100%);
-      left: -50%; }
+  .navbar-appscode.container .mega-menu-wrapper {
+    width: calc(100% + 100%);
+    left: -50%; }
+    @media screen and (min-width: 1024px) and (max-width: 1215px) {
+      .navbar-appscode.container .mega-menu-wrapper {
+        left: calc(-50% + 40px); } }
   .navbar-appscode.documentation-menu {
     background-color: #ffffff;
     border-left: 1px solid hsl(var(--secondary-h), 10%, 90%); }
@@ -30636,7 +30638,7 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
     inset: 0;
     background-image: linear-gradient(to right, hsl(var(--ds-gray-200)/0.4) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--ds-gray-200)/0.4) 1px, transparent 1px);
     background-size: 40px 40px;
-    mask-image: radial-gradient(circle at 20% 30%, black, transparent 80%);
+    mask-image: radial-gradient(circle at 80% 30%, black, transparent 80%);
     z-index: 0; }
   .cs-hero .cs-hero-orb {
     position: absolute;

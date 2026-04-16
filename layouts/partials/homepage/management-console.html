@@ -16,8 +16,8 @@
         <div class="console-screenshot-carousel owl-carousel">
           {{ range $index, $shot := $d.screenshots }}
           <div class="console-slide">
-            <div class="console-slide-head is-flex is-align-items-start is-justify-content-space-between has-gap-4 mb-4">
-              <div>
+            <div class="console-slide-head is-flex is-align-items-start is-justify-content-space-between has-gap-4 mb-4 is-fullwidth">
+              <div class="is-flex is-align-items-center is-justify-content-center is-flex-direction-column is-fullwidth">
                 <div class="console-slide-kicker is-text-xs has-text-weight-extrabold is-uppercase">{{ or $shot.kicker "Overview" }}</div>
                 <h3 class="console-slide-title has-text-heading has-text-weight-black">{{ or $shot.title "Database Overview" }}</h3>
                 <p class="console-slide-desc has-text-body is-text-base">{{ or $shot.description "Monitor all your databases from a single dashboard." }}</p>
