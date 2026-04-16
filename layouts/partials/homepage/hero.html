@@ -32,30 +32,26 @@
 
   <div class="container home-hero-container">
     <h1 class="home-hero-title">
-      <span class="home-hero-title-line1">
-        <span class="home-hero-title-plain">{{ $d.title_plain }} </span><span class="home-hero-title-gradient">{{
-          $d.title_gradient }}</span>
-      </span>
-      <span class="home-hero-title-plain">{{ $d.title_line2 }}</span>
+      {{ $d.title_plain | safeHTML }}
     </h1>
 
     <p class="home-hero-desc">{{ $d.description | safeHTML }}</p>
 
-    <div class="hero-diff-row is-flex is-align-items-stretch is-justify-content-center is-flex-wrap-wrap">
+    <div class="hero-diff-row is-flex is-align-items-stretch is-justify-content-center is-flex-wrap-wrap has-gap-4 mb-8">
       {{ range $d.differentiators }}
       <div class="hero-diff-pill">
         <div class="hero-diff-pill-inner">
-          <div class="hero-diff-pill-head is-flex is-align-items-center">
+          <div class="hero-diff-pill-head is-flex is-align-items-center has-gap-1 mb-1">
             <iconify-icon icon="lucide:circle-check-big" width="20" height="20" style="color:#10B981;"></iconify-icon>
-            <span>{{ .title }}</span>
+            <span class="has-text-heading is-text-base has-text-weight-extrabold">{{ .title }}</span>
           </div>
-          <div class="hero-diff-pill-sub">{{ .desc }}</div>
+          <div class="hero-diff-pill-sub has-text-body is-text-xs has-text-weight-medium has-text-left">{{ .desc }}</div>
         </div>
       </div>
       {{ end }}
     </div>
 
-    <div class="buttons is-centered home-hero-ctas">
+    <div class="buttons is-centered home-hero-ctas ds-button-group has-gap-4">
       <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button is-primary hero-btn-primary height-50">
         {{ $d.cta_primary }}
         <iconify-icon icon="heroicons:arrow-right" width="20" height="20"></iconify-icon>

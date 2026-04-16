@@ -2,7 +2,7 @@
 
 <section class="home-section home-section-light">
   <div class="container">
-    <div class="code-wrap use-cases-wrap">
+    <div class="code-wrap ds-card-base use-cases-wrap">
       <div class="section-header">
         <div class="badge badge-light">
           <iconify-icon icon="heroicons:users" width="16" height="16" style="color:#4948A3;"></iconify-icon>
@@ -16,14 +16,14 @@
       </div>
 
       <div class="columns is-multiline">
-        {{ range $d.use_cases }}
+        {{ range $index, $useCase := $d.use_cases }}
         <div class="column is-3-desktop is-6-tablet">
-          <div class="feature-card">
-            <div class="feature-card-icon" style="background: {{ .icon_gradient | safeCSS }};">
-              {{ printf `<iconify-icon icon="%s" width="28" height="28"></iconify-icon>` .icon | safeHTML }}
+          <div class="feature-card ds-card-base is-fullheight">
+            <div class="feature-card-icon feature-card-icon-usecase-{{ $index }} mb-4">
+              {{ printf `<iconify-icon icon="%s" width="28" height="28"></iconify-icon>` $useCase.icon | safeHTML }}
             </div>
-            <h3 class="feature-card-title">{{ .title }}</h3>
-            <p class="feature-card-desc">{{ .desc }}</p>
+            <h3 class="feature-card-title has-text-heading is-text-base has-text-weight-extrabold mb-2">{{ $useCase.title }}</h3>
+            <p class="feature-card-desc has-text-body is-text-base">{{ $useCase.desc }}</p>
           </div>
         </div>
         {{ end }}

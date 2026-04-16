@@ -19,14 +19,14 @@
     </div>
 
     <div class="columns is-multiline is-variable">
-      {{ range $d.features }}
+      {{ range $index, $feature := $d.features }}
       <div class="column is-3-desktop is-6-tablet">
-        <div class="feature-card">
-          <div class="feature-card-icon" style="background: {{ .icon_gradient | safeCSS }};">
-            {{ printf `<iconify-icon icon="%s" width="28" height="28"></iconify-icon>` .icon | safeHTML }}
+        <div class="feature-card ds-card-base is-fullheight">
+          <div class="feature-card-icon feature-card-icon-core-{{ $index }} mb-4">
+            {{ printf `<iconify-icon icon="%s" width="28" height="28"></iconify-icon>` $feature.icon | safeHTML }}
           </div>
-          <h3 class="feature-card-title">{{ .title }}</h3>
-          <p class="feature-card-desc">{{ .desc }}</p>
+          <h3 class="feature-card-title has-text-heading is-text-base has-text-weight-extrabold mb-2">{{ $feature.title }}</h3>
+          <p class="feature-card-desc has-text-body is-text-base">{{ $feature.desc }}</p>
         </div>
       </div>
       {{ end }}
