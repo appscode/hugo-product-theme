@@ -263,6 +263,10 @@ $section-bg-white:
   @each $key, $val in $ac-max-widths {
     @include gen(has-max-width-#{$key}, max-width, $val);
   }
+  @include gen(has-max-width-600, max-width, 600px);
+  @include gen(has-max-width-700, max-width, 700px);
+  @include gen(has-max-width-800, max-width, 800px);
+  @include gen(has-max-width-900, max-width, 900px);
 
   // ── Margin auto ──────────────────────────────────────────────
   .mx-auto {
@@ -427,6 +431,7 @@ $section-bg-white:
   @each $name, $val in $ac-tracking {
     @include gen(has-tracking-#{$name}, letter-spacing, $val);
   }
+  @include gen(has-tracking-tighter, letter-spacing, -0.04em);
 
   // ── Line height ──────────────────────────────────────────────
   $ac-leading: (
@@ -536,6 +541,12 @@ $section-bg-white:
   .\!has-border {
     border: 1px solid $color-border !important;
   }
+  .has-border-md {
+    border: 1.5px solid $color-border;
+  }
+  .has-border-lg {
+    border: 2px solid $color-border;
+  }
   .has-border-light {
     border: 1px solid $color-border-light;
   }
@@ -611,6 +622,13 @@ $section-bg-white:
   @each $key, $val in $ac-opacities {
     @include gen(has-opacity-#{$key}, opacity, $val);
   }
+  @include gen(has-opacity-90, opacity, 0.9);
+  @include gen(has-opacity-80, opacity, 0.8);
+  @include gen(has-opacity-70, opacity, 0.7);
+  @include gen(has-opacity-65, opacity, 0.65);
+  @include gen(has-opacity-60, opacity, 0.6);
+  @include gen(has-opacity-20, opacity, 0.2);
+  @include gen(has-opacity-10, opacity, 0.1);
 
   // ── Cursor ───────────────────────────────────────────────────
   @include gen(is-cursor-pointer, cursor, pointer);
@@ -631,6 +649,13 @@ $section-bg-white:
       box-shadow: $ds-shadow-brand;
     }
   }
+
+  // ── Backdrop Blur ───────────────────────────────────────────
+  @include gen(has-backdrop-blur, backdrop-filter, blur(10px));
+  @include gen(has-backdrop-blur-sm, backdrop-filter, blur(4px));
+  @include gen(has-backdrop-blur-md, backdrop-filter, blur(8px));
+  @include gen(has-backdrop-blur-lg, backdrop-filter, blur(14px));
+  @include gen(has-backdrop-blur-xl, backdrop-filter, blur(20px));
 
   // ── Multi-property utilities ─────────────────────────────────
   .has-text-truncated {
@@ -1341,4 +1366,23 @@ $section-bg-white:
       gap: 0.65rem;
     }
   }
+
+  // ============================================================
+  // BORDER UTILITIES — RESTORED
+  // ============================================================
+  .has-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .has-border-md {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+  }
+  .has-border-lg {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+  }
+  .is-borderless {
+    border: none !important;
+  }
 }
+
+
+
