@@ -2,7 +2,7 @@
 
 {{ $currentPage := . }}
 {{ $menu := .Params.menu_name }}
-{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
 <!-- documentation and search start   -->
 <div class="responsive-menu is-hidden-desktop is-flex is-justify-content-center">
   <div class="is-flex is-justify-content-space-between is-fullwidth pl-20 pr-20">
@@ -141,7 +141,7 @@
 
 {{ $currentPage := . }}
 {{ $menu := .Params.menu_name }}
-{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
 
 <!-- init idx -->
 {{ .Scratch.Add "idx" 0 }}

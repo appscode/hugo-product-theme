@@ -410,7 +410,7 @@
       <!-- appscode navbar end -->
     </div>
     {{ block "header-bottom" . }}
-    {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+    {{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
     {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
     <div class="navbar-appscode-wrapper navbar-product {{ if eq $currentPageType "docs" }} is-docs-page {{ end }}">
       <!-- product navbar start  -->
@@ -425,7 +425,7 @@
             <!-- {{ $currentPageType := index (split .Page.Permalink "/") 3 }} -->
             {{ if eq $currentPageType "docs" }}
             <!-- version select start  -->
-            {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+            {{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
             {{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
             <div class="product-version ml-8">
               <div class="dropdown">
