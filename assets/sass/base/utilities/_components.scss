@@ -191,6 +191,36 @@
       rgba($ac-secondary, 0.22),
       0 10px 30px rgba($ac-primary, 0.08)
     );
+
+    &.badge-primary {
+      background-color: hsl(var(--ds-primary) / 0.1) !important;
+      color: $ds-primary !important;
+      border-color: hsl(var(--ds-primary) / 0.2) !important;
+    }
+  
+    &.badge-secondary {
+      background-color: hsl(var(--ds-secondary) / 0.1) !important;
+      color: $ds-secondary !important;
+      border-color: hsl(var(--ds-secondary) / 0.2) !important;
+    }
+  
+    &.badge-success, &.badge-success-soft {
+      background-color: hsl(var(--ds-success) / 0.1) !important;
+      color: $ds-success !important;
+      border-color: hsl(var(--ds-success) / 0.2) !important;
+    }
+  
+    &.badge-warning {
+      background-color: hsl(var(--ds-warning) / 0.1) !important;
+      color: $ds-warning !important;
+      border-color: hsl(var(--ds-warning) / 0.2) !important;
+    }
+  
+    &.badge-danger {
+      background-color: hsl(var(--ds-error) / 0.1) !important;
+      color: $ds-error !important;
+      border-color: hsl(var(--ds-error) / 0.2) !important;
+    }
   }
 
   .pricing-badge,
