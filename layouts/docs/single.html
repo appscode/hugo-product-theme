@@ -313,11 +313,17 @@
 
   <script>
     // kd version dropdown js
-    var kdDropdown = document.querySelector(".dropdown");
-    var kdDropdownBtn = document.querySelector(".dropdown-trigger");
-    kdDropdownBtn.addEventListener("click", function () {
-      kdDropdown.classList.toggle("is-active");
-    })
+    var kdDropdown = document.querySelector(".js-version-dropdown");
+    var kdDropdownBtn = document.querySelector(".js-version-trigger");
+    if (kdDropdown && kdDropdownBtn) {
+      kdDropdownBtn.addEventListener("click", function () {
+        if (kdDropdownBtn.dataset.hostDocs === "false" && kdDropdownBtn.dataset.versionUrl) {
+          window.open(kdDropdownBtn.dataset.versionUrl, "_blank", "noopener,noreferrer");
+          return;
+        }
+        kdDropdown.classList.toggle("is-active");
+      })
+    }
   </script>
 </div>
 <!-- documentation area end -->

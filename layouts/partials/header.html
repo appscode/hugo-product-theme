@@ -427,21 +427,34 @@
             <!-- version select start  -->
             {{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
             {{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
+            {{ $versionState := newScratch }}
+            {{ range $v := $p.versions }}
+            {{ if and $v.show (eq $v.version $currentBranch) }}
+            {{ $versionState.Set "currentVersion" $v }}
+            {{ end }}
+            {{ end }}
+            {{ $currentVersion := $versionState.Get "currentVersion" }}
+            {{ $currentVersionURL := "" }}
+            {{ with $currentVersion }}
+            {{ if .hostDocs }}
+            {{ $currentVersionURL = printf "/docs/%s/" .version }}
+            {{ else }}
+            {{ $currentVersionURL = printf "https://github.com/%s/tree/%s/docs" $p.docRepo .version }}
+            {{ end }}
+            {{ end }}
             <div class="product-version ml-8">
-              <div class="dropdown">
+              <div class="dropdown js-version-dropdown">
                 <div class="dropdown-trigger">
-                  <button class="button is-justify-content-space-between" aria-haspopup="true"
-                    aria-controls="dropdown-menu3">
+                  <button class="button is-justify-content-space-between js-version-trigger" aria-haspopup="true"
+                    aria-controls="dropdown-menu3"
+                    data-host-docs="{{ if and $currentVersion $currentVersion.hostDocs }}true{{ else }}false{{ end }}"
+                    {{ with $currentVersionURL }}data-version-url="{{ . }}"{{ end }}>
 
 
-                    {{ range $v := $p.versions }}
-                    {{ if $v.show }}
-                    {{ if and $v.hostDocs (eq $v.version $currentBranch) }}
-                    <span>{{ $v.version }}</span>
-                    {{ if eq $v.version $p.latestVersion }}
+                    {{ with $currentVersion }}
+                    <span>{{ .version }}</span>
+                    {{ if eq .version $p.latestVersion }}
                     <span class="new-item">Latest</span>
-                    {{ end }}
-                    {{ end }}
                     {{ end }}
                     {{ end }}
                     <span class="arrow">
@@ -457,7 +470,7 @@
                     <a href="/docs/{{ $v.version }}/" class="dropdown-item">{{ $v.version }}
                       {{ if eq $v.version $p.latestVersion }} <div class="new-item ml-15">Latest</div> {{ end }}</a>
                     {{ else }}
-                    <a href="https://github.com/{{ $p.docRepo }}/tree/{{ $v.version }}/docs" target="_blank"
+                    <a href="https://github.com/{{ $p.docRepo }}/tree/{{ $v.version }}/docs" target="_blank" rel="noopener noreferrer"
                       class="dropdown-item">{{ $v.version }}</a>
                     {{ end }}
                     {{ end }}

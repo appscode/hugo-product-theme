@@ -80,19 +80,32 @@
 
       <div class="kd-version">
         {{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
+        {{ $versionState := newScratch }}
+        {{ range $v := $p.versions }}
+        {{ if and $v.show (eq $v.version $currentBranch) }}
+        {{ $versionState.Set "currentVersion" $v }}
+        {{ end }}
+        {{ end }}
+        {{ $currentVersion := $versionState.Get "currentVersion" }}
+        {{ $currentVersionURL := "" }}
+        {{ with $currentVersion }}
+        {{ if .hostDocs }}
+        {{ $currentVersionURL = printf "/docs/%s/" .version }}
+        {{ else }}
+        {{ $currentVersionURL = printf "https://github.com/%s/tree/%s/docs" $p.docRepo .version }}
+        {{ end }}
+        {{ end }}
 
-        <div class="dropdown">
+        <div class="dropdown js-version-dropdown">
           <div class="dropdown-trigger">
-            <button class="button is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu3">
+            <button class="button is-fullwidth js-version-trigger" aria-haspopup="true" aria-controls="dropdown-menu3"
+              data-host-docs="{{ if and $currentVersion $currentVersion.hostDocs }}true{{ else }}false{{ end }}"
+              {{ with $currentVersionURL }}data-version-url="{{ . }}"{{ end }}>
 
-              {{ range $v := $p.versions }}
-              {{ if $v.show }}
-              {{ if and $v.hostDocs (eq $v.version $currentBranch) }}
-              <span><strong class="icon"><i class="fa fa-cog" aria-hidden="true"></i></strong>{{ $v.version }}</span>
-              {{ if eq $v.version $p.latestVersion }}
+              {{ with $currentVersion }}
+              <span><strong class="icon"><i class="fa fa-cog" aria-hidden="true"></i></strong>{{ .version }}</span>
+              {{ if eq .version $p.latestVersion }}
               <span class="new-item">Latest</span>
-              {{ end }}
-              {{ end }}
               {{ end }}
               {{ end }}
 
@@ -109,7 +122,7 @@
               <a href="/docs/{{ $v.version }}/" class="dropdown-item">{{ $v.version }}
                 {{ if eq $v.version $p.latestVersion }} <div class="tag">Latest</div> {{ end }}</a>
               {{ else }}
-              <a href="https://github.com/{{ $p.docRepo }}/tree/{{ $v.version }}/docs" target="_blank"
+              <a href="https://github.com/{{ $p.docRepo }}/tree/{{ $v.version }}/docs" target="_blank" rel="noopener noreferrer"
                 class="dropdown-item">{{ $v.version }}</a>
               {{ end }}
               {{ end }}
@@ -233,11 +246,17 @@
   <!-- right sidebar end  -->
   <script>
     // kd version dropdown js
-    var kdDropdown = document.querySelector(".dropdown");
-    var kdDropdownBtn = document.querySelector(".dropdown-trigger");
-    kdDropdownBtn.addEventListener("click", function () {
-      kdDropdown.classList.toggle("is-active");
-    })
+    var kdDropdown = document.querySelector(".js-version-dropdown");
+    var kdDropdownBtn = document.querySelector(".js-version-trigger");
+    if (kdDropdown && kdDropdownBtn) {
+      kdDropdownBtn.addEventListener("click", function () {
+        if (kdDropdownBtn.dataset.hostDocs === "false" && kdDropdownBtn.dataset.versionUrl) {
+          window.open(kdDropdownBtn.dataset.versionUrl, "_blank", "noopener,noreferrer");
+          return;
+        }
+        kdDropdown.classList.toggle("is-active");
+      })
+    }
   </script>
 </div>
 <!-- documentation area end -->
