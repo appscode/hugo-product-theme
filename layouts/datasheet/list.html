@@ -1,5 +1,5 @@
 {{ define "body" }}
-{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
 
 {{ $data := dict }}
 {{ if .Params.data }}

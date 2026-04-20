@@ -1,4 +1,4 @@
-{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $p := (index .Site.Data.products (default .Site.Params.product_key .Params.info.product)) }}
 
 <script>function vqTrackId(){return 'cfececff-9dfc-4c70-9915-dde1416b7010';} (function(d, e) { var el = d.createElement(e); el.sa = function(an, av){this.setAttribute(an, av); return this;}; el.sa('id', 'vq_tracking').sa('src', '//t.visitorqueue.com/p/tracking.min.js?id='+vqTrackId()).sa('async', 1).sa('data-id', vqTrackId()); d.getElementsByTagName(e)[0].parentNode.appendChild(el); })(document, 'script'); </script>
 <!-- Google Tag Manager -->
