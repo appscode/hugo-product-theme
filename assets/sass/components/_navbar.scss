@@ -371,11 +371,37 @@
     .product-menu {
       display: grid;
       grid-template-columns: auto auto;
-      width: 60%;
+      width: 100%;
       float: left;
 
-      &.database-list {
+      &.custom-products-list {
+        width: 100%;
         grid-template-columns: auto auto auto;
+
+        .single-product {
+          grid-template-columns: 40px auto 1.5rem;
+          width: 100%;
+          padding: 0.7rem;
+
+          .product-logo {
+            height: 40px;
+            width: 40px;
+
+            img {
+              height: 1.5rem;
+            }
+          }
+
+          .navigate-icon {
+            .icon {
+              width: 1rem;
+            }
+          }
+        }
+      }
+
+      &.database-list {
+        grid-template-columns: auto auto auto auto;
 
         .single-product {
           grid-template-columns: 40px auto 1.5rem;
@@ -1318,6 +1344,10 @@ Responsive Classes
       .product-menu {
         grid-template-columns: auto;
         width: calc(50% - 5rem);
+
+        &.custom-products-list {
+          width: 100%;
+        }
       }
 
       .product-description {
@@ -1377,6 +1407,10 @@ Responsive Classes
       .product-menu {
         grid-template-columns: auto;
         width: calc(50% - 5rem);
+
+        &.custom-products-list {
+          width: 100%;
+        }
       }
 
       .product-description {
