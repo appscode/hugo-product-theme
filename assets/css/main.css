@@ -32540,7 +32540,6 @@ strong {
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  display: inline-block !important;
 }
 .ac-ui .bg-grad-indigo {
   background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
