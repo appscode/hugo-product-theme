@@ -1293,14 +1293,30 @@ $section-bg-white:
   }
 
   // ── Gradient icon backgrounds ─────────────────────────────────
-  .bg-grad-blue   { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
-  .bg-grad-purple { background: linear-gradient(135deg, #a855f7, #6366f1); }
-  .bg-grad-orange { background: linear-gradient(135deg, #f97316, #eab308); }
-  .bg-grad-green  { background: linear-gradient(135deg, #10b981, #059669); }
-  .bg-grad-red    { background: linear-gradient(135deg, #ef4444, #f97316); }
-  .bg-grad-yellow { background: linear-gradient(135deg, #eab308, #f97316); }
-  .bg-grad-pink   { background: linear-gradient(135deg, #ec4899, #a855f7); }
-  .bg-grad-cyan   { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+  .bg-grad-blue {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  }
+  .bg-grad-purple {
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+  }
+  .bg-grad-orange {
+    background: linear-gradient(135deg, #f97316, #eab308);
+  }
+  .bg-grad-green {
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+  .bg-grad-red {
+    background: linear-gradient(135deg, #ef4444, #f97316);
+  }
+  .bg-grad-yellow {
+    background: linear-gradient(135deg, #eab308, #f97316);
+  }
+  .bg-grad-pink {
+    background: linear-gradient(135deg, #ec4899, #a855f7);
+  }
+  .bg-grad-cyan {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  }
 
   // ── Semantic dark text colors ─────────────────────────────────
   @include gen-color(has-text-danger-dark, color, #991b1b);
@@ -1425,61 +1441,165 @@ $section-bg-white:
   // ============================================================
 
   // ── Soft/light semantic backgrounds ──────────────────────────
-  .has-background-grey-lightest         { background-color: #F8FAFC !important; }
-  .has-background-dark-navy             { background-color: #0b1120 !important; }
-  .has-background-code-dark             { background-color: #0F172A !important; }
-  .has-background-danger-light          { background-color: #fee2e2 !important; }
-  .has-background-success-light         { background-color: #d1fae5 !important; }
-  .has-background-warning-softer        { background-color: #fff7ed !important; }
+  .has-background-grey-lightest {
+    background-color: #f8fafc !important;
+  }
+  .has-background-dark-navy {
+    background-color: #0b1120 !important;
+  }
+  .has-background-code-dark {
+    background-color: #0f172a !important;
+  }
+  .has-background-danger-light {
+    background-color: #fee2e2 !important;
+  }
+  .has-background-success-light {
+    background-color: #d1fae5 !important;
+  }
+  .has-background-warning-softer {
+    background-color: #fff7ed !important;
+  }
 
   // ── Gradient backgrounds ──────────────────────────────────────
-  .has-background-gradient-light        { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important; }
-  .has-background-gradient-danger-soft  { background: linear-gradient(to bottom right, #fef2f2, #fff7ed) !important; }
-  .has-background-gradient-success-soft { background: linear-gradient(to bottom right, #f0fdf4, #f0fdfa) !important; }
-  .has-background-gradient-dark-panel   { background: linear-gradient(135deg, #1e293b, #0f172a) !important; }
+  .has-background-gradient-light {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  }
+  .has-background-gradient-danger-soft {
+    background: linear-gradient(to bottom right, #fef2f2, #fff7ed) !important;
+  }
+  .has-background-gradient-success-soft {
+    background: linear-gradient(to bottom right, #f0fdf4, #f0fdfa) !important;
+  }
+  .has-background-gradient-dark-panel {
+    background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+  }
 
   // ── Semantic border shorthands ────────────────────────────────
-  .has-border-danger-soft     { border: 1px solid #FECDD3 !important; }
-  .has-border-danger-light    { border: 1px solid #fee2e2 !important; }
-  .has-border-danger-lightest { border: 1px solid #fecaca !important; }
-  .has-border-success-light   { border: 1px solid #d1fae5 !important; }
-  .has-border-success-medium  { border: 1px solid #a7f3d0 !important; }
-  .has-border-warning-light   { border: 1px solid #ffedd5 !important; }
-  .has-border-grey-lightest   { border: 1px solid #f1f5f9 !important; }
-  .has-border-grey-200        { border: 1px solid #e2e8f0 !important; }
-  .has-border-dark            { border: 1px solid #334155 !important; }
-  .has-border-top-grey-light  { border-top: 1px solid #cbd5e1 !important; }
+  .has-border-danger-soft {
+    border: 1px solid #fecdd3 !important;
+  }
+  .has-border-danger-light {
+    border: 1px solid #fee2e2 !important;
+  }
+  .has-border-danger-lightest {
+    border: 1px solid #fecaca !important;
+  }
+  .has-border-success-light {
+    border: 1px solid #d1fae5 !important;
+  }
+  .has-border-success-medium {
+    border: 1px solid #a7f3d0 !important;
+  }
+  .has-border-warning-light {
+    border: 1px solid #ffedd5 !important;
+  }
+  .has-border-grey-lightest {
+    border: 1px solid #f1f5f9 !important;
+  }
+  .has-border-grey-200 {
+    border: 1px solid #e2e8f0 !important;
+  }
+  .has-border-dark {
+    border: 1px solid #334155 !important;
+  }
+  .has-border-top-grey-light {
+    border-top: 1px solid #cbd5e1 !important;
+  }
 
   // ── Semantic text colors ──────────────────────────────────────
-  .has-text-danger-light { color: #F87171 !important; }
-  .has-text-indigo       { color: #6366f1 !important; }
-  .has-text-purple-light { color: #c084fc !important; }
-  .has-text-blue-light   { color: #60a5fa !important; }
-  .has-text-green-light  { color: #4ade80 !important; }
-  .has-text-code-green   { color: #6EE7B7 !important; }
-  .has-text-slate        { color: #94a3b8 !important; }
+  .has-text-danger-light {
+    color: #f87171 !important;
+  }
+  .has-text-indigo {
+    color: #6366f1 !important;
+  }
+  .has-text-purple-light {
+    color: #c084fc !important;
+  }
+  .has-text-blue-light {
+    color: #60a5fa !important;
+  }
+  .has-text-green-light {
+    color: #4ade80 !important;
+  }
+  .has-text-code-green {
+    color: #6ee7b7 !important;
+  }
+  .has-text-slate {
+    color: #94a3b8 !important;
+  }
 
   // ── Typography ────────────────────────────────────────────────
-  .is-size-0  { font-size: 4.5rem !important; }
-  .is-size-1h { font-size: 3.5rem !important; }
-  .font-mono  { font-family: 'JetBrains Mono', 'Fira Code', monospace !important; }
+  .is-size-0 {
+    font-size: 4.5rem !important;
+  }
+  .is-size-1h {
+    font-size: 3.5rem !important;
+  }
+  .font-mono {
+    font-family: "JetBrains Mono", "Fira Code", monospace !important;
+  }
 
   // ── Shadows (Tailwind-style aliases) ─────────────────────────
-  .shadow-2xl   { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important; }
-  .shadow-xl    { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important; }
-  .shadow-lg    { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; }
-  .shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !important; }
+  .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  }
+  .shadow-xl {
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  }
+  .shadow-lg {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+  .shadow-inner {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !important;
+  }
 
   // ── Hover translate ───────────────────────────────────────────
   .hover-translate-up {
     transition: transform 0.3s ease;
-    &:hover { transform: translateY(-4px); }
+    &:hover {
+      transform: translateY(-4px);
+    }
   }
 
   // ── Comparison grid column widths ─────────────────────────────
-  .comparison-col-wide { flex: 1.2 !important; }
-  .comparison-col      { flex: 1 !important; }
+  .comparison-col-wide {
+    flex: 1.2 !important;
+  }
+  .comparison-col {
+    flex: 1 !important;
+  }
+
+  .tracking-tight {
+    letter-spacing: -0.04em;
+  }
+
+  .indigo-icon {
+    color: #6366f1 !important;
+  }
+
+  .text-gradient,
+  .gitops-gradient-text {
+    background: linear-gradient(135deg, #4948a3, #7272e9);
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    display: inline-block !important;
+  }
+
+  .bg-grad-indigo {
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+  }
+
+  .bg-grad-vibrant {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+  }
 }
-
-
-
