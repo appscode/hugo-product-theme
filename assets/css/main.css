@@ -32415,13 +32415,13 @@ strong {
   border: none !important;
 }
 .ac-ui .has-background-grey-lightest {
-  background-color: #F8FAFC !important;
+  background-color: #f8fafc !important;
 }
 .ac-ui .has-background-dark-navy {
   background-color: #0b1120 !important;
 }
 .ac-ui .has-background-code-dark {
-  background-color: #0F172A !important;
+  background-color: #0f172a !important;
 }
 .ac-ui .has-background-danger-light {
   background-color: #fee2e2 !important;
@@ -32445,7 +32445,7 @@ strong {
   background: linear-gradient(135deg, #1e293b, #0f172a) !important;
 }
 .ac-ui .has-border-danger-soft {
-  border: 1px solid #FECDD3 !important;
+  border: 1px solid #fecdd3 !important;
 }
 .ac-ui .has-border-danger-light {
   border: 1px solid #fee2e2 !important;
@@ -32475,7 +32475,7 @@ strong {
   border-top: 1px solid #cbd5e1 !important;
 }
 .ac-ui .has-text-danger-light {
-  color: #F87171 !important;
+  color: #f87171 !important;
 }
 .ac-ui .has-text-indigo {
   color: #6366f1 !important;
@@ -32490,7 +32490,7 @@ strong {
   color: #4ade80 !important;
 }
 .ac-ui .has-text-code-green {
-  color: #6EE7B7 !important;
+  color: #6ee7b7 !important;
 }
 .ac-ui .has-text-slate {
   color: #94a3b8 !important;
@@ -32527,6 +32527,29 @@ strong {
 }
 .ac-ui .comparison-col {
   flex: 1 !important;
+}
+.ac-ui .tracking-tight {
+  letter-spacing: -0.04em;
+}
+.ac-ui .indigo-icon {
+  color: #6366f1 !important;
+}
+.ac-ui .text-gradient,
+.ac-ui .gitops-gradient-text {
+  background: linear-gradient(135deg, #4948a3, #7272e9);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+}
+.ac-ui .bg-grad-indigo {
+  background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+}
+.ac-ui .bg-grad-vibrant {
+  transition: all 0.3s ease;
+}
+.ac-ui .bg-grad-vibrant:hover {
+  transform: scale(1.05) rotate(2deg);
 }
 
 .badge {
@@ -32865,6 +32888,127 @@ strong {
     width: 100%;
     justify-content: center;
   }
+}
+.ac-ui .benefit-card {
+  border-radius: 32px !important;
+  border: 1px solid #f1f5f9 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+.ac-ui .benefit-card:hover {
+  border-color: rgba(99, 102, 241, 0.2) !important;
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.12) !important;
+  transform: translateY(-8px) !important;
+}
+.ac-ui .benefit-icon-vibrant {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+.ac-ui .benefit-card:hover .benefit-icon-vibrant {
+  transform: scale(1.1) rotate(5deg);
+}
+.ac-ui .platform-feature-card {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 32px !important;
+  transition: all 0.3s ease;
+}
+.ac-ui .platform-feature-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+}
+.ac-ui .faq-item-custom {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+.ac-ui .faq-item-custom.is-open {
+  border-color: #6366f1 !important;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.1);
+}
+.ac-ui .faq-item-custom.is-open .faq-icon-box {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+}
+.ac-ui .faq-trigger-button {
+  width: 100%;
+  text-align: left;
+  padding: 24px 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.ac-ui .faq-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ac-ui .faq-inner-content {
+  padding: 0 32px 32px 32px;
+  border-top: 1px solid #f8fafc;
+  margin-top: -8px;
+  padding-top: 24px;
+}
+.ac-ui .gitops-badge-secondary {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #d1fae5;
+}
+.ac-ui .code-window {
+  background: #0f172a;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+.ac-ui .code-content {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  color: #34d399;
+  line-height: 1.6;
+}
+.ac-ui .conflict-box {
+  border: 1px solid #fee2e2;
+  background: #ffffff;
+}
+.ac-ui .saas-comparison-table {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+}
+.ac-ui .saas-comparison-table thead th {
+  padding: 24px 32px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+.ac-ui .saas-comparison-table tbody td {
+  padding: 24px 32px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+.ac-ui .saas-comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.ac-ui .saas-comparison-table .highlight-col {
+  background: #ffffff;
+  color: var(--p-logo-color);
+  font-weight: 700;
 }
 
 /* ======================
