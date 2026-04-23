@@ -34259,7 +34259,27 @@ video {
 }
 .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
   width: 100%;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto;
+}
+@media screen and (max-width: 768px) {
+  .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
+    grid-template-columns: auto;
+  }
+}
+@media screen and (min-width: 769px), print {
+  .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
+    grid-template-columns: auto auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media screen and (min-width: 1408px) {
+  .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
+    grid-template-columns: auto auto auto auto;
+  }
 }
 .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list .single-product {
   grid-template-columns: 40px auto 1.5rem;
@@ -38717,7 +38737,7 @@ code:not(pre code) {
   }
 }
 .ac-ui .home-hero {
-  padding: 180px 0 80px;
+  padding: 130px 0 80px;
   background: linear-gradient(135deg, #ffffff 0%, #f9f9ff 50%, #ffffff 100%);
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
@@ -38958,7 +38978,7 @@ code:not(pre code) {
 .ac-ui .home-hero-title {
   max-width: 980px;
   margin: 1.2rem auto 1.35rem;
-  font-size: clamp(2.5rem, 5.6vw, 5rem);
+  font-size: 4rem;
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -38990,7 +39010,7 @@ code:not(pre code) {
 .ac-ui .home-hero-desc {
   max-width: 760px;
   margin: 0 auto 2.2rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.4;
   color: hsl(var(--secondary-h), 10%, 20%);
