@@ -39819,16 +39819,6 @@ code:not(pre code) {
 .ac-ui .case-card-quote strong {
   color: hsl(var(--secondary-h), 10%, 10%);
 }
-.ac-ui .cta-section {
-  padding-top: 2rem;
-  padding-bottom: 6rem;
-}
-@media screen and (max-width: 768px) {
-  .ac-ui .cta-section {
-    padding-top: 1.25rem;
-    padding-bottom: 4rem;
-  }
-}
 .ac-ui .cta-section::before {
   opacity: 0.12;
 }
