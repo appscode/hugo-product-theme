@@ -114,8 +114,9 @@
 							<p class="psc-period is-text-sm has-text-body">{{ $plan.period }}</p>
 						</div>
 						{{ $supportButtonClass := cond (eq $plan.cta_type "primary") "is-primary" "is-outlined" }}
+						{{ $ctaURL := cond (eq $plan.cta_type "primary") $setupURL $contactURL }}
 						<div class="psc-cta">
-							<a href="{{ $contactURL }}" class="button {{ $supportButtonClass }} is-fullwidth">
+							<a href="{{ $ctaURL }}" class="button {{ $supportButtonClass }} is-fullwidth">
 								<span>{{ $plan.cta }}</span>
 								<iconify-icon icon="lucide:arrow-right" width="16" height="16"></iconify-icon>
 							</a>
