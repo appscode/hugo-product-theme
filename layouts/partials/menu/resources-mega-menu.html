@@ -1,0 +1,104 @@
+{{ $page := .page }}
+{{ $entry := .entry }}
+{{ $resourceChildren := $entry.Children.ByWeight }}
+<div class="resource-menu columns is-variable is-6 is-multiline">
+  <div class="column is-12-mobile is-4-tablet is-4-desktop">
+    <div class="resource-menu-nav is-flex is-flex-direction-column">
+      {{ range $index, $child := $resourceChildren }}
+      {{ $tabDesc := $child.Title | default $child.Post }}
+      {{ if eq $child.Identifier "articles" }}
+        {{ $tabDesc = "Latest posts & tutorials" }}
+      {{ else if eq $child.Identifier "documentation-resources" }}
+        {{ $tabDesc = "Guides, references & API docs" }}
+      {{ end }}
+      <button type="button" class="resource-menu-tab {{ if eq $index 0 }}is-active{{ end }}" data-resource-target="{{ $child.Identifier }}">
+        <span class="resource-menu-tab-title">{{ $child.Name }}</span>
+        <span class="resource-menu-tab-desc">{{ $tabDesc }}</span>
+      </button>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="column is-12-mobile is-8-tablet is-8-desktop">
+    <div class="resource-menu-panels">
+      {{ range $index, $child := $resourceChildren }}
+      {{ $ctaText := "Explore Resources" }}
+      {{ $footerMsg := "Find everything you need in one place." }}
+      {{ if eq $child.Identifier "articles" }}
+        {{ $ctaText = "Browse All Articles" }}
+        {{ $footerMsg = "Stay up to date with guides, tutorials, and best practices." }}
+      {{ else if eq $child.Identifier "documentation-resources" }}
+        {{ $ctaText = "Open Documentation Hub" }}
+        {{ $footerMsg = "Everything you need to deploy and manage databases on Kubernetes." }}
+      {{ end }}
+      <div class="resource-menu-panel {{ if eq $index 0 }}is-active{{ end }}" data-resource-panel="{{ $child.Identifier }}">
+      <div class="product-menu resources-products-list">
+        {{ if eq $child.Identifier "articles" }}
+          {{ $articles := first 3 (where $page.Site.RegularPages.ByDate.Reverse "Section" "articles") }}
+          {{ range $articles }}
+          <a href="{{ .RelPermalink }}" class="single-product">
+            <div class="product-logo">
+              <iconify-icon icon="lucide:newspaper" width="1.5rem" height="1.5rem"></iconify-icon>
+            </div>
+            <div class="product-info">
+              <h6>{{ .Title }}</h6>
+              <p>{{ .Description | default (.Summary | plainify | truncate 90) }}</p>
+            </div>
+            <div class="navigate-icon">
+              <span class="icon arrow-forward">
+                <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+              </span>
+            </div>
+          </a>
+          {{ end }}
+        {{ else if $child.HasChildren }}
+          {{ range $child.Children.ByWeight }}
+          <a href="{{ .URL }}" class="single-product">
+            <div class="product-logo">
+              {{ if (and .Pre (strings.HasPrefix .Pre "/assets")) }}
+              <img src="{{ .Pre }}" alt="{{ .Name }}" style="width: 1.5rem; height: 1.5rem; object-fit: contain;">
+              {{ else }}
+              <iconify-icon {{ printf "icon=%q" (default "lucide:box" .Pre) | safeHTMLAttr }} width="1.5rem" height="1.5rem"></iconify-icon>
+              {{ end }}
+            </div>
+            <div class="product-info">
+              <h6>{{ .Name }}</h6>
+              <p>{{ .Title | default .Post }}</p>
+            </div>
+            <div class="navigate-icon">
+              <span class="icon arrow-forward">
+                <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+              </span>
+            </div>
+          </a>
+          {{ end }}
+        {{ else }}
+          <a href="{{ $child.URL | default "#" }}" class="single-product">
+            <div class="product-logo">
+              <iconify-icon {{ printf "icon=%q" (default "lucide:box" $child.Pre) | safeHTMLAttr }} width="1.5rem" height="1.5rem"></iconify-icon>
+            </div>
+            <div class="product-info">
+              <h6>{{ $child.Name }}</h6>
+              <p>{{ $child.Title | default $child.Post }}</p>
+            </div>
+            <div class="navigate-icon">
+              <span class="icon arrow-forward">
+                <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+              </span>
+            </div>
+          </a>
+        {{ end }}
+      </div>
+
+      <div class="resource-menu-panel-footer">
+        <p>{{ $footerMsg }}</p>
+        <a href="{{ $child.URL | default "#" }}" class="resource-menu-view-all">
+          {{ $ctaText }}
+          <iconify-icon icon="heroicons:arrow-up-right" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </div>
+      {{ end }}
+    </div>
+  </div>
+</div>

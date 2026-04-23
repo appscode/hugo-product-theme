@@ -480,17 +480,17 @@ li.nav-item.active a {
 .right-sidebar-area {
   padding: 0 1.25rem 0 0;
   position: sticky;
-  top: 140px;
+  top: 100px;
   transition: 0.3s ease-in-out;
   @include touch {
-    top: 120px;
+    top: 100px;
   }
 }
 
 body {
   &:has(.headroom--pinned ) {
     .right-sidebar-area {
-      top: 140px;
+      top: 100px;
       @include touch {
         top: 120px;
       }
@@ -498,7 +498,7 @@ body {
   }
   &:has(.headroom--unpinned ) {
     .right-sidebar-area {
-      top: 130px;
+      top: 100px;
       @include touch {
         top: 60px;
       }
