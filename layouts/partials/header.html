@@ -119,6 +119,9 @@
                     </span>
                     <span>Back</span>
                   </button>
+                  {{ if eq .Identifier "resources" }}
+                  {{ partial "menu/resources-mega-menu.html" (dict "page" $ "entry" . "product" $p) }}
+                  {{ else }}
                   <!-- product start  -->
                   {{ $parentID := .Identifier }}
                   {{ $pm_class := cond (eq .Identifier "database") "database-list" "custom-products-list" }}
@@ -169,6 +172,7 @@
 
                   </div>
                   <!-- product end -->
+                  {{ end }}
                 </div>
               </div>
               <!-- mega-menu wrapper -->
@@ -253,6 +257,22 @@
           navbarRightAll[idx].classList.toggle("is-visible");
         });
       })
+
+      document.querySelectorAll('.resource-menu').forEach((menu) => {
+        const tabs = menu.querySelectorAll('[data-resource-target]');
+        const panels = menu.querySelectorAll('[data-resource-panel]');
+
+        const activateTab = (target) => {
+          tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.resourceTarget === target));
+          panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.resourcePanel === target));
+        };
+
+        tabs.forEach((tab) => {
+          tab.addEventListener('mouseenter', () => activateTab(tab.dataset.resourceTarget));
+          tab.addEventListener('focus', () => activateTab(tab.dataset.resourceTarget));
+          tab.addEventListener('click', () => activateTab(tab.dataset.resourceTarget));
+        });
+      });
     </script>
   </div>
   <!-- new navbar area end -->
