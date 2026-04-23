@@ -376,8 +376,19 @@
 
       &.custom-products-list {
         width: 100%;
-        grid-template-columns: auto auto auto;
-
+        grid-template-columns: auto;
+        @include mobile {
+          grid-template-columns: auto;
+        }
+        @include tablet {
+          grid-template-columns: auto auto;
+        }
+        @include desktop {
+          grid-template-columns: auto auto auto;
+        }
+        @include fullhd {
+          grid-template-columns: auto auto auto auto;
+        }
         .single-product {
           grid-template-columns: 40px auto 1.5rem;
           width: 100%;
