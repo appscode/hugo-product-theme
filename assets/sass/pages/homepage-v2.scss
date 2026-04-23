@@ -1456,14 +1456,6 @@
 
   // ── CTA section ───────────────────────────────────────────
   .cta-section {
-    padding-top: 2rem;
-    padding-bottom: 6rem;
-
-    @include mobile {
-      padding-top: 1.25rem;
-      padding-bottom: 4rem;
-    }
-
     &::before {
       opacity: 0.12;
     }
