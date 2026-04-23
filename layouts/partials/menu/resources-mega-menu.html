@@ -10,6 +10,14 @@
         {{ $tabDesc = "Latest posts & tutorials" }}
       {{ else if eq $child.Identifier "documentation-resources" }}
         {{ $tabDesc = "Guides, references & API docs" }}
+      {{ else if eq $child.Identifier "case-studies" }}
+        {{ $tabDesc = "Customer success stories" }}
+      {{ else if eq $child.Identifier "webinars" }}
+        {{ $tabDesc = "Live & on-demand sessions" }}
+      {{ else if eq $child.Identifier "blog" }}
+        {{ $tabDesc = "Articles, tutorials & insights" }}
+      {{ else if eq $child.Identifier "videos" }}
+        {{ $tabDesc = "Tutorials, demos & walkthroughs" }}
       {{ end }}
       <button type="button" class="resource-menu-tab {{ if eq $index 0 }}is-active{{ end }}" data-resource-target="{{ $child.Identifier }}">
         <span class="resource-menu-tab-title">{{ $child.Name }}</span>
@@ -30,6 +38,18 @@
       {{ else if eq $child.Identifier "documentation-resources" }}
         {{ $ctaText = "Open Documentation Hub" }}
         {{ $footerMsg = "Everything you need to deploy and manage databases on Kubernetes." }}
+      {{ else if eq $child.Identifier "case-studies" }}
+        {{ $ctaText = "View All Case Studies" }}
+        {{ $footerMsg = "See how teams run production databases on Kubernetes with KubeDB." }}
+      {{ else if eq $child.Identifier "webinars" }}
+        {{ $ctaText = "Watch All Webinars" }}
+        {{ $footerMsg = "Tune in for live demos, deep-dives, and expert database sessions." }}
+      {{ else if eq $child.Identifier "blog" }}
+        {{ $ctaText = "Visit the Blog" }}
+        {{ $footerMsg = "Stay up to date with the latest from the KubeDB engineering team." }}
+      {{ else if eq $child.Identifier "videos" }}
+        {{ $ctaText = "Watch on YouTube" }}
+        {{ $footerMsg = "Explore tutorials, product demos, and live session recordings." }}
       {{ end }}
       <div class="resource-menu-panel {{ if eq $index 0 }}is-active{{ end }}" data-resource-panel="{{ $child.Identifier }}">
       <div class="product-menu resources-products-list">
@@ -39,6 +59,24 @@
           <a href="{{ .RelPermalink }}" class="single-product">
             <div class="product-logo">
               <iconify-icon icon="lucide:newspaper" width="1.5rem" height="1.5rem"></iconify-icon>
+            </div>
+            <div class="product-info">
+              <h6>{{ .Title }}</h6>
+              <p>{{ .Description | default (.Summary | plainify | truncate 90) }}</p>
+            </div>
+            <div class="navigate-icon">
+              <span class="icon arrow-forward">
+                <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+              </span>
+            </div>
+          </a>
+          {{ end }}
+        {{ else if eq $child.Identifier "case-studies" }}
+          {{ $caseStudies := first 3 (where $page.Site.RegularPages.ByWeight "Section" "case-studies") }}
+          {{ range $caseStudies }}
+          <a href="{{ .RelPermalink }}" class="single-product">
+            <div class="product-logo">
+              <iconify-icon icon="lucide:briefcase" width="1.5rem" height="1.5rem"></iconify-icon>
             </div>
             <div class="product-info">
               <h6>{{ .Title }}</h6>
