@@ -57,7 +57,7 @@
             {{- $overview := cond (eq .id "kubedump") "overview/" "" -}}
 
             <a
-              href="/docs/{{ $latestVersion }}/{{ if $showAddons }}addons{{ else }}guides{{ end }}/{{ $page }}/{{ $overview }}"
+              href="/docs/latest/{{ if $showAddons }}addons{{ else }}guides{{ end }}/{{ $page }}/{{ $overview }}"
               class="button ac-button is-primary"
             >
               USER GUIDES
