@@ -34261,6 +34261,11 @@ video {
 .mega-menu-wrapper .mega-menu-inner .resource-menu {
   width: 100%;
 }
+.mega-menu-wrapper .mega-menu-inner .resource-menu .resource-card-icon-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
 .mega-menu-wrapper .mega-menu-inner .resource-menu .resource-menu-nav {
   gap: 0.75rem;
   padding-right: 1rem;

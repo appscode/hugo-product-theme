@@ -377,6 +377,12 @@
     .resource-menu {
       width: 100%;
 
+      .resource-card-icon-img {
+        width: 1.5rem;
+        height: 1.5rem;
+        object-fit: contain;
+      }
+
       .resource-menu-nav {
         gap: 0.75rem;
         padding-right: 1rem;
