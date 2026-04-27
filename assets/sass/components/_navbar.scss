@@ -1653,3 +1653,47 @@ Responsive Classes
     display: none !important;
   }
 }
+
+// --- Dropdown Redesign (SCSS only, HTML unchanged) ---
+.navbar-right .nav-item {
+  position: relative;
+  &:hover > .mega-menu-wrapper,
+  &:focus-within > .mega-menu-wrapper {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 100;
+  }
+  .mega-menu-wrapper {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.7rem;
+    background: $ac-white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(80,80,180,0.13);
+    min-width: 300px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s cubic-bezier(.4,0,.2,1);
+    &.products-dropdown,
+    &.solutions-dropdown {
+      width: 400px;
+      min-width: 400px;
+      max-width: 400px;
+    }
+    &.database-dropdown,
+    &.partners-dropdown,
+    &.resources-dropdown {
+      width: 900px;
+      min-width: 900px;
+      max-width: 900px;
+    }
+  }
+  &:hover > .mega-menu-wrapper,
+  &:focus-within > .mega-menu-wrapper {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
