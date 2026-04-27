@@ -1,3 +1,35 @@
+// Custom dropdown columns for navbar mega menus
+.navbar-area {
+  // Products dropdown: 1 column
+  .mega-menu-wrapper.products-dropdown {
+    .mega-menu-inner {
+      .custom-products-list {
+        grid-template-columns: auto;
+        max-width: 500px;
+      }
+    }
+  }
+  // Solutions dropdown: 2 columns
+  .mega-menu-wrapper.solutions-dropdown {
+    .mega-menu-inner {
+      .custom-products-list {
+        grid-template-columns: auto;
+        max-width: 500px;
+      }
+    }
+  }
+  // Partners dropdown: 3 columns
+  .mega-menu-wrapper.partners-dropdown {
+    .mega-menu-inner {
+      .custom-products-list {
+        grid-template-columns: auto auto;
+        @include mobile {
+          grid-template-columns: auto;
+        }
+      }
+    }
+  }
+}
 @import url("https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap");
 
 // new navbar area start
@@ -362,7 +394,7 @@
   position: absolute;
   z-index: 9;
   min-width: 300px;
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   width: 100%;
   left: 0;
   top: 61px;
@@ -425,9 +457,9 @@
       }
 
       .resource-menu-panels {
-            margin: 0;
-            flex: 1 1 auto;
-            min-width: 0;
+        margin: 0;
+        flex: 1 1 auto;
+        min-width: 0;
         height: 100%;
       }
 
@@ -435,7 +467,9 @@
         opacity: 0;
         pointer-events: none;
         transform: translateY(16px);
-        transition: opacity 0.28s cubic-bezier(0.4,0.14,0.3,1), transform 0.28s cubic-bezier(0.4,0.14,0.3,1);
+        transition:
+          opacity 0.28s cubic-bezier(0.4, 0.14, 0.3, 1),
+          transform 0.28s cubic-bezier(0.4, 0.14, 0.3, 1);
         position: absolute;
         width: 100%;
       }
@@ -474,7 +508,9 @@
           color: #4d4dcb;
           white-space: nowrap;
           cursor: pointer;
-          transition: color 0.18s, text-decoration 0.18s;
+          transition:
+            color 0.18s,
+            text-decoration 0.18s;
 
           &:hover,
           &:focus {
@@ -515,8 +551,8 @@
               height: 2.5rem;
             }
           }
-          .product-info{
-            width: calc(100% - 100px)
+          .product-info {
+            width: calc(100% - 100px);
           }
           .product-info h6 {
             font-size: 1rem;
@@ -814,7 +850,6 @@
           }
         }
       }
-
     }
   }
 }
@@ -1522,7 +1557,7 @@ Responsive Classes
     .mega-menu-inner {
       .product-menu {
         grid-template-columns: auto;
-        width: calc(50% - 5rem);
+        width: 100%;
 
         &.custom-products-list {
           width: 100%;
@@ -1585,7 +1620,7 @@ Responsive Classes
     .mega-menu-inner {
       .product-menu {
         grid-template-columns: auto;
-        width: calc(50% - 5rem);
+        width: 100%;
 
         &.custom-products-list {
           width: 100%;

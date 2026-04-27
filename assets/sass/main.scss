@@ -46,11 +46,10 @@ $spacing-shortcuts: ();
 @import "components/_back-to-top";
 @import "components/_footer";
 
-// LAYOUTS 
+// LAYOUTS
 @import "layouts/_ads";
 @import "layouts/_articles";
 @import "layouts/_content";
-
 
 // pages SCSS
 // @import "pages/_webinar";
@@ -65,7 +64,6 @@ $spacing-shortcuts: ();
 @import "pages/_features-plan";
 @import "pages/_case-studies";
 
-
 // @import "themes/_kubeci";
 // @import "themes/_kubed";
 // @import "themes/_kubeshield";
@@ -79,3 +77,7 @@ $spacing-shortcuts: ();
 
 //Responsive SCSS
 // @import "layouts/_responsive";
+
+.fs-webform-container .fserv-container {
+  max-width: 100% !important;
+}

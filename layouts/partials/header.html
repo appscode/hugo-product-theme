@@ -122,7 +122,16 @@
               <button href="#" class="link">{{ .Name }} <i class="fa fa-angle-down"></i></button>
 
               <!-- mega-menu wrapper -->
-              <div class="mega-menu-wrapper">
+
+              {{ $dropdownClass := "" }}
+              {{ if eq .Identifier "products" }}
+                {{ $dropdownClass = "products-dropdown" }}
+              {{ else if eq .Identifier "solutions" }}
+                {{ $dropdownClass = "solutions-dropdown" }}
+              {{ else if eq .Identifier "partners" }}
+                {{ $dropdownClass = "partners-dropdown" }}
+              {{ end }}
+              <div class="mega-menu-wrapper {{ $dropdownClass }}">
 
                 <!-- ac-grid-container -->
                 <div class="mega-menu-inner container">
