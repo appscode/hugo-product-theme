@@ -33010,6 +33010,21 @@ strong {
   font-weight: 700;
 }
 
+.comparison-card-active-operator {
+  background: rgba(88, 28, 135, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3), 0 25px 50px -12px rgba(0,0,0,0.4) !important;
+}
+
+.comparison-card-active-platform {
+  background: rgba(37, 99, 235, 0.2) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3), 0 25px 50px -12px rgba(0,0,0,0.4) !important;
+}
+
+.comparison-card-inactive {
+  background: rgba(30, 41, 59, 0.4) !important;
+  opacity: 0.65;
+}
+
 /* ======================
   Global CSS start
 ========================*/
@@ -33984,23 +33999,6 @@ video {
 }
 
 /* schedule-demo end */
-.navbar-area .mega-menu-wrapper.products-dropdown .mega-menu-inner .custom-products-list {
-  grid-template-columns: auto;
-  max-width: 500px;
-}
-.navbar-area .mega-menu-wrapper.solutions-dropdown .mega-menu-inner .custom-products-list {
-  grid-template-columns: auto;
-  max-width: 500px;
-}
-.navbar-area .mega-menu-wrapper.partners-dropdown .mega-menu-inner .custom-products-list {
-  grid-template-columns: auto auto;
-}
-@media screen and (max-width: 768px) {
-  .navbar-area .mega-menu-wrapper.partners-dropdown .mega-menu-inner .custom-products-list {
-    grid-template-columns: auto;
-  }
-}
-
 .navbar-area {
   position: relative;
   z-index: 99;
@@ -34263,7 +34261,7 @@ video {
   position: absolute;
   z-index: 9;
   min-width: 300px;
-  padding: 1rem 0;
+  padding: 2.5rem 0;
   width: 100%;
   left: 0;
   top: 61px;
@@ -35162,7 +35160,7 @@ Responsive Classes
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu {
     grid-template-columns: auto;
-    width: 100%;
+    width: calc(50% - 5rem);
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
     width: 100%;
@@ -35200,7 +35198,7 @@ Responsive Classes
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu {
     grid-template-columns: auto;
-    width: 100%;
+    width: calc(50% - 5rem);
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu.custom-products-list {
     width: 100%;
@@ -35953,15 +35951,10 @@ Responsive Classes
   line-height: 1.6;
   color: #3e393e;
   background: #ffffff;
-  transition: 0.3s ease-in-out;
   border: 1px solid hsl(var(--secondary-h), 10%, 90%);
-  padding: 8px 24px;
-  border-radius: 40px;
+  padding: 3px 15px;
+  border-radius: 2px;
   margin-bottom: 20px;
-}
-.news-message:hover {
-  background-color: #EDEDF9;
-  border: 1px solid var(--ac-primary);
 }
 .news-message:hover strong {
   text-decoration: underline;
@@ -41936,8 +41929,4 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 }
 .cs-results-card .cs-results-quote {
   border-top: 1px solid rgba(0, 0, 0, 0.07);
-}
-
-.fs-webform-container .fserv-container {
-  max-width: 100% !important;
 }
