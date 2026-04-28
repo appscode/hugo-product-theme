@@ -21,11 +21,9 @@
   // Partners dropdown: 3 columns
   .mega-menu-wrapper.partners-dropdown {
     .mega-menu-inner {
-      .custom-products-list {
-        grid-template-columns: auto auto;
-        @include mobile {
-          grid-template-columns: auto;
-        }
+      // Use resource-menu layout for partners
+      .resource-menu {
+        width: 100%;
       }
     }
   }
@@ -304,7 +302,7 @@
         background-color: transparent;
         cursor: pointer;
         margin: 0;
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         transition: 0.3s ease-in-out;
         position: relative;
         z-index: 1;
@@ -394,7 +392,7 @@
   position: absolute;
   z-index: 9;
   min-width: 300px;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   width: 100%;
   left: 0;
   top: 61px;
@@ -402,6 +400,7 @@
   pointer-events: auto;
   transform: none;
   transition: none;
+  border: 1px solid #e7e7e7 !important;
 
   .mega-menu-inner {
     overflow: hidden;
@@ -420,6 +419,9 @@
         padding-right: 1rem;
         border-right: 1px solid rgba($ac-black, 0.08);
         height: 100%;
+        background: #4d4dcb04;
+        padding-inline: 8px;
+        border-radius: 4px 0 0 4px;
       }
 
       .resource-menu-tab {
@@ -445,6 +447,7 @@
           font-size: 1rem;
           font-weight: 700;
           color: $ac-black;
+          text-transform: capitalize;
         }
 
         .resource-menu-tab-desc {
@@ -530,7 +533,7 @@
         .single-product {
           display: flex !important;
           flex-direction: row;
-          align-items: flex-start;
+          align-items: center;
           padding: 0.75rem 0.5rem;
           gap: 0.75rem;
           width: 100%;
@@ -562,6 +565,102 @@
           .product-info p {
             font-size: 0.85rem;
             margin-bottom: 0;
+          }
+        }
+      }
+
+      // Database mega menu specific overrides
+      &.is-database-menu {
+        .resource-menu-nav {
+          gap: 0.25rem;
+        }
+
+        .resource-menu-tab {
+          padding: 0.6rem 0.85rem;
+          gap: 0.15rem;
+
+          .resource-menu-tab-title {
+            font-size: 0.95rem;
+          }
+
+          .resource-menu-tab-desc {
+            font-size: 0.8rem;
+            line-height: 1.35;
+          }
+        }
+
+        .db-panel-header {
+          padding: 0 0.5rem 0.75rem;
+          margin-bottom: 0.5rem;
+          border-bottom: 1px solid rgba($ac-black, 0.06);
+
+          .db-panel-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba($ac-black, 0.55);
+            margin: 0 0 0.15rem;
+          }
+
+          .db-panel-desc {
+            font-size: 0.85rem;
+            color: rgba($ac-black, 0.7);
+            margin: 0;
+          }
+        }
+
+        .product-menu.resources-products-list.db-products-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.25rem 0.5rem;
+
+          .single-product {
+            align-items: center;
+            padding: 0.5rem 0.6rem;
+            gap: 0.7rem;
+            border-radius: 0.5rem;
+            transition:
+              background 0.18s ease,
+              transform 0.18s ease;
+
+            &:hover {
+              background: #4d4dcb0d;
+
+              .product-info h6 {
+                color: #4d4dcb;
+              }
+            }
+
+            .product-logo {
+              min-width: 2rem;
+              width: 2rem;
+              height: 2rem;
+              background: #ffffff;
+              border: 1px solid rgba($ac-black, 0.08);
+              border-radius: 0.4rem;
+
+              img {
+                height: 1.25rem;
+                width: 1.25rem;
+                object-fit: contain;
+              }
+            }
+
+            .product-info {
+              width: auto;
+              flex: 1 1 auto;
+              min-width: 0;
+
+              h6 {
+                font-size: 0.92rem;
+                margin-bottom: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                transition: color 0.18s ease;
+              }
+            }
           }
         }
       }
@@ -1657,8 +1756,7 @@ Responsive Classes
 // --- Dropdown Redesign (SCSS only, HTML unchanged) ---
 .navbar-right .nav-item {
   position: relative;
-  &:hover > .mega-menu-wrapper,
-  &:focus-within > .mega-menu-wrapper {
+  &.is-open > .mega-menu-wrapper {
     display: block !important;
     opacity: 1 !important;
     pointer-events: auto !important;
@@ -1667,16 +1765,18 @@ Responsive Classes
   .mega-menu-wrapper {
     display: none;
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 100%;
-    margin-top: 0.7rem;
+    transform: translateX(-50%) !important;
+    margin-top: 0.3rem;
+    border-top: 0.4rem solid transparent; // Bridge gap for accessibility
     background: $ac-white;
     border-radius: 12px;
-    box-shadow: 0 8px 32px 0 rgba(80,80,180,0.13);
+    box-shadow: 0 8px 32px 0 rgba(80, 80, 180, 0.13);
     min-width: 300px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.18s cubic-bezier(.4,0,.2,1);
+    transition: opacity 0.18s cubic-bezier(0.4, 0, 0.2, 1);
     &.products-dropdown,
     &.solutions-dropdown {
       width: 400px;
