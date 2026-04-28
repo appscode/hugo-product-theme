@@ -36,7 +36,8 @@
 
 
         <!-- mega-menu wrapper start  -->
-        <div class="mega-menu-wrapper">
+        {{ $menuClass := cond (eq .Identifier "guides") "guides-mega-menu" "reference-mega-menu" }}
+        <div class="mega-menu-wrapper {{ $menuClass }}">
           <div class="mega-menu-inner ac-grid-container">
             <button class="button ac-button inline-button back-button">
               <span class="icon arrow-back">
@@ -71,21 +72,6 @@
             </div>
             <!-- product end -->
 
-            <!-- product description start  -->
-            <!-- single product description start  -->
-            <div class="product-description is-block">
-               <div class="video-content">
-                 <div class="yt-thumbnail">
-                   <a href="https://www.youtube.com/watch?v=hBHxMtSjKo4" class="play-icon yt-video">
-                    <iconify-icon icon="heroicons:play-circle" width="48" height="48"  style="color: white"></iconify-icon>
-                   </a>
-                   <img
-                     src="https://img.youtube.com/vi/hBHxMtSjKo4/sddefault.jpg"
-                     alt="">
-                 </div>
-               </div>
-            </div>
-            <!-- single product description end  -->
             <!-- product description end -->
           </div>
         </div>

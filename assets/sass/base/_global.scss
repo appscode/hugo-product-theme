@@ -578,6 +578,7 @@ Responsive Classes
 @media (min-width: 1024px) and (max-width: 1215px) {
   .container {
     padding: 0 30px;
+    max-width: 1170px;
   }
 
   .section-padding {
@@ -634,3 +635,4 @@ Responsive Classes
     }
   }
 }
+

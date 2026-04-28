@@ -1,13 +1,18 @@
-// dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css
-// release: sass ./assets/sass/main.scss:./assets/css/main.css
+// dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css or npm run sass:watch
+// release: sass ./assets/sass/main.scss:./assets/css/main.css or npm run sass:watch
+
+$spacing-shortcuts: ();
 
 @import "../../node_modules/bulma/bulma.sass";
 //BASE - Base styles, variables, mixins
 @import "base/utilities/_root";
 @import "base/utilities/_initial-variable";
+@import "base/utilities/_design-system-tokens";
 @import "base/utilities/_default";
 @import "base/utilities/_themes";
 @import "base/utilities/_typography";
+@import "base/utilities/_utilities";
+@import "base/utilities/_components";
 
 // mixins
 @import "mixins/_mixin";
@@ -20,12 +25,12 @@
 @import "components/_navbar";
 @import "components/search-result-box";
 @import "components/_cookie";
-@import "components/_case-studies";
 @import "components/_notificationbar";
 @import "components/_button";
 @import "components/_video-palyer";
 // @import "components/_hero";
 @import "components/_product-hero-area";
+@import "components/_cards";
 @import "components/_features";
 @import "components/_tabs";
 @import "components/_tables";
@@ -37,17 +42,15 @@
 @import "components/_services";
 @import "components/_video-gallery";
 @import "components/_cta";
-@import "components/_pricing";
 @import "components/_faq";
 @import "components/_ac-accordion";
 @import "components/_back-to-top";
 @import "components/_footer";
 
-// LAYOUTS 
+// LAYOUTS
 @import "layouts/_ads";
 @import "layouts/_articles";
 @import "layouts/_content";
-
 
 // pages SCSS
 // @import "pages/_webinar";
@@ -55,10 +58,12 @@
 // @import "pages/_consulting";
 // @import "pages/_contactus";
 // @import "pages/_homepage";
+@import "pages/homepage-v2";
+@import "components/_pricing"; // after homepage-v2 so $ac-* vars and mixins are available
 // @import "pages/_innerpage";
 @import "pages/_documentation";
 @import "pages/_features-plan";
-
+@import "pages/_case-studies";
 
 // @import "themes/_kubeci";
 // @import "themes/_kubed";
@@ -73,3 +78,7 @@
 
 //Responsive SCSS
 // @import "layouts/_responsive";
+
+.fs-webform-container .fserv-container {
+  max-width: 100% !important;
+}
