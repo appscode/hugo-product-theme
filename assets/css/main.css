@@ -35328,10 +35328,17 @@ Responsive Classes
   min-width: 400px;
   max-width: 400px;
 }
-.navbar-right .nav-item .mega-menu-wrapper.database-dropdown, .navbar-right .nav-item .mega-menu-wrapper.partners-dropdown, .navbar-right .nav-item .mega-menu-wrapper.resources-dropdown {
+.navbar-right .nav-item .mega-menu-wrapper.database-dropdown, .navbar-right .nav-item .mega-menu-wrapper.partners-dropdown, .navbar-right .nav-item .mega-menu-wrapper.resources-dropdown, .navbar-right .nav-item .mega-menu-wrapper.guides-mega-menu {
   width: 900px;
   min-width: 900px;
   max-width: 900px;
+}
+.navbar-right .nav-item .mega-menu-wrapper.guides-mega-menu {
+  left: -100px;
+  transform: none !important;
+}
+.navbar-right .nav-item .mega-menu-wrapper.reference-mega-menu .product-menu.database-list {
+  grid-template-columns: auto;
 }
 .navbar-right .nav-item:hover > .mega-menu-wrapper, .navbar-right .nav-item:focus-within > .mega-menu-wrapper {
   opacity: 1 !important;

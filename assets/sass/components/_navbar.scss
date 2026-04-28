@@ -1785,10 +1785,20 @@ Responsive Classes
     }
     &.database-dropdown,
     &.partners-dropdown,
-    &.resources-dropdown {
+    &.resources-dropdown,
+    &.guides-mega-menu {
       width: 900px;
       min-width: 900px;
       max-width: 900px;
+    }
+    &.guides-mega-menu {
+      left: -100px;
+      transform: none !important;
+    }
+    &.reference-mega-menu{
+      .product-menu.database-list {
+        grid-template-columns: auto;
+      }
     }
   }
   &:hover > .mega-menu-wrapper,
