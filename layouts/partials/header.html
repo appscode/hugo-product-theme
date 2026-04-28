@@ -123,6 +123,7 @@
 
               <!-- mega-menu wrapper -->
 
+
               {{ $dropdownClass := "" }}
               {{ if eq .Identifier "products" }}
                 {{ $dropdownClass = "products-dropdown" }}
@@ -130,6 +131,10 @@
                 {{ $dropdownClass = "solutions-dropdown" }}
               {{ else if eq .Identifier "partners" }}
                 {{ $dropdownClass = "partners-dropdown" }}
+              {{ else if eq .Identifier "resources" }}
+                {{ $dropdownClass = "resources-dropdown resource-menu" }}
+              {{ else if eq .Identifier "database" }}
+                {{ $dropdownClass = "database-dropdown resource-menu" }}
               {{ end }}
               <div class="mega-menu-wrapper {{ $dropdownClass }}">
 
@@ -143,6 +148,10 @@
                   </button>
                   {{ if eq .Identifier "resources" }}
                   {{ partial "menu/resources-mega-menu.html" (dict "page" $ "entry" . "product" $p) }}
+                  {{ else if eq .Identifier "partners" }}
+                  {{ partial "menu/partners-mega-menu.html" . }}
+                  {{ else if eq .Identifier "database" }}
+                  {{ partial "menu/database-mega-menu.html" . }}
                   {{ else }}
                   <!-- product start  -->
                   {{ $parentID := .Identifier }}
@@ -151,7 +160,6 @@
                     {{ range .Children }}
                     {{ if eq $parentID $.Site.Params.main_menu_dropdown_item }}
                     <!-- single product start  -->
-                
                     <a href="{{ if eq $.Site.Params.product_key "kubevault" }}/features/{{ .Identifier }}{{ else if $addons }}{{ .PageRef }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier }}-on-kubernetes{{ end }}" class="single-product">
                       {{ if .Pre }}
                       <div class="product-logo">
@@ -191,7 +199,6 @@
                     </a>
                     {{ end }}
                     {{ end }}
-
                   </div>
                   <!-- product end -->
                   {{ end }}
@@ -248,47 +255,42 @@
     {{ end }}
 
     <script type="text/javascript">
-      const navbarRightAll = document.querySelectorAll(".navbar-right");
-      const navbarBurgerAll = document.querySelectorAll(".navbar-burger");
 
-      // Create event listeners for each navbar-burger button
-      Array.from(navbarBurgerAll).forEach((el, idx) => {
-        el.addEventListener("click", function () {
-
-          // Remove visible class from previous selected navbar right
-          Array.from(navbarRightAll).forEach((rightEl, rightElIdx) => {
-            if (idx !== rightElIdx && navbarRightAll[rightElIdx].classList.contains("is-visible")) {
-              navbarRightAll[rightElIdx].classList.remove("is-visible");
-              navbarBurgerAll[rightElIdx].classList.remove("is-active");
-            }
-          });
-
-          const modalBackdropElement = document.querySelector(".modal-backdrop");
-
-          // if modal backdrop element is visible then hide it
-          if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
-            modalBackdropElement.classList.remove("is-show")
-          }
-
-          // if any nav element is visible then hide it
-          const activeNavItem = document.querySelector(".nav-item.is-active");
-          if (activeNavItem && activeNavItem.classList.contains("is-active")) {
-            activeNavItem.classList.remove("is-active");
-          }
-
-          navbarRightAll[idx].classList.toggle("is-visible");
-        });
-      })
+      // --- Mega menu hover/focus fix ---
+      document.querySelectorAll('.navbar-right .nav-item').forEach(function(item) {
+        const dropdown = item.querySelector('.mega-menu-wrapper');
+        let showTimeout, hideTimeout;
+        if (dropdown) {
+          const showMenu = () => {
+            clearTimeout(hideTimeout);
+            // Instantly close other open menus
+            document.querySelectorAll('.navbar-right .nav-item.is-open').forEach(function(other) {
+              if (other !== item) other.classList.remove('is-open');
+            });
+            showTimeout = setTimeout(() => {
+              item.classList.add('is-open');
+            }, 80); // Show delay (ms)
+          };
+          const hideMenu = () => {
+            clearTimeout(showTimeout);
+            hideTimeout = setTimeout(() => {
+              item.classList.remove('is-open');
+            }, 220); // Hide delay (ms)
+          };
+          item.addEventListener('mouseenter', showMenu);
+          item.addEventListener('mouseleave', hideMenu);
+          dropdown.addEventListener('mouseenter', showMenu);
+          dropdown.addEventListener('mouseleave', hideMenu);
+        }
+      });
 
       document.querySelectorAll('.resource-menu').forEach((menu) => {
         const tabs = menu.querySelectorAll('[data-resource-target]');
         const panels = menu.querySelectorAll('[data-resource-panel]');
-
         const activateTab = (target) => {
           tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.resourceTarget === target));
           panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.resourcePanel === target));
         };
-
         tabs.forEach((tab) => {
           tab.addEventListener('mouseenter', () => activateTab(tab.dataset.resourceTarget));
           tab.addEventListener('focus', () => activateTab(tab.dataset.resourceTarget));
