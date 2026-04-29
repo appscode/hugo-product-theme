@@ -31841,6 +31841,9 @@ strong {
 .ac-ui .has-background-gradient-yellow {
   background: linear-gradient(135deg, #eab308, #f97316);
 }
+.ac-ui .has-background-gradient-nkp {
+  background: linear-gradient(135deg, #4948A3, #9810fa);
+}
 .ac-ui .has-background-gradient-to-right {
   background-image: linear-gradient(to right, var(--ac-primary), hsl(var(--ds-secondary)));
 }
@@ -35335,6 +35338,11 @@ Responsive Classes
 }
 .navbar-right .nav-item .mega-menu-wrapper.guides-mega-menu {
   left: -100px;
+  transform: none !important;
+}
+.navbar-right .nav-item .mega-menu-wrapper.resources-dropdown {
+  left: auto;
+  right: -170px;
   transform: none !important;
 }
 .navbar-right .nav-item .mega-menu-wrapper.reference-mega-menu .product-menu.database-list {
