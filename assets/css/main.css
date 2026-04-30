@@ -34283,7 +34283,7 @@ video {
   object-fit: contain;
 }
 .mega-menu-wrapper .mega-menu-inner .resource-menu .resource-menu-nav {
-  gap: 0.75rem;
+  gap: 0;
   padding-right: 1rem;
   border-right: 1px solid rgba(0, 0, 0, 0.08);
   height: 100%;
@@ -35338,11 +35338,6 @@ Responsive Classes
 }
 .navbar-right .nav-item .mega-menu-wrapper.guides-mega-menu {
   left: -100px;
-  transform: none !important;
-}
-.navbar-right .nav-item .mega-menu-wrapper.resources-dropdown {
-  left: auto;
-  right: -170px;
   transform: none !important;
 }
 .navbar-right .nav-item .mega-menu-wrapper.reference-mega-menu .product-menu.database-list {
@@ -39342,10 +39337,6 @@ code:not(pre code) {
 .ac-ui .home-hero-desc strong {
   color: hsl(var(--secondary-h), 10%, 10%);
   font-weight: 700;
-}
-.ac-ui .hero-diff-pill {
-  flex: 1 1 255px;
-  max-width: 320px;
 }
 @media screen and (max-width: 768px) {
   .ac-ui .hero-diff-pill {
