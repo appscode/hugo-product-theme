@@ -264,6 +264,11 @@
     background-color: $ac-white;
     height: 100%;
   }
+  a.ds-card-base {
+    &:hover {
+      border-color: $ac-primary;
+    }
+  }
 
   .ds-card-hover {
     @include card-hover;

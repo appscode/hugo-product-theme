@@ -82,3 +82,8 @@ $spacing-shortcuts: ();
 .fs-webform-container .fserv-container {
   max-width: 100% !important;
 }
+
+.button.is-primary.is-outlined:focus{
+  background-color: $ac-primary;
+  color: #fff;
+}

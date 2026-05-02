@@ -32774,6 +32774,9 @@ strong {
   background-color: #ffffff;
   height: 100%;
 }
+.ac-ui a.ds-card-base:hover, .ac-ui a.pricing-support-card:hover, .ac-ui a.pricing-model-box:hover {
+  border-color: var(--ac-primary);
+}
 .ac-ui .ds-card-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 22px 50px rgba(var(--ac-primary), 0.14);
@@ -42077,4 +42080,9 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 
 .fs-webform-container .fserv-container {
   max-width: 100% !important;
+}
+
+.button.is-primary.is-outlined:focus {
+  background-color: var(--ac-primary);
+  color: #fff;
 }
