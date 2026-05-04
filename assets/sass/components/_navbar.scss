@@ -126,7 +126,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem;
+  @include desktop {
+    padding: 0.5rem 0;
+  }
 
   &.container {
     // padding: 0.5rem 0;
@@ -1791,6 +1794,22 @@ Responsive Classes
       min-width: 900px;
       max-width: 900px;
     }
+    &.resources-dropdown {
+      right: -120px;
+      left: auto;
+      transform: none !important;
+      @include fullhd {
+        right: -200px;
+      }
+    }
+     &.partners-dropdown{
+      right: -220px;
+      left: auto;
+      transform: none !important;
+      @include fullhd {
+        right: -280px;
+      }
+     }
     &.guides-mega-menu {
       left: -100px;
       transform: none !important;
