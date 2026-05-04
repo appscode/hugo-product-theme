@@ -1,40 +1,4 @@
-// navbar area JS v.2022 start
-// const navItems = document.querySelectorAll(".navbar-appscode .nav-item");
 
-// navItems.forEach(navItem => {
-//   const hasMegaMenu = !!navItem.querySelector('.mega-menu-wrapper');
-//   if (hasMegaMenu) {
-//     const item = navItem.querySelector('.link');
-//     item.addEventListener('click', function (el) {
-//       // to remove active class from previously selected navItem
-//       const selectedNav = document.querySelector(".nav-item.is-active");
-//       if (selectedNav && selectedNav !== item.parentElement) {
-//         selectedNav.classList.toggle('is-active');
-//       }
-//       // handle selected navItem class
-//       const hasActiveClass = navItem.classList.contains("is-active");
-//       navItem.classList.toggle('is-active');
-//       // handle background dark-shadow of navItem
-//       const darkBodyEl = document.querySelector(".modal-backdrop");
-//       function handleDarkBodyClickEvent(el) {
-//         el.target.classList.remove('is-show');
-//         const selectedNavItem = document.querySelector(".nav-item.is-active");
-//         selectedNavItem ? selectedNavItem.classList.toggle('is-active') : null;
-//       }
-//       if (hasActiveClass && darkBodyEl.classList.contains("is-show")) {
-//         darkBodyEl.classList.toggle("is-show");
-//         darkBodyEl.removeEventListener('click', handleDarkBodyClickEvent);
-//       } else if (!hasActiveClass && !darkBodyEl.classList.contains("is-show") && hasMegaMenu) {
-//         darkBodyEl.classList.toggle("is-show");
-//         darkBodyEl.addEventListener('click', handleDarkBodyClickEvent);
-//       }
-//     });
-//   }
-// });
-// navbar area JS v.2022 end
-
-// responsive navbar area
-// elements selector where toggle class will be added
 const selctorsForResponsiveMenu = [
   ".left-sidebar-wrapper",
   ".navbar-appscode.documentation-menu > .navbar-right",
@@ -192,8 +156,30 @@ document.addEventListener("DOMContentLoaded", () => {
     $navbarBurgers.forEach((el) => {
       el.addEventListener("click", () => {
         el.classList.toggle("is-active");
+        const navbarRight = el.closest(".navbar-appscode")?.querySelector(".navbar-right");
+        if (navbarRight) {
+          navbarRight.classList.toggle("is-visible");
+        }
       });
     });
+
+    // Mobile: tap a nav-item .link to expand its mega-menu inline.
+    document
+      .querySelectorAll(".navbar-appscode .navbar-right .nav-item > .link")
+      .forEach((link) => {
+        link.addEventListener("click", (event) => {
+          if (window.matchMedia("(min-width: 1024px)").matches) return;
+          const navItem = link.parentElement;
+          if (!navItem.querySelector(".mega-menu-wrapper")) return;
+          event.preventDefault();
+          navItem.parentElement
+            .querySelectorAll(".nav-item.is-active")
+            .forEach((other) => {
+              if (other !== navItem) other.classList.remove("is-active");
+            });
+          navItem.classList.toggle("is-active");
+        });
+      });
   }
 
 });
