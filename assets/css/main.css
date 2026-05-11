@@ -25604,7 +25604,7 @@ body.guard {
   --primary-l: 50%;
   --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
 }
-body.kubedb {
+body.kubedb, body.kubedbplatform {
   --primary-h: 240;
   --primary-s: 55%;
   --primary-l: 55%;

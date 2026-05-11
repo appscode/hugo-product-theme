@@ -28,7 +28,7 @@ body {
     --ac-primary: hsl(var(--primary-h), var(--primary-s),var(--primary-l));
   }
 
-  &.kubedb {
+  &.kubedb,&.kubedbplatform {
     --primary-h: 240;
     --primary-s: 55%;
     --primary-l: 55%;
