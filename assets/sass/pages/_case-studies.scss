@@ -316,17 +316,17 @@
 }
 
 // ── Solutions shortcode: challenge-numbered responsive ──
-#conflict .columns {
-  @include tablet-only {
-    flex-wrap: wrap;
+// #conflict .columns {
+//   @include tablet-only {
+//     flex-wrap: wrap;
 
-    .column.is-12-tablet {
-      width: 100%;
-      flex: none;
-    }
-  }
+//     .column.is-12-tablet {
+//       width: 100%;
+//       flex: none;
+//     }
+//   }
 
-  @include mobile {
-    flex-direction: column;
-  }
-}
+//   @include mobile {
+//     flex-direction: column;
+//   }
+// }

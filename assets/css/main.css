@@ -42483,21 +42483,6 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   border-top: 1px solid rgba(0, 0, 0, 0.07);
 }
 
-@media screen and (min-width: 769px) and (max-width: 1023px) {
-  #conflict .columns {
-    flex-wrap: wrap;
-  }
-  #conflict .columns .column.is-12-tablet {
-    width: 100%;
-    flex: none;
-  }
-}
-@media screen and (max-width: 768px) {
-  #conflict .columns {
-    flex-direction: column;
-  }
-}
-
 .fs-webform-container .fserv-container {
   max-width: 100% !important;
 }
