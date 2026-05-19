@@ -1,4 +1,3 @@
-
 const selctorsForResponsiveMenu = [
   ".left-sidebar-wrapper",
   ".navbar-appscode.documentation-menu > .navbar-right",
@@ -302,13 +301,6 @@ $(".yt-video").magnificPopup({
 });
 
 
-// headroomjs start
-var myElement = document.querySelector(".active-headroom");
-// construct an instance of Headroom, passing the element
-var headroom = new Headroom(myElement);
-// initialise
-headroom.init();
-// headroomjs end
 
 
 // For FAQ Collaps Page
@@ -387,10 +379,7 @@ spyScrolling();
 document.addEventListener("DOMContentLoaded", () => {
   // left sidebar menu fontSize
   const sidebarMenu = document.querySelector(".product-sidebar-menu");
-  if (sidebarMenu) {
-    sidebarMenu.children[0].children[1].children[0].style.fontSize = "22px";
-    sidebarMenu.children[0].children[1].children[0].style.fontWeight = "600";
-  }
+
   // docs-page -> right sidebar (content > 20) then show a scroll
   const allHeaders = document.querySelectorAll(
     ".full-info > h2,.full-info > h3,.full-info > h4"
@@ -510,3 +499,33 @@ function acAccordion(actionBtn) {
 acAccordion(".accordion-heading h3");
 acAccordion(".accordion-heading .icon");
 // accordion end
+
+
+// fix docs page left sidebar duplicated first menu item
+function removeDuplicateLeftSidebarItem() {
+  const sidebarMenu = document.querySelector(".product-sidebar-menu");
+  if (!sidebarMenu) return;
+
+  const topLevelItemSelector = ":scope > .item, :scope > .nav-item";
+  const getTitle = (el) =>
+    (el.querySelector("label > a, label, a")?.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const items = sidebarMenu.querySelectorAll(topLevelItemSelector);
+  if (items.length > 1) {
+    const firstTitle = getTitle(items[0]);
+    if (firstTitle && firstTitle === getTitle(items[1])) {
+      items[0].remove();
+    }
+  }
+
+  const firstSidebarItem = sidebarMenu.querySelector(topLevelItemSelector);
+  const firstSidebarTitle = firstSidebarItem?.querySelector("label > a, label, a");
+  if (firstSidebarTitle) {
+    firstSidebarTitle.style.fontSize = "22px";
+    firstSidebarTitle.style.fontWeight = "600";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", removeDuplicateLeftSidebarItem, { once: true });
