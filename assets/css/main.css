@@ -39391,10 +39391,23 @@ code:not(pre code) {
   border-color: rgba(255, 255, 255, 0.16);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
+.ac-ui .section-header-title,
+.ac-ui .product-section-title {
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  line-height: 1.12;
+}
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .ac-ui .section-header-title,
+  .ac-ui .product-section-title {
+    font-size: clamp(1.75rem, 4.4vw, 2.2rem);
+    line-height: 1.13;
+  }
+}
 @media screen and (max-width: 768px) {
-  .ac-ui .section-header-title {
-    font-size: clamp(1.75rem, 8.5vw, 2rem);
-    line-height: 1.15;
+  .ac-ui .section-header-title,
+  .ac-ui .product-section-title {
+    font-size: clamp(1.4rem, 7vw, 1.8rem);
+    line-height: 1.16;
   }
 }
 .ac-ui .home-hero {
@@ -39930,6 +39943,17 @@ code:not(pre code) {
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.68);
   box-shadow: 0 28px 80px rgba(39, 46, 77, 0.12);
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .db-support-title {
+    margin-bottom: 0.6rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .db-support-desc {
+    font-size: 0.98rem !important;
+    line-height: 1.55;
+  }
 }
 .ac-ui .db-card {
   flex: 0 0 calc((100% - 5rem) / 6);
@@ -40605,6 +40629,27 @@ code:not(pre code) {
   .ac-ui .social-prove-brand-area > .container {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .comparison-grid-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .comparison-grid-row {
+    min-width: 760px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .comparison-grid-col {
+    padding: 1rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .comparison-analogy-panel {
+    padding: 1.25rem !important;
   }
 }
 
