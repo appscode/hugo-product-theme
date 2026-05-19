@@ -39904,6 +39904,7 @@ code:not(pre code) {
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  z-index: -9;
 }
 .ac-ui .bg-orb-br, .ac-ui .bg-orb-tl {
   position: absolute;
