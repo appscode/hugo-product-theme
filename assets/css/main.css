@@ -40541,7 +40541,7 @@ code:not(pre code) {
 }
 .ac-ui .cta-title {
   color: #ffffff;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
   font-weight: 900;
   line-height: 1.1;
   margin: 1rem 0 0.8rem;
