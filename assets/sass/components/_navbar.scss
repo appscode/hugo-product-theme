@@ -2229,7 +2229,7 @@ Responsive Classes
     }
   }
 }
-.embeded-console-button, .contact-sales-btn {
+.embeded-console-button {
   width: 160px;
   @include touch {
     width: 100% !important;

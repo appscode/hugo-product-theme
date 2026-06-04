@@ -35698,11 +35698,11 @@ Responsive Classes
     gap: 0.5rem;
   }
 }
-.embeded-console-button, .contact-sales-btn {
+.embeded-console-button {
   width: 160px;
 }
 @media screen and (max-width: 1023px) {
-  .embeded-console-button, .contact-sales-btn {
+  .embeded-console-button {
     width: 100% !important;
   }
 }
