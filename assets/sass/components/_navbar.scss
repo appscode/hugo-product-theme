@@ -213,7 +213,7 @@
   .navbar-right {
     display: flex;
     align-items: center;
-    width: calc(100% - 200px);
+    width: calc(100% - 170px);
     justify-content: flex-end;
 
     .navbar-left-group {
@@ -1627,7 +1627,7 @@ Responsive Classes
     }
 
     .navbar-right {
-      width: calc(100% - 180px);
+      width: calc(100% - 100px);
 
       .community-items.ml-70 {
         margin-left: 10px !important;
@@ -1644,7 +1644,7 @@ Responsive Classes
 
     ul {
       .nav-item {
-        margin-right: 1rem;
+        margin-right: 0.6rem;
       }
     }
   }
@@ -2227,5 +2227,11 @@ Responsive Classes
       justify-content: flex-start;
       gap: 0.5rem;
     }
+  }
+}
+.embeded-console-button {
+  width: 160px;
+  @include touch {
+    width: 100% !important;
   }
 }
