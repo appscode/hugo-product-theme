@@ -34117,7 +34117,7 @@ video {
 .navbar-appscode .navbar-right {
   display: flex;
   align-items: center;
-  width: calc(100% - 200px);
+  width: calc(100% - 170px);
   justify-content: flex-end;
 }
 .navbar-appscode .navbar-right .navbar-left-group {
@@ -35228,7 +35228,7 @@ Responsive Classes
     margin-right: 1rem;
   }
   .navbar-appscode .navbar-right {
-    width: calc(100% - 180px);
+    width: calc(100% - 100px);
   }
   .navbar-appscode .navbar-right .community-items.ml-70 {
     margin-left: 10px !important;
@@ -35240,7 +35240,7 @@ Responsive Classes
     gap: 8px !important;
   }
   .navbar-appscode ul .nav-item {
-    margin-right: 1rem;
+    margin-right: 0.6rem;
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu {
     grid-template-columns: auto;
@@ -35698,6 +35698,15 @@ Responsive Classes
     gap: 0.5rem;
   }
 }
+.embeded-console-button, .contact-sales-btn {
+  width: 160px;
+}
+@media screen and (max-width: 1023px) {
+  .embeded-console-button, .contact-sales-btn {
+    width: 100% !important;
+  }
+}
+
 .ac-searchbar {
   position: relative;
   z-index: 1;
