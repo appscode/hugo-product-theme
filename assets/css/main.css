@@ -34058,6 +34058,11 @@ video {
     padding: 0.5rem 0;
   }
 }
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .navbar-appscode {
+    padding: 0.5rem;
+  }
+}
 .navbar-appscode.container .mega-menu-wrapper {
   width: 200%;
   left: -50%;
@@ -34117,7 +34122,7 @@ video {
 .navbar-appscode .navbar-right {
   display: flex;
   align-items: center;
-  width: calc(100% - 170px);
+  width: calc(100% - 120px);
   justify-content: flex-end;
 }
 .navbar-appscode .navbar-right .navbar-left-group {

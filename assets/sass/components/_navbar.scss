@@ -130,6 +130,9 @@
   @include desktop {
     padding: 0.5rem 0;
   }
+  @include desktop-only {
+    padding: 0.5rem;
+  }
 
   &.container {
     // padding: 0.5rem 0;
@@ -213,7 +216,7 @@
   .navbar-right {
     display: flex;
     align-items: center;
-    width: calc(100% - 170px);
+    width: calc(100% - 120px);
     justify-content: flex-end;
 
     .navbar-left-group {
