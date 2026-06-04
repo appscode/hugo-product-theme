@@ -222,7 +222,9 @@
           <!-- action button start  -->
           {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
           <div class="buttons">
+             {{ if ne $currentPageType "docs" }}
             <iframe src="https://appscode.com/embed/?color=4d4dcb" frameborder="0" scrolling="no" class="embeded-console-button height-50" title="embeded-console-button"></iframe>
+            {{ end }}
             <a href="{{ $.Site.Params.domain_appscode }}/contact/"
               class="button ac-button is-primary contact-sales-btn" style="height: 42px;">
               <span class="icon">
