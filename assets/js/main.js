@@ -1,39 +1,114 @@
-// navbar area JS v.2022 start
-const navItems = document.querySelectorAll(".navbar-appscode .nav-item");
+// navbar dropdown — hover on desktop, click/tap on touch devices
+(function () {
+  var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  var navItems = document.querySelectorAll(".navbar-appscode .nav-item");
 
-navItems.forEach(navItem => {
-  const item = navItem.querySelector('.link');
-  item.addEventListener('click', function (el) {
+  function openNav(navItem) {
+    // close any other open item first
+    document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (other) {
+      if (other !== navItem) closeNav(other);
+    });
+    navItem.classList.add('is-active');
+    var trigger = navItem.querySelector('.link');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
 
-    // to remove active class from previously selected navItem
-    const selectedNav = document.querySelector(".nav-item.is-active");
-    if (selectedNav && selectedNav !== item.parentElement) {
-      selectedNav.classList.toggle('is-active')
+  function closeNav(navItem) {
+    navItem.classList.remove('is-active');
+    var trigger = navItem.querySelector('.link');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  navItems.forEach(function (navItem) {
+    var trigger = navItem.querySelector('.link');
+    var hasMega = !!navItem.querySelector('.mega-menu-wrapper');
+
+    // stamp aria attributes
+    if (trigger && hasMega) {
+      trigger.setAttribute('aria-haspopup', 'menu');
+      trigger.setAttribute('aria-expanded', 'false');
     }
 
-    // handle selected navItem class
-    const hasActiveClass = navItem.classList.contains("is-active");
-    navItem.classList.toggle('is-active')
+    if (!hasMega) return; // plain links — no dropdown logic needed
 
-    // handle background dark-shadow of navItem
-    const darkBodyEl = document.querySelector(".modal-backdrop");
+    var closeTimer = null;
 
-    function handleDarkBodyClickEvent(el) {
-      el.target.classList.remove('is-show')
-      const selectedNavItem = document.querySelector(".nav-item.is-active");
-      selectedNavItem ? selectedNavItem.classList.toggle('is-active') : null;
+    function scheduleClose() {
+      closeTimer = setTimeout(function () { closeNav(navItem); }, 120);
     }
 
-    if (hasActiveClass && darkBodyEl.classList.contains("is-show")) {
-      darkBodyEl.classList.toggle("is-show");
-      darkBodyEl.removeEventListener('click', handleDarkBodyClickEvent);
-    } else if (!hasActiveClass && !darkBodyEl.classList.contains("is-show") && !!navItem.querySelector('.mega-menu-wrapper')) {
-      darkBodyEl.classList.toggle("is-show");
-      darkBodyEl.addEventListener('click', handleDarkBodyClickEvent);
+    function cancelClose() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
     }
-  })
-})
-// navbar area JS v.2022 end
+
+    if (isTouchDevice) {
+      // --- touch: click/tap to toggle ---
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (navItem.classList.contains('is-active')) {
+          closeNav(navItem);
+        } else {
+          openNav(navItem);
+        }
+      });
+    } else {
+      // --- desktop: hover ---
+      navItem.addEventListener('mouseenter', function () {
+        cancelClose();
+        openNav(navItem);
+      });
+      navItem.addEventListener('mouseleave', function () {
+        scheduleClose();
+      });
+
+      // keep open when cursor moves into the dropdown panel
+      var panel = navItem.querySelector('.mega-menu-wrapper');
+      if (panel) {
+        panel.addEventListener('mouseenter', function () { cancelClose(); });
+        panel.addEventListener('mouseleave', function () { scheduleClose(); });
+      }
+
+      // keyboard: Enter/Space opens, Escape closes
+      if (trigger) {
+        trigger.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (navItem.classList.contains('is-active')) {
+              closeNav(navItem);
+            } else {
+              openNav(navItem);
+            }
+          }
+          if (e.key === 'Escape') {
+            closeNav(navItem);
+            trigger.focus();
+          }
+        });
+      }
+    }
+  });
+
+  // close on Escape from anywhere inside the dropdown
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (item) {
+        closeNav(item);
+        var t = item.querySelector('.link');
+        if (t) t.focus();
+      });
+    }
+  });
+
+  // close when clicking outside (covers touch and desktop)
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.navbar-appscode .nav-item')) {
+      document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (item) {
+        closeNav(item);
+      });
+    }
+  });
+}());
+// navbar dropdown end
 
 // responsive navbar area
 // elements selector where toggle class will be added
