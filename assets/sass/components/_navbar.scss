@@ -91,6 +91,9 @@
 
           img {
             height: 1.58rem;
+            @include until-fullhd{
+              height: 1.3rem;
+            }
           }
 
           h4 {
@@ -104,6 +107,10 @@
             span {
               font-size: 1rem;
               font-family: "Oleo Script", system-ui;
+
+              @include until-fullhd{
+                font-size: 0.75rem;
+              }
 
               &.green {
                 color: #35a651;
@@ -1432,12 +1439,6 @@ Responsive Classes
       .navbar-brand {
         margin: 0;
         width: 100%;
-
-        a {
-          img {
-            height: 1.5rem !important;
-          }
-        }
       }
 
       ul {
