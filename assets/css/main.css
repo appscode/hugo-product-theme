@@ -42596,11 +42596,6 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
     padding: 96px 0 48px;
   }
 }
-@media (max-width: 368px) {
-  .overview-v2 .ov2-hero {
-    margin-top: 90px;
-  }
-}
 .overview-v2 .ov2-hero-content {
   position: relative;
   z-index: 2;
