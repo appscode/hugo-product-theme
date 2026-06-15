@@ -34028,6 +34028,11 @@ video {
 .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a img {
   height: 1.58rem;
 }
+@media screen and (max-width: 1407px) {
+  .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a img {
+    height: 1.3rem;
+  }
+}
 .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a h4 {
   color: #193d4b;
   font-weight: 500;
@@ -34039,6 +34044,11 @@ video {
 .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a h4 span {
   font-size: 1rem;
   font-family: "Oleo Script", system-ui;
+}
+@media screen and (max-width: 1407px) {
+  .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a h4 span {
+    font-size: 0.75rem;
+  }
 }
 .navbar-appscode-wrapper.navbar-product .navbar-left .navbar-brand a h4 span.green {
   color: #35a651;
@@ -35100,9 +35110,6 @@ Responsive Classes
   .navbar-appscode .navbar-left .navbar-brand {
     margin: 0;
     width: 100%;
-  }
-  .navbar-appscode .navbar-left .navbar-brand a img {
-    height: 1.5rem !important;
   }
   .navbar-appscode .navbar-left ul {
     position: absolute;
@@ -42581,7 +42588,7 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 @media (max-width: 1023.98px) {
   .overview-v2 .ov2-hero {
     padding: 120px 0 60px;
-    margin-top: 70px;
+    margin-top: 50px;
   }
 }
 @media (max-width: 768px) {
