@@ -425,27 +425,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // tabs active class add script - setup | install page
-const tabItems = document.querySelectorAll(".nav-item .nav-link");
-tabItems.forEach((tab) => {
-  tab.addEventListener("click", (e) => {
-    e.preventDefault();
-    const el = e.currentTarget;
+document.querySelectorAll(".nav-tabs").forEach((tabGroup) => {
+  const tabContent = tabGroup.nextElementSibling;
+  if (!tabContent || !tabContent.classList.contains("tab-content")) return;
 
-    // add .active class to the clicked item, remove .active from others
-    document.querySelectorAll(".nav-item .nav-link").forEach((navLink) => {
-      navLink === el ?
-        navLink.classList.add("active") :
-        navLink.classList.remove("active");
-    });
+  const tabLinks = tabGroup.querySelectorAll(".nav-link");
+  tabLinks.forEach((tab) => {
+    tab.addEventListener("click", (e) => {
+      e.preventDefault();
+      const el = e.currentTarget;
 
-    // add .show class to the target tab-pane, remove from others
-    const elHref = el.getAttribute("href");
-    const tabPaneTarget = document.querySelector(elHref);
+      // add .active class to the clicked item, remove .active from others in this group
+      tabLinks.forEach((navLink) => {
+        navLink === el ?
+          navLink.classList.add("active") :
+          navLink.classList.remove("active");
+      });
 
-    document.querySelectorAll(".tab-pane").forEach((tabPane) => {
-      tabPane === tabPaneTarget ?
-        tabPane.classList.add("show") :
-        tabPane.classList.remove("show");
+      // add .show class to the target tab-pane, remove from others in this group
+      const tabPaneTarget = tabContent.querySelector(el.getAttribute("href"));
+
+      tabContent.querySelectorAll(".tab-pane").forEach((tabPane) => {
+        tabPane === tabPaneTarget ?
+          tabPane.classList.add("show") :
+          tabPane.classList.remove("show");
+      });
     });
   });
 });
