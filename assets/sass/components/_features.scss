@@ -81,36 +81,21 @@
   grid-gap: 20px;
   grid-template-columns: 3.75rem auto;
   border: 1px solid $color-border;
-  border-radius: 2px;
+  border-radius: 12px;
   min-height: 126px;
   height: 100%;
-
-  &:hover {
-    .readmore-button {
-      letter-spacing: 0;
-      color: $ac-primary;
-      .icon-outlined {
-        margin-left: 20px;
-      }
-    }
-  }
-
-  // &:hover {
-  //   .feature-information {
-  //     a.is-ellipsis-3 {
-  //       display: initial;
-  //     }
-  //   }
-  // }
+  position: relative;
+  background-color: $ac-white;
+  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06);
 
   .feature-icon {
     width: 3.75rem;
     height: 3.75rem;
-    background-color: hsl(var(--primary-h), var(--primary-s), 95%);
+    background: linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 95%), hsl(var(--primary-h), var(--primary-s), 90%));
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2px;
+    border-radius: 12px;
 
     img {
       height: 30px;
@@ -131,35 +116,6 @@
       transition: 0.3s ease-in-out;
       color: $color-text;
       margin-bottom: 8px;
-    }
-  }
-}
-a.single-features-item {
-  transition: 0.3s ease-in-out;
-  position: relative;
-  z-index: 1;
-  background-color: hsl(var(--primary-h), 10%, 98%);
-
-  &::after{
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border: 2px solid $ac-primary;
-    border-radius: 4px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s ease-in-out;
-  }
-  &:hover {
-    border: 1px solid transparent;
-    box-shadow: $ac-shadow-2;
-    &::after {
-      opacity: 1;
-      visibility: visible;
     }
   }
 }
@@ -255,11 +211,6 @@ Responsive Classes
     .feature-icon {
       margin: 0 auto;
     }
-
-    .readmore-button {
-      text-align: center;
-      margin: 0 auto;
-    }
   }
   .features-area {
     .features-thumbnail {
@@ -298,11 +249,6 @@ Responsive Classes
         font-size: 18px;
         margin-bottom: 5px;
         line-height: 1.3;
-      }
-
-      .readmore-button {
-        text-align: left;
-        margin: 0;
       }
     }
   }
@@ -349,11 +295,6 @@ Responsive Classes
         margin-right: auto;
       }
     }
-  }
-
-  .readmore-button {
-    text-align: center;
-    margin: 0 auto;
   }
 }
 

@@ -3,6 +3,9 @@ $ac-font-heading: "Roboto", sans-serif;
 $ac-font-paragraph: "Inter", sans-serif;
 $ac-font-inter: "Inter", sans-serif;
 
+// Shared with components/_product-hero-area.scss — keep both in sync
+$ac-indigo-light: #7272e9;
+
 html,
 body {
   background-color: $ac-bg;
@@ -29,15 +32,8 @@ h6 {
   font-weight: 500;
   color: $color-heading;
   &.is-gradient {
-      background: linear-gradient(
-        -45deg,
-        $ac-primary,
-        #940148,
-        #4c346f,
-        $ac-primary
-      );
-      background-size: 300% 300%;
-      animation: gradient 5s ease infinite;
+      background: linear-gradient(135deg, $ac-primary, $ac-indigo-light);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
