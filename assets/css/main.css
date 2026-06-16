@@ -20456,6 +20456,7 @@ iframe#notification {
   .navbar-appscode.documentation-menu {
     margin-left: 0;
     padding: 0;
+    height: 0;
   }
   .navbar-appscode.documentation-menu ul .nav-item .link.is-active:after {
     display: none;
@@ -25809,7 +25810,7 @@ Responsive Classes
 *****************************************/
 @media (max-width: 1023.98px) {
   .documentation-area {
-    margin-top: 160px;
+    margin-top: 170px;
     margin-bottom: 15px;
   }
   .documentation-area .right-sidebar-area {

@@ -1166,6 +1166,7 @@ iframe#notification {
     &.documentation-menu {
       margin-left: 0;
       padding: 0;
+      height: 0;
 
       ul .nav-item .link.is-active:after { display: none; }
 
