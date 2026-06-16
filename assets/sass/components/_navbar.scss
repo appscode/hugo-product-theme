@@ -25,6 +25,10 @@ $menu-letter-sp:  -0.01em;
   background-color: $ac-white;
 }
 
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
 .navbar-appscode-wrapper {
   background-color: $ac-white;
   border-bottom: 1px solid $color-border;
@@ -33,6 +37,12 @@ $menu-letter-sp:  -0.01em;
     background-color: $primary-light-gray;
     will-change: transform;
     transition: transform 200ms linear;
+
+    // On mobile, will-change:transform creates a new fixed-position containing block
+    // in Chromium, which traps child position:fixed drawers. Remove it on mobile.
+    @media (max-width: 1023.98px) {
+      will-change: auto;
+    }
 
     .mega-menu-wrapper { top: 47px; }
     .navbar-left .navbar-brand a img { height: 1.58rem; }
@@ -181,7 +191,7 @@ $menu-letter-sp:  -0.01em;
   &.is-active {
     .link {
       color: $ac-primary;
-      i.fa { transform: rotate(-180deg); }
+      i.fa { transform: rotate(180deg); }
     }
 
     .mega-menu-wrapper {
@@ -288,7 +298,7 @@ $menu-letter-sp:  -0.01em;
   border-radius: 4px;
 
   &.is-active i.fa {
-    transform: rotate(-180deg);
+    transform: rotate(180deg);
     transform-origin: 10px;
   }
 
@@ -1185,15 +1195,16 @@ iframe#notification {
     }
 
     .navbar-right {
-      position: absolute;
+      position: fixed;
       z-index: 99;
-      right: 20%;
+      right: 0;
       opacity: 0;
       visibility: hidden;
       background: #fafafd;
       width: 100%;
       left: 0;
-      min-height: calc(100vh + 110px);
+      min-height: 0;
+      height: calc(100dvh - 61px);
       overflow-y: auto;
       transition: 0.3s ease-in-out;
       top: 61px;
@@ -1220,9 +1231,11 @@ iframe#notification {
       ul {
         display: flex;
         flex-direction: column;
+        width: 100%;
 
         li.nav-item {
           margin: 6px 0;
+          width: 100%;
 
           .link .whats-new {
             top: -10px;
@@ -1251,9 +1264,16 @@ iframe#notification {
 
   .mega-menu-wrapper {
     width: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-    padding: 20px 0 8px !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    display: none;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 14px 0 8px !important;
     background-color: #fafafd;
     border-radius: 0;
     border-left: none;
@@ -1299,13 +1319,32 @@ iframe#notification {
     }
   }
 
+  .navbar-appscode ul .nav-item.is-active {
+    > .mega-menu-wrapper {
+      display: block !important;
+    }
+  }
+
   .press-wrapper .button.inline-button {
     margin-left: 0 !important;
     background-color: transparent;
   }
 
   .navbar-appscode-wrapper.navbar-product {
-    .navbar-appscode .navbar-right { top: 47px; }
+    .navbar-appscode .navbar-right {
+      top: 47px;
+      height: calc(100dvh - 47px);
+    }
+
+    // docs section menu drawer — must clear AppCode nav + product nav + docs bar
+    .navbar-appscode.documentation-menu .navbar-right {
+      top: 0px;
+      height: 100dvh;
+      width: 100%;
+      left: 0;
+      border-right: none;
+      border-left: none;
+    }
   }
 
   .product-version {

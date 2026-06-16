@@ -70,6 +70,7 @@
 
     .product-sidebar-menu {
       padding: 0 16px;
+
       .item {
         label {
           background: transparent;
@@ -740,6 +741,66 @@ body {
   }
 }
 
+// =============================================================================
+// Docs mobile bar
+// =============================================================================
+
+.docs-mobile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $ac-primary;
+  height: 48px;
+  padding: 0;
+  width: 100%;
+  z-index: 10001;
+
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+.docs-mobile-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  padding: 6px 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  iconify-icon { display: block; }
+
+  span { line-height: 1; }
+
+  &:hover,
+  &.is-active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.docs-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+
+  &.is-active {
+    display: block;
+  }
+}
+
 /****************************************
 Responsive Classes
 *****************************************/
@@ -750,31 +811,81 @@ Responsive Classes
     margin-bottom: 15px;
 
     .right-sidebar-area {
-      padding: 32px;
+      padding: 20px 16px 24px;
     }
 
     .left-sidebar-wrapper,
     .right-sidebar {
-      display: none;
       position: fixed;
       top: 0;
       z-index: 9999;
-      width: 80%;
-      margin-top: 0;
-      height: calc(100vh - 0px);
+      width: min(88vw, 340px);
+      height: 100dvh;
       background-color: #fff;
+      box-shadow: 4px 0 24px rgba(10, 16, 26, 0.18);
+      overflow-y: auto;
+      transition: transform 0.28s ease, opacity 0.28s ease;
 
+      // hidden state — slide off-screen
+      transform: translateX(-100%);
+      opacity: 0;
+      pointer-events: none;
+
+      // shown state
+      &.is-open {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
 
+    .left-sidebar-wrapper {
+      left: 0;
+      right: auto;
+      top: 0;
+      height: 100dvh;
+      z-index: 10002;
+      padding-top: 24px;
+    }
+
+
     .right-sidebar {
+      left: auto;
       right: 0;
-      height: 100vh;
-      overflow-y: auto;
-      z-index: 9;
+      width: min(92vw, 360px);
+      transform: translateX(100%); // slide from right
+      z-index: 10000;
+
+      &.is-open {
+        transform: translateX(0);
+      }
+
+      .right-sidebar-area {
+        position: static;
+        top: auto;
+        padding: 20px 16px 80px;
+      }
+
+      .tbl-of-contents {
+        padding-top: 4px;
+
+        h4 {
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: $color-label;
+          margin-bottom: 12px;
+        }
+
+        #TableOfContents {
+          max-height: none;
+          overflow-y: visible;
+        }
+      }
     }
 
     .documentation-body {
-      padding: 0 20px;
+      padding: 0 16px;
       width: 100%;
       display: flex;
 
@@ -789,13 +900,21 @@ Responsive Classes
   }
 
   .ac-product-left-sidebar {
-    max-height: calc(100vh - 100px);
+    max-height: calc(100dvh - 160px);
     top: 0;
     position: relative;
+    padding-bottom: 20px;
+  }
+
+  .documentation-area {
+    .left-sidebar-wrapper {
+      overflow-y: auto;
+    }
   }
 
   .sidebar-search-area {
     width: 100%;
+    z-index: 10002;
   }
 
   .improve-section-area {
@@ -872,3 +991,4 @@ Responsive Classes
 // Extra large devices (large desktops, 1216px and up)
 @media (min-width: 1408px) {
 }
+

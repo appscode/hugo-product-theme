@@ -298,21 +298,42 @@
                     const productDescriptions = document.querySelectorAll(".product-description");
                     const products = document.querySelectorAll(".single-product");
 
-                    productDescriptions[0].classList.add("is-block");
-                    products[0].classList.add('is-active');
-
-                    products.forEach((product, index) => {
-                      product.addEventListener("mouseover", function () {
+                    if (productDescriptions.length > 0 && products.length > 0) {
+                      const setActiveProduct = (index) => {
                         const currentActiveProduct = document.querySelector(".product-description.is-block");
                         const currentActiveItem = document.querySelector(".single-product.is-active");
 
-                        currentActiveProduct.classList.remove("is-block");
-                        currentActiveItem.classList.remove('is-active');
+                        if (currentActiveProduct) {
+                          currentActiveProduct.classList.remove("is-block");
+                        }
+                        if (currentActiveItem) {
+                          currentActiveItem.classList.remove("is-active");
+                        }
 
-                        productDescriptions[index].classList.add("is-block");
-                        products[index].classList.add("is-active");
+                        if (productDescriptions[index]) {
+                          productDescriptions[index].classList.add("is-block");
+                        }
+                        if (products[index]) {
+                          products[index].classList.add("is-active");
+                        }
+                      };
+
+                      setActiveProduct(0);
+
+                      products.forEach((product, index) => {
+                        product.addEventListener("mouseover", function () {
+                          setActiveProduct(index);
+                        });
+
+                        product.addEventListener("focusin", function () {
+                          setActiveProduct(index);
+                        });
+
+                        product.addEventListener("click", function () {
+                          setActiveProduct(index);
+                        });
                       });
-                    });
+                    }
                   </script>
                 </li>
 
@@ -328,7 +349,7 @@
                       <!-- Services Grid -->
                       <div class="product-menu services-grid" id="servicesGrid">
                         {{ range $index, $service := site.Data.services.services_menu.servicesMenu }}
-                          <a class="single-product {{ if eq $index 0 }} is-active {{ end }}" href="#" data-service-id="{{ $service.title | urlize }}">
+                          <div class="single-product {{ if eq $index 0 }} is-active {{ end }}" data-service-id="{{ $service.title | urlize }}">
                             <div class="product-logo">
                               <iconify-icon {{ printf "icon=%s" $service.lucide_icon | safeHTMLAttr }} width="24" height="24"></iconify-icon>
                             </div>
@@ -336,7 +357,7 @@
                               <h2>{{ $service.title }}</h2>
                               <p>{{ $service.description }}</p>
                             </div>
-                          </a>
+                          </div>
                         {{ end }}
                       </div>
 
@@ -345,7 +366,7 @@
                         {{ range $index, $service := site.Data.services.services_menu.servicesMenu }}
                           <div class="product-description offering-content {{ if eq $index 0 }}is-block{{ end }}" id="offerings-{{ $service.title | urlize }}" style="border-left: none;padding-left: 0;">
                             {{ range $offering := $service.offerings }}
-                              <a href="/services/{{ $offering.id }}" class="single-product">
+                              <a href="{{$.Site.Params.domain_appscode}}/services/{{ $offering.id }}" class="single-product">
                                 <div class="product-info">
                                   <h2 class="is-flex is-align-items-center gap-8">{{ $offering.title }} <span class="arrow-right icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg>
@@ -364,7 +385,7 @@
 
                <script>
                   document.querySelectorAll('#servicesGrid .single-product').forEach(item => {
-                    item.addEventListener('mouseenter', function(e) {
+                    const activateService = function() {
                       const serviceId = this.getAttribute('data-service-id');
                       if (!serviceId) return;
 
@@ -378,7 +399,11 @@
                       });
                       const panel = document.getElementById('offerings-' + serviceId);
                       if (panel) panel.classList.add('is-block');
-                    });
+                    };
+
+                    item.addEventListener('mouseenter', activateService);
+                    item.addEventListener('focusin', activateService);
+                    item.addEventListener('click', activateService);
                   });
                 </script>
                 <!-- services end -->
@@ -387,12 +412,6 @@
                   <button class="link">Resources <i class="fa fa-angle-down" aria-hidden="true"></i></button>
                   <div class="mega-menu-wrapper">
                     <div class="mega-menu-inner">
-                      <button class="button ac-button inline-button back-button">
-                        <span class="icon">
-                          <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
-                        </span>
-                        <span>Back to Resources</span>
-                      </button>
                       <ul class="resources-card-list">
                         <li>
                           <a href="{{.Site.Params.blog_url}}" class="resource-card-item">
@@ -484,37 +503,64 @@
       <!-- navbar product end -->
 
       <script type="text/javascript">
-        const navbarRightAll = document.querySelectorAll(".navbar-right");
-        const navbarBurgerAll = document.querySelectorAll(".navbar-burger");
+        document.addEventListener("DOMContentLoaded", function () {
+          const navbarBurgerAll = document.querySelectorAll(".navbar-burger");
 
-        // Create event listeners for each navbar-burger button
-        Array.from(navbarBurgerAll).forEach((el, idx) => {
-          el.addEventListener("click", function () {
-
-            // Remove visible class from previous selected navbar right
-            Array.from(navbarRightAll).forEach((rightEl, rightElIdx) => {
-              if (idx !== rightElIdx && navbarRightAll[rightElIdx].classList.contains("is-visible")) {
-                navbarRightAll[rightElIdx].classList.remove("is-visible");
-                navbarBurgerAll[rightElIdx].classList.remove("is-active");
-              }
+          const closeAllNavPanels = () => {
+            document.querySelectorAll(".navbar-appscode .navbar-right.is-visible").forEach((panel) => {
+              panel.classList.remove("is-visible");
             });
+            navbarBurgerAll.forEach((burger) => {
+              burger.classList.remove("is-active");
+              burger.setAttribute("aria-expanded", "false");
+            });
+            document.body.classList.remove("mobile-nav-open");
+          };
 
-            const modalBackdropElement = document.querySelector(".modal-backdrop");
+          navbarBurgerAll.forEach((burger) => {
+            burger.addEventListener("click", function () {
+              const navbarAppscode = burger.closest(".navbar-appscode");
+              if (!navbarAppscode) return;
 
-            // if modal backdrop element is visible then hide it
-            if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
-              modalBackdropElement.classList.remove("is-show")
-            }
+              const navPanel = navbarAppscode.querySelector(".navbar-right");
+              if (!navPanel) return;
 
-            // if any nav element is visible then hide it
-            const activeNavItem = document.querySelector(".nav-item.is-active");
-            if (activeNavItem && activeNavItem.classList.contains("is-active")) {
-              activeNavItem.classList.remove("is-active");
-            }
+              const willOpen = !navPanel.classList.contains("is-visible");
 
-            navbarRightAll[idx].classList.toggle("is-visible");
+              closeAllNavPanels();
+
+              if (willOpen) {
+                navPanel.classList.add("is-visible");
+                burger.classList.add("is-active");
+                burger.setAttribute("aria-expanded", "true");
+                document.body.classList.add("mobile-nav-open");
+              }
+
+              const modalBackdropElement = document.querySelector(".modal-backdrop.is-show");
+              if (modalBackdropElement) {
+                modalBackdropElement.classList.remove("is-show");
+              }
+
+              document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach((item) => {
+                item.classList.remove("is-active");
+              });
+            });
           });
-        })
+
+          window.addEventListener("resize", function () {
+            if (window.innerWidth > 1023) {
+              closeAllNavPanels();
+            }
+          });
+
+          document.addEventListener("click", function (event) {
+            if (window.innerWidth > 1023) return;
+            // exclude clicks inside any navbar-appscode OR its wrapper
+            // (responsive-menu buttons live in the wrapper but outside .navbar-appscode)
+            if (event.target.closest(".navbar-appscode-wrapper")) return;
+            closeAllNavPanels();
+          });
+        });
       </script>
     </div>
   <!-- new navbar area end -->
