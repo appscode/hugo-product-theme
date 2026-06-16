@@ -1,24 +1,41 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 <!-- new hero area start   -->
-<!-- style="background-image: url(/assets/images/products/kubedb/hero-product-bg-dark.png);" -->
-<section class="hero-area is-product is-gradient is-dark has-image-bg" style="background-image:
-url(./assets/images/bg-image/gradient-bg.webp);">
-  <div class="shape">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-  </div>
-  <div class="shape">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
+<section class="hero-area is-product is-gradient is-dark">
+  <div class="hero-area-bg" aria-hidden="true">
+    <div class="hero-mesh-orb hero-mesh-orb-tr"></div>
+    <div class="hero-mesh-orb hero-mesh-orb-bl"></div>
+    <div class="hero-mesh-orb hero-mesh-orb-center"></div>
+
+    <!-- wireframe globe -->
+    <svg class="hero-globe" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="1"/>
+      <ellipse cx="100" cy="100" rx="92" ry="36" stroke="currentColor" stroke-width="1"/>
+      <ellipse cx="100" cy="100" rx="92" ry="62" stroke="currentColor" stroke-width="1"/>
+      <ellipse cx="100" cy="100" rx="36" ry="92" stroke="currentColor" stroke-width="1"/>
+      <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-width="1"/>
+    </svg>
+
+    <!-- infinity loop -->
+    <svg class="hero-infinity" viewBox="0 0 160 80" fill="none">
+      <path d="M40 40c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z" stroke="currentColor" stroke-width="2"/>
+      <path d="M40 40c0-13.255-10.745-24-24-24S-8 26.745-8 40s10.745 24 24 24 24-10.745 24-24z" stroke="currentColor" stroke-width="2"/>
+    </svg>
+
+    <!-- geometric accent -->
+    <svg class="hero-ring hero-ring-a" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="2" stroke-dasharray="6 10"/>
+    </svg>
+
+    <!-- backup / recovery / kubernetes themed icon chips -->
+    <span class="hero-icon-chip hero-icon-chip-1" title="Backup">
+      <iconify-icon icon="heroicons:circle-stack" width="22" height="22"></iconify-icon>
+    </span>
+    <span class="hero-icon-chip hero-icon-chip-2" title="Recovery">
+      <iconify-icon icon="heroicons:arrow-path" width="20" height="20"></iconify-icon>
+    </span>
+    <span class="hero-icon-chip hero-icon-chip-3" title="Protection">
+      <iconify-icon icon="heroicons:shield-check" width="20" height="20"></iconify-icon>
+    </span>
   </div>
   <div class="container">
     <div class="columns is-vcentered is-multiline">
@@ -52,14 +69,18 @@ url(./assets/images/bg-image/gradient-bg.webp);">
            }());
          </script>
          <!-- news connect-message end -->
-        <h1> {{ $p.tagline | safeHTML }}</h1>
+        <h1>
+          {{ $words := split ($p.tagline | plainify) " " }}
+          {{ $lastIndex := sub (len $words) 1 }}
+          {{ range $i, $w := $words }}{{ if eq $i $lastIndex }}<span class="hero-title-gradient">{{ $w }}</span>{{ else }}{{ $w }} {{ end }}{{ end }}
+        </h1>
         <!-- <h1> Run Production-Grade Databases on Kubernetes</h1> -->
         <p>{{ $p.summary | safeHTML }}</p>
         <div class="buttons">
           <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">TRY NOW FREE</a>
           <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
              <span class="icon">
-              <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>     
+              <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>
              </span>
              <span>GET IN TOUCH</span></a>
         </div>
@@ -72,6 +93,7 @@ url(./assets/images/bg-image/gradient-bg.webp);">
               <span class="action close"></span>
               <span class="action maximize"></span>
               <span class="action minimize"></span>
+              <span class="editor-header-label">terminal</span>
             </div>
             {{ partial "components/installation-code.html" . }}
           </div>
