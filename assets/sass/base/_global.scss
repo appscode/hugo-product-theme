@@ -127,11 +127,11 @@
 }
 
 .section-padding {
-  padding: 80px 0;
+  padding: 96px 0;
 }
 
 .section-title {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 8;
 
@@ -157,15 +157,18 @@
   }
 
   h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 12px;
   }
 
   p {
-    font-size: 16px;
-    line-height: 160%;
+    font-size: 1.0625rem;
+    line-height: 1.75;
     letter-spacing: 0px;
+    color: $color-text;
     text-wrap: balance;
     @include touch {
       text-wrap: auto;
@@ -521,15 +524,14 @@ Responsive Classes
   }
 
   .section-padding {
-    padding: 40px 0;
+    padding: 56px 0;
   }
 
   .section-title {
-    font-size: 28px;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     h2 {
-      font-size: 28px;
+      font-size: 1.625rem;
       margin-bottom: 0;
     }
 
@@ -542,6 +544,7 @@ Responsive Classes
     }
 
     p {
+      font-size: 1rem;
       margin-bottom: 0;
     }
   }
@@ -558,10 +561,16 @@ Responsive Classes
   }
 
   .section-padding {
-    padding: 50px 0;
+    padding: 72px 0;
   }
 
   .section-title {
+    margin-bottom: 2.5rem;
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
     h1 {
       &.is-outlined-text {
         font-size: 70px;
@@ -581,7 +590,7 @@ Responsive Classes
   }
 
   .section-padding {
-    padding: 60px 0;
+    padding: 80px 0;
   }
 
   .section-title {
@@ -599,7 +608,7 @@ Responsive Classes
 
 @media (min-width: 1216px) and (max-width: 1407px) {
   .section-padding {
-    padding: 60px 0;
+    padding: 88px 0;
   }
 
   .section-title {
