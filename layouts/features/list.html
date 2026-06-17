@@ -2,121 +2,62 @@
 
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 
-<!-- ==========================new hero area start ==========================   -->
-<!-- style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);" -->
-<section class="hero-area is-product is-dark has-image-bg is-feature"
-  style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);">
-  <div class="shape">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-  </div>
-  <div class="shape">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
+<!-- features hero start -->
+<section class="features-hero">
+  <div class="features-hero-bg" aria-hidden="true">
+    <div class="fh-orb fh-orb-1"></div>
+    <div class="fh-orb fh-orb-2"></div>
+    <div class="fh-grid"></div>
   </div>
   <div class="container">
-    <div class="columns has-text-centered is-centered is-vcentered is-multiline">
-      <div class="column is-8 is-centered is-full-touch">
-        <h1>{{ $p.name }} Features</h1>
-        <p>{{ $p.summary }}</p>
-        <div class="buttons is-justify-content-center">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white"
-           >Install Now Free</a>
-        </div>
+    <div class="features-hero-inner">
+      <div class="features-hero-badge">
+        <iconify-icon icon="heroicons:sparkles" width="13" height="13"></iconify-icon>
+        <span>All Features</span>
       </div>
-     
+      <h1>{{ $p.name }} <span class="features-hero-gradient">Features</span></h1>
+      <p>{{ $p.summary }}</p>
+      <div class="buttons is-justify-content-center">
+        <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">
+          <span class="icon"><iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon></span>
+          <span>Install Now Free</span>
+        </a>
+        <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
+          <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon></span>
+          <span>Talk to Us</span>
+        </a>
+      </div>
     </div>
-  </div>
   </div>
 </section>
-<!-- ========================== new hero area end ==========================  -->
+<!-- features hero end -->
 
-
-<!-- <section class="hero-area is-product is-dark"
-  style="background-image: url(/assets/images/products/kubedb/features/hero-images.png); height: calc(100vh - 110px);">
-  <div class="container">
-    <div class="columns has-text-centered is-centered is-vcentered is-multiline">
-      <div class="column is-8 is-full-touch">
-        <h1>{{ $p.name }} Features</h1>
-        <p>{{ $p.summary }}</p>
-        <div class="buttons is-justify-content-center">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary is-outlined">Install Now FREE</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-</section> -->
-<!-- new hero area end   -->
-
-<!-- all featured section start -->
-<section class="features-area">
+<!-- feature sections start -->
+<div class="fl-sections">
   {{ range $idx, $f := $p.features }}
-  <!-- single feature start -->
-  <div class="container pb-32 pt-32">
-   <div class="columns">
-     <div class="column is-12">
-        <div>
-          {{ if (modBool $idx 2) }}
-          <div class="columns is-vcentered is-flex-direction-row-reverse-mobile">
-            <div class="column is-6">
-              <div class="feature-wrapper d-table">
-                <div class="feature-content pr-140 d-table-cell">
-                  <h3>{{ $f.title }}</h3>
-                  <p>
-                    {{ $f.description }}
-                  </p>
-                  {{ if $f.url }}
-                  <a href="/features/{{ $f.url }}" class="button ac-button is-primary is-outlined mt-32">See More</a>
-                  {{ end }}
-                </div>
-              </div>
-            </div>
-            <div class="column is-6">
-              <div class="features-thumbnail has-text-right" data-aos="flip-left"
-               >
-                <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" class="img" />
-              </div>
-            </div>
-          </div>
-          {{ else }}
-          <div class="columns is-vcentered">
-            <div class="column is-6">
-              <div class="features-thumbnail" data-aos="flip-left"
-               >
-                <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" class="img" />
-              </div>
-            </div>
-            <div class="column is-6">
-              <div class="feature-wrapper d-table" data-aos-duration="1000">
-                <div class="feature-content d-table-cell">
-                  <h3>{{ $f.title }}</h3>
-                  <p>
-                    {{ $f.description }}
-                  </p>
-                  {{ if $f.url }}
-                  <a href="/features/{{ $f.url }}" class="button ac-button is-primary is-outlined mt-32">See More</a>
-                  {{ end }}
-                </div>
-              </div>
-            </div>
-            {{ end }}
+  <section class="fl-section {{ if modBool $idx 2 }}fl-section--reversed{{ end }}">
+    <div class="container">
+      <div class="fl-section-inner">
+
+        <!-- text -->
+        <div class="fl-section-text">
+          <div class="fl-section-num">{{ printf "%02d" (add $idx 1) }}</div>
+          <h2>{{ $f.title }}</h2>
+          <p>{{ $f.description }}</p>
+        </div>
+
+        <!-- illustration -->
+        <div class="fl-section-visual">
+          <div class="fl-section-image-wrap">
+            <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" loading="lazy" />
           </div>
         </div>
-     </div>
-   </div>
-  </div>
-  <!-- single feature end -->
+
+      </div>
+    </div>
+  </section>
   {{ end }}
-</section>
-<!-- all featured section end -->
+</div>
+<!-- feature sections end -->
+
 {{ end }}
