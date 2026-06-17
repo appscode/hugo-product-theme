@@ -671,8 +671,7 @@
   }
 
   .highlight {
-    // min-height: 260px;
-    // max-height: clamp(260px, 55vh, 520px);
+    max-height: clamp(220px, 40vh, 360px);
     overflow-y: auto;
     @include scrollbar-styles("y");
   }
@@ -735,6 +734,7 @@
 }
 
 .social-prove-brand-area {
+
   .brand-image-wrapper {
     padding: 16px 0;
     display: flex;
@@ -831,6 +831,8 @@ Responsive Classes
   }
 
   .social-prove-brand-area {
+    padding: 24px 0;
+
     .brand-image-wrapper {
       padding: 16px 0;
       padding-bottom: 0px;

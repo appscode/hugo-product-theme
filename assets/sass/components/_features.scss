@@ -363,22 +363,13 @@ Responsive Classes
   padding: 88px 0;
   background: linear-gradient(
     -45deg,
-    hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.32)),
-    hsl(var(--primary-h), calc(var(--primary-s) * 1.1), calc(var(--primary-l) * 0.58)),
-    hsl(calc(var(--primary-h) - 20), var(--primary-s), calc(var(--primary-l) * 0.48)),
-    hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.35))
+    hsl(var(--primary-h), var(--primary-s), 96%),
+    hsl(calc(var(--primary-h) + 20), calc(var(--primary-s) * 0.85), 82%),
+    hsl(var(--primary-h), calc(var(--primary-s) * 0.5), 97%),
+    hsl(calc(var(--primary-h) - 20), var(--primary-s), 84%)
   );
   background-size: 300% 300%;
-  animation: gradient 20s ease infinite;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0;
-    height: 120px;
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.18));
-    pointer-events: none;
-  }
+  animation: gradient 14s ease infinite;
 }
 
 .features-hero-bg {
@@ -391,16 +382,17 @@ Responsive Classes
 .fh-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.38;
-  mix-blend-mode: soft-light;
+  filter: blur(72px);
+  opacity: 0.55;
 
   &.fh-orb-1 {
     top: -20%;
     right: -8%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle at 40% 40%, $ac-indigo-light, $ac-purple, transparent 68%);
+    background: radial-gradient(circle at 40% 40%,
+      hsl(var(--primary-h), var(--primary-s), 80%) 0%,
+      transparent 70%);
     animation: hero-pulse 9s ease-in-out infinite;
   }
 
@@ -409,7 +401,9 @@ Responsive Classes
     left: -8%;
     width: 420px;
     height: 420px;
-    background: radial-gradient(circle at 60% 60%, rgba(255,255,255,0.9), $ac-blue, transparent 68%);
+    background: radial-gradient(circle at 60% 60%,
+      hsl(calc(var(--primary-h) + 20), calc(var(--primary-s) * 0.7), 84%) 0%,
+      transparent 70%);
     animation: hero-pulse 11s ease-in-out infinite 2s;
   }
 }
@@ -417,10 +411,75 @@ Responsive Classes
 .fh-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.13) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse 70% 85% at 50% 50%, black 10%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 85% at 50% 50%, black 10%, transparent 75%);
+  background-image: radial-gradient(circle,
+    hsl(var(--primary-h), 30%, 55%) 1px,
+    transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.07;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 0%, transparent 100%);
+}
+
+// --- Decorative shapes ---
+.fh-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fh-shape-ring {
+  border-radius: 50%;
+  border: 2px solid hsl(var(--primary-h), var(--primary-s), 60%);
+  opacity: 0.45;
+
+  &.fh-shape-tl {
+    top: 20px;
+    left: 20px;
+    width: 180px;
+    height: 180px;
+    animation: fh-spin 28s linear infinite;
+  }
+
+  &.fh-shape-br {
+    bottom: 20px;
+    right: 20px;
+    width: 240px;
+    height: 240px;
+    animation: fh-spin 36s linear infinite reverse;
+  }
+}
+
+.fh-shape-dot {
+  border-radius: 50%;
+  background: hsl(var(--primary-h), var(--primary-s), 48%);
+  opacity: 0.6;
+
+  &.fh-shape-d1 { width: 12px; height: 12px; top: 18%; left: 8%; animation: hero-pulse 6s ease-in-out infinite; }
+  &.fh-shape-d2 { width: 8px;  height: 8px;  top: 60%; right: 10%; animation: hero-pulse 8s ease-in-out infinite 1.5s; }
+  &.fh-shape-d3 { width: 16px; height: 16px; bottom: 22%; left: 18%; animation: hero-pulse 10s ease-in-out infinite 3s; }
+}
+
+.fh-shape-cross {
+  opacity: 0.45;
+  position: absolute;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background: hsl(var(--primary-h), var(--primary-s), 42%);
+    border-radius: 2px;
+  }
+
+  &::before { width: 2px; height: 20px; top: 0; left: 9px; }
+  &::after  { width: 20px; height: 2px; top: 9px; left: 0; }
+
+  &.fh-shape-c1 { width: 20px; height: 20px; top: 25%; right: 7%; animation: hero-pulse 7s ease-in-out infinite 0.5s; }
+  &.fh-shape-c2 { width: 20px; height: 20px; bottom: 25%; left: 5%; animation: hero-pulse 9s ease-in-out infinite 2s; }
+}
+
+@keyframes fh-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .features-hero-inner {
@@ -435,16 +494,15 @@ Responsive Classes
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 100px;
   padding: 5px 14px;
-  font-size: 0.8rem;
+  border-radius: 100px;
+  background: hsl(var(--primary-h), var(--primary-s), 94%);
+  border: 1px solid hsl(var(--primary-h), var(--primary-s), 80%);
+  color: hsl(var(--primary-h), var(--primary-s), 36%);
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.92);
   margin-bottom: 20px;
 }
 
@@ -453,13 +511,15 @@ Responsive Classes
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.035em;
-  color: $ac-white;
+  color: $color-heading;
   margin-bottom: 1.125rem;
   text-wrap: balance;
 }
 
 .features-hero-gradient {
-  background: linear-gradient(135deg, $ac-white, $ac-indigo-light 70%);
+  background: linear-gradient(135deg,
+    hsl(var(--primary-h), var(--primary-s), 40%) 0%,
+    hsl(calc(var(--primary-h) + 20), var(--primary-s), 52%) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -468,7 +528,7 @@ Responsive Classes
 .features-hero p {
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.78);
+  color: $color-text;
   max-width: 520px;
   margin: 0 auto 2rem;
   text-wrap: balance;
@@ -481,20 +541,6 @@ Responsive Classes
     height: 3rem;
     padding: 0 1.75rem;
     border-radius: 10px;
-
-    &.is-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.3);
-      color: $ac-white;
-      backdrop-filter: blur(6px);
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.16);
-        border-color: rgba(255, 255, 255, 0.55);
-        color: $ac-white;
-        box-shadow: none;
-      }
-    }
   }
 }
 
