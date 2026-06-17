@@ -1,0 +1,436 @@
+// ============================================================
+// Addon / Overview Page — hero
+// ============================================================
+.addon-hero {
+  padding: 140px 0 80px;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  margin-top: 110px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  // Background — inherits IS-OVERVIEW tinted gradients from _product-hero-area.scss
+  // We just layer orbs + dot-grid on top
+  .addon-hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .addon-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+  }
+
+  .addon-orb-1 {
+    width: 600px;
+    height: 600px;
+    top: -180px;
+    right: -140px;
+    background: radial-gradient(circle at 40% 40%,
+      hsl(var(--primary-h), var(--primary-s), 78%) 0%,
+      transparent 70%);
+    animation: addon-orb-pulse 9s ease-in-out infinite;
+  }
+
+  .addon-orb-2 {
+    width: 440px;
+    height: 440px;
+    bottom: -120px;
+    left: -80px;
+    background: radial-gradient(circle at 60% 60%,
+      hsl(var(--primary-h), calc(var(--primary-s) * 0.7), 84%) 0%,
+      transparent 70%);
+    animation: addon-orb-pulse 12s ease-in-out 2s infinite;
+  }
+
+  .addon-dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .columns {
+    row-gap: 2.5rem;
+  }
+
+  // Content side
+  .addon-hero-content {
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: $color-heading;
+      margin-bottom: 16px;
+      text-wrap: balance;
+
+      strong { color: $ac-primary; }
+    }
+
+    p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: $color-text;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+  }
+
+  .addon-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    background: hsl(var(--primary-h), var(--primary-s), 92%);
+    border: 1px solid hsl(var(--primary-h), var(--primary-s), 78%);
+    color: hsl(var(--primary-h), var(--primary-s), 36%);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  // Code editor inherits from _product-hero-area.scss
+  .hero-area-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-area-code-editor {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  @media (max-width: 368px) {
+    margin-top: 90px;
+  }
+}
+
+@keyframes addon-orb-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.07); }
+}
+
+// ============================================================
+// About section
+// ============================================================
+.addon-about-section {
+  padding: 80px 0 72px;
+  background: $ac-white;
+  position: relative;
+  overflow: hidden;
+
+  .addon-about-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle,
+      hsl(var(--primary-h), 30%, 60%) 1px,
+      transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.035;
+    pointer-events: none;
+  }
+
+  .container { position: relative; z-index: 1; }
+
+  // ── Top: description left, image right ──
+  .addon-about-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  .addon-about-text {
+    .addon-section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: $ac-primary;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: $color-heading;
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+
+    .addon-about-body {
+      font-size: 0.9375rem;
+      line-height: 1.82;
+      color: $color-text;
+
+      br { display: none; }
+
+      p {
+        margin-bottom: 14px;
+        &:last-child { margin-bottom: 0; }
+      }
+
+      strong {
+        color: $color-heading;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .addon-about-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 16px;
+      filter: drop-shadow(0 16px 40px rgba(0,0,0,0.12));
+      transition: transform 0.4s ease, filter 0.4s ease;
+
+      &:hover {
+        transform: translateY(-6px);
+        filter: drop-shadow(0 24px 48px rgba(0,0,0,0.16));
+      }
+    }
+  }
+
+  // ── Bottom: capability pill cards ──
+  .addon-capability-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .addon-capability-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: hsl(var(--primary-h), var(--primary-s), 97%);
+    border: 1px solid hsl(var(--primary-h), var(--primary-s), 88%);
+    border-radius: 10px;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+
+    &:hover {
+      background: hsl(var(--primary-h), var(--primary-s), 94%);
+      border-color: hsl(var(--primary-h), var(--primary-s), 74%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px -6px rgba(0,0,0,0.1);
+    }
+
+    .addon-capability-icon {
+      color: $ac-primary;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .addon-capability-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: $color-heading;
+      line-height: 1.35;
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 56px 0 48px;
+
+    .addon-about-top {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-bottom: 36px;
+    }
+
+    .addon-capability-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .addon-capability-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// ============================================================
+// Feature sections
+// ============================================================
+.addon-feature-sections {
+  background: #f5f7fa;
+  padding: 64px 0 80px;
+}
+
+.addon-feature-section {
+  margin-bottom: 24px;
+
+  &:last-child { margin-bottom: 0; }
+
+  .addon-feature-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid hsl(var(--primary-h), 15%, 90%);
+    box-shadow: 0 2px 12px -4px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
+    background: $ac-white;
+  }
+
+  &.addon-feature-section--reversed {
+    .addon-feature-inner {
+      direction: rtl;
+      > * { direction: ltr; }
+    }
+  }
+
+  .addon-feature-text {
+    padding: 48px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .addon-feature-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: hsl(var(--primary-h), var(--primary-s), 93%);
+      color: $ac-primary;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.4375rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: $color-heading;
+      line-height: 1.32;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      color: $color-text;
+      max-width: 420px;
+    }
+  }
+
+  .addon-feature-visual {
+    background: hsl(var(--primary-h), 20%, 97%);
+    border-left: 1px solid hsl(var(--primary-h), 15%, 90%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 48px;
+    min-height: 280px;
+
+    .addon-feature-section--reversed & {
+      border-left: none;
+      border-right: 1px solid hsl(var(--primary-h), 15%, 90%);
+    }
+  }
+
+  .addon-feature-img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    img {
+      width: auto;
+      max-width: 100%;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+    }
+  }
+}
+
+// ============================================================
+// Responsive
+// ============================================================
+@media (max-width: 768px) {
+  .addon-hero {
+    padding: 120px 0 60px;
+    min-height: auto;
+
+    .addon-hero-content h1 { font-size: 1.875rem; }
+  }
+
+  .addon-about-section {
+    padding: 56px 0;
+
+    .addon-checklist-card { padding: 24px; }
+  }
+
+  .addon-feature-sections {
+    padding: 40px 0 56px;
+  }
+
+  .addon-feature-section {
+    .addon-feature-inner {
+      grid-template-columns: 1fr;
+      border-radius: 12px;
+    }
+
+    &.addon-feature-section--reversed .addon-feature-inner {
+      direction: ltr;
+    }
+
+    .addon-feature-text { padding: 32px 28px; }
+
+    .addon-feature-visual {
+      border-left: none;
+      border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
+      min-height: 200px;
+      padding: 28px;
+
+      .addon-feature-section--reversed & {
+        border-right: none;
+        border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .addon-hero .addon-hero-content h1 { font-size: 2rem; }
+}
