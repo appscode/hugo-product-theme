@@ -21629,29 +21629,6 @@ Responsive Classes
   color: #ffffff;
 }
 
-.readmore-button {
-  margin: 0;
-  padding: 0;
-  font-size: 0.875rem;
-  color: hsl(var(--secondary-h), 10%, 20%);
-  font-weight: 500;
-  border: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  line-height: 1;
-  transition: 0.3s ease-in-out;
-}
-.readmore-button .icon {
-  width: 0.875rem;
-  margin-left: 10px;
-  transition: 0.3s ease-in-out;
-}
-
-/****************************************
-Responsive Classes
-*****************************************/
 .lightbox {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
@@ -22410,7 +22387,6 @@ Responsive Classes
   position: absolute;
   top: 60px;
   left: -150px;
-  left: -150px;
 }
 .features-area .features-description h2 {
   line-height: 130%;
@@ -22806,21 +22782,27 @@ Responsive Classes
 }
 
 .fl-sections {
-  background: #ffffff;
+  background: #f5f7fa;
+  padding: 64px 0 80px;
 }
 
 .fl-section {
-  padding: 96px 0;
+  margin-bottom: 24px;
 }
-.fl-section:nth-child(even) {
-  background: hsl(var(--primary-h), 25%, 98%);
+.fl-section:last-child {
+  margin-bottom: 0;
 }
 
 .fl-section-inner {
   display: grid;
-  grid-template-columns: 5fr 6fr;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid hsl(var(--primary-h), 15%, 90%);
+  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+  background: #ffffff;
 }
 .fl-section--reversed .fl-section-inner {
   direction: rtl;
@@ -22829,90 +22811,67 @@ Responsive Classes
   direction: ltr;
 }
 
+.fl-section-text {
+  padding: 48px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .fl-section-text .fl-section-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: hsl(var(--primary-h), var(--primary-s), 93%);
+  color: var(--ac-primary);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ac-primary);
-  margin-bottom: 14px;
-  display: block;
-  font-family: "Inter", sans-serif;
-  padding-left: 20px;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
 }
 .fl-section-text h2 {
-  font-size: 2rem;
+  font-size: 1.4375rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.22;
+  letter-spacing: -0.02em;
+  line-height: 1.32;
   color: hsl(var(--secondary-h), 10%, 10%);
-  margin-bottom: 1.125rem;
+  margin-bottom: 14px;
   text-wrap: balance;
-  padding-left: 20px;
-  border-left: 3px solid var(--ac-primary);
 }
 .fl-section-text p {
-  font-size: 1rem;
-  line-height: 1.82;
+  font-size: 0.9375rem;
+  line-height: 1.8;
   color: hsl(var(--secondary-h), 10%, 20%);
-  padding-left: 23px;
-  max-width: 460px;
+  max-width: 420px;
   margin-bottom: 0;
 }
 
 .fl-section-visual {
+  background: hsl(var(--primary-h), 20%, 97%);
+  border-left: 1px solid hsl(var(--primary-h), 15%, 90%);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 40px 48px;
+  min-height: 280px;
+}
+.fl-section--reversed .fl-section-visual {
+  border-left: none;
+  border-right: 1px solid hsl(var(--primary-h), 15%, 90%);
 }
 
 .fl-section-image-wrap {
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background: linear-gradient(145deg, hsl(var(--primary-h), var(--primary-s), 95%) 0%, hsl(var(--primary-h), 18%, 97%) 50%, hsl(var(--primary-h), var(--primary-s), 93%) 100%);
-  border: 1px solid hsl(var(--primary-h), 20%, 90%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px -6px rgba(0, 0, 0, 0.08), 0 24px 56px -12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 44px 48px;
-  min-height: 280px;
-  position: relative;
-  transition: box-shadow 0.35s ease, transform 0.35s ease;
-}
-.fl-section-image-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 55%, hsl(var(--primary-h), var(--primary-s), 88%) 0%, transparent 68%);
-  opacity: 0.38;
-  pointer-events: none;
-}
-.fl-section-image-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, hsl(var(--primary-h), var(--primary-s), 75%) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.06;
-  pointer-events: none;
+  width: 100%;
 }
 .fl-section-image-wrap img {
-  position: relative;
-  z-index: 1;
+  width: auto;
   max-width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
-}
-.fl-section-image-wrap:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -6px rgba(0, 0, 0, 0.11), 0 32px 64px -12px rgba(0, 0, 0, 0.13);
-}
-.fl-section-image-wrap:hover img {
-  transform: scale(1.04) translateY(-6px);
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1));
 }
 
 @media (max-width: 1023.98px) {
@@ -22923,26 +22882,29 @@ Responsive Classes
   .features-hero h1 {
     font-size: 2.125rem;
   }
-  .fl-section {
-    padding: 64px 0;
+  .fl-sections {
+    padding: 40px 0 56px;
   }
   .fl-section-inner {
     grid-template-columns: 1fr;
-    gap: 36px;
+    border-radius: 12px;
     direction: ltr !important;
   }
-  .fl-section-visual {
-    order: 1;
+  .fl-section--reversed .fl-section-inner {
+    direction: ltr;
   }
   .fl-section-text {
-    order: 2;
+    padding: 32px 28px;
   }
-  .fl-section-text h2 {
-    font-size: 1.625rem;
+  .fl-section-visual {
+    border-left: none;
+    border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
+    min-height: 200px;
+    padding: 28px;
   }
-  .fl-section-image-wrap {
-    min-height: 240px;
-    padding: 36px 32px;
+  .fl-section--reversed .fl-section-visual {
+    border-right: none;
+    border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
   }
 }
 @media (max-width: 768px) {
@@ -22961,19 +22923,8 @@ Responsive Classes
     max-width: 280px;
     justify-content: center;
   }
-  .fl-section {
-    padding: 48px 0;
-  }
   .fl-section-text h2 {
-    font-size: 1.375rem;
-  }
-  .fl-section-text p {
-    padding-left: 20px;
-    max-width: 100%;
-  }
-  .fl-section-image-wrap {
-    min-height: 200px;
-    padding: 28px 24px;
+    font-size: 1.25rem;
   }
 }
 li.nav-item {
