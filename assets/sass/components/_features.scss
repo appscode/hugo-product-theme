@@ -480,23 +480,20 @@ Responsive Classes
   .ac-button {
     height: 3rem;
     padding: 0 1.75rem;
-    font-size: 0.875rem;
-    letter-spacing: 0.03em;
     border-radius: 10px;
-    font-weight: 600;
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
-
-    &.is-white {
-      color: $ac-primary;
-      box-shadow: 0 10px 28px -8px rgba(0,0,0,0.3);
-      &:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -8px rgba(0,0,0,0.4); }
-    }
 
     &.is-secondary {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
       color: $ac-white;
-      &:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+      backdrop-filter: blur(6px);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.55);
+        color: $ac-white;
+        box-shadow: none;
+      }
     }
   }
 }
