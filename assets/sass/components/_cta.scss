@@ -123,15 +123,17 @@
       margin-bottom: 0;
     }
 
-    // Override button styles inside CTA
     .ac-button.is-secondary {
-      background-color: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
       color: $ac-white;
+      backdrop-filter: blur(6px);
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.55);
+        color: $ac-white;
+        box-shadow: none;
       }
     }
 

@@ -1,138 +1,136 @@
+// ============================================================
+// Button system
+// Sizes:  default (2.5rem) | is-normal (2.75rem) | is-medium (3.25rem)
+// Variants: is-primary | is-secondary | is-white | is-ghost | is-transparent
+// ============================================================
+
 .button {
-  transition: 0.3s ease-in-out;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+
   &.ac-button {
-    border-color: $ac-primary;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-family: $ac-font-heading;
-    letter-spacing: 0.078rem;
-    line-height: 1;
-    color: $ac-primary;
-    font-weight: 500;
-    padding: 0.5rem 1.5rem;
+    // Base token
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     height: 2.5rem;
+    padding: 0 1.375rem;
+    border-radius: 8px;
+    border: 1px solid $ac-primary;
+    font-family: $ac-font-heading;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: $ac-primary;
     text-decoration: none;
 
-    &:focus-visible {
-      outline: none;
-    }
+    &:focus-visible { outline: 2px solid $ac-primary; outline-offset: 2px; }
 
     &:hover {
       background-color: $ac-primary;
       color: $ac-white;
-      box-shadow: 2px 4px 24px rgba(73, 73, 163, 0.3) !important;
+      box-shadow: 0 4px 20px rgba(73, 73, 163, 0.28);
       transform: translateY(-2px);
     }
 
-    &.is-disabled {
-      opacity: 0.5 !important;
-    }
+    &.is-disabled { opacity: 0.5 !important; pointer-events: none; }
 
-    .ac-icon {
-      margin-left: 25px;
-      background-color: $ac-white;
-      color: $ac-primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      width: 28px;
-      height: 28px;
-    }
-
+    // ── Size variants ──
     &.is-normal {
-      height: 45px;
-      font-size: 15px;
-      letter-spacing: 0px;
-      font-weight: 500;
-      padding-left: 25px;
-      padding-right: 25px;
+      height: 2.75rem;
+      padding: 0 1.625rem;
+      font-size: 0.9375rem;
+      letter-spacing: 0;
     }
 
     &.is-medium {
-      height: 58px;
-      font-size: 18px;
-      padding-left: 45px;
-      padding-right: 45px;
+      height: 3.25rem;
+      padding: 0 2rem;
+      font-size: 1rem;
+    }
+
+    // ── Colour variants ──
+    &.is-primary {
+      @include ac-button($ac-primary);
+    }
+
+    &.is-secondary {
+      background-color: transparent;
+      border-color: $color-border;
+      color: $color-text;
+
+      &:hover {
+        background-color: hsl(var(--primary-h), var(--primary-s), 96%);
+        border-color: $ac-primary;
+        color: $ac-primary;
+        box-shadow: none;
+        transform: translateY(-1px);
+      }
+    }
+
+    &.is-white {
+      background-color: $ac-white;
+      border-color: $ac-white;
+      color: $ac-primary;
+      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.22);
+
+      &:hover {
+        background-color: $ac-white;
+        color: $ac-primary;
+        box-shadow: 0 14px 32px -6px rgba(0, 0, 0, 0.32);
+        transform: translateY(-2px);
+      }
+    }
+
+    &.is-ghost {
+      background-color: transparent;
+      border-color: transparent;
+      color: $color-text;
+
+      &:hover {
+        background-color: hsl(var(--primary-h), var(--primary-s), 96%);
+        border-color: transparent;
+        color: $ac-primary;
+        box-shadow: none;
+        transform: none;
+      }
     }
 
     &.is-transparent {
       padding: 0;
       height: auto;
       border: none;
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 500;
       background-color: transparent;
       color: $color-text;
+      box-shadow: none;
 
-      &.is-primary {
-        background-color: transparent;
-        color: $ac-primary;
+      &:hover { background-color: transparent; transform: none; box-shadow: none; }
 
-        &:hover {
-          background-color: transparent;
-          color: $ac-primary;
-        }
-      }
-
-      &.is-danger {
-        background-color: transparent;
-        color: $ac-red;
-
-        &:hover {
-          background-color: transparent;
-          color: $ac-red;
-        }
-      }
-
-      &.is-small {
-        letter-spacing: 0px;
-        font-size: 13px;
-      }
-
-      &:focus {
-        box-shadow: none;
-        outline: none;
-      }
+      &.is-primary { color: $ac-primary; &:hover { color: $ac-primary; } }
+      &.is-danger  { color: $ac-red;     &:hover { color: $ac-red; }     }
+      &.is-small   { font-size: 0.8125rem; }
+      &:focus      { box-shadow: none; outline: none; }
     }
 
-    &.is-white {
+    // Colour scale (mixin-driven)
+    &.is-link    { @include ac-button($ac-blue); }
+    &.is-info    { @include ac-button($ac-blue); }
+    &.is-success { @include ac-button($ac-primary); }
+    &.is-warning { @include ac-button($ac-orange); }
+    &.is-danger  { @include ac-button($ac-red); }
+    &.is-green   { @include ac-button($ac-green); }
+
+    // Legacy icon slot
+    .ac-icon {
       background-color: $ac-white;
-      border: none;
-      &:hover {
-        color: $ac-primary;
-        opacity: 0.9;
-      }
-    }
-
-    // ac-button from mixin
-    &.is-primary {
-      @include ac-button($ac-primary);
-    }
-
-    &.is-link {
-      @include ac-button($ac-blue);
-    }
-
-    &.is-info {
-      @include ac-button($ac-blue);
-    }
-
-    &.is-success {
-      @include ac-button($ac-primary);
-    }
-
-    &.is-warning {
-      @include ac-button($ac-orange);
-    }
-
-    &.is-danger {
-      @include ac-button($ac-red);
-    }
-
-    &.is-green {
-      @include ac-button($ac-green);
+      color: $ac-primary;
+      padding: 2px 6px;
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
     }
   }
 }
