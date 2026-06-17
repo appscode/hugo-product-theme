@@ -176,7 +176,6 @@
   }
   &.is-dark {
     &.is-gradient {
-      // Rich 6-stop gradient: deep brand dark → mid-hue → slight hue shift for vibrancy
       background: linear-gradient(
         -45deg,
         hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.32)),
@@ -190,7 +189,6 @@
       animation: gradient 20s ease infinite;
     }
 
-    // Bottom fade into page
     &::after {
       content: "";
       position: absolute;
@@ -340,7 +338,6 @@
   opacity: 0.4;
   mix-blend-mode: soft-light;
   animation: hero-pulse 9s ease-in-out infinite;
-  // JS parallax will update transform via CSS custom property
   will-change: transform;
 
   &.hero-mesh-orb-tr {
@@ -416,13 +413,13 @@
 // Rings
 .hero-ring {
   position: absolute;
-  color: rgba(255, 255, 255, 0.11);
 
   &.hero-ring-a {
     top: 8%;
     left: 3%;
     width: 130px;
     height: 130px;
+    color: rgba(255, 255, 255, 0.11);
     animation: hero-spin-slow 28s linear infinite;
   }
 
