@@ -1,87 +1,200 @@
 .cta-area {
+  padding: 0 0 80px;
+
   .cta-area-inner {
-    padding: 20px 50px;
-    background-image: url(/assets/images/bg-image/cta-bg-transparent.png);
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    min-height: 250px;
+    padding: 64px 72px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    background-color: $ac-primary;
+
+    // Multi-stop gradient: deep brand at top-left, mid-tone center, lighter warm violet at bottom-right
+    background:
+      linear-gradient(
+        135deg,
+        hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.42)) 0%,
+        hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.65)) 40%,
+        hsl(calc(var(--primary-h) + 18), calc(var(--primary-s) * 0.8), calc(var(--primary-l) * 0.82)) 75%,
+        hsl(calc(var(--primary-h) + 30), calc(var(--primary-s) * 0.6), calc(var(--primary-l) * 0.95)) 100%
+      );
+
+    box-shadow:
+      0 28px 72px -14px rgba(0, 0, 0, 0.38),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+      0 1px 0 rgba(255, 255, 255, 0.18) inset;
+
+    // Dot-grid texture overlay — gives depth like a premium SaaS card
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 80% 90% at 50% 50%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 50%, black 20%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    // Top-right edge shimmer line
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 40%, rgba(255, 255, 255, 0.55) 60%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    // Glow orbs
+    .cta-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    .cta-orb-1 {
+      width: 320px;
+      height: 320px;
+      top: -100px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 65%);
+      filter: blur(48px);
+      z-index: 0;
+      animation: cta-orb-pulse 6s ease-in-out infinite;
+    }
+
+    .cta-orb-2 {
+      width: 260px;
+      height: 260px;
+      bottom: -80px;
+      left: 5%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 65%);
+      filter: blur(40px);
+      z-index: 0;
+      animation: cta-orb-pulse 8s ease-in-out infinite 2s;
+    }
+
+    .cta-orb-3 {
+      width: 180px;
+      height: 180px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
+      filter: blur(32px);
+      z-index: 0;
+      animation: cta-orb-pulse 10s ease-in-out infinite 1s;
+    }
+
+    // Dot-grid span for explicit z-index control
+    .cta-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    // Ensure content sits above all decorative layers
+    .container {
+      position: relative;
+      z-index: 2;
+    }
 
     h3 {
       color: $ac-white;
-      margin-bottom: 1rem;
+      font-size: 1.875rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.875rem;
     }
 
     p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 0;
+    }
+
+    // Override button styles inside CTA
+    .ac-button.is-secondary {
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.35);
       color: $ac-white;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    .buttons {
+      gap: 12px;
     }
   }
+}
+
+@keyframes cta-orb-pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
 
 /****************************************
 Responsive Classes
 *****************************************/
-// Extra small devices (portrait phones, less than 576px)
 @media (max-width: 768px) {
   .cta-area {
+    padding: 0 0 48px;
+
     .cta-area-inner {
-      height: auto !important;
-      padding: 30px 15px;
+      padding: 44px 28px;
 
       h3 {
-        font-size: 22px;
+        font-size: 1.375rem;
         text-align: center;
       }
 
       p {
         text-align: center;
+        max-width: 100%;
       }
+
       .buttons {
-        justify-content: center!important;
+        justify-content: center !important;
       }
     }
   }
 }
 
-// Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 768px) {
 }
 
-// Medium devices (tablets, 769px and up)
 @media (min-width: 769px) and (max-width: 1023px) {
   .cta-area {
     .cta-area-inner {
-      padding: 20px;
+      padding: 48px 44px;
+
       h3 {
-        font-size: 28px;
+        font-size: 1.5rem;
       }
     }
   }
-  // .cta-area {
-  //   .cta-area-inner {
-  //     height: auto !important;
-  //     padding: 30px 15px;
-  //     h3 {
-  //       font-size: 22px;
-  //       text-align: center;
-  //     }
-  //     p {
-  //       text-align: center;
-  //     }
-  //   }
-  // }
 }
 
-// Large devices (desktops, 1024px and up)
 @media (min-width: 1024px) and (max-width: 1215px) {
   .cta-area {
     .cta-area-inner {
-      padding: 20px;
+      padding: 56px 56px;
+
       h3 {
-        font-size: 28px;
+        font-size: 1.625rem;
       }
     }
   }
@@ -90,11 +203,7 @@ Responsive Classes
 @media (min-width: 1216px) and (max-width: 1407px) {
   .cta-area {
     .cta-area-inner {
-      height: 200px;
-      padding: 30px;
-      h3 {
-        font-size: 28px;
-      }
+      padding: 60px 64px;
     }
   }
 }
@@ -102,11 +211,7 @@ Responsive Classes
 @media (min-width: 1408px) and (max-width: 1600px) {
   .cta-area {
     .cta-area-inner {
-      height: 200px;
-      padding: 30px;
-      h3 {
-        font-size: 28px;
-      }
+      padding: 64px 72px;
     }
   }
 }

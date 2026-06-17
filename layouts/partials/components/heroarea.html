@@ -2,31 +2,84 @@
 <!-- new hero area start   -->
 <section class="hero-area is-product is-gradient is-dark">
   <div class="hero-area-bg" aria-hidden="true">
-    <div class="hero-mesh-orb hero-mesh-orb-tr"></div>
-    <div class="hero-mesh-orb hero-mesh-orb-bl"></div>
-    <div class="hero-mesh-orb hero-mesh-orb-center"></div>
+    <!-- animated gradient orbs — JS moves these on mousemove -->
+    <div class="hero-mesh-orb hero-mesh-orb-tr" data-parallax="0.018"></div>
+    <div class="hero-mesh-orb hero-mesh-orb-bl" data-parallax="-0.012"></div>
+    <div class="hero-mesh-orb hero-mesh-orb-center" data-parallax="0.008"></div>
 
-    <!-- wireframe globe -->
+    <!-- dot-grid noise texture -->
+    <div class="hero-dot-grid"></div>
+
+    <!-- wireframe globe — more detailed with meridians + parallels -->
     <svg class="hero-globe" viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="1"/>
-      <ellipse cx="100" cy="100" rx="92" ry="36" stroke="currentColor" stroke-width="1"/>
-      <ellipse cx="100" cy="100" rx="92" ry="62" stroke="currentColor" stroke-width="1"/>
-      <ellipse cx="100" cy="100" rx="36" ry="92" stroke="currentColor" stroke-width="1"/>
-      <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-width="1"/>
+      <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="0.8"/>
+      <!-- latitude lines -->
+      <ellipse cx="100" cy="100" rx="92" ry="28" stroke="currentColor" stroke-width="0.6"/>
+      <ellipse cx="100" cy="100" rx="92" ry="55" stroke="currentColor" stroke-width="0.6"/>
+      <ellipse cx="100" cy="100" rx="92" ry="76" stroke="currentColor" stroke-width="0.6"/>
+      <!-- longitude lines -->
+      <ellipse cx="100" cy="100" rx="28" ry="92" stroke="currentColor" stroke-width="0.6"/>
+      <ellipse cx="100" cy="100" rx="55" ry="92" stroke="currentColor" stroke-width="0.6"/>
+      <!-- equator -->
+      <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-width="0.8"/>
+      <!-- prime meridian -->
+      <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" stroke-width="0.8"/>
+      <!-- poles -->
+      <circle cx="100" cy="8" r="2" fill="currentColor" opacity="0.5"/>
+      <circle cx="100" cy="192" r="2" fill="currentColor" opacity="0.5"/>
     </svg>
 
-    <!-- infinity loop -->
+    <!-- infinity / continuous backup loop -->
     <svg class="hero-infinity" viewBox="0 0 160 80" fill="none">
-      <path d="M40 40c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z" stroke="currentColor" stroke-width="2"/>
-      <path d="M40 40c0-13.255-10.745-24-24-24S-8 26.745-8 40s10.745 24 24 24 24-10.745 24-24z" stroke="currentColor" stroke-width="2"/>
+      <path d="M40 40c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M40 40c0-13.255-10.745-24-24-24S-8 26.745-8 40s10.745 24 24 24 24-10.745 24-24z" stroke="currentColor" stroke-width="1.5"/>
+      <!-- animated flow dot -->
+      <circle class="hero-infinity-dot" r="3" fill="currentColor" opacity="0.7">
+        <animateMotion dur="4s" repeatCount="indefinite"
+          path="M40 40c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z M40 40c0-13.255-10.745-24-24-24S-8 26.745-8 40s10.745 24 24 24 24-10.745 24-24z"/>
+      </circle>
     </svg>
 
-    <!-- geometric accent -->
+    <!-- dashed outer ring -->
     <svg class="hero-ring hero-ring-a" viewBox="0 0 100 100" fill="none">
-      <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="2" stroke-dasharray="6 10"/>
+      <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 8"/>
     </svg>
 
-    <!-- backup / recovery / kubernetes themed icon chips -->
+    <!-- solid inner ring — new -->
+    <svg class="hero-ring hero-ring-b" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="0.8" stroke-dasharray="1 6"/>
+    </svg>
+
+    <!-- hexagonal Kubernetes-themed grid — new -->
+    <svg class="hero-hex-grid" viewBox="0 0 260 260" fill="none">
+      <!-- row 1 -->
+      <polygon points="65,10 95,10 110,36 95,62 65,62 50,36" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="115,10 145,10 160,36 145,62 115,62 100,36" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="165,10 195,10 210,36 195,62 165,62 150,36" stroke="currentColor" stroke-width="0.8"/>
+      <!-- row 2 -->
+      <polygon points="40,62 70,62 85,88 70,114 40,114 25,88" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="90,62 120,62 135,88 120,114 90,114 75,88" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="140,62 170,62 185,88 170,114 140,114 125,88" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="190,62 220,62 235,88 220,114 190,114 175,88" stroke="currentColor" stroke-width="0.8"/>
+      <!-- row 3 -->
+      <polygon points="65,114 95,114 110,140 95,166 65,166 50,140" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="115,114 145,114 160,140 145,166 115,166 100,140" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="165,114 195,114 210,140 195,166 165,166 150,140" stroke="currentColor" stroke-width="0.8"/>
+      <!-- row 4 -->
+      <polygon points="40,166 70,166 85,192 70,218 40,218 25,192" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="90,166 120,166 135,192 120,218 90,218 75,192" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="140,166 170,166 185,192 170,218 140,218 125,192" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+
+    <!-- data-node connector lines between chips — new -->
+    <svg class="hero-connector" viewBox="0 0 100 400" fill="none" preserveAspectRatio="none">
+      <line x1="50" y1="0" x2="50" y2="400" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 8"/>
+      <circle cx="50" cy="80" r="3" fill="currentColor" opacity="0.5"/>
+      <circle cx="50" cy="200" r="3" fill="currentColor" opacity="0.5"/>
+      <circle cx="50" cy="320" r="3" fill="currentColor" opacity="0.5"/>
+    </svg>
+
+    <!-- icon chips with labels -->
     <span class="hero-icon-chip hero-icon-chip-1" title="Backup">
       <iconify-icon icon="heroicons:circle-stack" width="22" height="22"></iconify-icon>
     </span>
@@ -35,6 +88,10 @@
     </span>
     <span class="hero-icon-chip hero-icon-chip-3" title="Protection">
       <iconify-icon icon="heroicons:shield-check" width="20" height="20"></iconify-icon>
+    </span>
+    <!-- new chip: scheduling -->
+    <span class="hero-icon-chip hero-icon-chip-4" title="Scheduling">
+      <iconify-icon icon="heroicons:clock" width="20" height="20"></iconify-icon>
     </span>
   </div>
   <div class="container">
