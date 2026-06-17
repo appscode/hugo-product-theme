@@ -9,6 +9,14 @@
     <div class="fh-orb fh-orb-2"></div>
     <div class="fh-grid"></div>
   </div>
+  <!-- decorative floating shapes -->
+  <div class="fh-shape fh-shape-ring fh-shape-tl" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-ring fh-shape-br" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-dot fh-shape-d1" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-dot fh-shape-d2" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-dot fh-shape-d3" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-cross fh-shape-c1" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-cross fh-shape-c2" aria-hidden="true"></div>
   <div class="container">
     <div class="features-hero-inner">
       <div class="features-hero-badge">
@@ -18,11 +26,11 @@
       <h1>{{ $p.name }} <span class="features-hero-gradient">Features</span></h1>
       <p>{{ $p.summary }}</p>
       <div class="buttons is-justify-content-center">
-        <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">
+        <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary">
           <span class="icon"><iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon></span>
           <span>Install Now Free</span>
         </a>
-        <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
+        <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-white">
           <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon></span>
           <span>Talk to Us</span>
         </a>
