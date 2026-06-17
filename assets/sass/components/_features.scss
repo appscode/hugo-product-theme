@@ -360,7 +360,7 @@ Responsive Classes
   margin-top: 110px;
   position: relative;
   overflow: hidden;
-  padding: 72px 0 80px;
+  padding: 88px 0;
   background: linear-gradient(
     -45deg,
     hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) * 0.32)),
@@ -449,10 +449,10 @@ Responsive Classes
 }
 
 .features-hero h1 {
-  font-size: 3rem;
+  font-size: 3.25rem;
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: $ac-white;
   margin-bottom: 1.125rem;
   text-wrap: balance;
@@ -608,11 +608,11 @@ Responsive Classes
 @media (max-width: 1023.98px) {
   .features-hero {
     margin-top: 70px;
-    padding: 56px 0 64px;
-    h1 { font-size: 2.125rem; }
+    padding: 64px 0;
+    h1 { font-size: 2.25rem; }
   }
 
-  .fl-sections { padding: 40px 0 56px; }
+  .fl-sections { padding: 48px 0 64px; }
 
   .fl-section-inner {
     grid-template-columns: 1fr;
@@ -639,8 +639,8 @@ Responsive Classes
 
 @media (max-width: 768px) {
   .features-hero {
-    padding: 48px 0 56px;
-    h1 { font-size: 1.875rem; }
+    padding: 56px 0;
+    h1 { font-size: 2rem; }
 
     .buttons {
       flex-direction: column;
