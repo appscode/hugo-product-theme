@@ -640,6 +640,7 @@
         <ul>
           {{ range (index .Site.Menus (printf "product_%s" $productName)) }}
           {{ if .HasChildren }}
+          {{ $menuItemName := .Name }}
           <li class="nav-item addons-menu">
             <button href="#" class="link">{{ .Name }} <i class="fa fa-angle-down"></i></button>
 
@@ -647,7 +648,7 @@
             <div class="mega-menu-wrapper">
               <div class="mega-menu-inner">
                 <div class="addons-header">
-                  <span>Supported Backends</span>
+                  <span>{{ $menuItemName }}</span>
                 </div>
                 <div class="addons-grid">
                   {{ range .Children }}
