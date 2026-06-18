@@ -1,96 +1,214 @@
-// navbar area JS v.2022 start
-const navItems = document.querySelectorAll(".navbar-appscode .nav-item");
+// navbar dropdown — hover on desktop, click/tap on touch devices
+(function () {
+  var mobileViewport = window.matchMedia('(max-width: 1023.98px)');
+  var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  var navItems = document.querySelectorAll(".navbar-appscode .nav-item");
 
-navItems.forEach(navItem => {
-  const item = navItem.querySelector('.link');
-  item.addEventListener('click', function (el) {
+  function useClickMode() {
+    return mobileViewport.matches || isTouchDevice;
+  }
 
-    // to remove active class from previously selected navItem
-    const selectedNav = document.querySelector(".nav-item.is-active");
-    if (selectedNav && selectedNav !== item.parentElement) {
-      selectedNav.classList.toggle('is-active')
+  function openNav(navItem) {
+    // close any other open item first
+    document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (other) {
+      if (other !== navItem) closeNav(other);
+    });
+    navItem.classList.add('is-active');
+    var trigger = navItem.querySelector('.link');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeNav(navItem) {
+    navItem.classList.remove('is-active');
+    var trigger = navItem.querySelector('.link');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  navItems.forEach(function (navItem) {
+    var trigger = navItem.querySelector('.link');
+    var hasMega = !!navItem.querySelector('.mega-menu-wrapper');
+
+    // stamp aria attributes
+    if (trigger && hasMega) {
+      trigger.setAttribute('aria-haspopup', 'menu');
+      trigger.setAttribute('aria-expanded', 'false');
     }
 
-    // handle selected navItem class
-    const hasActiveClass = navItem.classList.contains("is-active");
-    navItem.classList.toggle('is-active')
+    if (!hasMega) return; // plain links — no dropdown logic needed
 
-    // handle background dark-shadow of navItem
-    const darkBodyEl = document.querySelector(".modal-backdrop");
+    var closeTimer = null;
 
-    function handleDarkBodyClickEvent(el) {
-      el.target.classList.remove('is-show')
-      const selectedNavItem = document.querySelector(".nav-item.is-active");
-      selectedNavItem ? selectedNavItem.classList.toggle('is-active') : null;
+    function scheduleClose() {
+      closeTimer = setTimeout(function () { closeNav(navItem); }, 120);
     }
 
-    if (hasActiveClass && darkBodyEl.classList.contains("is-show")) {
-      darkBodyEl.classList.toggle("is-show");
-      darkBodyEl.removeEventListener('click', handleDarkBodyClickEvent);
-    } else if (!hasActiveClass && !darkBodyEl.classList.contains("is-show") && !!navItem.querySelector('.mega-menu-wrapper')) {
-      darkBodyEl.classList.toggle("is-show");
-      darkBodyEl.addEventListener('click', handleDarkBodyClickEvent);
+    function cancelClose() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
     }
-  })
-})
-// navbar area JS v.2022 end
+
+    // click/tap mode for mobile viewport and touch devices
+    trigger.addEventListener('click', function (e) {
+      if (!useClickMode()) return;
+      e.preventDefault();
+      if (navItem.classList.contains('is-active')) {
+        closeNav(navItem);
+      } else {
+        openNav(navItem);
+      }
+    });
+
+    // desktop: hover interaction
+    navItem.addEventListener('mouseenter', function () {
+      if (useClickMode()) return;
+      cancelClose();
+      openNav(navItem);
+    });
+
+    navItem.addEventListener('mouseleave', function () {
+      if (useClickMode()) return;
+      scheduleClose();
+    });
+
+    // keep open when cursor moves into the dropdown panel
+    var panel = navItem.querySelector('.mega-menu-wrapper');
+    if (panel) {
+      panel.addEventListener('mouseenter', function () {
+        if (useClickMode()) return;
+        cancelClose();
+      });
+
+      panel.addEventListener('mouseleave', function () {
+        if (useClickMode()) return;
+        scheduleClose();
+      });
+    }
+
+    // keyboard: Enter/Space opens, Escape closes
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (navItem.classList.contains('is-active')) {
+          closeNav(navItem);
+        } else {
+          openNav(navItem);
+        }
+      }
+      if (e.key === 'Escape') {
+        closeNav(navItem);
+        trigger.focus();
+      }
+    });
+  });
+
+  function closeAllOpenDropdowns() {
+    document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (item) {
+      closeNav(item);
+    });
+  }
+
+  if (mobileViewport.addEventListener) {
+    mobileViewport.addEventListener('change', closeAllOpenDropdowns);
+  } else if (mobileViewport.addListener) {
+    mobileViewport.addListener(closeAllOpenDropdowns);
+  }
+
+  // close on Escape from anywhere inside the dropdown
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (item) {
+        closeNav(item);
+        var t = item.querySelector('.link');
+        if (t) t.focus();
+      });
+    }
+  });
+
+  // close when clicking outside (covers touch and desktop)
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.navbar-appscode .nav-item')) {
+      document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach(function (item) {
+        closeNav(item);
+      });
+    }
+  });
+}());
+// navbar dropdown end
 
 // responsive navbar area
 // elements selector where toggle class will be added
-const selctorsForResponsiveMenu = [
+const selectorsForResponsiveMenu = [
   ".left-sidebar-wrapper",
   ".navbar-appscode.documentation-menu > .navbar-right",
   ".right-sidebar",
   ".sidebar-search-area"
 ];
 // toggle classes for responsive buttons
-const toggleClassesForResponsiveMenu = ["is-block", "is-visible", "is-block", "right-0"];
-// All responsive menu buttons
-const responsiveMenus = document.querySelectorAll(".responsive-menu > .is-flex.is-justify-content-space-between > .button");
-// iterate thorugh the menus to handle click event
+const toggleClassesForResponsiveMenu = ["is-open", "is-visible", "is-open", "right-0"];
+
+function closeAllDocsPanels() {
+  [".left-sidebar-wrapper", ".right-sidebar"].forEach(function(sel) {
+    var el = document.querySelector(sel);
+    if (el) { el.classList.remove("is-open", "is-block"); }
+  });
+  var docsNav = document.querySelector(".navbar-appscode.documentation-menu > .navbar-right");
+  if (docsNav) docsNav.classList.remove("is-visible");
+  var searchPanel = document.querySelector(".sidebar-search-area");
+  if (searchPanel) searchPanel.classList.remove("right-0");
+  var overlay = document.getElementById("docsMobileOverlay");
+  if (overlay) overlay.classList.remove("is-active");
+  document.querySelectorAll(".docs-mobile-btn").forEach(function(btn) {
+    btn.classList.remove("is-active");
+  });
+}
+
+// All responsive menu buttons (new docs-mobile-bar + legacy responsive-menu)
+const responsiveMenus = document.querySelectorAll(
+  ".docs-mobile-bar .docs-mobile-btn, .responsive-menu > .is-flex.is-justify-content-space-between > .button"
+);
+// iterate through the menus to handle click event
 Array.from(responsiveMenus).forEach((menu, idx) => {
   menu.addEventListener("click", function () {
-    const toggleElement = document.querySelector(selctorsForResponsiveMenu[idx]);
-    if (toggleElement) {
-      // toggle active menu class
-      toggleElement.classList.toggle(toggleClassesForResponsiveMenu[idx]);
-      if (toggleElement.classList.contains(toggleClassesForResponsiveMenu[idx])) {
-        const backButtonElement = toggleElement.querySelector(".back-button");
+    const targetSelector = menu.getAttribute("data-responsive-target") || selectorsForResponsiveMenu[idx];
+    const toggleClass = menu.getAttribute("data-toggle-class") || toggleClassesForResponsiveMenu[idx];
+    const toggleElement = targetSelector ? document.querySelector(targetSelector) : null;
+    const isCurrentlyOpen = toggleElement && toggleElement.classList.contains(toggleClass);
 
-        function handleClick() {
-          toggleElement.classList.remove(toggleClassesForResponsiveMenu[idx]);
-          // remove event listener on back button click
-          backButtonElement.removeEventListener("click", handleClick);
-        }
+    closeAllDocsPanels();
 
-        backButtonElement.addEventListener("click", handleClick);
+    if (!isCurrentlyOpen && toggleElement) {
+      toggleElement.classList.add(toggleClass);
+      menu.classList.add("is-active");
 
+      var overlay = document.getElementById("docsMobileOverlay");
+      if (overlay && toggleClass !== "right-0") overlay.classList.add("is-active");
+
+      const backButtonElement = toggleElement.querySelector(".back-button");
+      if (backButtonElement) {
+        const handleBack = function() {
+          closeAllDocsPanels();
+          backButtonElement.removeEventListener("click", handleBack);
+        };
+        backButtonElement.addEventListener("click", handleBack);
       }
     }
 
     const modalBackdropElement = document.querySelector(".modal-backdrop.is-show");
-    // if modal backdrop element is visible then hide it
     if (modalBackdropElement) {
-      modalBackdropElement.classList.remove("is-show")
+      modalBackdropElement.classList.remove("is-show");
     }
 
     const navItem = document.querySelector(".nav-item.is-active");
-    // if modal backdrop element is visible then hide it
     if (navItem) {
-      navItem.classList.remove("is-active")
+      navItem.classList.remove("is-active");
     }
-
-    // remove previous active menu
-    selctorsForResponsiveMenu.forEach((el, selectorIdx) => {
-      if (selectorIdx !== idx) {
-        const selectorElement = document.querySelector(selctorsForResponsiveMenu[selectorIdx]);
-        if (selectorElement.classList.contains(toggleClassesForResponsiveMenu[selectorIdx])) {
-          selectorElement.classList.remove(toggleClassesForResponsiveMenu[selectorIdx])
-        }
-      }
-    });
   });
 });
+
+// close panels when overlay is tapped
+var docsMobileOverlay = document.getElementById("docsMobileOverlay");
+if (docsMobileOverlay) {
+  docsMobileOverlay.addEventListener("click", closeAllDocsPanels);
+}
 
 // docs page codeblock copy button 
 document.querySelectorAll(".code-block-wrapper").forEach(codeBlockWrapper => {

@@ -1,85 +1,79 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-<!-- new hero area start   -->
-<!-- style="background-image: url(/assets/images/products/kubedb/hero-product-bg-dark.png);" -->
-<section class="hero-area is-product is-gradient is-dark has-image-bg" style="background-image:
-url(./assets/images/bg-image/gradient-bg.webp);">
-  <div class="shape">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
+<!-- hero start -->
+<section class="hero-area is-product is-gradient is-dark">
+  <div class="hero-area-bg" aria-hidden="true">
+    <div class="hero-mesh-orb hero-mesh-orb-tr" data-parallax="0.018"></div>
+    <div class="hero-mesh-orb hero-mesh-orb-bl" data-parallax="-0.012"></div>
+    <div class="hero-mesh-orb hero-mesh-orb-center" data-parallax="0.008"></div>
+    <div class="hero-dot-grid"></div>
   </div>
-  <div class="shape">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-  </div>
+
   <div class="container">
     <div class="columns is-vcentered is-multiline">
+
+      <!-- Left: content -->
       <div class="column is-6 is-full-touch">
-         <!-- news connect-message start  -->
+
+        <!-- news pill -->
         <div class="news-message-wrapper">
-           <a href="" class="news-message is-hidden"><span>cool stuff!</a>
+          <a href="" class="news-message is-hidden"><span>cool stuff!</span></a>
+        </div>
+        <script type="text/javascript">
+          (function () {
+            var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                var result = JSON.parse(xhr.responseText);
+                if (result.content) {
+                  var a = document.querySelector(".news-message");
+                  a.innerHTML = '<span>' + result.content + '</span>';
+                  if (result.link) { a.href = result.link; a.target = "_blank"; }
+                  a.classList.remove('is-hidden');
+                }
+              }
+            };
+            xhr.open('GET', 'https://x.appscode.com/_/news?p={{$p.name}}');
+            xhr.send();
+          }());
+        </script>
+
+        <h1>
+          {{ $words := split ($p.tagline | plainify) " " }}
+          {{ $lastIndex := sub (len $words) 1 }}
+          {{ range $i, $w := $words }}{{ if eq $i $lastIndex }}<span class="hero-title-gradient">{{ $w }}</span>{{ else }}{{ $w }} {{ end }}{{ end }}
+        </h1>
+
+        <p>{{ $p.summary | safeHTML }}</p>
+
+        <div class="buttons hero-buttons is-flex is-align-items-center">
+          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">
+            <span class="icon"><iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon></span>
+            <span>Get Started Free</span>
+          </a>
+          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
+            <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon></span>
+            <span>Talk to Sales</span>
+          </a>
         </div>
 
-         <script type="text/javascript">
-           (function () {
-             var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-             xhr.onreadystatechange = function () {
-               if (xhr.readyState === 4) {
-                 if (xhr.status === 200) {
-                   var result = JSON.parse(xhr.responseText);
-                   if (result.content) {
-                     let a = document.querySelector(".news-message");
-                     a.innerHTML = `<span>${result.content}</span>`;
-                     if (result.link) {
-                       a.href = result.link;
-                       a.target = "_blank";
-                     }
-                     a.classList.remove('is-hidden');
-                   }
-                 }
-               }
-             } //
-             xhr.open('GET', 'https://x.appscode.com/_/news?p={{$p.name}}');
-             xhr.send();
-           }());
-         </script>
-         <!-- news connect-message end -->
-        <h1> {{ $p.tagline | safeHTML }}</h1>
-        <!-- <h1> Run Production-Grade Databases on Kubernetes</h1> -->
-        <p>{{ $p.summary | safeHTML }}</p>
-        <div class="buttons">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">TRY NOW FREE</a>
-          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
-             <span class="icon">
-              <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>     
-             </span>
-             <span>GET IN TOUCH</span></a>
-        </div>
       </div>
+
+      <!-- Right: terminal -->
       <div class="column is-6 is-full-touch">
         <div class="hero-area-right">
-          <!-- code editor start  -->
           <div class="hero-area-code-editor">
             <div class="editor-header">
               <span class="action close"></span>
               <span class="action maximize"></span>
               <span class="action minimize"></span>
+              <span class="editor-header-label">terminal — quick install</span>
             </div>
             {{ partial "components/installation-code.html" . }}
           </div>
         </div>
-        <!-- code editor end  -->
-        <!-- <img src="/assets/images/products/kubedb/hero-right-image.png" alt=""> -->
       </div>
+
     </div>
   </div>
 </section>
-<!-- new hero area end   -->
+<!-- hero end -->

@@ -21,22 +21,19 @@
       <!-- single feature information start  -->
       {{ range $f := $p.features }}
       <div class="column is-half-tablet is-one-third-widescreen">
-        <a href="/features/{{ $f.url }}" class="single-features-item">
+        <div class="single-features-item">
           <div class="feature-icon">
             <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy"/>
           </div>
           <div class="feature-information">
-          
+
             <h3>{{ $f.title }}</h3>
-            {{  if $f.summary }} 
+            {{  if $f.summary }}
             <p class="is-ellipsis-2">{{ $f.summary }}</p>
             {{ end }}
             <p class="is-ellipsis-2">{{ $f.description }}</p>
-            <button class="readmore-button"><span>Read More</span><span class="icon">
-              <iconify-icon icon="heroicons:arrow-small-right"></iconify-icon>
-            </span></button>
           </div>
-        </a>
+        </div>
       </div>
       {{end}}
       <!-- single feature information end -->
