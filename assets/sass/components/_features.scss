@@ -47,7 +47,7 @@
   }
 
   .check-list {
-    background-color: $ac-white;
+    background-color: var(--ac-surface);
     padding: 30px 40px;
     width: 300px;
 
@@ -84,7 +84,7 @@
   min-height: 126px;
   height: 100%;
   position: relative;
-  background-color: $ac-white;
+  background-color: var(--ac-surface);
   box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06);
 
   .feature-icon {
@@ -550,7 +550,7 @@ Responsive Classes
 // ---------------------------------------------------------------
 
 .fl-sections {
-  background: #f5f7fa;
+  background: var(--ac-bg-subtle, #f5f7fa);
   padding: 64px 0 80px;
 }
 
@@ -567,9 +567,9 @@ Responsive Classes
   align-items: stretch;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid hsl(var(--primary-h), 15%, 90%);
-  box-shadow: 0 2px 12px -4px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
-  background: $ac-white;
+  border: 1px solid var(--ac-border);
+  box-shadow: var(--ac-shadow-2);
+  background: var(--ac-surface);
 
   .fl-section--reversed & {
     direction: rtl;
@@ -592,7 +592,7 @@ Responsive Classes
     height: 32px;
     border-radius: 8px;
     background: hsl(var(--primary-h), var(--primary-s), 93%);
-    color: $ac-primary;
+    color: var(--ac-brand);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -620,8 +620,8 @@ Responsive Classes
 
 // Visual side
 .fl-section-visual {
-  background: hsl(var(--primary-h), 20%, 97%);
-  border-left: 1px solid hsl(var(--primary-h), 15%, 90%);
+  background: var(--ac-bg-subtle);
+  border-left: 1px solid var(--ac-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -630,7 +630,7 @@ Responsive Classes
 
   .fl-section--reversed & {
     border-left: none;
-    border-right: 1px solid hsl(var(--primary-h), 15%, 90%);
+    border-right: 1px solid var(--ac-border);
   }
 }
 
@@ -669,13 +669,13 @@ Responsive Classes
 
   .fl-section-visual {
     border-left: none;
-    border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
+    border-top: 1px solid var(--ac-border);
     min-height: 200px;
     padding: 28px;
 
     .fl-section--reversed & {
       border-right: none;
-      border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
+      border-top: 1px solid var(--ac-border);
     }
   }
 }

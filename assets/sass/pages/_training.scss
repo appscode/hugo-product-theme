@@ -49,8 +49,8 @@
 
 .pricing-plan-area-2 {
   .single-pricing {
-    background-color: $ac-white;
-    border: 1px solid $color-border;
+    background-color: var(--ac-surface);
+    border: 1px solid var(--ac-border);
     border-radius: 4px;
     padding: 50px 50px;
     position: relative;
@@ -70,7 +70,7 @@
 
       h5 {
         font-size: 16px;
-        color: $ac-primary;
+        color: var(--ac-brand);
       }
     }
 
@@ -82,7 +82,7 @@
 
     h3 {
       font-size: 24px;
-      color: $ac-orange;
+      color: var(--ac-status-warning);
       margin-bottom: 10px;
     }
 
@@ -94,13 +94,13 @@
 
   .single-pricing.intermediate {
     h5 {
-      color: $ac-blue;
+      color: var(--ac-status-info);
     }
   }
 }
 
 .feature-area-2 {
-  background-color: #fbfbfb;
+  background-color: var(--ac-bg-subtle);
 
   .single-feature {
     padding: 0 60px;
@@ -117,19 +117,19 @@
 
   .single-feature.foundational {
     h3 {
-      color: $ac-primary;
+      color: var(--ac-brand);
     }
   }
 
   .single-feature.intermediate {
     h3 {
-      color: $ac-blue;
+      color: var(--ac-status-info);
     }
   }
 
   .single-feature.advanced {
     h3 {
-      color: $ac-red;
+      color: var(--ac-status-error);
     }
   }
 }

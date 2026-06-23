@@ -11,17 +11,17 @@
     a {
       display: block;
       padding: 5px;
-      border: 1px solid #ddd;
+      border: 1px solid var(--ac-border);
       min-width: 30px;
       height: 30px;
       line-height: 20px;
       font-size: 12px;
-      color: #333;
+      color: var(--ac-fg);
       text-align: center;
       border-radius: 3px;
       &.is-active {
-        background: #4d4dcb;
-        color: $ac-white;
+        background: var(--ac-brand);
+        color: var(--ac-fg-on-brand);
       }
     }
   }

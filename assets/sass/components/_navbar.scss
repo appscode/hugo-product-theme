@@ -1,8 +1,8 @@
-// Menu item interaction
-$menu-hover-bg:       hsl(var(--primary-h), 60%, 96%);
-$menu-icon-bg:        hsl(var(--primary-h), 60%, 93%);
-$menu-icon-bg-active: hsl(var(--primary-h), 60%, 84%);
-$menu-sidebar-bg:     hsl(var(--primary-h), 40%, 97%);
+// Menu item interaction — token-backed
+$menu-hover-bg:       var(--ac-brand-subtle);
+$menu-icon-bg:        var(--ac-brand-subtle);
+$menu-icon-bg-active: var(--ac-brand-border);
+$menu-sidebar-bg:     var(--ac-bg-subtle, #f7f8fa);
 
 // Shared transitions
 $t-fast:    0.13s ease;
@@ -15,14 +15,11 @@ $menu-row-radius:  6px;
 $menu-letter-sp:  -0.01em;
 
 
-// =============================================================================
-// 1. Layout shell
-// =============================================================================
 
 .navbar-area {
   position: relative;
-  z-index: 99;
-  background-color: $ac-white;
+  z-index: var(--ac-z-fixed, 300);
+  background-color: var(--ac-surface);
 }
 
 body.mobile-nav-open {
@@ -30,11 +27,11 @@ body.mobile-nav-open {
 }
 
 .navbar-appscode-wrapper {
-  background-color: $ac-white;
-  border-bottom: 1px solid $color-border;
+  background-color: var(--ac-surface);
+  border-bottom: 1px solid var(--ac-border);
 
   &.navbar-product {
-    background-color: $primary-light-gray;
+    background-color: var(--ac-bg-subtle, #f7f8fa);
     will-change: transform;
     transition: transform 200ms linear;
 
@@ -70,8 +67,8 @@ body.mobile-nav-open {
   }
 
   &.documentation-menu {
-    background-color: $ac-white;
-    border-left: 1px solid $color-border;
+    background-color: var(--ac-surface);
+    border-left: 1px solid var(--ac-border);
 
     .mega-menu-wrapper { top: 37px; }
 
@@ -93,7 +90,7 @@ body.mobile-nav-open {
         bottom: -8px;
         width: 100%;
         height: 4px;
-        background: $ac-primary;
+        background: var(--ac-brand);
         border-radius: 3px 3px 0 0;
       }
     }
@@ -141,7 +138,6 @@ body.mobile-nav-open {
 
       ul {
         display: flex;
-        // margin-left: 16px;
 
         @include touch { margin-left: 0; }
       }
@@ -158,7 +154,7 @@ body.mobile-nav-open {
 
         .button {
           &:has(.tag) { gap: 4px; }
-          .tag { background-color: $ac-primary; color: $ac-white; }
+          .tag { background-color: var(--ac-brand); color: var(--ac-fg-on-brand); }
         }
       }
 
@@ -178,9 +174,6 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 2. Nav items & trigger
-// =============================================================================
 
 .navbar-appscode ul .nav-item {
   position: relative;
@@ -190,7 +183,7 @@ body.mobile-nav-open {
 
   &.is-active {
     .link {
-      color: $ac-primary;
+      color: var(--ac-brand);
       i.fa { transform: rotate(180deg); }
     }
 
@@ -210,7 +203,7 @@ body.mobile-nav-open {
     font-size: $font-size-normal;
     font-weight: 500;
     font-family: $ac-font-heading;
-    color: $color-heading;
+    color: var(--ac-fg);
     line-height: 1;
     border: none;
     background-color: transparent;
@@ -226,7 +219,7 @@ body.mobile-nav-open {
     z-index: 1;
 
     &.is-active,
-    &:hover { color: $ac-primary; }
+    &:hover { color: var(--ac-brand); }
 
     .fa {
       font-size: $font-size-extra-small;
@@ -234,7 +227,7 @@ body.mobile-nav-open {
     }
 
     &:focus-visible {
-      outline: 2px solid $ac-primary;
+      outline: 2px solid var(--ac-brand);
       outline-offset: 3px;
       border-radius: 3px;
     }
@@ -242,9 +235,6 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 3. Utility components
-// =============================================================================
 
 .whats-new {
   position: absolute;
@@ -252,7 +242,7 @@ body.mobile-nav-open {
   top: -10px;
   right: -30px;
   font-size: 0.8rem;
-  color: $ac-white;
+  color: var(--ac-fg-on-brand);
   padding: 0.2rem 0.3rem;
   line-height: 1.2;
   display: none;
@@ -268,7 +258,7 @@ body.mobile-nav-open {
     display: block;
     width: 2rem;
     height: 1rem;
-    background: $ac-primary;
+    background: var(--ac-brand);
   }
 
   &:before {
@@ -306,9 +296,6 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 4. Auxiliary components
-// =============================================================================
 
 .header--fixed {
   position: fixed;
@@ -324,7 +311,7 @@ body.mobile-nav-open {
     top: 0;
     width: 100%;
     height: 100%;
-    background: $ac-white;
+    background: var(--ac-surface);
     z-index: -1;
     transition: 0.5s ease-in-out;
   }
@@ -334,20 +321,20 @@ body.mobile-nav-open {
   position: relative;
   z-index: 1;
   padding: 0 20px;
-  border-left: 1px solid $color-border;
+  border-left: 1px solid var(--ac-border);
 
-  label .fa { color: $color-heading; }
+  label .fa { color: var(--ac-fg); }
 
   input[type="search"] {
     border: none;
     background-color: transparent;
-    color: $color-text;
+    color: var(--ac-fg);
     font-size: 0.875rem;
     width: 270px;
     padding: 0.2rem 0.875rem;
 
     &:focus { border: none; outline: none; }
-    &::placeholder { color: $color-label; }
+    &::placeholder { color: var(--ac-fg-muted); }
   }
 }
 
@@ -361,9 +348,6 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 5. Mega menu base
-// =============================================================================
 
 .mega-menu-wrapper {
   display: none;
@@ -372,10 +356,10 @@ body.mobile-nav-open {
   left: 0;
   top: 100%;
   transform: translateX(-30%) translateY(6px);
-  background: $ac-white;
+  background: var(--ac-surface);
   border-radius: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 8px 24px -4px rgba(0,0,0,0.10), 0 24px 48px -8px rgba(0,0,0,0.08);
+  border: 1px solid var(--ac-border);
+  box-shadow: var(--ac-shadow-4);
   padding: 0.75rem;
   width: auto;
   min-width: 380px;
@@ -431,7 +415,7 @@ body.mobile-nav-open {
           background-color: $menu-hover-bg;
 
           .product-logo {
-            background: $ac-white;
+            background: var(--ac-surface);
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
           }
 
@@ -451,7 +435,7 @@ body.mobile-nav-open {
           background: $menu-icon-bg;
           border-radius: $menu-icon-radius;
           flex-shrink: 0;
-          color: $ac-primary;
+          color: var(--ac-brand);
           transition: background-color $t-fast, box-shadow $t-fast;
 
           img { height: 20px; width: 20px; object-fit: contain; }
@@ -464,14 +448,14 @@ body.mobile-nav-open {
           h2 {
             font-size: $font-size-semi-normal;
             font-weight: 600;
-            color: $color-heading;
+            color: var(--ac-fg);
             line-height: 1.25;
             letter-spacing: $menu-letter-sp;
           }
 
           p {
             font-size: $font-size-extra-small;
-            color: $color-label;
+            color: var(--ac-fg-muted);
             line-height: 1.4;
             margin-top: 2px;
           }
@@ -484,7 +468,7 @@ body.mobile-nav-open {
 
           .icon {
             width: 14px;
-            color: $ac-primary;
+            color: var(--ac-brand);
             opacity: 0;
             visibility: hidden;
             transition: opacity $t-fast, transform $t-fast;
@@ -496,9 +480,6 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 6. Dropdown variants
-// =============================================================================
 
 .addons-menu .mega-menu-wrapper {
   min-width: 320px;
@@ -509,14 +490,14 @@ body.mobile-nav-open {
 .addons-header {
   padding: 0 0.25rem 0.5rem;
   margin-bottom: 0.25rem;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid var(--ac-border);
 
   span {
     font-size: $font-size-extra-small;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $color-label;
+    color: var(--ac-fg-muted);
   }
 }
 
@@ -540,7 +521,7 @@ body.mobile-nav-open {
     background: $menu-hover-bg;
     text-decoration: none;
 
-    .addon-name { color: $ac-primary; }
+    .addon-name { color: var(--ac-brand); }
   }
 }
 
@@ -559,7 +540,7 @@ body.mobile-nav-open {
   display: inline !important;
   font-size: $font-size-normal;
   font-weight: 500;
-  color: $color-heading;
+  color: var(--ac-fg);
   line-height: 1.2;
   transition: color $t-fast;
 }
@@ -594,10 +575,10 @@ body.mobile-nav-open {
 
     .resource-icon {
       background: $menu-icon-bg-active;
-      color: $ac-primary;
+      color: var(--ac-brand);
     }
 
-    .resource-title { color: $ac-primary; }
+    .resource-title { color: var(--ac-brand); }
   }
 }
 
@@ -607,7 +588,7 @@ body.mobile-nav-open {
   height: $menu-icon-size;
   border-radius: $menu-icon-radius;
   background: $menu-icon-bg;
-  color: $ac-primary;
+  color: var(--ac-brand);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -625,14 +606,14 @@ body.mobile-nav-open {
 .resource-title {
   font-size: $font-size-semi-normal;
   font-weight: 600;
-  color: $color-heading;
+  color: var(--ac-fg);
   line-height: 1.2;
   transition: color $t-fast;
 }
 
 .resource-desc {
   font-size: $font-size-extra-small;
-  color: $color-label;
+  color: var(--ac-fg-muted);
   line-height: 1.4;
 }
 
@@ -686,7 +667,7 @@ body.mobile-nav-open {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: $ac-primary;
+          color: var(--ac-brand);
 
           img { height: 20px; width: 20px; object-fit: contain; }
         }
@@ -699,7 +680,7 @@ body.mobile-nav-open {
           h2 {
             font-size: $font-size-semi-normal;
             font-weight: 600;
-            color: $color-heading;
+            color: var(--ac-fg);
             line-height: 1.3;
             letter-spacing: $menu-letter-sp;
           }
@@ -711,12 +692,12 @@ body.mobile-nav-open {
 
         &:hover {
           background-color: $menu-hover-bg;
-          .product-info h2 { color: $color-heading; }
+          .product-info h2 { color: var(--ac-fg); }
         }
 
         &.is-active {
           .product-logo { background: $menu-icon-bg-active; }
-          .product-info h2 { font-weight: 600; color: $color-heading; }
+          .product-info h2 { font-weight: 600; color: var(--ac-fg); }
         }
       }
 
@@ -732,7 +713,7 @@ body.mobile-nav-open {
     .offering-description-container {
       flex: 1;
       min-width: 0;
-      border-left: 1px solid $color-border-light;
+      border-left: 1px solid var(--ac-border);
       margin-left: 0.625rem;
       padding-left: 0.625rem;
       display: flex;
@@ -767,7 +748,7 @@ body.mobile-nav-open {
             h2 {
               font-size: $font-size-semi-normal;
               font-weight: 600;
-              color: $color-heading;
+              color: var(--ac-fg);
               line-height: 1.3;
               letter-spacing: $menu-letter-sp;
               display: flex;
@@ -777,7 +758,7 @@ body.mobile-nav-open {
               .arrow-right {
                 opacity: 0;
                 transition: opacity $t-fast, transform $t-fast;
-                color: $ac-primary;
+                color: var(--ac-brand);
                 display: inline-flex;
                 flex-shrink: 0;
                 margin-left: 0.25rem;
@@ -788,7 +769,7 @@ body.mobile-nav-open {
 
             p {
               font-size: $font-size-extra-small;
-              color: $color-label;
+              color: var(--ac-fg-muted);
               margin-top: 3px;
               line-height: 1.4;
             }
@@ -800,7 +781,7 @@ body.mobile-nav-open {
             background-color: $menu-hover-bg;
 
             .product-info h2 {
-              color: $ac-primary;
+              color: var(--ac-brand);
               font-weight: 600;
 
               .arrow-right { opacity: 1; transform: translateX(3px); }
@@ -815,7 +796,7 @@ body.mobile-nav-open {
 
       .offering-description-container {
         border-left: none;
-        border-top: 1px solid $color-border-light;
+        border-top: 1px solid var(--ac-border);
         margin-left: 0;
         padding-left: 0;
         margin-top: 0.5rem;
@@ -827,16 +808,13 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 7. Standalone widgets
-// =============================================================================
 
 .community-items {
   display: flex;
   align-items: center;
 
   .community-item {
-    border: 1px solid #636363;
+    border: 1px solid var(--ac-border-strong);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -849,15 +827,15 @@ body.mobile-nav-open {
     &:last-child { margin-right: 0; }
 
     &:hover {
-      background-color: $ac-primary;
-      border-color: $ac-primary;
+      background-color: var(--ac-brand);
+      border-color: var(--ac-brand);
       img { filter: brightness(10); }
     }
   }
 }
 
 .responsive-menu {
-  background-color: $ac-primary;
+  background-color: var(--ac-brand);
 
   .button {
     border: none;
@@ -866,9 +844,9 @@ body.mobile-nav-open {
     font-size: $font-size-normal;
     font-weight: 500;
     background-color: transparent;
-    color: $ac-white;
+    color: var(--ac-fg-on-brand);
 
-    &.is-active { color: #d2d2d2; }
+    &.is-active { color: var(--ac-fg-muted); }
   }
 }
 
@@ -880,11 +858,11 @@ body.mobile-nav-open {
       height: 2rem;
       border-radius: 2px;
       padding: 2px 15px;
-      color: $color-heading;
-      border: 1px solid $color-border;
+      color: var(--ac-fg);
+      border: 1px solid var(--ac-border);
 
       .arrow {
-        color: #999999;
+        color: var(--ac-fg-subtle);
         font-size: 0.9rem;
       }
     }
@@ -892,15 +870,15 @@ body.mobile-nav-open {
     .dropdown-menu {
       * {
         scrollbar-width: auto;
-        scrollbar-color: #ebebeb #fafafd;
+        scrollbar-color: var(--ac-border-strong) var(--ac-bg-subtle);
       }
 
       *::-webkit-scrollbar { width: 12px; }
-      *::-webkit-scrollbar-track { background: #fafafd; }
+      *::-webkit-scrollbar-track { background: var(--ac-bg-subtle); }
       *::-webkit-scrollbar-thumb {
-        background-color: #ebebeb;
+        background-color: var(--ac-border-strong);
         border-radius: 10px;
-        border: 3px solid #fafafd;
+        border: 3px solid var(--ac-bg-subtle);
       }
 
       .dropdown-content {
@@ -909,16 +887,16 @@ body.mobile-nav-open {
 
         .dropdown-item {
           font-size: 0.813rem;
-          color: $color-heading;
+          color: var(--ac-fg);
         }
       }
     }
   }
 
   .new-item {
-    background-color: $ac-primary;
+    background-color: var(--ac-brand);
     font-size: 0.813rem;
-    color: $ac-white;
+    color: var(--ac-fg-on-brand);
     border-radius: 2px;
     height: 1.2rem;
     padding: 2px 5px;
@@ -927,9 +905,6 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 8. Resources list
-// =============================================================================
 
 .resources-list {
   display: grid;
@@ -955,7 +930,7 @@ body.mobile-nav-open {
       li a {
         font-size: $font-size-normal;
         padding: 10px 16px;
-        color: #374151;
+        color: var(--ac-fg);
         display: flex;
         align-items: center;
         line-height: 1;
@@ -966,9 +941,9 @@ body.mobile-nav-open {
         text-decoration: none;
 
         &:hover {
-          background: #F3F4F6;
-          color: $ac-primary;
-          border-left-color: $ac-primary;
+          background: var(--ac-bg-subtle);
+          color: var(--ac-brand);
+          border-left-color: var(--ac-brand);
           text-decoration: none;
         }
       }
@@ -977,13 +952,10 @@ body.mobile-nav-open {
 }
 
 
-// =============================================================================
-// 9. Misc / legacy
-// =============================================================================
 
 .back-button {
   display: none !important;
-  color: $color-text;
+  color: var(--ac-fg);
   margin-bottom: 10px !important;
   background-color: transparent;
 }
@@ -1000,7 +972,7 @@ body.mobile-nav-open {
   &:hover {
     background-color: transparent;
     border: none;
-    color: $ac-primary;
+    color: var(--ac-brand);
 
     .icon { margin-left: 1rem; }
   }
@@ -1020,7 +992,7 @@ body.mobile-nav-open {
     align-items: center;
     transition: 0.3s;
 
-    &:hover h6 { color: $ac-primary; }
+    &:hover h6 { color: var(--ac-brand); }
 
     .calender {
       text-align: center;
@@ -1035,13 +1007,13 @@ body.mobile-nav-open {
       .date {
         width: 84px;
         height: 45px;
-        background-color: #9dffcd;
+        background-color: var(--ac-status-success-bg, #d1fae5);
         font-style: normal;
         font-weight: 500;
         font-size: 28px;
         line-height: 140%;
         letter-spacing: 0.4px;
-        color: $ac-primary;
+        color: var(--ac-brand);
         align-items: center;
         display: flex;
         justify-content: center;
@@ -1050,13 +1022,13 @@ body.mobile-nav-open {
       .month {
         width: 84px;
         height: 45px;
-        background: #ccffe5;
+        background: var(--ac-status-success-bg, #bbf7d0);
         font-style: normal;
         font-weight: 300;
         font-size: 18px;
         line-height: 140%;
         letter-spacing: 0.4px;
-        color: $ac-primary;
+        color: var(--ac-brand);
         align-items: center;
         display: flex;
         justify-content: center;
@@ -1082,12 +1054,12 @@ body.mobile-nav-open {
         letter-spacing: 0.4px;
         margin-bottom: 0.5rem;
         display: block;
-        color: #1c1c1c;
+        color: var(--ac-fg);
       }
 
       p {
         font-size: 0.875rem;
-        color: #636363;
+        color: var(--ac-fg-muted);
         line-height: 150%;
       }
     }
@@ -1146,9 +1118,6 @@ iframe#notification {
 }
 
 
-// =============================================================================
-// 10. Responsive
-// =============================================================================
 
 @media (max-width: 1023.98px) {
   .headroom--unpinned {
@@ -1173,7 +1142,7 @@ iframe#notification {
       .navbar-right {
         position: fixed;
         width: 80%;
-        border-right: 1px solid $color-border;
+        border-right: 1px solid var(--ac-border);
       }
     }
 
@@ -1201,7 +1170,7 @@ iframe#notification {
       right: 0;
       opacity: 0;
       visibility: hidden;
-      background: #fafafd;
+      background: var(--ac-bg-subtle);
       width: 100%;
       left: 0;
       min-height: 0;
@@ -1275,7 +1244,7 @@ iframe#notification {
     opacity: 1;
     pointer-events: auto;
     padding: 14px 0 8px !important;
-    background-color: #fafafd;
+    background-color: var(--ac-bg-subtle);
     border-radius: 0;
     border-left: none;
     border-right: none;
@@ -1359,7 +1328,7 @@ iframe#notification {
     display: flex !important;
 
     span {
-      color: $ac-primary;
+      color: var(--ac-brand);
       padding-right: 15px;
       font-size: 18px;
     }
