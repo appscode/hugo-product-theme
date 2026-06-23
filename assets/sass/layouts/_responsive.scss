@@ -103,7 +103,7 @@
     padding: 5px 0 0;
   }
   .header-bottom-area .navbar-burger {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
   }
   .kd-transparent-btn {
     padding: 0;
@@ -155,7 +155,7 @@
   }
   .main-menu.is-bg-available .navbar-item,
   .main-menu.is-bg-available .navbar-link {
-    color: $link-color;
+    color: var(--ac-link);
   }
   // mega-menu start
   body.fixed-nav .is-fixed-absolute {
@@ -166,11 +166,11 @@
 
   .main-menu.is-bg-available .navbar-item,
   .main-menu.is-bg-available .navbar-link {
-    color: $link-color;
+    color: var(--ac-link);
   }
   .main-menu.is-bg-available .navbar-link:not(.is-arrowless)::after,
   .main-menu.is-bg-available .select:not(.is-multiple):not(.is-loading)::after {
-    border-color: $primary-color;
+    border-color: var(--ac-brand);
   }
   body.fixed-nav {
     padding-top: 0 !important;
@@ -179,7 +179,7 @@
     box-shadow: none;
     border-radius: 4px;
     padding: 20px;
-    background: #fff;
+    background: var(--ac-surface);
     position: inherit;
     min-width: auto;
     top: 40px;
@@ -269,7 +269,7 @@
     }
   }
   .customize-kubedb .main-menu a {
-    color: $link-color;
+    color: var(--ac-link);
   }
   //feature page style start
   .single-product-feature-wrapper {
@@ -305,7 +305,7 @@
 /*  tablet :769px. */
 @media (min-width: 769px) and (max-width: 1023px) {
   .navbar-burger {
-    color: $white-color;
+    color: var(--ac-fg-on-brand);
   }
   p {
     font-size: 15px;
@@ -326,7 +326,7 @@
     padding: 0;
   }
   .header-bottom-area .navbar-burger {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
   }
   .main-menu a {
     padding: 5px 0;
@@ -344,7 +344,7 @@
     padding: 5px 0 0;
   }
   .header-bottom-area .navbar-burger {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
   }
   .hero-area-button {
     margin-top: 20px;
@@ -409,7 +409,7 @@
 
   .single-db-logo {
     box-shadow: none !important;
-    border: 1px solid #ebebeb !important;
+    border: 1px solid var(--ac-border) !important;
     padding: 10px;
     margin: 10px 0 !important;
     width: 100%;
@@ -488,7 +488,7 @@
   }
 
   .single-pricing-table .pricing-body {
-    border: 1px solid #dedede !important;
+    border: 1px solid var(--ac-border) !important;
     border-radius: 8px;
   }
   .pricing-body {
@@ -514,7 +514,7 @@
  Product page  start
 ==============================================*/
   .customize-kubedb .main-menu a {
-    color: $link-color;
+    color: var(--ac-link);
   }
   // feature-page start
   .single-product-feature-wrapper {
@@ -546,11 +546,11 @@
 
   .main-menu.is-bg-available .navbar-item,
   .main-menu.is-bg-available .navbar-link {
-    color: $link-color;
+    color: var(--ac-link);
   }
   .main-menu.is-bg-available .navbar-link:not(.is-arrowless)::after,
   .main-menu.is-bg-available .select:not(.is-multiple):not(.is-loading)::after {
-    border-color: $primary-color;
+    border-color: var(--ac-brand);
   }
   body.fixed-nav {
     padding-top: 0 !important;
@@ -559,7 +559,7 @@
     box-shadow: none;
     border-radius: 4px;
     padding: 20px;
-    background: #fff;
+    background: var(--ac-surface);
     position: inherit;
     min-width: auto;
     top: 40px;
@@ -688,7 +688,7 @@
 @media (max-width: 1209px) and (min-width: 1090px){
 .customize-kubedb {
   .main-menu a {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
   }
 }
 }
@@ -726,7 +726,7 @@
     padding: 0;
   }
   .header-bottom-area .navbar-burger {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
   }
   .main-menu a {
     padding: 5px 0;
@@ -744,7 +744,7 @@
     padding: 5px 0 0;
   }
   .header-bottom-area .navbar-burger {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
   }
   .hero-area-button {
     margin-top: 20px;
@@ -809,7 +809,7 @@
 
   .single-db-logo {
     box-shadow: none !important;
-    border: 1px solid #ebebeb !important;
+    border: 1px solid var(--ac-border) !important;
     padding: 10px;
     margin: 10px 0 !important;
     width: 100%;
@@ -897,7 +897,7 @@
   }
 
   .single-pricing-table .pricing-body {
-    border: 1px solid #dedede !important;
+    border: 1px solid var(--ac-border) !important;
     border-radius: 8px;
   }
   .pricing-body {
@@ -929,7 +929,7 @@
    Product page  start
 ==============================================*/
   .customize-kubedb .main-menu a {
-    color: $link-color;
+    color: var(--ac-link);
   }
   // feature-page start
   .single-product-feature-wrapper {
@@ -961,11 +961,11 @@
 
   .main-menu.is-bg-available .navbar-item,
   .main-menu.is-bg-available .navbar-link {
-    color: $link-color;
+    color: var(--ac-link);
   }
   .main-menu.is-bg-available .navbar-link:not(.is-arrowless)::after,
   .main-menu.is-bg-available .select:not(.is-multiple):not(.is-loading)::after {
-    border-color: $primary-color;
+    border-color: var(--ac-brand);
   }
   body.fixed-nav {
     padding-top: 0 !important;
@@ -974,7 +974,7 @@
     box-shadow: none;
     border-radius: 4px;
     padding: 20px;
-    background: #fff;
+    background: var(--ac-surface);
     position: inherit;
     min-width: auto;
     top: 0px;

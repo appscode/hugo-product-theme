@@ -1,17 +1,10 @@
-// ac-buttons
 @mixin ac-button($colorName) {
   background-color: $colorName;
-  color: $ac-white;
+  color: var(--ac-fg-on-brand);
   border: none;
 
   &:hover {
-    @if (type_of($colorName) == "color") {
-      // background-color: darken($colorName, 2%);
-    } @else {
-      background-color: $colorName;
-    }
-
-    // box-shadow: 0px 6px 12px scale-color($color: $colorName, $lightness: 70%);
+    background-color: $colorName;
   }
 
   &:focus-visible {
@@ -19,12 +12,7 @@
   }
 
   &.is-light {
-    @if (type_of($colorName) == "color") {
-      // background-color: scale-color($colorName, $lightness: 90%);
-    } @else {
-      background-color:$colorName;
-    }
-
+    background-color: $colorName;
     color: $colorName;
 
     &.is-border {
@@ -32,11 +20,7 @@
     }
 
     &:hover {
-      @if (type_of($colorName) == "color") {
-        // background-color: scale-color($colorName, $lightness: 80%);
-      } @else {
-        background-color: $colorName;
-      }
+      background-color: $colorName;
     }
   }
 
@@ -47,13 +31,11 @@
 
     &:hover {
       background-color: $colorName;
-      color: $ac-white;
+      color: var(--ac-fg-on-brand);
     }
   }
-
 }
 
-// Absulate Shape
 @mixin absulate-shape($colorName, $width, $height) {
   position: absolute;
   content: "";

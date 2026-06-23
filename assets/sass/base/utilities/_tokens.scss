@@ -1,0 +1,479 @@
+:root {
+
+  // Gray ramp
+  --ac-gray-50:  #f9f9fb;
+  --ac-gray-100: #f1f0f5;
+  --ac-gray-200: #e4e2ed;
+  --ac-gray-300: #cbc8d8;
+  --ac-gray-400: #9794aa;
+  --ac-gray-500: #6f6c82;
+  --ac-gray-600: #524f63;
+  --ac-gray-700: #3d3a4e;
+  --ac-gray-800: #2a2739;
+  --ac-gray-850: #221f31;
+  --ac-gray-900: #1a1730;
+  --ac-gray-950: #0d0b1e;
+
+  // Purple — KubeStash / Stash
+  --ac-purple-50:  #f5f0ff;
+  --ac-purple-100: #ede5ff;
+  --ac-purple-200: #d9ccff;
+  --ac-purple-300: #b899f7;
+  --ac-purple-400: #9a66ef;
+  --ac-purple-500: #6633BB;
+  --ac-purple-600: #5528a0;
+  --ac-purple-700: #421e80;
+  --ac-purple-800: #2f1460;
+  --ac-purple-900: #1e0d42;
+  --ac-purple-950: #110828;
+
+  // Indigo — KubeDB
+  --ac-indigo-50:  #eef2ff;
+  --ac-indigo-100: #e0e7ff;
+  --ac-indigo-200: #c7d2fe;
+  --ac-indigo-300: #a5b4fc;
+  --ac-indigo-400: #818cf8;
+  --ac-indigo-500: #4F46E5;
+  --ac-indigo-600: #4338ca;
+  --ac-indigo-700: #3730a3;
+  --ac-indigo-800: #312e81;
+  --ac-indigo-900: #1e1b4b;
+  --ac-indigo-950: #12103a;
+
+  // Sky — KubeVault
+  --ac-sky-50:  #f0f9ff;
+  --ac-sky-100: #e0f2fe;
+  --ac-sky-200: #bae6fd;
+  --ac-sky-300: #7dd3fc;
+  --ac-sky-400: #38bdf8;
+  --ac-sky-500: #0EA5E9;
+  --ac-sky-600: #0284c7;
+  --ac-sky-700: #0369a1;
+  --ac-sky-800: #075985;
+  --ac-sky-900: #0c4a6e;
+  --ac-sky-950: #082f49;
+
+  // Violet — Voyager
+  --ac-violet-50:  #f5f3ff;
+  --ac-violet-100: #ede9fe;
+  --ac-violet-200: #ddd6fe;
+  --ac-violet-300: #c4b5fd;
+  --ac-violet-400: #a78bfa;
+  --ac-violet-500: #7C3AED;
+  --ac-violet-600: #6d28d9;
+  --ac-violet-700: #5b21b6;
+  --ac-violet-800: #4c1d95;
+  --ac-violet-900: #2e1065;
+  --ac-violet-950: #1d0e45;
+
+  // Pink — Gateway / KubeShield
+  --ac-pink-50:  #fdf2f8;
+  --ac-pink-100: #fce7f3;
+  --ac-pink-200: #fbcfe8;
+  --ac-pink-300: #f9a8d4;
+  --ac-pink-400: #f472b6;
+  --ac-pink-500: #C2185B;
+  --ac-pink-600: #a51851;
+  --ac-pink-700: #881347;
+  --ac-pink-800: #6a0f37;
+  --ac-pink-900: #4d0b27;
+  --ac-pink-950: #30071a;
+
+  // Teal — Service Broker / ConfigSyncer
+  --ac-teal-50:  #f0fdfa;
+  --ac-teal-100: #ccfbf1;
+  --ac-teal-200: #99f6e4;
+  --ac-teal-300: #5eead4;
+  --ac-teal-400: #2dd4bf;
+  --ac-teal-500: #14B8A6;
+  --ac-teal-600: #0d9488;
+  --ac-teal-700: #0f766e;
+  --ac-teal-800: #115e59;
+  --ac-teal-900: #134e4a;
+  --ac-teal-950: #0d3330;
+
+  // Status primitives
+  --ac-emerald-50:  #ecfdf5;
+  --ac-emerald-100: #d1fae5;
+  --ac-emerald-200: #a7f3d0;
+  --ac-emerald-300: #6ee7b7;
+  --ac-emerald-500: #10B981;
+  --ac-emerald-700: #047857;
+  --ac-emerald-900: #064e3b;
+
+  --ac-amber-50:  #fffbeb;
+  --ac-amber-100: #fef3c7;
+  --ac-amber-200: #fde68a;
+  --ac-amber-300: #fcd34d;
+  --ac-amber-500: #F59E0B;
+  --ac-amber-700: #b45309;
+  --ac-amber-900: #78350f;
+
+  --ac-red-50:  #fff1f2;
+  --ac-red-100: #fee2e2;
+  --ac-red-200: #fecaca;
+  --ac-red-300: #fca5a5;
+  --ac-red-500: #EF4444;
+  --ac-red-700: #b91c1c;
+  --ac-red-900: #7f1d1d;
+
+  --ac-blue-50:  #eff6ff;
+  --ac-blue-100: #dbeafe;
+  --ac-blue-200: #bfdbfe;
+  --ac-blue-300: #93c5fd;
+  --ac-blue-500: #3B82F6;
+  --ac-blue-700: #1d4ed8;
+  --ac-blue-900: #1e3a8a;
+
+  // Space scale (4px base)
+  --ac-space-1:  4px;
+  --ac-space-2:  8px;
+  --ac-space-3:  12px;
+  --ac-space-4:  16px;
+  --ac-space-5:  20px;
+  --ac-space-6:  24px;
+  --ac-space-7:  28px;
+  --ac-space-8:  32px;
+  --ac-space-9:  36px;
+  --ac-space-10: 40px;
+  --ac-space-12: 48px;
+  --ac-space-16: 64px;
+  --ac-space-20: 80px;
+  --ac-space-24: 96px;
+
+  // Radius scale
+  --ac-radius-none: 0;
+  --ac-radius-sm:   4px;
+  --ac-radius-base: 6px;
+  --ac-radius-md:   8px;
+  --ac-radius-lg:   12px;
+  --ac-radius-xl:   16px;
+  --ac-radius-2xl:  24px;
+  --ac-radius-full: 9999px;
+
+  // Elevation
+  --ac-shadow-0: none;
+  --ac-shadow-1: 0 1px 2px rgba(0,0,0,.06);
+  --ac-shadow-2: 0 2px 8px -2px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+  --ac-shadow-3: 0 4px 16px -4px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.06);
+  --ac-shadow-4: 0 8px 32px -8px rgba(0,0,0,.16), 0 2px 8px rgba(0,0,0,.08);
+  --ac-shadow-5: 0 16px 48px -12px rgba(0,0,0,.22), 0 4px 12px rgba(0,0,0,.10);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(102,51,187,.25);
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(102,51,187,.35);
+
+  // Z-index scale
+  --ac-z-base:     0;
+  --ac-z-raised:   10;
+  --ac-z-dropdown: 100;
+  --ac-z-sticky:   200;
+  --ac-z-fixed:    300;
+  --ac-z-overlay:  400;
+  --ac-z-modal:    500;
+  --ac-z-toast:    600;
+  --ac-z-tooltip:  700;
+
+  // Motion
+  --ac-duration-instant: 50ms;
+  --ac-duration-fast:    100ms;
+  --ac-duration-base:    150ms;
+  --ac-duration-slow:    250ms;
+  --ac-duration-slower:  400ms;
+  --ac-duration-slowest: 600ms;
+  --ac-ease-out:     cubic-bezier(0.2, 0, 0, 1);
+  --ac-ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ac-ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ac-ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  // Typography
+  --ac-font-sans:    Inter, "Segoe UI", system-ui, sans-serif;
+  --ac-font-heading: Roboto, "Segoe UI", system-ui, sans-serif;
+  --ac-font-mono:    "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+
+  --ac-text-xs:      0.6875rem;
+  --ac-text-sm:      0.8125rem;
+  --ac-text-md:      0.9375rem;
+  --ac-text-lg:      1.0625rem;
+  --ac-text-xl:      1.25rem;
+  --ac-text-2xl:     1.5rem;
+  --ac-text-display: clamp(2.25rem, 5vw, 3.75rem);
+
+  --ac-leading-tight:   1.1;
+  --ac-leading-snug:    1.25;
+  --ac-leading-normal:  1.5;
+  --ac-leading-relaxed: 1.65;
+  --ac-leading-loose:   1.75;
+
+  --ac-weight-normal:    400;
+  --ac-weight-medium:    500;
+  --ac-weight-semibold:  600;
+  --ac-weight-bold:      700;
+  --ac-weight-extrabold: 800;
+  --ac-weight-black:     900;
+}
+
+
+// Semantic tokens — light theme (marketing pages)
+:root,
+[data-theme="light"] {
+  --ac-bg:              #ffffff;
+  --ac-bg-subtle:       var(--ac-gray-50);
+  --ac-surface:         #ffffff;
+  --ac-surface-raised:  var(--ac-gray-50);
+  --ac-surface-overlay: rgba(0,0,0,.48);
+
+  --ac-fg:          var(--ac-gray-900);
+  --ac-fg-muted:    var(--ac-gray-600);
+  --ac-fg-subtle:   var(--ac-gray-500);
+  --ac-fg-code:     var(--ac-brand-600, #5528a0);
+  --ac-fg-on-brand: #ffffff;
+
+  --ac-border:        rgba(0,0,0,.08);
+  --ac-border-strong: rgba(0,0,0,.16);
+
+  --ac-link:       var(--ac-brand, #6633BB);
+  --ac-focus-ring: #6634CC;
+
+  --ac-status-success:        var(--ac-emerald-500);
+  --ac-status-success-subtle: var(--ac-emerald-100);
+  --ac-status-success-fg:     var(--ac-emerald-700);
+  --ac-status-success-border: var(--ac-emerald-500);
+
+  --ac-status-warning:        var(--ac-amber-500);
+  --ac-status-warning-subtle: var(--ac-amber-100);
+  --ac-status-warning-fg:     var(--ac-amber-700);
+  --ac-status-warning-border: var(--ac-amber-500);
+
+  --ac-status-error:          var(--ac-red-500);
+  --ac-status-error-subtle:   var(--ac-red-100);
+  --ac-status-error-fg:       var(--ac-red-700);
+  --ac-status-error-border:   var(--ac-red-500);
+
+  --ac-status-info:           var(--ac-blue-500);
+  --ac-status-info-subtle:    var(--ac-blue-100);
+  --ac-status-info-fg:        var(--ac-blue-700);
+  --ac-status-info-border:    var(--ac-blue-500);
+}
+
+
+// Semantic tokens — dark theme (product UI / dashboards)
+[data-theme="dark"] {
+  --ac-bg:              var(--ac-gray-950);
+  --ac-bg-subtle:       var(--ac-gray-900);
+  --ac-surface:         var(--ac-gray-900);
+  --ac-surface-raised:  var(--ac-gray-800);
+  --ac-surface-overlay: rgba(0,0,0,.64);
+
+  --ac-fg:          var(--ac-gray-50);
+  --ac-fg-muted:    var(--ac-gray-400);
+  --ac-fg-subtle:   var(--ac-gray-500);
+  --ac-fg-code:     var(--ac-brand-300, #b899f7);
+  --ac-fg-on-brand: #ffffff;
+
+  --ac-border:        rgba(255,255,255,.08);
+  --ac-border-strong: rgba(255,255,255,.16);
+
+  --ac-link:       var(--ac-brand, #9a66ef);
+  --ac-focus-ring: var(--ac-brand-300, #b899f7);
+
+  --ac-status-success:        var(--ac-emerald-500);
+  --ac-status-success-subtle: rgba(16,185,129,.15);
+  --ac-status-success-fg:     var(--ac-emerald-300);
+  --ac-status-success-border: rgba(16,185,129,.35);
+
+  --ac-status-warning:        var(--ac-amber-500);
+  --ac-status-warning-subtle: rgba(245,158,11,.15);
+  --ac-status-warning-fg:     var(--ac-amber-300);
+  --ac-status-warning-border: rgba(245,158,11,.35);
+
+  --ac-status-error:          var(--ac-red-500);
+  --ac-status-error-subtle:   rgba(239,68,68,.15);
+  --ac-status-error-fg:       var(--ac-red-300);
+  --ac-status-error-border:   rgba(239,68,68,.35);
+
+  --ac-status-info:           var(--ac-blue-500);
+  --ac-status-info-subtle:    rgba(59,130,246,.15);
+  --ac-status-info-fg:        var(--ac-blue-300);
+  --ac-status-info-border:    rgba(59,130,246,.35);
+}
+
+
+// Product themes — bind --ac-brand-* to product hue ramp
+// Usage: <html data-product="kubestash" data-theme="light|dark">
+
+:root,
+[data-product="kubestash"] {
+  --ac-brand-50:     var(--ac-purple-50);
+  --ac-brand-100:    var(--ac-purple-100);
+  --ac-brand-200:    var(--ac-purple-200);
+  --ac-brand-300:    var(--ac-purple-300);
+  --ac-brand-400:    var(--ac-purple-400);
+  --ac-brand-500:    var(--ac-purple-500);
+  --ac-brand-600:    var(--ac-purple-600);
+  --ac-brand-700:    var(--ac-purple-700);
+  --ac-brand-800:    var(--ac-purple-800);
+  --ac-brand-900:    var(--ac-purple-900);
+  --ac-brand-950:    var(--ac-purple-950);
+
+  --ac-brand:        var(--ac-purple-500);
+  --ac-brand-hover:  var(--ac-purple-400);
+  --ac-brand-active: var(--ac-purple-600);
+  --ac-brand-subtle: var(--ac-purple-50);
+  --ac-brand-border: var(--ac-purple-700);
+  --ac-brand-solid:  #6633BB;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(102,51,187,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(102,51,187,.20);
+}
+
+[data-product="kubedb"] {
+  --ac-brand-50:     var(--ac-indigo-50);
+  --ac-brand-100:    var(--ac-indigo-100);
+  --ac-brand-200:    var(--ac-indigo-200);
+  --ac-brand-300:    var(--ac-indigo-300);
+  --ac-brand-400:    var(--ac-indigo-400);
+  --ac-brand-500:    var(--ac-indigo-500);
+  --ac-brand-600:    var(--ac-indigo-600);
+  --ac-brand-700:    var(--ac-indigo-700);
+  --ac-brand-800:    var(--ac-indigo-800);
+  --ac-brand-900:    var(--ac-indigo-900);
+  --ac-brand-950:    var(--ac-indigo-950);
+
+  --ac-brand:        var(--ac-indigo-500);
+  --ac-brand-hover:  var(--ac-indigo-400);
+  --ac-brand-active: var(--ac-indigo-600);
+  --ac-brand-subtle: var(--ac-indigo-50);
+  --ac-brand-border: var(--ac-indigo-700);
+  --ac-brand-solid:  #4F46E5;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(79,70,229,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(79,70,229,.20);
+}
+
+[data-product="kubevault"] {
+  --ac-brand-50:     var(--ac-sky-50);
+  --ac-brand-100:    var(--ac-sky-100);
+  --ac-brand-200:    var(--ac-sky-200);
+  --ac-brand-300:    var(--ac-sky-300);
+  --ac-brand-400:    var(--ac-sky-400);
+  --ac-brand-500:    var(--ac-sky-500);
+  --ac-brand-600:    var(--ac-sky-600);
+  --ac-brand-700:    var(--ac-sky-700);
+  --ac-brand-800:    var(--ac-sky-800);
+  --ac-brand-900:    var(--ac-sky-900);
+  --ac-brand-950:    var(--ac-sky-950);
+
+  --ac-brand:        var(--ac-sky-500);
+  --ac-brand-hover:  var(--ac-sky-400);
+  --ac-brand-active: var(--ac-sky-600);
+  --ac-brand-subtle: var(--ac-sky-50);
+  --ac-brand-border: var(--ac-sky-700);
+  --ac-brand-solid:  #0EA5E9;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(14,165,233,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(14,165,233,.20);
+}
+
+[data-product="voyager"] {
+  --ac-brand-50:     var(--ac-violet-50);
+  --ac-brand-100:    var(--ac-violet-100);
+  --ac-brand-200:    var(--ac-violet-200);
+  --ac-brand-300:    var(--ac-violet-300);
+  --ac-brand-400:    var(--ac-violet-400);
+  --ac-brand-500:    var(--ac-violet-500);
+  --ac-brand-600:    var(--ac-violet-600);
+  --ac-brand-700:    var(--ac-violet-700);
+  --ac-brand-800:    var(--ac-violet-800);
+  --ac-brand-900:    var(--ac-violet-900);
+  --ac-brand-950:    var(--ac-violet-950);
+
+  --ac-brand:        var(--ac-violet-500);
+  --ac-brand-hover:  var(--ac-violet-400);
+  --ac-brand-active: var(--ac-violet-600);
+  --ac-brand-subtle: var(--ac-violet-50);
+  --ac-brand-border: var(--ac-violet-700);
+  --ac-brand-solid:  #7C3AED;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(124,58,237,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(124,58,237,.20);
+}
+
+[data-product="stash"] {
+  --ac-brand-50:     var(--ac-purple-50);
+  --ac-brand-100:    var(--ac-purple-100);
+  --ac-brand-200:    var(--ac-purple-200);
+  --ac-brand-300:    var(--ac-purple-300);
+  --ac-brand-400:    var(--ac-purple-400);
+  --ac-brand-500:    var(--ac-purple-500);
+  --ac-brand-600:    var(--ac-purple-600);
+  --ac-brand-700:    var(--ac-purple-700);
+  --ac-brand-800:    var(--ac-purple-800);
+  --ac-brand-900:    var(--ac-purple-900);
+  --ac-brand-950:    var(--ac-purple-950);
+
+  --ac-brand:        var(--ac-purple-500);
+  --ac-brand-hover:  var(--ac-purple-400);
+  --ac-brand-active: var(--ac-purple-600);
+  --ac-brand-subtle: var(--ac-purple-50);
+  --ac-brand-border: var(--ac-purple-700);
+  --ac-brand-solid:  #6633BB;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(102,51,187,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(102,51,187,.20);
+}
+
+[data-product="gateway"],
+[data-product="kubeshield"] {
+  --ac-brand-50:     var(--ac-pink-50);
+  --ac-brand-100:    var(--ac-pink-100);
+  --ac-brand-200:    var(--ac-pink-200);
+  --ac-brand-300:    var(--ac-pink-300);
+  --ac-brand-400:    var(--ac-pink-400);
+  --ac-brand-500:    var(--ac-pink-500);
+  --ac-brand-600:    var(--ac-pink-600);
+  --ac-brand-700:    var(--ac-pink-700);
+  --ac-brand-800:    var(--ac-pink-800);
+  --ac-brand-900:    var(--ac-pink-900);
+  --ac-brand-950:    var(--ac-pink-950);
+
+  --ac-brand:        var(--ac-pink-500);
+  --ac-brand-hover:  var(--ac-pink-400);
+  --ac-brand-active: var(--ac-pink-600);
+  --ac-brand-subtle: var(--ac-pink-50);
+  --ac-brand-border: var(--ac-pink-700);
+  --ac-brand-solid:  #C2185B;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(194,24,91,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(194,24,91,.20);
+}
+
+[data-product="configsyncer"],
+[data-product="service-broker"] {
+  --ac-brand-50:     var(--ac-teal-50);
+  --ac-brand-100:    var(--ac-teal-100);
+  --ac-brand-200:    var(--ac-teal-200);
+  --ac-brand-300:    var(--ac-teal-300);
+  --ac-brand-400:    var(--ac-teal-400);
+  --ac-brand-500:    var(--ac-teal-500);
+  --ac-brand-600:    var(--ac-teal-600);
+  --ac-brand-700:    var(--ac-teal-700);
+  --ac-brand-800:    var(--ac-teal-800);
+  --ac-brand-900:    var(--ac-teal-900);
+  --ac-brand-950:    var(--ac-teal-950);
+
+  --ac-brand:        var(--ac-teal-500);
+  --ac-brand-hover:  var(--ac-teal-400);
+  --ac-brand-active: var(--ac-teal-600);
+  --ac-brand-subtle: var(--ac-teal-50);
+  --ac-brand-border: var(--ac-teal-700);
+  --ac-brand-solid:  #14B8A6;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(20,184,166,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(20,184,166,.20);
+}

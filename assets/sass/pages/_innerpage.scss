@@ -1,7 +1,7 @@
 // product page feature area start
 .single-product-feature-wrapper {
   overflow: hidden;
-  background-color: $ac-white;
+  background-color: var(--ac-surface);
   box-shadow: 0px 1px 4px rgba(50, 112, 128, 0.16);
   border-radius: 4px;
   padding: 20px;
@@ -17,7 +17,7 @@
     width: 100%;
     height: 0;
     transition: .3s ease-in-out;
-    background-color: $ac-primary;
+    background-color: var(--ac-brand);
   }
   z-index: 1;
   &:hover{

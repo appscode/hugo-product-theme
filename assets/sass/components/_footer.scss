@@ -38,17 +38,17 @@
      height: 40px;
      position: relative;
      z-index: 1;
-     color: #f2f2f2;
+     color: var(--ac-fg);
      &::placeholder {
-       color: #ADB2B0;
+       color: var(--ac-fg-muted);
      }
      &:focus {
-       border: 1px solid $ac-primary;
+       border: 1px solid var(--ac-brand);
      }
    }
- 
+
    .button {
-     color: hsl(var(--primary-h), var(--primary-s), 70%);
+     color: var(--ac-brand-hover);
      font-size: 16px;
      height: 40px;
      box-shadow: none;
@@ -62,8 +62,8 @@
      background: transparent;
  
      &:hover {
-       background-color: $ac-primary;
-       color: $ac-white !important;
+       background-color: var(--ac-brand);
+       color: var(--ac-fg-on-brand) !important;
        outline: none;
        box-shadow: none;
      }
@@ -75,16 +75,16 @@
  
    h4 {
      font-size: 18px;
-     color: $color-heading;
+     color: var(--ac-fg);
    }
  }
  
  .all-contact-info li a,
  p.spam-message {
-   color: $color-text;
+   color: var(--ac-fg);
    display: inline-block;
    font-size: 14px;
-   font-family: $ac-font-paragraph;
+   font-family: $ac-font-sans;
    padding: 5px 0;
  }
  
@@ -109,7 +109,7 @@
  .footer-link {
    li {
      a {
-       color: #D4D6D5;
+       color: var(--ac-fg-muted);
        font-size: 14px;
        display: block;
        padding: 8px 0;
@@ -120,7 +120,7 @@
        }
  
        &:hover {
-         color: $ac-primary;
+         color: var(--ac-brand);
          padding-left: 5px;
        }
      }
@@ -137,20 +137,20 @@
  
    p {
      font-size: 14px;
-     color: $color-text;
+     color: var(--ac-fg);
      margin-bottom: 0;
    }
  }
  
  .footer-inline-link {
    a {
-     color: $color-link;
+     color: var(--ac-link);
      font-size: 14px;
      margin-right: 30px;
      transition: 0.3s ease-in-out;
  
      &:hover {
-       color: $ac-primary;
+       color: var(--ac-brand);
      }
  
      &:last-child {
@@ -165,20 +165,20 @@
      display: inline-block;
  
      a{
-       color: #8a8a8a;
+       color: var(--ac-fg-subtle);
        font-size: 14px;
        display: inline-block;
        width: 30px;
        height: 30px;
        text-align: center;
        line-height: 30px;
-       border: 1px solid #8a8a8a;
+       border: 1px solid var(--ac-border-strong);
        border-radius: 50%;
        transition: 0.3s ease-in-out;
  
        &:hover {
-         background: $ac-primary;
-         color: $ac-white;
+         background: var(--ac-brand);
+         color: var(--ac-fg-on-brand);
          border: 1px solid transparent;
        }
      }
@@ -215,21 +215,21 @@
        }
      }
      .footer-menu {
-       background-color: #4d4dcb0d;
+       background-color: var(--ac-brand-subtle);
        height: 100%;
        padding: 20px 5px;
        border-radius: 4px;
        &.is-info {
-         background-color: #0aafff2e;
+         background-color: var(--ac-status-info-bg, rgba(59,130,246,.18));
        }
        &.is-danger {
-         background-color: #ea3d2f24;
+         background-color: var(--ac-status-error-bg, rgba(239,68,68,.14));
        }
        &.is-warning {
-         background: #f7ad2a36;
+         background: var(--ac-status-warning-bg, rgba(245,158,11,.21));
        }
        &.is-success {
-         background-color: #27b06430;
+         background-color: var(--ac-status-success-bg, rgba(16,185,129,.19));
        }
        h4 {
          margin-bottom: 0;

@@ -1,6 +1,3 @@
-// ============================================================
-// Addon / Overview Page — hero
-// ============================================================
 .addon-hero {
   padding: 180px 0 88px;
   margin-top: 110px;
@@ -74,7 +71,6 @@
     row-gap: 2.5rem;
   }
 
-  // Content side
   .addon-hero-content {
     .buttons {
       gap: 12px;
@@ -87,17 +83,17 @@
       font-weight: 800;
       line-height: 1.12;
       letter-spacing: -0.035em;
-      color: $color-heading;
+      color: var(--ac-fg);
       margin-bottom: 16px;
       text-wrap: balance;
 
-      strong { color: $ac-primary; }
+      strong { color: var(--ac-brand); }
     }
 
     p {
       font-size: 1.0625rem;
       line-height: 1.75;
-      color: $color-text;
+      color: var(--ac-fg);
       margin-bottom: 28px;
       max-width: 520px;
     }
@@ -119,7 +115,6 @@
     margin-bottom: 18px;
   }
 
-  // Code editor inherits from _product-hero-area.scss
   .hero-area-right {
     position: relative;
     z-index: 1;
@@ -141,7 +136,6 @@
   50% { opacity: 0.5; transform: scale(1.07); }
 }
 
-// --- Addon hero decorative shapes ---
 .addon-shape {
   position: absolute;
   pointer-events: none;
@@ -203,9 +197,6 @@
   to   { transform: rotate(360deg); }
 }
 
-// ============================================================
-// About section
-// ============================================================
 .addon-about-section {
   padding: 96px 0;
   background: hsl(var(--primary-h), 20%, 98%);
@@ -232,7 +223,6 @@
     align-items: center;
   }
 
-  // ── Text side ──
   .addon-about-text {
     .addon-section-eyebrow {
       display: inline-flex;
@@ -242,7 +232,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: $ac-primary;
+      color: var(--ac-brand);
       margin-bottom: 16px;
     }
 
@@ -251,7 +241,7 @@
       font-weight: 800;
       letter-spacing: -0.035em;
       line-height: 1.15;
-      color: $color-heading;
+      color: var(--ac-fg);
       margin-bottom: 20px;
       text-wrap: balance;
     }
@@ -259,16 +249,15 @@
     .addon-about-body {
       font-size: 0.9375rem;
       line-height: 1.82;
-      color: $color-text;
+      color: var(--ac-fg);
       margin-bottom: 28px;
 
       br { display: none; }
       p { margin-bottom: 14px; &:last-child { margin-bottom: 0; } }
-      strong { color: $color-heading; font-weight: 600; }
+      strong { color: var(--ac-fg); font-weight: 600; }
     }
   }
 
-  // gradient word in h2
   .addon-about-gradient {
     background: linear-gradient(135deg,
       hsl(var(--primary-h), var(--primary-s), 40%) 0%,
@@ -278,7 +267,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  // capability chips row
   .addon-about-chips {
     display: flex;
     flex-wrap: wrap;
@@ -300,7 +288,6 @@
     }
   }
 
-  // ── Visual side ──
   .addon-about-visual {
     position: relative;
     border-radius: 20px;
@@ -320,7 +307,6 @@
     }
   }
 
-  // Responsive
   @media (max-width: 768px) {
     padding: 56px 0;
 
@@ -333,13 +319,12 @@
   }
 }
 
-// ── About capability card ──
 .addon-cap-card {
   position: relative;
   z-index: 1;
   width: calc(100% - 48px);
   max-width: 340px;
-  background: $ac-white;
+  background: var(--ac-surface);
   border-radius: 14px;
   box-shadow: 0 8px 32px -6px rgba(0,0,0,0.28);
   overflow: hidden;
@@ -350,14 +335,14 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: $ac-white;
+  background: var(--ac-surface);
   border-bottom: 1px solid hsl(var(--primary-h), 15%, 92%);
-  border-left: 3px solid $ac-primary;
+  border-left: 3px solid var(--ac-brand);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $ac-primary;
+  color: var(--ac-brand);
 
   iconify-icon { flex-shrink: 0; }
 }
@@ -387,21 +372,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $ac-primary;
+  color: var(--ac-brand);
 }
 
 .addon-cap-title {
   font-size: 0.8125rem;
   font-weight: 500;
-  color: $color-heading;
+  color: var(--ac-fg);
   line-height: 1.3;
 }
 
-// ============================================================
-// Feature sections
-// ============================================================
 .addon-feature-sections {
-  background: $ac-white;
+  background: var(--ac-surface);
   padding: 40px 0 56px;
 }
 
@@ -423,7 +405,7 @@
     overflow: hidden;
     border: 1px solid hsl(var(--primary-h), 15%, 90%);
     box-shadow: 0 1px 6px -2px rgba(0,0,0,0.05);
-    background: $ac-white;
+    background: var(--ac-surface);
     transition: box-shadow 0.25s ease;
 
     &:hover {
@@ -454,7 +436,7 @@
       background: linear-gradient(135deg,
         hsl(var(--primary-h), var(--primary-s), 92%),
         hsl(var(--primary-h), var(--primary-s), 86%));
-      color: $ac-primary;
+      color: var(--ac-brand);
       font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -465,7 +447,7 @@
       font-size: 1.125rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: $color-heading;
+      color: var(--ac-fg);
       line-height: 1.3;
       margin-bottom: 8px;
     }
@@ -473,7 +455,7 @@
     p {
       font-size: 0.875rem;
       line-height: 1.7;
-      color: $color-text;
+      color: var(--ac-fg);
       max-width: 420px;
       margin: 0;
     }
@@ -509,9 +491,6 @@
   }
 }
 
-// ============================================================
-// About section — highlight cards
-// ============================================================
 .addon-highlight-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -520,7 +499,7 @@
 }
 
 .addon-highlight-card {
-  background: $ac-white;
+  background: var(--ac-surface);
   border: 1px solid hsl(var(--primary-h), 15%, 90%);
   border-radius: 16px;
   box-shadow: 0 2px 12px -4px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
@@ -554,24 +533,21 @@
   h3 {
     font-size: 1rem;
     font-weight: 700;
-    color: $color-heading;
+    color: var(--ac-fg);
     line-height: 1.3;
   }
 
   p {
     font-size: 0.875rem;
     line-height: 1.6;
-    color: $color-text;
+    color: var(--ac-fg);
     margin: 0;
   }
 }
 
-// ============================================================
-// How It Works section
-// ============================================================
 .addon-how-section {
   padding: 96px 0;
-  background: $ac-white;
+  background: var(--ac-surface);
 }
 
 .addon-section-header {
@@ -586,7 +562,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: $ac-primary;
+    color: var(--ac-brand);
     margin-bottom: 14px;
   }
 
@@ -595,7 +571,7 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.2;
-    color: $color-heading;
+    color: var(--ac-fg);
     margin-bottom: 0;
     text-wrap: balance;
   }
@@ -631,7 +607,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: $ac-primary;
+    color: var(--ac-brand);
   }
 
   .addon-how-icon {
@@ -645,28 +621,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $ac-primary;
+    color: var(--ac-brand);
   }
 
   h3 {
     font-size: 1.0625rem;
     font-weight: 700;
-    color: $color-heading;
+    color: var(--ac-fg);
     line-height: 1.3;
   }
 
   p {
     font-size: 0.875rem;
     line-height: 1.65;
-    color: $color-text;
+    color: var(--ac-fg);
     max-width: 180px;
     margin: 0;
   }
 }
 
-// ============================================================
-// Related Addons section
-// ============================================================
 .addon-related-section {
   padding: 88px 0;
   background: hsl(var(--primary-h), 20%, 98%);
@@ -684,7 +657,7 @@
   align-items: center;
   gap: 10px;
   padding: 24px 16px;
-  background: $ac-white;
+  background: var(--ac-surface);
   border: 1px solid hsl(var(--primary-h), 15%, 90%);
   border-radius: 14px;
   text-decoration: none;
@@ -710,15 +683,12 @@
   .addon-related-name {
     font-size: 0.875rem;
     font-weight: 600;
-    color: $color-heading;
+    color: var(--ac-fg);
     text-align: center;
     line-height: 1.3;
   }
 }
 
-// ============================================================
-// Bottom CTA section
-// ============================================================
 .addon-cta-section {
   padding: 96px 0;
   text-align: center;
@@ -740,7 +710,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: $ac-primary;
+    color: var(--ac-brand);
     margin-bottom: 16px;
   }
 
@@ -754,7 +724,7 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.2;
-    color: $color-heading;
+    color: var(--ac-fg);
     margin-bottom: 14px;
     text-wrap: balance;
   }
@@ -762,7 +732,7 @@
   p {
     font-size: 1.0625rem;
     line-height: 1.65;
-    color: $color-text;
+    color: var(--ac-fg);
     margin-bottom: 2rem;
   }
 
@@ -772,9 +742,6 @@
   }
 }
 
-// ============================================================
-// Responsive
-// ============================================================
 @media (max-width: 768px) {
   .addon-hero {
     padding: 120px 0 60px;

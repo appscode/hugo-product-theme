@@ -1,7 +1,6 @@
-// $ac-indigo-light is defined in base/utilities/_typography.scss (loaded earlier)
 
 .hero-area.is-product {
-  background-color: #f1f1f9;
+  background-color: var(--ac-brand-subtle);
   padding: 96px 0 88px;
   min-height: calc(100vh - 200px);
   align-items: center;
@@ -20,7 +19,6 @@
     align-items: center;
   }
 
-  // ── Left content ──
   h1 {
     font-size: clamp(2rem, 4vw, 3.25rem);
     line-height: 1.1;
@@ -28,7 +26,7 @@
     letter-spacing: -0.03em;
     margin-bottom: 1.25rem;
     text-wrap: balance;
-    color: $ac-white;
+    color: var(--ac-fg-on-brand);
   }
 
   p {
@@ -62,12 +60,12 @@
       &.is-secondary {
         background-color: rgba(255, 255, 255, 0.08);
         border-color: rgba(255, 255, 255, 0.28);
-        color: $ac-white;
+        color: var(--ac-fg-on-brand);
         backdrop-filter: blur(8px);
         &:hover {
           background-color: rgba(255, 255, 255, 0.15);
           border-color: rgba(255, 255, 255, 0.5);
-          color: $ac-white;
+          color: var(--ac-fg-on-brand);
           box-shadow: none;
           transform: translateY(-2px);
         }
@@ -75,7 +73,6 @@
     }
   }
 
-  // Trust bar
   .hero-trust-bar {
     display: flex;
     align-items: center;
@@ -120,7 +117,7 @@
   &.is-overview {
     h1 {
       strong {
-        color: $ac-primary;
+        color: var(--ac-brand);
       }
     }
     &.elasticsearch {
@@ -247,7 +244,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: $ac-primary;
+      background-color: var(--ac-brand);
       z-index: -1;
       opacity: 0.8;
       background-size: 50%;
@@ -291,12 +288,12 @@
 
     h1 {
       strong {
-        color: $ac-white;
+        color: var(--ac-fg-on-brand);
       }
     }
     h1,
     p {
-      color: $ac-white;
+      color: var(--ac-fg-on-brand);
     }
 
   }
@@ -305,7 +302,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: $ac-font-paragraph;
+  font-family: $ac-font-sans;
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1;
@@ -321,8 +318,8 @@
   &::before {
     content: "New";
     display: inline-block;
-    background: $ac-primary;
-    color: $ac-white;
+    background: var(--ac-brand);
+    color: var(--ac-fg-on-brand);
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -335,10 +332,10 @@
   &:hover {
     background: rgba(255, 255, 255, 0.13);
     border-color: rgba(255, 255, 255, 0.28);
-    color: $ac-white;
+    color: var(--ac-fg-on-brand);
   }
 
-  strong { color: $ac-white; font-weight: 600; }
+  strong { color: var(--ac-fg-on-brand); font-weight: 600; }
 }
 
 .hero-area-bg {
@@ -349,7 +346,6 @@
   pointer-events: none;
 }
 
-// Dot-grid pattern overlay
 .hero-dot-grid {
   position: absolute;
   inset: 0;
@@ -375,7 +371,7 @@
     right: -8%;
     width: 700px;
     height: 700px;
-    background: radial-gradient(circle at 38% 38%, $ac-indigo-light, $ac-purple, transparent 68%);
+    background: radial-gradient(circle at 38% 38%, var(--ac-brand-hover), var(--ac-brand), transparent 68%);
   }
 
   &.hero-mesh-orb-bl {
@@ -383,7 +379,7 @@
     left: -8%;
     width: 620px;
     height: 620px;
-    background: radial-gradient(circle at 62% 62%, rgba(255,255,255,0.9), $ac-blue, transparent 68%);
+    background: radial-gradient(circle at 62% 62%, rgba(255,255,255,0.9), var(--ac-status-info), transparent 68%);
     animation-duration: 11s;
     animation-delay: 2s;
   }
@@ -396,7 +392,7 @@
     transform: translate(-50%, -50%);
     filter: blur(120px);
     opacity: 0.22;
-    background: radial-gradient(circle, $ac-indigo-light, transparent 70%);
+    background: radial-gradient(circle, var(--ac-brand-hover), transparent 70%);
     animation: hero-pulse-center 13s ease-in-out infinite;
     animation-delay: 1s;
   }
@@ -412,7 +408,6 @@
   50% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.1); }
 }
 
-// Globe — detailed wireframe, bottom-right
 .hero-globe {
   position: absolute;
   bottom: -8%;
@@ -429,7 +424,6 @@
   to { transform: rotate(360deg); }
 }
 
-// Infinity / continuous backup loop — bottom-left
 .hero-infinity {
   position: absolute;
   bottom: 10%;
@@ -440,7 +434,6 @@
   animation: hero-float-soft 10s ease-in-out infinite;
 }
 
-// Rings
 .hero-ring {
   position: absolute;
 
@@ -473,13 +466,11 @@
   50% { transform: translateY(-12px) rotate(5deg); }
 }
 
-// Chip float keeps parallax offset baked in
 @keyframes hero-chip-float {
   0%, 100% { transform: translate(var(--parallax-x), calc(var(--parallax-y) + 0px)) rotate(0deg); }
   50% { transform: translate(var(--parallax-x), calc(var(--parallax-y) - 10px)) rotate(4deg); }
 }
 
-// Hexagonal grid — top-right background texture
 .hero-hex-grid {
   position: absolute;
   top: 2%;
@@ -491,7 +482,6 @@
   animation-delay: 3s;
 }
 
-// Vertical data-node connector between chips — left edge
 .hero-connector {
   position: absolute;
   left: 1.8%;
@@ -502,7 +492,6 @@
   pointer-events: none;
 }
 
-// Glassmorphic icon chips
 .hero-icon-chip {
   position: absolute;
   display: flex;
@@ -546,7 +535,6 @@
     animation-delay: 1.8s;
   }
 
-  // new — scheduling chip, top-right area
   &.hero-icon-chip-4 {
     bottom: 28%;
     right: 2.5%;
@@ -558,7 +546,7 @@
 }
 
 .hero-title-gradient {
-  background: linear-gradient(135deg, $ac-white, $ac-indigo-light 70%);
+  background: linear-gradient(135deg, var(--ac-fg-on-brand), var(--ac-brand-hover) 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -596,29 +584,10 @@
       border-bottom: 1px solid #472f2f;
     }
 
-    // pre {
-    //   background-color: #1e242e;
-    //   color: #f1f1f9;
 
-    //   .hljs {
-    //     background-color: #1e242e;
-    //     color: #f1f1f9;
 
-    //     .hljs-keyword,
-    //     .hljs-literal,
-    //     .nginx .hljs-title {
-    //       color: #f410d0;
-    //     }
 
-    //     .hljs-string {
-    //       color: #f92e29;
-    //     }
 
-    //     .hljs-variable {
-    //       color: #72ccd7;
-    //     }
-    //   }
-    // }
   }
 
   .editor-header {
@@ -744,7 +713,7 @@
     width: 100%;
 
     .single-brand {
-        border: 1px solid $color-border;
+        border: 1px solid var(--ac-border);
         border-radius: 4px;
         display: flex;
         align-items: center;
@@ -769,7 +738,6 @@
     .owl-item {
       img {
         width: auto !important;
-        // margin: 0 auto;
       }
     }
   }
@@ -857,11 +825,9 @@ Responsive Classes
     }
   }
 }
-// // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 768px) {
 }
 
-// Small devices (landscape phones, 576px and up)
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .hero-area {
     &.is-product {
@@ -885,10 +851,7 @@ Responsive Classes
   }
 }
 
-// @media (min-width: 769px) and (max-width: 1023.98px) {
-// }
 
-// Large devices (desktops, 1024px and up)
 @media (min-width: 1024px) and (max-width: 1215px) {
   .hero-area.is-product {
     h1 {

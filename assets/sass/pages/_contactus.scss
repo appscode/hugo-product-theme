@@ -10,7 +10,7 @@
   }
 }
 .question-area {
-  background-color: #fbfbfb;
+  background-color: var(--ac-bg-subtle);
   .single-question-wrapper {
     box-shadow: 0px 8px 57px rgba(26, 80, 151, 0.16);
     padding: 35px 45px;
@@ -52,7 +52,7 @@
 .tabs-wrapper {
   ul {
     li {
-      color: $color-text;
+      color: var(--ac-fg);
       display: inline-block;
       padding: 20px;
       font-size: 18px;
@@ -60,7 +60,7 @@
       cursor: pointer;
     }
     li.is-active {
-      color: $ac-primary;
+      color: var(--ac-brand);
     }
   }
 }
@@ -93,7 +93,7 @@
             margin-right: 80px;
 
             .navbar-item {
-              font-family: $ac-font-paragraph;
+              font-family: $ac-font-sans;
               font-style: normal;
               font-size: 15px;
               line-height: 18px;
@@ -125,7 +125,7 @@
                 }
 
                 strong {
-                  font-family: $ac-font-paragraph;
+                  font-family: $ac-font-sans;
                   font-style: normal;
                   font-weight: 500;
                   font-size: 15px;
@@ -187,7 +187,7 @@
           align-items: center;
           color: #666666;
           margin-right: 60px;
-          font-family: $ac-font-paragraph;
+          font-family: $ac-font-sans;
           font-style: normal;
           font-weight: 500;
           font-size: 15px;
@@ -252,7 +252,7 @@
           }
 
           label {
-            font-family: $ac-font-paragraph;
+            font-family: $ac-font-sans;
             font-style: normal;
             font-weight: 500;
             font-size: 12px;
@@ -287,7 +287,7 @@
           }
 
           &::placeholder {
-            font-family: $ac-font-paragraph;
+            font-family: $ac-font-sans;
             font-style: normal;
             font-weight: normal;
             font-size: 14px;
@@ -334,7 +334,7 @@
           font-size: 15px;
 
           &::placeholder {
-            font-family: $ac-font-paragraph;
+            font-family: $ac-font-sans;
             font-style: normal;
             font-weight: normal;
             font-size: 14px;
@@ -355,7 +355,6 @@
           cursor: pointer;
 
           &:hover {
-            // background-color: darken(#0071bd, $amount: 5);
           }
         }
 
@@ -374,7 +373,7 @@
         .footer-content {
           .footer-left {
             p {
-              font-family: $ac-font-paragraph;
+              font-family: $ac-font-sans;
               font-style: normal;
               font-weight: normal;
               font-size: 15px;
@@ -385,7 +384,7 @@
 
           .footer-right {
             a {
-              font-family: $ac-font-paragraph;
+              font-family: $ac-font-sans;
               font-style: normal;
               font-weight: normal;
               font-size: 15px;

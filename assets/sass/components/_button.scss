@@ -15,22 +15,22 @@
     gap: 0.5rem;
     height: 2.5rem;
     padding: 0 1.375rem;
-    border-radius: 8px;
-    border: 1px solid $ac-primary;
+    border-radius: var(--ac-radius-md);
+    border: 1px solid var(--ac-brand);
     font-family: $ac-font-heading;
     font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     line-height: 1;
-    color: $ac-primary;
+    color: var(--ac-brand);
     text-decoration: none;
 
-    &:focus-visible { outline: 2px solid $ac-primary; outline-offset: 2px; }
+    &:focus-visible { outline: 2px solid var(--ac-focus-ring); outline-offset: 2px; }
 
     &:hover {
-      background-color: $ac-primary;
-      color: $ac-white;
-      box-shadow: 0 4px 20px rgba(73, 73, 163, 0.28);
+      background-color: var(--ac-brand);
+      color: var(--ac-fg-on-brand);
+      box-shadow: var(--ac-shadow-focus-ring);
       transform: translateY(-2px);
     }
 
@@ -57,28 +57,28 @@
 
     &.is-secondary {
       background-color: transparent;
-      border-color: $color-border;
-      color: $color-text;
+      border-color: var(--ac-border-strong);
+      color: var(--ac-fg);
 
       &:hover {
-        background-color: hsl(var(--primary-h), var(--primary-s), 96%);
-        border-color: $ac-primary;
-        color: $ac-primary;
+        background-color: var(--ac-brand-subtle);
+        border-color: var(--ac-brand);
+        color: var(--ac-brand);
         box-shadow: none;
         transform: translateY(-1px);
       }
     }
 
     &.is-white {
-      background-color: $ac-white;
-      border-color: $ac-white;
-      color: $ac-primary;
-      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.22);
+      background-color: #fff;
+      border-color: #fff;
+      color: var(--ac-brand);
+      box-shadow: var(--ac-shadow-3);
 
       &:hover {
-        background-color: $ac-white;
-        color: $ac-primary;
-        box-shadow: 0 14px 32px -6px rgba(0, 0, 0, 0.32);
+        background-color: #fff;
+        color: var(--ac-brand-hover);
+        box-shadow: var(--ac-shadow-4);
         transform: translateY(-2px);
       }
     }
@@ -86,12 +86,12 @@
     &.is-ghost {
       background-color: transparent;
       border-color: transparent;
-      color: $color-text;
+      color: var(--ac-fg);
 
       &:hover {
-        background-color: hsl(var(--primary-h), var(--primary-s), 96%);
+        background-color: var(--ac-brand-subtle);
         border-color: transparent;
-        color: $ac-primary;
+        color: var(--ac-brand);
         box-shadow: none;
         transform: none;
       }
@@ -109,8 +109,8 @@
 
       &:hover { background-color: transparent; transform: none; box-shadow: none; }
 
-      &.is-primary { color: $ac-primary; &:hover { color: $ac-primary; } }
-      &.is-danger  { color: $ac-red;     &:hover { color: $ac-red; }     }
+      &.is-primary { color: var(--ac-brand); &:hover { color: var(--ac-brand-hover); } }
+      &.is-danger  { color: var(--ac-status-error); &:hover { color: var(--ac-status-error); } }
       &.is-small   { font-size: 0.8125rem; }
       &:focus      { box-shadow: none; outline: none; }
     }
@@ -125,10 +125,10 @@
 
     // Legacy icon slot
     .ac-icon {
-      background-color: $ac-white;
-      color: $ac-primary;
+      background-color: var(--ac-fg-on-brand);
+      color: var(--ac-brand);
       padding: 2px 6px;
-      border-radius: 4px;
+      border-radius: var(--ac-radius-base);
       width: 28px;
       height: 28px;
     }

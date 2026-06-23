@@ -4,11 +4,11 @@ $poppins: "Poppins", sans-serif;
 // notification
 .ac-notification {
   &.is-primary {
-    background-color: $ac-primary;
+    background-color: var(--ac-brand);
   }
 
   p {
-    color: #fff;
+    color: var(--ac-fg-on-brand);
 
     a {
       color: #3273dc !important;
@@ -64,8 +64,8 @@ $poppins: "Poppins", sans-serif;
         .icon {
           width: 34px;
           height: 34px;
-          background: #00a651;
-          color: #fff;
+          background: var(--ac-status-success);
+          color: var(--ac-fg-on-brand);
           border-radius: 50%;
           font-size: 14px;
           line-height: 15px;
@@ -84,7 +84,7 @@ $poppins: "Poppins", sans-serif;
     }
 
     .count-down-area {
-      background: #ffffff;
+      background: var(--ac-surface);
       box-shadow: 2px 4px 27px rgba(25, 113, 189, 0.16);
       border-radius: 8px;
       display: flex;
@@ -95,7 +95,7 @@ $poppins: "Poppins", sans-serif;
       bottom: -94px;
 
       .signle-count {
-        border-right: 1px solid #e6e6e6;
+        border-right: 1px solid var(--ac-border);
         text-align: center;
         width: 25%;
         padding: 25px 0;
@@ -105,7 +105,7 @@ $poppins: "Poppins", sans-serif;
         }
 
         .name {
-          font-family: $ac-font-paragraph;
+          font-family: $ac-font-sans;
           font-style: normal;
           font-weight: normal;
           font-size: 16px;
@@ -173,7 +173,7 @@ $poppins: "Poppins", sans-serif;
 
 .registration-form {
   box-shadow: 0px 4px 27px rgba(25, 113, 189, 0.16);
-  background-color: #fff;
+  background-color: var(--ac-surface);
   border-radius: 8px;
   padding: 30px;
 
@@ -189,7 +189,7 @@ $poppins: "Poppins", sans-serif;
 
   form {
     label.radio-title {
-      font-family: $ac-font-paragraph;
+      font-family: $ac-font-sans;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
@@ -200,7 +200,7 @@ $poppins: "Poppins", sans-serif;
       text-transform: uppercase;
 
       .is-require {
-        color: $ac-red;
+        color: var(--ac-status-error);
         padding-left: 5px;
       }
     }
@@ -212,7 +212,7 @@ $poppins: "Poppins", sans-serif;
     }
 
     .form-message {
-      font-family: $ac-font-paragraph;
+      font-family: $ac-font-sans;
       font-style: normal;
       font-weight: normal;
       font-size: 12px;
@@ -235,7 +235,7 @@ $poppins: "Poppins", sans-serif;
       }
 
       label {
-        font-family: $ac-font-paragraph;
+        font-family: $ac-font-sans;
         font-style: normal;
         font-weight: 500;
         font-size: 12px;
@@ -246,7 +246,7 @@ $poppins: "Poppins", sans-serif;
         text-transform: uppercase;
 
         .is-require {
-          color: #ea3d2f;
+          color: var(--ac-status-error);
           padding-left: 5px;
         }
       }
@@ -269,11 +269,11 @@ $poppins: "Poppins", sans-serif;
 
       &:focus {
         outline: none !important;
-        border: 1px solid $ac-primary;
+        border: 1px solid var(--ac-brand);
       }
 
       &::placeholder {
-        font-family: $ac-font-paragraph;
+        font-family: $ac-font-sans;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
@@ -313,7 +313,7 @@ $poppins: "Poppins", sans-serif;
 
       &:focus {
         outline: none !important;
-        border: 1px solid $ac-primary;
+        border: 1px solid var(--ac-brand);
       }
     }
 
@@ -325,7 +325,7 @@ $poppins: "Poppins", sans-serif;
       font-size: 15px;
 
       &::placeholder {
-        font-family: $ac-font-paragraph;
+        font-family: $ac-font-sans;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
@@ -341,12 +341,11 @@ $poppins: "Poppins", sans-serif;
 
     input[type="submit"] {
       width: 100%;
-      background-color: $ac-primary;
-      color: #fff;
+      background-color: var(--ac-brand);
+      color: var(--ac-fg-on-brand);
       cursor: pointer;
 
       &:hover {
-        // background-color: darken($ac-primary, $amount: 5);
       }
     }
 
@@ -380,7 +379,7 @@ $poppins: "Poppins", sans-serif;
       width: calc(100% - 30px);
 
       p {
-        font-family: $ac-font-paragraph;
+        font-family: $ac-font-sans;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -423,7 +422,7 @@ $poppins: "Poppins", sans-serif;
       }
 
       .designation {
-        font-family: $ac-font-paragraph;
+        font-family: $ac-font-sans;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
@@ -434,12 +433,12 @@ $poppins: "Poppins", sans-serif;
         margin-bottom: 15px;
 
         a {
-          font-family: $ac-font-paragraph;
+          font-family: $ac-font-sans;
         }
       }
 
       .speaker-message {
-        font-family: $ac-font-paragraph;
+        font-family: $ac-font-sans;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;

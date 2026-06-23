@@ -1,8 +1,8 @@
 .cookie-wrapper {
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--ac-border);
   position: fixed;
   width: 100%;
-  background-color: #fafafd;
+  background-color: var(--ac-bg-subtle);
   bottom: 0;
   left: 0;
   padding: 8px 0;
@@ -19,12 +19,12 @@
 
     p {
       font-size: 14px;
-      color: $color-text;
+      color: var(--ac-fg);
       width: calc(100% - 220px);
       margin-bottom: 0;
 
       a {
-        color: $ac-primary;
+        color: var(--ac-brand);
         text-decoration: underline;
         font-weight: 500;
       }
@@ -41,10 +41,10 @@
         transition: 0.3s;
         &:hover:not(.is-primary) {
           text-decoration: underline;
-          color: $ac-primary;
+          color: var(--ac-brand);
         }
         &.is-primary {
-          background-color: $ac-primary;
+          background-color: var(--ac-brand);
         }
       }
     }

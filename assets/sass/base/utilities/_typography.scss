@@ -1,135 +1,232 @@
-// Typography
-$ac-font-heading: "Roboto", sans-serif;
-$ac-font-paragraph: "Inter", sans-serif;
-$ac-font-inter: "Inter", sans-serif;
-
-// Shared with components/_product-hero-area.scss — keep both in sync
-$ac-indigo-light: #7272e9;
-
 html,
 body {
   background-color: $ac-bg;
-  font-family: $ac-font-paragraph;
+  font-family: $ac-font-sans;
   font-weight: 400;
   font-size: 1rem;
+  line-height: var(--ac-leading-relaxed, 1.65);
   color: $color-text;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 p {
-  font-size: 1rem;
-  font-family: $ac-font-paragraph;
+  font-family: $ac-font-sans;
+  font-size: var(--ac-text-md, 0.9375rem);
+  line-height: var(--ac-leading-loose, 1.75);
+  color: $color-text;
+  margin-bottom: var(--ac-space-4, 16px);
+
+  &:last-child { margin-bottom: 0; }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+h1, h2, h3, h4, h5, h6 {
   font-family: $ac-font-heading;
   font-style: normal;
-  font-weight: 500;
   color: $color-heading;
+
   &.is-gradient {
-      background: linear-gradient(135deg, $ac-primary, $ac-indigo-light);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    background: linear-gradient(135deg, $ac-primary, $ac-indigo-light);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 h1 {
-  font-weight: 300;
-  font-size: 60px;
-  line-height: 130%;
-  letter-spacing: -0.5px;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: var(--ac-weight-black, 900);
+  line-height: var(--ac-leading-tight, 1.1);
+  letter-spacing: -0.04em;
+  margin-bottom: var(--ac-space-5, 20px);
 }
 
 h2 {
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 130%;
-
-  letter-spacing: -0.57px;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: var(--ac-weight-extrabold, 800);
+  line-height: var(--ac-leading-tight, 1.15);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--ac-space-4, 16px);
 }
 
 h3 {
-  font-size: 32px;
-  line-height: 130%;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: var(--ac-weight-bold, 700);
+  line-height: var(--ac-leading-snug, 1.25);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--ac-space-3, 12px);
 }
 
 h4 {
-  font-size: 24px;
-  line-height: 40px;
-  letter-spacing: 0.25px;
+  font-size: 1.25rem;
+  font-weight: var(--ac-weight-bold, 700);
+  line-height: var(--ac-leading-normal, 1.5);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--ac-space-2, 8px);
 }
 
 h5 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 1.0625rem;
+  font-weight: var(--ac-weight-semibold, 600);
+  line-height: var(--ac-leading-normal, 1.5);
+  margin-bottom: var(--ac-space-2, 8px);
 }
 
 h6 {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 130%;
-  letter-spacing: 0.15px;
+  font-size: 0.9375rem;
+  font-weight: var(--ac-weight-semibold, 600);
+  line-height: var(--ac-leading-normal, 1.5);
+  letter-spacing: 0.01em;
+  margin-bottom: var(--ac-space-1, 4px);
+
+  &.is-tiny        { font-size: $font-size-tiny;        line-height: $font-size-tiny + 10; }
+  &.is-extra-small { font-size: $font-size-extra-small; line-height: $font-size-extra-small + 10; }
+  &.is-small       { font-size: $font-size-small;       line-height: $font-size-small + 10; }
+  &.is-normal      { font-size: $font-size-normal;      line-height: $font-size-normal + 10; }
+  &.is-semi-normal { font-size: $font-size-semi-normal; line-height: $font-size-semi-normal + 10; }
+  &.is-medium      { font-size: $font-size-medium;      line-height: $font-size-medium + 10; }
 }
 
-h6 {
-  &.is-tiny {
-    font-size: $font-size-tiny;
-    line-height: $font-size-tiny + 10;
-  }
 
-  &.is-extra-small {
-    font-size: $font-size-extra-small;
-    line-height: $font-size-extra-small + 10;
-  }
-
-  &.is-small {
-    font-size: $font-size-small;
-    line-height: $font-size-small + 10;
-  }
-
-  &.is-normal {
-    font-size: $font-size-normal;
-    line-height: $font-size-normal + 10;
-  }
-
-  &.is-semi-normal {
-    font-size: $font-size-semi-normal;
-    line-height: $font-size-semi-normal + 10;
-  }
-
-  &.is-medium {
-    font-size: $font-size-medium;
-    line-height: $font-size-medium + 10;
-  }
+// Overline — eyebrow label above section headings
+.ac-overline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ac-space-2);
+  font-family: $ac-font-sans;
+  font-size: var(--ac-text-xs, 0.6875rem);
+  font-weight: var(--ac-weight-bold, 700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ac-brand);
+  background: var(--ac-brand-subtle);
+  border: 1px solid var(--ac-brand-100);
+  border-radius: var(--ac-radius-full);
+  padding: var(--ac-space-1) var(--ac-space-3);
+  margin-bottom: var(--ac-space-4);
 }
+
+.ac-body-xl { font-size: var(--ac-text-lg, 1.0625rem); line-height: var(--ac-leading-loose, 1.75); }
+.ac-body-lg { font-size: var(--ac-text-md, 0.9375rem); line-height: var(--ac-leading-relaxed, 1.65); }
+.ac-body-md { font-size: var(--ac-text-sm, 0.8125rem); line-height: var(--ac-leading-relaxed, 1.65); }
+.ac-body-sm { font-size: var(--ac-text-xs, 0.6875rem); line-height: var(--ac-leading-normal, 1.5); }
+
+.ac-label-xl {
+  font-size: var(--ac-text-sm, 0.8125rem);
+  font-weight: var(--ac-weight-semibold, 600);
+  color: var(--ac-fg);
+  line-height: var(--ac-leading-normal, 1.5);
+}
+.ac-label-sm {
+  font-size: var(--ac-text-xs, 0.6875rem);
+  font-weight: var(--ac-weight-semibold, 600);
+  color: var(--ac-fg-subtle);
+  line-height: var(--ac-leading-normal, 1.5);
+  letter-spacing: 0.04em;
+}
+
+.ac-code-lg {
+  font-family: $ac-font-mono;
+  font-size: 0.9375rem;
+  line-height: var(--ac-leading-relaxed, 1.65);
+  color: var(--ac-fg-code);
+}
+.ac-code-sm {
+  font-family: $ac-font-mono;
+  font-size: 0.75rem;
+  line-height: var(--ac-leading-relaxed, 1.65);
+  color: var(--ac-fg-code);
+}
+
 
 a {
-  font-family: $ac-font-paragraph;
-  color: $ac-primary;
+  font-family: $ac-font-sans;
+  color: var(--ac-link);
+  text-decoration: none;
+  transition: color var(--ac-duration-base, 150ms) var(--ac-ease-out, ease);
+
+  &:hover {
+    color: var(--ac-brand-hover);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ac-focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--ac-radius-sm);
+  }
+}
+
+strong, b {
+  font-weight: var(--ac-weight-bold, 700);
+  color: $color-heading;
 }
 
 hr {
-  background-color: $color-border;
+  background-color: var(--ac-border);
   border: none;
   display: block;
   height: 1px;
-  margin: 1rem 0;
+  margin: var(--ac-space-8, 32px) 0;
 }
 
-strong {
-  color: #000000;
+code, kbd, samp {
+  font-family: $ac-font-mono;
+  font-size: 0.875em;
+  color: var(--ac-fg-code);
+  background: var(--ac-brand-subtle);
+  border: 1px solid var(--ac-border);
+  border-radius: var(--ac-radius-sm);
+  padding: 0.1em 0.35em;
 }
 
-.is-font-medium {
-  font-weight: 500;
+pre {
+  font-family: $ac-font-mono;
+  font-size: var(--ac-text-sm, 0.8125rem);
+  line-height: var(--ac-leading-relaxed, 1.65);
+  background: var(--ac-gray-950);
+  color: var(--ac-gray-100);
+  border-radius: var(--ac-radius-none);
+  border: 1px solid var(--ac-border);
+  padding: var(--ac-space-4, 16px);
+  overflow-x: auto;
+
+  code {
+    font-family: $ac-font-mono;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
 }
 
-.is-font-bold {
-  font-weight: 700;
+blockquote {
+  border-left: 3px solid var(--ac-brand);
+  margin: 0 0 var(--ac-space-4, 16px);
+  padding: var(--ac-space-3, 12px) var(--ac-space-5, 20px);
+  color: var(--ac-fg-muted);
+  font-style: italic;
+  background: var(--ac-brand-subtle);
+  border-radius: 0 var(--ac-radius-base) var(--ac-radius-base) 0;
 }
+
+
+.is-font-medium  { font-weight: var(--ac-weight-medium, 500); }
+.is-font-semi    { font-weight: var(--ac-weight-semibold, 600); }
+.is-font-bold    { font-weight: var(--ac-weight-bold, 700); }
+.is-font-heavy   { font-weight: var(--ac-weight-extrabold, 800); }
+.is-font-black   { font-weight: var(--ac-weight-black, 900); }
+.is-font-mono    { font-family: $ac-font-mono; }
+.is-font-sans    { font-family: $ac-font-sans; }
+
+.is-text-brand   { color: var(--ac-brand); }
+.is-text-muted   { color: var(--ac-fg-muted); }
+.is-text-subtle  { color: var(--ac-fg-subtle); }
+.is-text-success { color: var(--ac-status-success); }
+.is-text-warning { color: var(--ac-status-warning); }
+.is-text-error   { color: var(--ac-status-error); }
+.is-text-info    { color: var(--ac-status-info); }
