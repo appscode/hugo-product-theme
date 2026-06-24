@@ -1,11 +1,11 @@
-@mixin ac-button($colorName) {
+@mixin ac-button($colorName, $hoverColor: $colorName) {
   background-color: $colorName;
   color: var(--ac-fg-on-brand);
   border: none;
   text-decoration: none;
 
   &:hover {
-    background-color: var(--ac-brand-hover);
+    background-color: $hoverColor;
     color: var(--ac-fg-on-brand);
     text-decoration: none;
   }
@@ -33,7 +33,7 @@
     color: $colorName;
 
     &:hover {
-      background-color: $colorName;
+      background-color: $hoverColor;
       color: var(--ac-fg-on-brand);
       text-decoration: none;
     }
