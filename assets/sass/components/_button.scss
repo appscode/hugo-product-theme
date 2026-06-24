@@ -1,14 +1,7 @@
-// ============================================================
-// Button system
-// Sizes:  default (2.5rem) | is-normal (2.75rem) | is-medium (3.25rem)
-// Variants: is-primary | is-secondary | is-white | is-ghost | is-transparent
-// ============================================================
-
 .button {
   transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
 
   &.ac-button {
-    // Base token
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -32,11 +25,11 @@
       color: var(--ac-fg-on-brand);
       box-shadow: var(--ac-shadow-focus-ring);
       transform: translateY(-2px);
+      text-decoration: none;
     }
 
     &.is-disabled { opacity: 0.5 !important; pointer-events: none; }
 
-    // ── Size variants ──
     &.is-normal {
       height: 2.75rem;
       padding: 0 1.625rem;
@@ -50,7 +43,6 @@
       font-size: 1rem;
     }
 
-    // ── Colour variants ──
     &.is-primary {
       @include ac-button($ac-primary);
     }
@@ -66,6 +58,7 @@
         color: var(--ac-brand);
         box-shadow: none;
         transform: translateY(-1px);
+        text-decoration: none;
       }
     }
 
@@ -76,10 +69,12 @@
       box-shadow: var(--ac-shadow-3);
 
       &:hover {
-        background-color: #fff;
+        background-color: #f5f5f5;
+        border-color: #f5f5f5;
         color: var(--ac-brand-hover);
         box-shadow: var(--ac-shadow-4);
         transform: translateY(-2px);
+        text-decoration: none;
       }
     }
 
@@ -94,6 +89,7 @@
         color: var(--ac-brand);
         box-shadow: none;
         transform: none;
+        text-decoration: none;
       }
     }
 
@@ -107,7 +103,7 @@
       color: $color-text;
       box-shadow: none;
 
-      &:hover { background-color: transparent; transform: none; box-shadow: none; }
+      &:hover { background-color: transparent; transform: none; box-shadow: none; text-decoration: none; }
 
       &.is-primary { color: var(--ac-brand); &:hover { color: var(--ac-brand-hover); } }
       &.is-danger  { color: var(--ac-status-error); &:hover { color: var(--ac-status-error); } }
@@ -115,7 +111,6 @@
       &:focus      { box-shadow: none; outline: none; }
     }
 
-    // Colour scale (mixin-driven)
     &.is-link    { @include ac-button($ac-blue); }
     &.is-info    { @include ac-button($ac-blue); }
     &.is-success { @include ac-button($ac-primary); }
@@ -123,7 +118,6 @@
     &.is-danger  { @include ac-button($ac-red); }
     &.is-green   { @include ac-button($ac-green); }
 
-    // Legacy icon slot
     .ac-icon {
       background-color: var(--ac-fg-on-brand);
       color: var(--ac-brand);
