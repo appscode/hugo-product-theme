@@ -79,7 +79,7 @@
   --ac-pink-900: #4d0b27;
   --ac-pink-950: #30071a;
 
-  // Teal — Service Broker / ConfigSyncer
+  // Teal — Service Broker
   --ac-teal-50:  #f0fdfa;
   --ac-teal-100: #ccfbf1;
   --ac-teal-200: #99f6e4;
@@ -91,6 +91,19 @@
   --ac-teal-800: #115e59;
   --ac-teal-900: #134e4a;
   --ac-teal-950: #0d3330;
+
+  // Blue — ConfigSyncer (#1C7BD4)
+  --ac-csblue-50:  #eff6ff;
+  --ac-csblue-100: #dbeafe;
+  --ac-csblue-200: #bfdbfe;
+  --ac-csblue-300: #7ab8ed;
+  --ac-csblue-400: #4597de;
+  --ac-csblue-500: #1C7BD4;
+  --ac-csblue-600: #1666b3;
+  --ac-csblue-700: #115191;
+  --ac-csblue-800: #0c3d6e;
+  --ac-csblue-900: #082a4c;
+  --ac-csblue-950: #04182d;
 
   // Status primitives
   --ac-emerald-50:  #ecfdf5;
@@ -452,7 +465,31 @@
   --ac-shadow-brand-glow: 0 0 0 3px rgba(194,24,91,.20);
 }
 
-[data-product="configsyncer"],
+[data-product="configsyncer"] {
+  --ac-brand-50:     var(--ac-csblue-50);
+  --ac-brand-100:    var(--ac-csblue-100);
+  --ac-brand-200:    var(--ac-csblue-200);
+  --ac-brand-300:    var(--ac-csblue-300);
+  --ac-brand-400:    var(--ac-csblue-400);
+  --ac-brand-500:    var(--ac-csblue-500);
+  --ac-brand-600:    var(--ac-csblue-600);
+  --ac-brand-700:    var(--ac-csblue-700);
+  --ac-brand-800:    var(--ac-csblue-800);
+  --ac-brand-900:    var(--ac-csblue-900);
+  --ac-brand-950:    var(--ac-csblue-950);
+
+  --ac-brand:        var(--ac-csblue-500);
+  --ac-brand-hover:  var(--ac-csblue-400);
+  --ac-brand-active: var(--ac-csblue-600);
+  --ac-brand-subtle: var(--ac-csblue-50);
+  --ac-brand-border: var(--ac-csblue-700);
+  --ac-brand-solid:  #1C7BD4;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(28,123,212,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(28,123,212,.20);
+}
+
 [data-product="service-broker"] {
   --ac-brand-50:     var(--ac-teal-50);
   --ac-brand-100:    var(--ac-teal-100);
