@@ -71,12 +71,12 @@ body {
   }
 
   &.configsyncer {
-    --primary-h:      174;
-    --primary-s:      80%;
-    --primary-l:      40%;
-    --secondary-h:    174;
+    --primary-h:      210;
+    --primary-s:      76%;
+    --primary-l:      47%;
+    --secondary-h:    210;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #14B8A6;
+    --ac-brand-solid: #1C7BD4;
   }
 
   &.service-broker {

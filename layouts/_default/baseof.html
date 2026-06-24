@@ -2,7 +2,7 @@
 {{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
 
 <!DOCTYPE html>
-<html>
+<html data-product="{{ $p.key }}">
 
     {{- partial "head.html" . -}}
 
