@@ -306,14 +306,14 @@
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--ac-fg-muted);
+  background: var(--ac-surface);
+  border: 1px solid var(--ac-border-strong);
   padding: 6px 14px 6px 8px;
   border-radius: 100px;
   margin-bottom: 1.375rem;
   backdrop-filter: blur(8px);
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
   &::before {
     content: "New";
@@ -330,12 +330,13 @@
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.13);
-    border-color: rgba(255, 255, 255, 0.28);
-    color: var(--ac-fg-on-brand);
+    background: var(--ac-surface-raised);
+    border-color: var(--ac-brand-border);
+    color: var(--ac-brand);
+    text-decoration: none;
   }
 
-  strong { color: var(--ac-fg-on-brand); font-weight: 600; }
+  strong { color: var(--ac-brand); font-weight: 600; }
 }
 
 .hero-area-bg {

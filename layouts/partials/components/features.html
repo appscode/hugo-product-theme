@@ -1,43 +1,59 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-<!-- product features area start  -->
-<section class="product-feaures-area section-padding">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="section-title has-text-centered">
-          <h2 class="is-gradient">Special Features</h2>
-          {{ if $p.summary }}
-          <p>
-            {{ $p.summary | plainify }}
-          </p>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <!-- is-centered -->
-    <div class="columns is-multiline is-centered">
-      <!-- single feature information start  -->
-      {{ range $f := $p.features }}
-      <div class="column is-half-tablet is-one-third-widescreen">
-        <div class="single-features-item">
-          <div class="feature-icon">
-            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy"/>
-          </div>
-          <div class="feature-information">
+{{ $steps := index .Site.Data.products .Site.Params.product_key "homepage" "steps" | default dict }}
+{{ $caps := index .Site.Data.products .Site.Params.product_key "homepage" "capabilities" | default dict }}
 
-            <h3>{{ $f.title }}</h3>
-            {{  if $f.summary }}
-            <p class="is-ellipsis-2">{{ $f.summary }}</p>
-            {{ end }}
-            <p class="is-ellipsis-2">{{ $f.description }}</p>
-          </div>
-        </div>
+<!-- How it works — numbered steps with connector line and code chips -->
+<section class="ac-section ac-how" data-product="{{ $p.key }}" data-theme="light">
+  <div class="container">
+    <div class="ac-section-header">
+      <span class="ac-overline">
+        <iconify-icon icon="heroicons:map" width="11" height="11"></iconify-icon>
+        How it works
+      </span>
+      <h2>{{ $steps.title | default "Get started in <em>minutes</em>" | safeHTML }}</h2>
+      <p>{{ $steps.subtitle | default $p.summary }}</p>
+    </div>
+    <div class="ac-steps">
+      {{ range $i, $s := $steps.steps }}
+      <div class="ac-step">
+        <div class="ac-step-num">{{ printf "%02d" (add $i 1) }}</div>
+        <h3>{{ $s.title }}</h3>
+        <p>{{ $s.description }}</p>
+        <span class="ac-step-code-chip">
+          <iconify-icon icon="heroicons:code-bracket" width="11" height="11"></iconify-icon>
+          {{ $s.code }}
+        </span>
       </div>
-      {{end}}
-      <!-- single feature information end -->
+      {{ end }}
     </div>
   </div>
 </section>
-<!-- product features area end -->
+
+<!-- Capability grid — 6 cards 3×2 -->
+<section class="ac-section ac-capabilities" data-product="{{ $p.key }}" data-theme="light">
+  <div class="container">
+    <div class="ac-section-header">
+      <span class="ac-overline">
+        <iconify-icon icon="heroicons:sparkles" width="11" height="11"></iconify-icon>
+        Capabilities
+      </span>
+      <h2>{{ $caps.title | default "Built for <em>production reliability</em>" | safeHTML }}</h2>
+      <p>{{ $caps.subtitle | default $p.summary }}</p>
+    </div>
+    <div class="ac-cap-grid">
+      {{ $tags := $caps.tags | default (slice "Core" "Recovery" "Security" "Storage" "Performance" "Deployment") }}
+      {{ range $i, $f := first 6 $p.features }}
+      <div class="ac-cap-card">
+        <div class="ac-cap-card-top">
+          <div class="ac-cap-icon">
+            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy">
+          </div>
+          <span class="ac-cap-tag">{{ index $tags $i }}</span>
+        </div>
+        <h3>{{ $f.title }}</h3>
+        <p>{{ $f.description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

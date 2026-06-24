@@ -1,22 +1,15 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-<!-- hero start -->
-<section class="hero-area is-product is-gradient is-dark">
-  <div class="hero-area-bg" aria-hidden="true">
-    <div class="hero-mesh-orb hero-mesh-orb-tr" data-parallax="0.018"></div>
-    <div class="hero-mesh-orb hero-mesh-orb-bl" data-parallax="-0.012"></div>
-    <div class="hero-mesh-orb hero-mesh-orb-center" data-parallax="0.008"></div>
-    <div class="hero-dot-grid"></div>
-  </div>
-
+{{ $hero := index .Site.Data.products .Site.Params.product_key "homepage" "hero" | default dict }}
+<section class="ac-hero" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
-    <div class="columns is-vcentered is-multiline">
+    <div class="columns is-vcentered is-multiline" style="row-gap:3rem;">
 
-      <!-- Left: content -->
+      <!-- Left copy -->
       <div class="column is-6 is-full-touch">
 
-        <!-- news pill -->
-        <div class="news-message-wrapper">
-          <a href="" class="news-message is-hidden"><span>cool stuff!</span></a>
+        <!-- dynamic news badge -->
+        <div class="news-message-wrapper" style="margin-bottom:1.25rem;">
+          <a href="" class="news-message is-hidden"><span></span></a>
         </div>
         <script type="text/javascript">
           (function () {
@@ -26,49 +19,106 @@
                 var result = JSON.parse(xhr.responseText);
                 if (result.content) {
                   var a = document.querySelector(".news-message");
-                  a.innerHTML = '<span>' + result.content + '</span>';
+                  a.querySelector("span").innerHTML = result.content;
                   if (result.link) { a.href = result.link; a.target = "_blank"; }
                   a.classList.remove('is-hidden');
                 }
               }
             };
-            xhr.open('GET', 'https://x.appscode.com/_/news?p={{$p.name}}');
+            xhr.open('GET', 'https://x.appscode.com/_/news?p={{ $p.name }}');
             xhr.send();
           }());
         </script>
 
-        <h1>
-          {{ $words := split ($p.tagline | plainify) " " }}
-          {{ $lastIndex := sub (len $words) 1 }}
-          {{ range $i, $w := $words }}{{ if eq $i $lastIndex }}<span class="hero-title-gradient">{{ $w }}</span>{{ else }}{{ $w }} {{ end }}{{ end }}
-        </h1>
+        <h1>{{ $hero.headline | default $p.tagline | safeHTML }}</h1>
 
-        <p>{{ $p.summary | safeHTML }}</p>
+        <p class="ac-hero-sub">{{ $p.summary | safeHTML }}</p>
 
-        <div class="buttons hero-buttons is-flex is-align-items-center">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">
-            <span class="icon"><iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon></span>
-            <span>Get Started Free</span>
+        <div class="ac-hero-actions">
+          <a href="/docs/{{ $p.latestVersion }}/setup/" class="ac-btn ac-btn-primary">
+            <iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon>
+            {{ default "Get Started Free" $hero.cta_primary }}
           </a>
-          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
-            <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon></span>
-            <span>Talk to Sales</span>
+          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="ac-btn ac-btn-secondary">
+            <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon>
+            {{ default "Talk to Sales" $hero.cta_secondary }}
           </a>
+          {{ with $p.repoURL }}
+          <a href="{{ . }}" class="ac-btn ac-btn-ghost" target="_blank" rel="noopener">
+            <iconify-icon icon="simple-icons:github" width="16" height="16"></iconify-icon>
+            Star on GitHub
+          </a>
+          {{ end }}
+        </div>
+
+        <div class="ac-hero-trust">
+          {{ range $hero.trust_items }}
+          <span class="ac-hero-trust-item">
+            <iconify-icon icon="{{ .icon }}" width="14" height="14"></iconify-icon>
+            {{ .label }}
+          </span>
+          {{ end }}
         </div>
 
       </div>
 
-      <!-- Right: terminal -->
+      <!-- Right: Product UI card (Backup Status) -->
       <div class="column is-6 is-full-touch">
-        <div class="hero-area-right">
-          <div class="hero-area-code-editor">
-            <div class="editor-header">
-              <span class="action close"></span>
-              <span class="action maximize"></span>
-              <span class="action minimize"></span>
-              <span class="editor-header-label">terminal — quick install</span>
+        <div class="ac-product-card">
+          <div class="ac-product-card-header">
+            <div class="ac-product-card-header-dots">
+              <span></span><span></span><span></span>
             </div>
-            {{ partial "components/installation-code.html" . }}
+            <span class="ac-product-card-title">
+              {{ with $p.logo }}<img src="{{ .src }}" alt="{{ .alt }}" class="ac-product-card-logo">{{ end }}
+              {{ $p.name }}{{ with $hero.card_title_suffix }} — {{ . }}{{ end }}
+            </span>
+            <div class="ac-product-card-status">
+              <span class="ac-product-card-live-dot"></span>
+              Live
+            </div>
+          </div>
+          <div class="ac-product-card-body">
+
+            <!-- Backup status table -->
+            <table class="ac-status-table">
+              <thead>
+                <tr>
+                  <th>Workload</th>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{ range $hero.card_status_rows }}
+                <tr>
+                  <td>{{ .workload }}</td>
+                  <td>{{ .type }}</td>
+                  <td>{{ .size }}</td>
+                  <td><span class="ac-status-dot {{ .status }}"></span>{{ .label }}</td>
+                </tr>
+                {{ end }}
+              </tbody>
+            </table>
+
+            <!-- Helm install snippet -->
+            <div class="ac-install-snippet">
+              <span class="t-cmd">$ helm install {{ $p.key }} \</span><br>
+              &nbsp;&nbsp;<span class="t-val">oci://ghcr.io/appscode-charts/{{ $p.key }}</span> <span class="t-cmd">\</span><br>
+              &nbsp;&nbsp;<span class="t-flag">--version</span> <span class="t-val">{{ $p.latestVersion }}</span> <span class="t-cmd">\</span><br>
+              &nbsp;&nbsp;<span class="t-flag">--namespace</span> <span class="t-val">{{ $p.key }}</span> <span class="t-flag">--create-namespace</span><br>
+              <span class="t-ok">✓ {{ $p.name }} installed successfully</span>
+            </div>
+
+            <!-- Last restore stat -->
+            {{ with $hero.card_last_stat }}
+            <div class="ac-product-card-stat">
+              <span>Last restore</span>
+              <strong>{{ . }}</strong>
+            </div>
+            {{ end }}
+
           </div>
         </div>
       </div>
@@ -76,4 +126,3 @@
     </div>
   </div>
 </section>
-<!-- hero end -->
