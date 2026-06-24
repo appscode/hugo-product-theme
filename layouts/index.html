@@ -30,7 +30,9 @@
 {{ $testi := index .Site.Data.products .Site.Params.product_key "homepage" "testimonials" | default dict }}
 {{ $cta := index .Site.Data.products .Site.Params.product_key "homepage" "cta" | default dict }}
 
-  <!-- Testimonials -->
+  <!-- Testimonials — only shown when product-specific quotes exist -->
+  {{ $productTestis := where $.Site.Data.testimonials "productKey" $p.key }}
+  {{ with $productTestis }}
   <section class="ac-section ac-testimonials" data-product="{{ $p.key }}" data-theme="dark">
     <div class="container">
       <div class="ac-section-header">
@@ -42,7 +44,7 @@
         <p>{{ $testi.subtitle | default (printf "See what engineers are saying about %s in production." $p.name) }}</p>
       </div>
       <div class="ac-testi-grid">
-        {{ range first 3 $.Site.Data.testimonials }}
+        {{ range first 3 . }}
         <div class="ac-testi-card">
           <div class="ac-testi-stars" aria-label="5 stars">
             <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
@@ -64,6 +66,7 @@
       </div>
     </div>
   </section>
+  {{ end }}
 
   <!-- Final CTA band -->
   <section class="ac-section ac-cta-section" data-product="{{ $p.key }}" data-theme="light">
