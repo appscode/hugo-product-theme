@@ -23869,6 +23869,23 @@ Responsive Classes
   position: relative;
   background-color: var(--ac-surface);
   box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+.single-features-item.single-features-item--linked {
+  display: grid;
+}
+.single-features-item.single-features-item--linked:hover {
+  box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.12);
+  border-color: hsl(var(--primary-h), var(--primary-s), 75%);
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: inherit;
+}
+.single-features-item.single-features-item--linked:hover .readmore-button {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .single-features-item .feature-icon {
   width: 3.75rem;
@@ -23882,6 +23899,10 @@ Responsive Classes
 .single-features-item .feature-icon img {
   height: 30px;
 }
+.single-features-item .feature-information {
+  display: flex;
+  flex-direction: column;
+}
 .single-features-item .feature-information h3 {
   font-size: 20px;
   font-weight: 700;
@@ -23894,6 +23915,34 @@ Responsive Classes
   transition: 0.3s ease-in-out;
   color: var(--ac-fg);
   margin-bottom: 8px;
+}
+
+.readmore-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: hsl(var(--primary-h), var(--primary-s), 36%);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.readmore-button .icon {
+  display: inline-flex;
+  align-items: center;
+}
+.readmore-button .icon svg {
+  width: 15px;
+  height: 15px;
 }
 
 @media screen and (max-width: 768px) {
