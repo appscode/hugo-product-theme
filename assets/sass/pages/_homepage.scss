@@ -57,58 +57,6 @@
 }
 
 
-.ac-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ac-space-2);
-  min-height: 44px;
-  padding: 0 var(--ac-space-6);
-  font-family: var(--ac-font-sans);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  border-radius: var(--ac-radius-md);
-  text-decoration: none;
-  transition:
-    background var(--ac-duration-base) var(--ac-ease-out),
-    box-shadow  var(--ac-duration-base) var(--ac-ease-out),
-    transform   var(--ac-duration-base) var(--ac-ease-out);
-  cursor: pointer;
-  border: 1.5px solid transparent;
-
-  &:focus-visible {
-    outline: 2px solid var(--ac-focus-ring);
-    outline-offset: 2px;
-  }
-}
-
-.ac-btn-primary {
-  background: var(--ac-brand-solid);
-  color: var(--ac-fg-on-brand) !important;
-  border-color: var(--ac-brand-solid);
-  box-shadow: var(--ac-shadow-2);
-
-  &:hover {
-    background: var(--ac-brand-hover);
-    border-color: var(--ac-brand-hover);
-    box-shadow: var(--ac-shadow-3);
-    transform: translateY(-1px);
-    color: var(--ac-fg-on-brand) !important;
-  }
-}
-
-.ac-btn-secondary {
-  background: transparent;
-  color: var(--ac-fg) !important;
-  border-color: var(--ac-border-strong);
-
-  &:hover {
-    background: var(--ac-bg-subtle);
-    border-color: var(--ac-brand);
-    color: var(--ac-brand) !important;
-  }
-}
-
-
 .ac-hero {
   position: relative;
   background: var(--ac-bg);
@@ -201,7 +149,7 @@
     flex-direction: column;
     align-items: stretch;
 
-    .ac-btn { justify-content: center; }
+    .button.ac-button { justify-content: center; }
   }
 }
 
@@ -888,7 +836,7 @@
     flex-direction: column;
     align-items: stretch;
 
-    .ac-btn { justify-content: center; }
+    .button.ac-button { justify-content: center; }
   }
 }
 

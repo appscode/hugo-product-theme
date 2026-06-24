@@ -37,11 +37,11 @@
         <p class="ac-hero-sub">{{ $p.summary | safeHTML }}</p>
 
         <div class="ac-hero-actions">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="ac-btn ac-btn-primary">
+          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary">
             <iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon>
             {{ default "Get Started Free" $hero.cta_primary }}
           </a>
-          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="ac-btn ac-btn-secondary">
+          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
             <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon>
             {{ default "Talk to Sales" $hero.cta_secondary }}
           </a>

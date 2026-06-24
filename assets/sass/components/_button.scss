@@ -44,7 +44,7 @@
     }
 
     &.is-primary {
-      @include ac-button($ac-primary);
+      @include ac-button($ac-primary, var(--ac-brand-hover));
     }
 
     &.is-secondary {
@@ -111,12 +111,12 @@
       &:focus      { box-shadow: none; outline: none; }
     }
 
-    &.is-link    { @include ac-button($ac-blue); }
-    &.is-info    { @include ac-button($ac-blue); }
-    &.is-success { @include ac-button($ac-primary); }
-    &.is-warning { @include ac-button($ac-orange); }
-    &.is-danger  { @include ac-button($ac-red); }
-    &.is-green   { @include ac-button($ac-green); }
+    &.is-link    { @include ac-button($ac-blue,    var(--ac-status-info-fg)); }
+    &.is-info    { @include ac-button($ac-blue,    var(--ac-status-info-fg)); }
+    &.is-success { @include ac-button($ac-primary, var(--ac-brand-hover)); }
+    &.is-warning { @include ac-button($ac-orange,  var(--ac-status-warning-fg)); }
+    &.is-danger  { @include ac-button($ac-red,     var(--ac-status-error-fg)); }
+    &.is-green   { @include ac-button($ac-green,   var(--ac-status-success-fg)); }
 
     .ac-icon {
       background-color: var(--ac-fg-on-brand);

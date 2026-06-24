@@ -514,3 +514,28 @@
   --ac-shadow-focus-ring: 0 0 0 3px rgba(20,184,166,.35);
   --ac-shadow-brand-glow: 0 0 0 3px rgba(20,184,166,.20);
 }
+
+[data-product="guard"] {
+  --ac-brand-50:     #fff7ed;
+  --ac-brand-100:    #ffedd5;
+  --ac-brand-200:    #fed7aa;
+  --ac-brand-300:    #fdba74;
+  --ac-brand-400:    #fb923c;
+  --ac-brand-500:    #f97316;
+  --ac-brand-600:    #ea580c;
+  --ac-brand-700:    #c2410c;
+  --ac-brand-800:    #9a3412;
+  --ac-brand-900:    #7c2d12;
+  --ac-brand-950:    #431407;
+
+  --ac-brand:        #D84E27;
+  --ac-brand-hover:  #c2410c;
+  --ac-brand-active: #9a3412;
+  --ac-brand-subtle: #fff7ed;
+  --ac-brand-border: #9a3412;
+  --ac-brand-solid:  #D84E27;
+  --ac-fg-on-brand:  #ffffff;
+
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(216,78,39,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(216,78,39,.20);
+}
