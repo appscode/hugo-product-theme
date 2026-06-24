@@ -31,7 +31,7 @@
 {{ $cta := index .Site.Data.products .Site.Params.product_key "homepage" "cta" | default dict }}
 
   <!-- Testimonials — only shown when product-specific quotes exist -->
-  {{ $productTestis := where $.Site.Data.testimonials "productKey" $p.key }}
+  {{ $productTestis := where ($.Site.Data.testimonials | default slice) "productKey" $p.key }}
   {{ with $productTestis }}
   <section class="ac-section ac-testimonials" data-product="{{ $p.key }}" data-theme="dark">
     <div class="container">

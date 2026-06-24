@@ -60,7 +60,7 @@
     </div>
     <div class="ac-cap-grid">
       {{ $tags := $caps.tags | default (slice "Core" "Recovery" "Security" "Storage" "Performance" "Deployment") }}
-      {{ range $i, $f := first 6 $p.features }}
+      {{ range $i, $f := first 6 ($p.features | default slice) }}
       <div class="ac-cap-card">
         <div class="ac-cap-card-top">
           <div class="ac-cap-icon">
