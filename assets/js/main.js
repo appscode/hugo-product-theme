@@ -245,29 +245,36 @@ document.querySelectorAll(".code-block-wrapper").forEach(codeBlockWrapper => {
 
 
 // scroll to top start
-//Get the button
 const goToTopBtn = document.querySelector(".go-to-top");
-if (goToTopBtn) {
-  goToTopBtn.addEventListener('click', topFunction)
-}
+const goToTopProgress = document.querySelector(".go-to-top-progress");
+const CIRCUMFERENCE = 119.38; // 2π × r=19
 
+function updateScrollProgress() {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
 
-// When the user scrolls down 20px from the top of the document, show the button
-document.addEventListener('scroll', scrollFunction);
+  if (goToTopBtn) {
+    if (scrollTop > 80) {
+      goToTopBtn.classList.add('is-visible');
+    } else {
+      goToTopBtn.classList.remove('is-visible');
+    }
+  }
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    goToTopBtn.classList.add('is-visible');
-  } else {
-    goToTopBtn.classList.remove('is-visible');
+  if (goToTopProgress) {
+    goToTopProgress.style.strokeDashoffset = CIRCUMFERENCE * (1 - progress);
   }
 }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+if (goToTopBtn) {
+  goToTopBtn.addEventListener('click', function () {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
 }
+
+document.addEventListener('scroll', updateScrollProgress, { passive: true });
 // scroll to top end
 
 
@@ -464,29 +471,37 @@ const goToASectionSmoothly = () => {
 
 // add .active dynamically to TOC
 const spyScrolling = () => {
-  const allHeaders = document.querySelectorAll("h1, h2, h3, h4");
+  const tocLinks = document.querySelectorAll("#TableOfContents a");
+  if (!tocLinks.length) return;
 
-  window.onscroll = () => {
-    const scrollPos =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    for (let s in allHeaders) {
-      if (
-        allHeaders.hasOwnProperty(s) &&
-        allHeaders[s].offsetTop <= scrollPos + 100
-      ) {
-        const id = allHeaders[s].id;
-        if (id) {
-          document.querySelectorAll("#TableOfContents a").forEach((a) => {
-            if (`#${id}` === a.hash) {
-              a.classList.add("active");
-            } else {
-              a.classList.remove("active");
-            }
-          });
-        }
+  const allHeaders = Array.from(document.querySelectorAll(".full-info h1[id], .full-info h2[id], .full-info h3[id], .full-info h4[id]"));
+  if (!allHeaders.length) return;
+
+  const OFFSET = 120; // navbar height buffer
+
+  function updateActiveToc() {
+    const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+
+    // Find the last header that has scrolled past the top (with offset)
+    let activeHeader = null;
+    for (let i = 0; i < allHeaders.length; i++) {
+      if (allHeaders[i].getBoundingClientRect().top <= OFFSET) {
+        activeHeader = allHeaders[i];
       }
     }
-  };
+
+    const activeId = activeHeader ? activeHeader.id : null;
+    tocLinks.forEach((a) => {
+      if (activeId && a.hash === `#${activeId}`) {
+        a.classList.add("active");
+      } else {
+        a.classList.remove("active");
+      }
+    });
+  }
+
+  document.addEventListener("scroll", updateActiveToc, { passive: true });
+  updateActiveToc(); // run once on load
 };
 
 goToASectionSmoothly();

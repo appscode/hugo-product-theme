@@ -94,7 +94,7 @@
 
     .item input:checked ~ label a,
     .item input:checked ~ .item > label a {
-      color: var(--ac-brand);
+      color: var(--ac-fg);
     }
   }
 }
@@ -364,17 +364,21 @@ ul li b {
   ul {
     li {
       a {
-        color: var(--ac-link);
-        opacity: 0.7;
+        color: var(--ac-fg-muted);
         font-size: 14px;
         font-family: $ac-font-sans;
         font-weight: 500;
         display: block;
         padding: 4px 0;
+        transition: color 0.15s ease;
+        &:hover {
+          color: var(--ac-fg);
+        }
         &.active {
           position: relative;
           z-index: 1;
           color: var(--ac-brand);
+          font-weight: 600;
         }
       }
     }
