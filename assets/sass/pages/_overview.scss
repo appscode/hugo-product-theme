@@ -126,6 +126,26 @@
     transform: scale(1);
   }
 
+  .addon-code-snippet {
+    &.ac-install-snippet {
+      background: #0d0d14;
+    }
+
+    .addon-code-snippet-body {
+      max-height: 320px;
+      overflow-y: auto;
+      scrollbar-width: none; // Firefox
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari, Edge
+      }
+
+      .highlight {
+        margin: 0;
+      }
+    }
+  }
+
   @media (max-width: 368px) {
     margin-top: 90px;
   }
