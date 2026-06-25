@@ -30030,6 +30030,20 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   visibility: visible;
   transform: scale(1);
 }
+.addon-hero .addon-code-snippet.ac-install-snippet {
+  background: #0d0d14;
+}
+.addon-hero .addon-code-snippet .addon-code-snippet-body {
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.addon-hero .addon-code-snippet .addon-code-snippet-body::-webkit-scrollbar {
+  display: none;
+}
+.addon-hero .addon-code-snippet .addon-code-snippet-body .highlight {
+  margin: 0;
+}
 @media (max-width: 368px) {
   .addon-hero {
     margin-top: 90px;
