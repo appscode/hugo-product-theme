@@ -71,16 +71,15 @@
           </div>
         </div>
         <script type="text/javascript">
-          let backBtn2 = document.querySelector('.mega-menu-inner.ac-grid-container > .back-button');
-
-          function handleBackButtonClick() {
-            const modalBackdropElement = document.querySelector(".modal-backdrop");
-            // if modal backdrop element is visible then hide it
-            if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
-              modalBackdropElement.classList.remove("is-show")
-            }
+          {
+            const backBtn2 = document.querySelector('.mega-menu-inner.ac-grid-container > .back-button');
+            if (backBtn2) backBtn2.addEventListener('click', function() {
+              const modalBackdropElement = document.querySelector(".modal-backdrop");
+              if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
+                modalBackdropElement.classList.remove("is-show");
+              }
+            });
           }
-          backBtn2.addEventListener('click', handleBackButtonClick)
         </script>
         <!-- mega-menu wrapper end  -->
       </li>
@@ -278,7 +277,7 @@
             </span>
             <span>Close</span>
             </button>
-            <h4>What's on this Page</h4>
+            <h4>What's on this Pages</h4>
             {{.TableOfContents}}
           </div>
           <!-- table of contents area end -->

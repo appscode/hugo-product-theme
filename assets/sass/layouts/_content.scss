@@ -205,6 +205,50 @@
         }
       }
   
+      div.highlight {
+        position: relative;
+
+        .ac-copy-btn {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          padding: 6px;
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          cursor: pointer;
+          color: #555;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.2s ease, border-color 0.2s ease;
+          line-height: 1;
+
+          &:hover {
+            border-color: hsl(var(--primary-h), var(--primary-s), 60%);
+            color: hsl(var(--primary-h), var(--primary-s), 40%);
+          }
+
+          &.copied {
+            color: #16a34a;
+            border-color: #16a34a;
+          }
+
+          svg {
+            display: block;
+          }
+        }
+
+        &:hover .ac-copy-btn {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
       pre {
         border-radius: 4px;
         margin-top: 4px;
@@ -214,10 +258,12 @@
         padding: 24px 32px;
         background-color: var(--ac-bg-subtle, #F7F7F7);
         border-left: 4px solid hsl(var(--primary-h), var(--primary-s), 80%);
-  
+        color: #333;
+
         code {
           min-width: 100%;
           display: block;
+          color: inherit;
         }
       }
   
