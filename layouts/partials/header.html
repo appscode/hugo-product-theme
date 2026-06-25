@@ -71,7 +71,8 @@
                           let startDate = new Date().getTime();
                           let timeRemaining = parseInt((endDate - startDate) / 1000);
                           if (timeRemaining >= 0) {
-                            document.querySelector('.whats-new').classList.add('is-block')
+                            const whatsNew = document.querySelector('.whats-new');
+                            if (whatsNew) whatsNew.classList.add('is-block')
                           }
                         }
                       }
