@@ -15,7 +15,6 @@
     <div class="addon-orb addon-orb-2"></div>
     <div class="addon-dot-grid"></div>
   </div>
-  <!-- decorative floating shapes -->
   <div class="addon-shape addon-shape-ring addon-shape-tl" aria-hidden="true"></div>
   <div class="addon-shape addon-shape-ring addon-shape-br" aria-hidden="true"></div>
   <div class="addon-shape addon-shape-dot addon-shape-d1" aria-hidden="true"></div>
@@ -92,13 +91,14 @@
 <!-- addon hero end -->
 
 
-<!-- addon about section start -->
+<!-- about section start -->
 <section class="addon-about-section">
   <div class="addon-about-bg" aria-hidden="true"></div>
   <div class="container">
-    <div class="addon-about-top">
 
-      <!-- Left: text -->
+    <div class="addon-about-layout">
+
+      <!-- Left: description -->
       <div class="addon-about-text">
         <div class="addon-section-eyebrow">
           <iconify-icon icon="heroicons:information-circle" width="14" height="14"></iconify-icon>
@@ -106,26 +106,34 @@
         </div>
         <h2>What is <span class="addon-about-gradient">{{ .name }}</span> Backup?</h2>
         <div class="addon-about-body">{{ .description | markdownify }}</div>
-        <div class="addon-about-chips">
-          <span><iconify-icon icon="heroicons:shield-check" width="14" height="14"></iconify-icon> AES-256 Encrypted</span>
-          <span><iconify-icon icon="heroicons:cloud" width="14" height="14"></iconify-icon> Any Cloud</span>
-          <span><iconify-icon icon="heroicons:arrows-pointing-in" width="14" height="14"></iconify-icon> Deduplicated</span>
-          <span><iconify-icon icon="heroicons:code-bracket" width="14" height="14"></iconify-icon> Declarative API</span>
+        <div class="addon-trust-chips">
+          <span class="addon-trust-chip">
+            <iconify-icon icon="heroicons:shield-check" width="13" height="13"></iconify-icon>AES-256 Encrypted
+          </span>
+          <span class="addon-trust-chip">
+            <iconify-icon icon="heroicons:cloud" width="13" height="13"></iconify-icon>Any Cloud
+          </span>
+          <span class="addon-trust-chip">
+            <iconify-icon icon="heroicons:arrows-pointing-in" width="13" height="13"></iconify-icon>Deduplicated
+          </span>
+          <span class="addon-trust-chip">
+            <iconify-icon icon="heroicons:code-bracket" width="13" height="13"></iconify-icon>Declarative API
+          </span>
         </div>
       </div>
 
-      <!-- Right: capability illustration -->
+      <!-- Right: capability list card -->
       <div class="addon-about-visual">
         <div class="addon-cap-card">
           <div class="addon-cap-card-header">
-            <iconify-icon icon="heroicons:shield-check" width="15" height="15"></iconify-icon>
+            <iconify-icon icon="heroicons:shield-check" width="14" height="14"></iconify-icon>
             <span>Key Capabilities</span>
           </div>
           <ul class="addon-cap-list">
             {{ range first 8 .features }}
             <li class="addon-cap-list-item">
               <span class="addon-cap-check">
-                <iconify-icon icon="heroicons:check" width="11" height="11"></iconify-icon>
+                <iconify-icon icon="heroicons:check" width="10" height="10"></iconify-icon>
               </span>
               <span class="addon-cap-title">{{ .title }}</span>
             </li>
@@ -135,34 +143,94 @@
       </div>
 
     </div>
-
   </div>
 </section>
-<!-- addon about section end -->
+<!-- about section end -->
 
 
-<!-- addon features sections start -->
-<div class="addon-feature-sections">
-  {{ range $idx, $f := .features }}
-  <section class="addon-feature-section {{ if modBool $idx 2 }}addon-feature-section--reversed{{ end }}">
-    <div class="container">
-      <div class="addon-feature-inner">
-        <div class="addon-feature-text">
-          <div class="addon-feature-num">{{ printf "%02d" (add $idx 1) }}</div>
-          <h3>{{ $f.title }}</h3>
-          <p>{{ $f.description }}</p>
+<!-- how it works section start -->
+<section class="addon-how-section">
+  <div class="container">
+    <div class="addon-section-header">
+      <div class="addon-section-eyebrow">
+        <iconify-icon icon="heroicons:arrow-path" width="13" height="13"></iconify-icon>
+        <span>How It Works</span>
+      </div>
+      <h2>Backup {{ .name }} in 4 steps</h2>
+    </div>
+    <div class="addon-how-grid">
+      <div class="addon-how-step">
+        <div class="addon-how-num">01</div>
+        <div class="addon-how-icon">
+          <iconify-icon icon="heroicons:server-stack" width="26" height="26"></iconify-icon>
         </div>
-        <div class="addon-feature-visual">
-          <div class="addon-feature-img-wrap">
-            <img src="{{ $f.image }}" alt="{{ $f.title }}" loading="lazy" />
-          </div>
+        <h3>Install KubeStash</h3>
+        <p>Deploy KubeStash operator via Helm into your Kubernetes cluster.</p>
+        <code class="addon-how-chip">helm install kubestash</code>
+      </div>
+      <div class="addon-how-connector" aria-hidden="true"></div>
+      <div class="addon-how-step">
+        <div class="addon-how-num">02</div>
+        <div class="addon-how-icon">
+          <iconify-icon icon="heroicons:document-text" width="26" height="26"></iconify-icon>
         </div>
+        <h3>Define Backup Policy</h3>
+        <p>Create a BackupConfiguration CRD pointing at your {{ .name }} instance.</p>
+        <code class="addon-how-chip">kind: BackupConfiguration</code>
+      </div>
+      <div class="addon-how-connector" aria-hidden="true"></div>
+      <div class="addon-how-step">
+        <div class="addon-how-num">03</div>
+        <div class="addon-how-icon">
+          <iconify-icon icon="heroicons:cloud-arrow-up" width="26" height="26"></iconify-icon>
+        </div>
+        <h3>Automated Backups</h3>
+        <p>KubeStash schedules encrypted, deduplicated snapshots to your storage backend.</p>
+        <code class="addon-how-chip">✓ Backup verified</code>
+      </div>
+      <div class="addon-how-connector" aria-hidden="true"></div>
+      <div class="addon-how-step">
+        <div class="addon-how-num">04</div>
+        <div class="addon-how-icon">
+          <iconify-icon icon="heroicons:arrow-uturn-left" width="26" height="26"></iconify-icon>
+        </div>
+        <h3>One-Click Restore</h3>
+        <p>Restore to any point in time with a single RestoreSession manifest.</p>
+        <code class="addon-how-chip">kubectl restore --pitr …</code>
       </div>
     </div>
-  </section>
-  {{ end }}
-</div>
-<!-- addon features sections end -->
+  </div>
+</section>
+<!-- how it works section end -->
+
+
+<!-- features grid section start -->
+<section class="addon-features-section">
+  <div class="container">
+    <div class="addon-section-header">
+      <div class="addon-section-eyebrow">
+        <iconify-icon icon="heroicons:sparkles" width="13" height="13"></iconify-icon>
+        <span>Features</span>
+      </div>
+      <h2>Built for production reliability</h2>
+    </div>
+    <div class="addon-features-grid">
+      {{ range .features }}
+      <div class="addon-feature-card">
+        <div class="addon-feature-card-img">
+          <img src="{{ .image }}" alt="{{ .title }}" loading="lazy" />
+        </div>
+        <div class="addon-feature-card-body">
+          <h3>{{ .title }}</h3>
+          <p>{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+<!-- features grid section end -->
+
 
 
 

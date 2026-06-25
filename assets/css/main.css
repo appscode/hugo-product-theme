@@ -30176,9 +30176,9 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   position: relative;
   z-index: 1;
 }
-.addon-about-section .addon-about-top {
+.addon-about-section .addon-about-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 420px;
   gap: 72px;
   align-items: center;
 }
@@ -30217,60 +30217,47 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 .addon-about-section .addon-about-text .addon-about-body p:last-child {
   margin-bottom: 0;
 }
-.addon-about-section .addon-about-text .addon-about-body strong {
-  color: var(--ac-fg);
-  font-weight: 600;
-}
 .addon-about-section .addon-about-gradient {
   background: linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 40%) 0%, hsl(calc(var(--primary-h) + 20), var(--primary-s), 52%) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.addon-about-section .addon-about-chips {
+.addon-about-section .addon-trust-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.addon-about-section .addon-about-chips span {
+.addon-about-section .addon-trust-chip {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 6px 12px;
-  font-size: 0.78rem;
+  padding: 5px 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   color: hsl(var(--primary-h), var(--primary-s), 36%);
   background: hsl(var(--primary-h), var(--primary-s), 93%);
   border: 1px solid hsl(var(--primary-h), var(--primary-s), 82%);
   border-radius: 100px;
 }
-.addon-about-section .addon-about-chips span iconify-icon {
+.addon-about-section .addon-trust-chip iconify-icon {
   flex-shrink: 0;
 }
 .addon-about-section .addon-about-visual {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  background: url("/assets/images/databases/illustrations/kc-bg-1.jpg") center center/cover no-repeat;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 420px;
+  justify-content: flex-end;
 }
-.addon-about-section .addon-about-visual::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 0;
-}
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .addon-about-section {
-    padding: 56px 0;
+    padding: 64px 0;
   }
-  .addon-about-section .addon-about-top {
+  .addon-about-section .addon-about-layout {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .addon-about-section .addon-about-visual {
+    justify-content: center;
   }
   .addon-about-section .addon-about-text h2 {
     font-size: 1.75rem;
@@ -30278,13 +30265,12 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 }
 
 .addon-cap-card {
-  position: relative;
-  z-index: 1;
-  width: calc(100% - 48px);
-  max-width: 340px;
-  background: var(--ac-surface);
-  border-radius: 14px;
-  box-shadow: 0 8px 32px -6px rgba(0, 0, 0, 0.28);
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border: 1px solid hsl(var(--primary-h), 15%, 90%);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -30292,9 +30278,9 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 16px;
-  background: var(--ac-surface);
-  border-bottom: 1px solid hsl(var(--primary-h), 15%, 92%);
+  padding: 13px 18px;
+  background: hsl(var(--primary-h), var(--primary-s), 96%);
+  border-bottom: 1px solid hsl(var(--primary-h), var(--primary-s), 88%);
   border-left: 3px solid var(--ac-brand);
   font-size: 0.7rem;
   font-weight: 700;
@@ -30316,11 +30302,14 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
+  padding: 11px 18px;
   border-bottom: 1px solid hsl(var(--primary-h), 15%, 94%);
 }
 .addon-cap-list-item:last-child {
   border-bottom: none;
+}
+.addon-cap-list-item:hover {
+  background: hsl(var(--primary-h), var(--primary-s), 98%);
 }
 
 .addon-cap-check {
@@ -30336,161 +30325,10 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 }
 
 .addon-cap-title {
-  font-size: 0.8125rem;
+  font-size: 0.825rem;
   font-weight: 500;
-  color: var(--ac-fg);
+  color: #1a1a2e;
   line-height: 1.3;
-}
-
-.addon-feature-sections {
-  background: var(--ac-surface);
-  padding: 40px 0 56px;
-}
-
-.addon-feature-section:nth-child(even) .addon-feature-inner {
-  background: hsl(var(--primary-h), 20%, 98%);
-}
-
-.addon-feature-section {
-  margin-bottom: 16px;
-}
-.addon-feature-section:last-child {
-  margin-bottom: 0;
-}
-.addon-feature-section .addon-feature-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  align-items: stretch;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid hsl(var(--primary-h), 15%, 90%);
-  box-shadow: 0 1px 6px -2px rgba(0, 0, 0, 0.05);
-  background: var(--ac-surface);
-  transition: box-shadow 0.25s ease;
-}
-.addon-feature-section .addon-feature-inner:hover {
-  box-shadow: 0 4px 18px -4px rgba(0, 0, 0, 0.09);
-}
-.addon-feature-section.addon-feature-section--reversed .addon-feature-inner {
-  direction: rtl;
-}
-.addon-feature-section.addon-feature-section--reversed .addon-feature-inner > * {
-  direction: ltr;
-}
-.addon-feature-section .addon-feature-text {
-  padding: 28px 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.addon-feature-section .addon-feature-text .addon-feature-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 92%), hsl(var(--primary-h), var(--primary-s), 86%));
-  color: var(--ac-brand);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 12px;
-}
-.addon-feature-section .addon-feature-text h3 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ac-fg);
-  line-height: 1.3;
-  margin-bottom: 8px;
-}
-.addon-feature-section .addon-feature-text p {
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--ac-fg);
-  max-width: 420px;
-  margin: 0;
-}
-.addon-feature-section .addon-feature-visual {
-  background: hsl(var(--primary-h), 20%, 97%);
-  border-left: 1px solid hsl(var(--primary-h), 15%, 90%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px 32px;
-  min-height: 180px;
-}
-.addon-feature-section--reversed .addon-feature-section .addon-feature-visual {
-  border-left: none;
-  border-right: 1px solid hsl(var(--primary-h), 15%, 90%);
-}
-.addon-feature-section .addon-feature-img-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.addon-feature-section .addon-feature-img-wrap img {
-  width: auto;
-  max-width: 100%;
-  max-height: 220px;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
-}
-
-.addon-highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 48px;
-}
-
-.addon-highlight-card {
-  background: var(--ac-surface);
-  border: 1px solid hsl(var(--primary-h), 15%, 90%);
-  border-radius: 16px;
-  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.addon-highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px -6px rgba(0, 0, 0, 0.1);
-}
-.addon-highlight-card .addon-highlight-icon {
-  width: 52px;
-  height: 52px;
-  background: hsl(var(--primary-h), var(--primary-s), 94%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.addon-highlight-card .addon-highlight-icon img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-.addon-highlight-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--ac-fg);
-  line-height: 1.3;
-}
-.addon-highlight-card p {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--ac-fg);
-  margin: 0;
-}
-
-.addon-how-section {
-  padding: 96px 0;
-  background: var(--ac-surface);
 }
 
 .addon-section-header {
@@ -30518,6 +30356,11 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   text-wrap: balance;
 }
 
+.addon-how-section {
+  padding: 96px 0;
+  background: #fff;
+}
+
 .addon-how-grid {
   display: flex;
   align-items: flex-start;
@@ -30527,95 +30370,125 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 
 .addon-how-connector {
   flex: 1;
-  max-width: 80px;
+  max-width: 72px;
   height: 2px;
-  margin-top: 50px;
-  background: linear-gradient(90deg, hsl(var(--primary-h), var(--primary-s), 76%), hsl(var(--primary-h), var(--primary-s), 88%));
+  margin-top: 58px;
+  background: linear-gradient(90deg, hsl(var(--primary-h), var(--primary-s), 70%), hsl(var(--primary-h), var(--primary-s), 86%));
 }
 
 .addon-how-step {
-  flex: 0 0 220px;
+  flex: 0 0 200px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.addon-how-step .addon-how-num {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ac-brand);
-}
-.addon-how-step .addon-how-icon {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 94%), hsl(var(--primary-h), var(--primary-s), 88%));
-  border: 1px solid hsl(var(--primary-h), var(--primary-s), 82%);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ac-brand);
-}
-.addon-how-step h3 {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--ac-fg);
-  line-height: 1.3;
-}
-.addon-how-step p {
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--ac-fg);
-  max-width: 180px;
-  margin: 0;
-}
-
-.addon-related-section {
-  padding: 88px 0;
-  background: hsl(var(--primary-h), 20%, 98%);
-}
-
-.addon-related-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-}
-
-.addon-related-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 24px 16px;
-  background: var(--ac-surface);
-  border: 1px solid hsl(var(--primary-h), 15%, 90%);
-  border-radius: 14px;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.addon-related-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.1);
-  border-color: hsl(var(--primary-h), var(--primary-s), 75%);
+.addon-how-step .addon-how-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ac-brand);
+  opacity: 0.8;
 }
-.addon-related-card .addon-related-logo {
-  width: 48px;
-  height: 48px;
+.addon-how-step .addon-how-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 94%), hsl(var(--primary-h), var(--primary-s), 86%));
+  border: 1px solid hsl(var(--primary-h), var(--primary-s), 80%);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ac-brand);
+  box-shadow: 0 2px 10px -3px rgba(0, 0, 0, 0.08);
 }
-.addon-related-card .addon-related-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.addon-related-card .addon-related-name {
-  font-size: 0.875rem;
-  font-weight: 600;
+.addon-how-step h3 {
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--ac-fg);
-  text-align: center;
   line-height: 1.3;
+  margin: 0;
+}
+.addon-how-step p {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 160px;
+  margin: 0;
+}
+
+.addon-how-chip {
+  display: inline-block;
+  font-family: var(--ac-font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: hsl(var(--primary-h), var(--primary-s), 32%);
+  background: hsl(var(--primary-h), var(--primary-s), 94%);
+  border: 1px solid hsl(var(--primary-h), var(--primary-s), 82%);
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.addon-features-section {
+  padding: 96px 0;
+  background: hsl(var(--primary-h), 20%, 98%);
+}
+
+.addon-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.addon-feature-card {
+  background: #fff;
+  border: 1px solid hsl(var(--primary-h), 15%, 90%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.addon-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px -8px rgba(0, 0, 0, 0.12);
+  border-color: hsl(var(--primary-h), var(--primary-s), 78%);
+}
+.addon-feature-card .addon-feature-card-img {
+  background: hsl(var(--primary-h), 20%, 97%);
+  border-bottom: 1px solid hsl(var(--primary-h), 15%, 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 24px;
+  min-height: 160px;
+}
+.addon-feature-card .addon-feature-card-img img {
+  max-height: 120px;
+  width: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.07));
+}
+.addon-feature-card .addon-feature-card-body {
+  padding: 20px 22px 24px;
+  flex: 1;
+}
+.addon-feature-card .addon-feature-card-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ac-fg);
+  line-height: 1.3;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.addon-feature-card .addon-feature-card-body p {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: #6b7280;
+  margin: 0;
 }
 
 .addon-cta-section {
@@ -30624,6 +30497,21 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   background: linear-gradient(-45deg, hsl(var(--primary-h), var(--primary-s), 96%), hsl(calc(var(--primary-h) + 20), calc(var(--primary-s) * 0.85), 82%), hsl(var(--primary-h), calc(var(--primary-s) * 0.5), 97%), hsl(calc(var(--primary-h) - 20), var(--primary-s), 84%));
   background-size: 300% 300%;
   animation: gradient 14s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+.addon-cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, hsl(var(--primary-h), 30%, 50%) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+.addon-cta-section .container {
+  position: relative;
+  z-index: 1;
 }
 .addon-cta-section .addon-section-eyebrow {
   display: inline-flex;
@@ -30641,10 +30529,10 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   margin: 0 auto;
 }
 .addon-cta-section h2 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
   color: var(--ac-fg);
   margin-bottom: 14px;
   text-wrap: balance;
@@ -30654,14 +30542,36 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   line-height: 1.65;
   color: var(--ac-fg);
   margin-bottom: 2rem;
+  opacity: 0.85;
 }
 .addon-cta-section .buttons {
   gap: 12px;
+  justify-content: center;
 }
 .addon-cta-section .buttons .ac-button {
   height: 3rem;
   padding: 0 1.75rem;
   border-radius: 10px;
+}
+
+.addon-cta-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+.addon-cta-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: hsl(var(--primary-h), var(--primary-s), 38%);
+}
+.addon-cta-trust span iconify-icon {
+  color: var(--ac-brand);
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -30674,8 +30584,30 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
   .addon-about-section {
     padding: 56px 0;
   }
-  .addon-feature-sections {
-    padding: 40px 0 56px;
+  .addon-how-section {
+    padding: 56px 0;
+  }
+  .addon-how-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .addon-how-connector {
+    width: 2px;
+    height: 28px;
+    max-width: none;
+    margin-top: 0;
+    background: linear-gradient(180deg, hsl(var(--primary-h), var(--primary-s), 76%), hsl(var(--primary-h), var(--primary-s), 88%));
+  }
+  .addon-how-step {
+    flex: 0 0 auto;
+  }
+  .addon-features-section {
+    padding: 56px 0;
+  }
+  .addon-features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .addon-cta-section {
     padding: 56px 0;
@@ -30692,62 +30624,18 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
     max-width: 280px;
     justify-content: center;
   }
-  .addon-highlight-grid {
-    grid-template-columns: 1fr;
+  .addon-cta-trust {
+    gap: 12px;
   }
-  .addon-how-section {
-    padding: 56px 0;
-  }
-  .addon-how-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-  .addon-how-connector {
-    width: 2px;
-    height: 32px;
-    max-width: none;
-    margin-top: 0;
-    background: linear-gradient(180deg, hsl(var(--primary-h), var(--primary-s), 76%), hsl(var(--primary-h), var(--primary-s), 88%));
-  }
-  .addon-how-step {
-    flex: 0 0 auto;
-  }
-  .addon-related-section {
-    padding: 56px 0;
-  }
-  .addon-related-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .addon-feature-section .addon-feature-inner {
-    grid-template-columns: 1fr;
-    border-radius: 12px;
-  }
-  .addon-feature-section.addon-feature-section--reversed .addon-feature-inner {
-    direction: ltr;
-  }
-  .addon-feature-section .addon-feature-text {
-    padding: 32px 28px;
-  }
-  .addon-feature-section .addon-feature-visual {
-    border-left: none;
-    border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
-    min-height: 200px;
-    padding: 28px;
-  }
-  .addon-feature-section--reversed .addon-feature-section .addon-feature-visual {
-    border-right: none;
-    border-top: 1px solid hsl(var(--primary-h), 15%, 90%);
+  .addon-cta-trust span {
+    font-size: 0.75rem;
   }
 }
 @media (min-width: 769px) and (max-width: 1023px) {
   .addon-hero .addon-hero-content h1 {
     font-size: 2.25rem;
   }
-  .addon-highlight-grid {
+  .addon-features-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .addon-related-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
