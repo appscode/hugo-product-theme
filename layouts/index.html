@@ -1,8 +1,31 @@
-{{ define "main"}}
+{{ define "main" }}
+{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $stats := index .Site.Data.products .Site.Params.product_key "homepage" "stats" | default dict }}
+
   {{ partial "components/heroarea.html" . }}
-  {{ partial "components/social-prove.html" .}}
-  {{ partial "components/features.html" .}}
-  {{ if .Site.GetPage "section" "case-studies" }}
-    {{ partial "components/casestudies.html" . }}
+  {{ partial "components/social-prove.html" . }}
+
+  <!-- Stats bar -->
+  {{ with $stats.items }}
+  <div class="ac-stats" data-product="{{ $p.key }}" data-theme="light">
+    <div class="container">
+      <div class="ac-stats-grid">
+        {{ range . }}
+        <div class="ac-stat-item">
+          <div class="ac-stat-number">{{ .number }}</div>
+          <div class="ac-stat-label">{{ .label }}</div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
   {{ end }}
+
+  {{ partial "components/features.html" . }}
+
+{{ end }}
+
+{{ define "hide-bottom-content" }}
+  {{- partial "testimonial.html" . -}}
+  {{- partial "cta.html" . -}}
 {{ end }}

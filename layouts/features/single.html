@@ -9,108 +9,68 @@
 
     {{ with $featuresData }}
 
-<!-- ==========================new hero area start ==========================   -->
-<!-- style="background-image: url(/assets/images/products/kubedb/features/hero-images.png);" -->
-<section class="hero-area is-product is-single-features">
-    <div class="shape">
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
+<!-- features hero start -->
+<section class="features-hero">
+  <div class="features-hero-bg" aria-hidden="true">
+    <div class="fh-orb fh-orb-1"></div>
+    <div class="fh-orb fh-orb-2"></div>
+    <div class="fh-grid"></div>
+  </div>
+  <div class="fh-shape fh-shape-ring fh-shape-tl" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-ring fh-shape-br" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-dot fh-shape-d1" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-dot fh-shape-d2" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-dot fh-shape-d3" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-cross fh-shape-c1" aria-hidden="true"></div>
+  <div class="fh-shape fh-shape-cross fh-shape-c2" aria-hidden="true"></div>
+  <div class="container">
+    <div class="features-hero-inner">
+      <div class="features-hero-badge">
+        <iconify-icon icon="heroicons:sparkles" width="13" height="13"></iconify-icon>
+        <span>Feature</span>
+      </div>
+      <h1>{{ $featuresData.title }}</h1>
+      <p>{{ $featuresData.meta }}</p>
+      <div class="buttons is-justify-content-center">
+        <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary">
+          <span class="icon"><iconify-icon icon="heroicons:bolt" width="16" height="16"></iconify-icon></span>
+          <span>Try Now Free</span>
+        </a>
+        <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-white">
+          <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="16" height="16"></iconify-icon></span>
+          <span>Get In Touch</span>
+        </a>
+      </div>
     </div>
-    <div class="shape">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
-    <div class="container">
-        <div class="columns is-multiline">
-            <div class="column is-6 is-full-touch">
-                <h1>{{ $featuresData.title }}</h1>
-                <p>{{ $featuresData.meta }}</p>
-                <div class="buttons">
-                    <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary">TRY NOW FREE</a>
-                    <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
-                        <span class="icon">
-                            <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>
-                        </span>
-                        <span>GET IN TOUCH</span>
-                    </a>
-                </div>
-            </div>
-
-              <div class="column is-6 is-full-touch">
-                  <div class="hero-area-right">
-                      <!-- code editor start  -->
-                      <div class="hero-area-code-editor">
-                          <div class="editor-header">
-                              <span class="action close"></span>
-                              <span class="action maximize"></span>
-                              <span class="action minimize"></span>
-                          </div>
-                        {{ highlight (printf `helm install kubedb oci://ghcr.io/appscode-charts/kubedb \
-  --version %s \
-  --namespace kubedb --create-namespace \
-  --set-file global.license=/path/to/the/license.txt \
-  --wait --burst-limit=10000 --debug` $p.latestVersion) "bash" "style=dracula" }}
-                      </div>
-                  </div>
-                  <!-- code editor end  -->
-                  <!-- <img src="/assets/images/products/kubedb/hero-right-image.png" alt=""> -->
-              </div>
-        </div>
-    </div>
-    </div>
+  </div>
 </section>
+<!-- features hero end -->
 
-<!-- ========================== new hero area end ==========================  -->
-
-<!--========================== product features area start ========================== -->
-<section class="features-area single-features-page mt-50 mb-50">
+<!-- feature sections start -->
+<div class="fl-sections">
+  {{ range $idx, $data := $featuresData.innerContent }}
+  <section class="fl-section {{ if modBool $idx 2 }}fl-section--reversed{{ end }}">
     <div class="container">
-        <!-- features items start  -->
-        {{ range $data := $featuresData.innerContent }}
-     
-        {{ if mod $data.id 2 }}
-        <div class="columns is-multiline is-vcentered">
-            <!-- single features start  -->
-            <div class="column is-6">
-                <div data-aos="flip-left" class="features-thumbnail">
-                    <img loading="lazy" src="{{ $data.img }}" alt="{{ $data.title }}">
-                </div>
-            </div>
+      <div class="fl-section-inner">
 
-            <div class="column is-6">
-                <h3>{{ $data.title }}</h3>
-                <p>{{ $data.description }}</p>
-            </div>
+        <div class="fl-section-text">
+          <div class="fl-section-num">{{ printf "%02d" (add $idx 1) }}</div>
+          <h2>{{ $data.title }}</h2>
+          <p>{{ $data.description }}</p>
         </div>
-        {{else}}
-        <div class="columns is-multiline is-vcentered is-flex-direction-row-reverse-mobile">
-            <!-- single features start  -->
-            <div class="column is-6">
-                <h3>{{ $data.title }}</h3>
-                <p>{{ $data.description }}</p>
-            </div>
 
-            <div class="column is-6">
-                <div data-aos="flip-left" class="features-thumbnail has-text-right">
-                    <img loading="lazy" src="{{ $data.img }}" alt="{{ $data.title }}">
-                </div>
-            </div>
-            <!-- single features end  -->
+        <div class="fl-section-visual">
+          <div class="fl-section-image-wrap">
+            <img src="{{ $data.img }}" alt="{{ $data.title }}" loading="lazy" />
+          </div>
         </div>
-        {{ end }}
-        {{ end }}
-        <!-- features items end -->
+
+      </div>
     </div>
-</section>
-<!--========================== product features area end ==========================-->
+  </section>
+  {{ end }}
+</div>
+<!-- feature sections end -->
+
 {{ end }}
 {{ end }}

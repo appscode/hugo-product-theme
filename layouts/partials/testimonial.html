@@ -1,52 +1,40 @@
-<section class="testimonial-area">
-
+{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $testi := index .Site.Data.products .Site.Params.product_key "homepage" "testimonials" | default dict }}
+{{ $allTestis := $.Site.Data.testimonials | default slice }}
+{{ $productTestis := where $allTestis "productKey" $p.key }}
+{{ $testimonials := cond (gt (len $productTestis) 0) $productTestis $allTestis }}
+{{ with $testimonials }}
+<section class="ac-section ac-testimonials" data-product="{{ $p.key }}" data-theme="dark">
   <div class="container">
-    <div class="columns is-vcentered">
-      <div class="column is-4">
-        <div class="section-title">
-          <h2 class="is-gradient">What They Are <span
-              class="has-text-weight-light"> Talking About us</span></h2>
-          <p>Trusted by top engineers at the most ambitious companies</p>
+    <div class="ac-section-header">
+      <span class="ac-overline">
+        <iconify-icon icon="heroicons:chat-bubble-left-right" width="11" height="11"></iconify-icon>
+        Customer Stories
+      </span>
+      <h2>{{ $testi.headline | default "Trusted by teams <em>worldwide</em>" | safeHTML }}</h2>
+      <p>{{ $testi.subtitle | default (printf "See what engineers are saying about %s in production." $p.name) }}</p>
+    </div>
+    <div class="ac-testi-grid">
+      {{ range first 3 . }}
+      <div class="ac-testi-card">
+        <div class="ac-testi-stars" aria-label="5 stars">
+          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
+          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
+          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
+          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
+          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
         </div>
-        <!-- arrows start  -->
-        <div class="arrows">
-          <button class="button arrow is-rounded customPrevBtn" title="Previous">
-            <span class="icon arrow-back">
-              <iconify-icon icon="heroicons:arrow-small-left" width="24" height="24"></iconify-icon>
-            </span>
-          </button>
-          <button class="button arrow is-rounded customNextBtn" title="Next">
-            <span class="icon arrow-forward">
-              <iconify-icon icon="heroicons:arrow-small-right" width="24" height="24"></iconify-icon>
-            </span>
-          </button>
-        </div>
-        <!-- arrows end -->
-      </div>
-      <div class="column is-8">
-        <!-- owl-carousel -->
-        <div class="testimonial-carousel-wrapper owl-carousel testimonial-carousel">
-          {{ range $user := $.Site.Data.testimonials }}
-          <!-- single testimonial item start  -->
-          <div class="single-testimonial-item">
-            <!-- user info wrapper start  -->
-            <div class="user-info-wrapper">
-              <figure class="image is-64x64">
-                <img loading="lazy" class="is-rounded" src="{{ $user.profile }}" alt="{{ $user.name }}" width="64" height="64">
-              </figure>
-              <div class="user-info">
-                <label>{{ $user.name }}</label>
-                <p>{{ $user.job }}{{ if $user.companyKey }} at
-                  <span class="is-capitalized">{{ $user.companyKey }}</span>{{ end }}</p>
-              </div>
-            </div>
-            <!-- user info wrapper end -->
-            <p>{{ $user.testimonial | safeHTML }}</p>
+        <p class="ac-testi-quote">{{ .testimonial | truncate 220 }}</p>
+        <div class="ac-testi-author">
+          <img src="{{ .profile }}" alt="{{ .name }}" loading="lazy">
+          <div>
+            <strong>{{ .name }}</strong>
+            <span>{{ .job }}{{ if .companyKey }} &middot; {{ .companyKey | title }}{{ end }}</span>
           </div>
-          {{ end }}
         </div>
-        <!-- single testimonial item end -->
       </div>
+      {{ end }}
     </div>
   </div>
 </section>
+{{ end }}
