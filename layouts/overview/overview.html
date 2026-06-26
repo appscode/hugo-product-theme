@@ -148,6 +148,7 @@
 <!-- about section end -->
 
 
+{{ if or (eq $.Site.Params.product_key "stash") (eq $.Site.Params.product_key "kubestash") }}
 <!-- how it works section start -->
 <section class="addon-how-section">
   <div class="container">
@@ -164,9 +165,9 @@
         <div class="addon-how-icon">
           <iconify-icon icon="heroicons:server-stack" width="26" height="26"></iconify-icon>
         </div>
-        <h3>Install KubeStash</h3>
-        <p>Deploy KubeStash operator via Helm into your Kubernetes cluster.</p>
-        <code class="addon-how-chip">helm install kubestash</code>
+        <h3>Install {{ $p.name }}</h3>
+        <p>Deploy {{ $p.name }} operator via Helm into your Kubernetes cluster.</p>
+        <code class="addon-how-chip">helm install {{ $.Site.Params.product_key }}</code>
       </div>
       <div class="addon-how-connector" aria-hidden="true"></div>
       <div class="addon-how-step">
@@ -185,7 +186,7 @@
           <iconify-icon icon="heroicons:cloud-arrow-up" width="26" height="26"></iconify-icon>
         </div>
         <h3>Automated Backups</h3>
-        <p>KubeStash schedules encrypted, deduplicated snapshots to your storage backend.</p>
+        <p>{{ $p.name }} schedules encrypted, deduplicated snapshots to your storage backend.</p>
         <code class="addon-how-chip">✓ Backup verified</code>
       </div>
       <div class="addon-how-connector" aria-hidden="true"></div>
@@ -196,12 +197,13 @@
         </div>
         <h3>One-Click Restore</h3>
         <p>Restore to any point in time with a single RestoreSession manifest.</p>
-        <code class="addon-how-chip">kubectl restore --pitr …</code>
+        <code class="addon-how-chip">kind: RestoreSession</code>
       </div>
     </div>
   </div>
 </section>
 <!-- how it works section end -->
+{{ end }}
 
 
 <!-- features grid section start -->
