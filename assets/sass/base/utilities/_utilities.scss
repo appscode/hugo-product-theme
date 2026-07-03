@@ -1605,4 +1605,10 @@ $section-bg-white:
       transform: scale(1.05) rotate(2deg);
     }
   }
+
+  @include mobile {
+    .height-50 {
+      height: 44px;
+    }
+  }
 }

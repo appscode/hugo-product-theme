@@ -88,25 +88,32 @@ document.querySelectorAll(".code-block-wrapper").forEach(codeBlockWrapper => {
 
 
 // scroll to top start
-//Get the button
 const goToTopBtn = document.querySelector(".go-to-top");
+const goToTopProgress = document.querySelector(".go-to-top-ring-progress");
+const CIRCUMFERENCE = 119.38; // 2 * π * r (r=19)
+
 if (goToTopBtn) {
-  goToTopBtn.addEventListener('click', topFunction)
+  goToTopBtn.addEventListener('click', topFunction);
 }
 
-
-// When the user scrolls down 20px from the top of the document, show the button
 document.addEventListener('scroll', scrollFunction);
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+
+  if (scrollTop > 20) {
     goToTopBtn.classList.add('is-visible');
   } else {
     goToTopBtn.classList.remove('is-visible');
   }
+
+  if (goToTopProgress) {
+    goToTopProgress.style.strokeDashoffset = CIRCUMFERENCE * (1 - progress);
+  }
 }
 
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;

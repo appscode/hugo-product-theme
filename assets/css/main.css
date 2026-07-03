@@ -32553,6 +32553,11 @@ strong {
 .ac-ui .bg-grad-vibrant:hover {
   transform: scale(1.05) rotate(2deg);
 }
+@media screen and (max-width: 768px) {
+  .ac-ui .height-50 {
+    height: 44px;
+  }
+}
 
 .badge {
   display: inline-flex;
@@ -35126,11 +35131,13 @@ Responsive Classes
     background: #fafafd;
     width: 100%;
     left: 0;
-    min-height: calc(100vh + 110px);
+    min-height: calc(100vh - 61px);
+    max-height: calc(100vh - 61px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transition: 0.3s ease-in-out;
     top: 61px;
-    padding: 15px;
+    padding: 15px 15px 80px;
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
@@ -38038,24 +38045,55 @@ Responsive Classes
 
 .go-to-top {
   position: fixed;
-  display: block;
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 999;
   right: 20px;
   bottom: 40px;
-  width: 40px;
-  height: 40px;
-  line-height: 30px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  color: #fff;
-  background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.5);
+  color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  background: #fff;
   border: none;
+  padding: 0;
   opacity: 0;
   cursor: pointer;
-  transition: opacity 0.4s linear;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.4s linear, transform 0.22s ease, box-shadow 0.22s ease;
 }
 .go-to-top:hover {
-  background: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+.go-to-top .go-to-top-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+}
+.go-to-top .go-to-top-ring .go-to-top-ring-track {
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 2.5;
+  fill: none;
+}
+.go-to-top .go-to-top-ring .go-to-top-ring-progress {
+  stroke: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 119.38;
+  stroke-dashoffset: 119.38;
+  transition: stroke-dashoffset 0.1s linear;
+}
+.go-to-top .go-to-top-arrow {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
 }
 
 .go-to-top.is-visible {
@@ -39681,7 +39719,7 @@ code:not(pre code) {
 @media screen and (max-width: 768px) {
   .ac-ui .home-hero-title {
     margin: 1rem auto;
-    font-size: clamp(1.5rem, 10vw, 2rem);
+    font-size: clamp(1.5rem, 10vw, 1.6rem);
     line-height: 1.1;
     letter-spacing: -0.01em;
   }
@@ -40158,6 +40196,14 @@ code:not(pre code) {
 .ac-ui .console-next-btn {
   right: -18px;
 }
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .ac-ui .console-prev-btn {
+    left: -10px;
+  }
+  .ac-ui .console-next-btn {
+    right: -10px;
+  }
+}
 @media screen and (max-width: 768px) {
   .ac-ui .console-prev-btn {
     left: -8px;
@@ -40186,8 +40232,8 @@ code:not(pre code) {
   letter-spacing: 0.08em;
 }
 .ac-ui .console-body {
-  grid-template-columns: 220px 1fr;
-  min-height: 520px;
+  grid-template-columns: clamp(180px, 18%, 220px) 1fr;
+  min-height: clamp(300px, 50vh, 520px);
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .ac-ui .console-body {
@@ -40671,6 +40717,21 @@ code:not(pre code) {
 @media screen and (max-width: 768px) {
   .ac-ui .comparison-analogy-panel {
     padding: 1.25rem !important;
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  .ac-ui .home-hero {
+    padding: 72px 0 32px;
+  }
+  .ac-ui .section-header-title,
+  .ac-ui .product-section-title {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+  .ac-ui .trust-stat-val {
+    font-size: 1.4rem;
+  }
+  .ac-ui .home-section {
+    padding: 32px 0;
   }
 }
 

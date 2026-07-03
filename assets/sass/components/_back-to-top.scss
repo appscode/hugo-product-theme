@@ -2,25 +2,68 @@
 //  go to top area start
 .go-to-top {
   position: fixed;
-  display: block;
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 999;
   right: 20px;
   bottom: 40px;
-  width: 40px;
-  height: 40px;
-  line-height: 30px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  color: #fff;
-  background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.5);
+  color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  background: #fff;
   border: none;
+  padding: 0;
   opacity: 0;
   cursor: pointer;
-  transition: opacity 0.4s linear;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.4s linear, transform 0.22s ease, box-shadow 0.22s ease;
+
   &:hover {
-    background: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  }
+
+  // SVG progress ring (positioned to cover the full button)
+  .go-to-top-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    // Start from the top (12 o'clock)
+    transform: rotate(-90deg);
+
+    // Circumference of r=19: 2 * π * 19 ≈ 119.38
+    $circumference: 119.38;
+
+    .go-to-top-ring-track {
+      stroke: rgba(0, 0, 0, 0.08);
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    .go-to-top-ring-progress {
+      stroke: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: $circumference;
+      stroke-dashoffset: $circumference; // JS updates this
+      transition: stroke-dashoffset 0.1s linear;
+    }
+  }
+
+  // Arrow icon
+  .go-to-top-arrow {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    z-index: 1;
   }
 }
+
 .go-to-top.is-visible {
   opacity: 1;
 }

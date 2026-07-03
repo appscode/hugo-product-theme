@@ -1458,11 +1458,13 @@ Responsive Classes
       background: #fafafd;
       width: 100%;
       left: 0;
-      min-height: calc(100vh + 110px);
+      min-height: calc(100vh - 61px);
+      max-height: calc(100vh - 61px);
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       transition: 0.3s ease-in-out;
       top: 61px;
-      padding: 15px;
+      padding: 15px 15px 80px;
       justify-content: flex-start;
       flex-direction: column;
       align-items: flex-start;
