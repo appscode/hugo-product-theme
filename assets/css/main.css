@@ -40630,6 +40630,213 @@ code:not(pre code) {
 .ac-ui .cta-buttons .button {
   min-height: 50px;
 }
+.ac-ui .infra-box-blue {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1.5px solid rgba(37, 99, 235, 0.2);
+}
+.ac-ui .infra-box-indigo {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1.5px solid rgba(99, 102, 241, 0.2);
+}
+.ac-ui .infra-box-indigo-small {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1.5px solid rgba(99, 102, 241, 0.15);
+}
+.ac-ui .infra-item-icon-box {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .is-flex-direction-column-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .cta-stats-col {
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .hiw-footer-badge {
+    white-space: normal;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    max-width: 100%;
+    text-align: center;
+  }
+}
+.ac-ui .page-hero .home-hero-title {
+  text-wrap: balance;
+}
+.ac-ui .page-hero .home-hero-desc {
+  text-wrap: pretty;
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .page-hero .home-hero-title span br,
+  .ac-ui .page-hero .home-hero-desc br {
+    display: none;
+  }
+  .ac-ui .page-hero .hero-page-badge {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+    text-align: center !important;
+    justify-content: center;
+    padding: 0.5rem 0.9rem;
+    max-width: 90%;
+  }
+  .ac-ui .page-hero .hero-page-badge iconify-icon {
+    margin-top: 0.15rem;
+  }
+  .ac-ui .page-hero .hero-page-badge span {
+    margin-left: 0 !important;
+  }
+  .ac-ui .page-hero .home-hero-title {
+    font-size: clamp(1.65rem, 7.5vw, 1.9rem);
+    line-height: 1.18;
+  }
+  .ac-ui .page-hero .ac-stat-card {
+    padding: 1rem 0.5rem;
+  }
+  .ac-ui .page-hero .ac-stat-card h3 {
+    font-size: 1.65rem !important;
+    white-space: nowrap;
+  }
+  .ac-ui .page-hero .ac-stat-card p {
+    font-size: 0.65rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .arch-layer-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .arch-layer-label {
+    width: 100% !important;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .arch-diagram-card {
+    padding: 1rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .arch-diagram-scroll {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 1rem;
+  }
+  .ac-ui .arch-diagram-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08));
+  }
+}
+.ac-ui .arch-diagram-img {
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .arch-diagram-img {
+    width: auto;
+    max-width: none;
+    height: 260px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .quote-card {
+    padding: 1.5rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .quote-card-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .quote-card-icon {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .db-support-header {
+    padding: 1.75rem 1.5rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .db-support-body {
+    padding: 1.5rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .db-support-row {
+    align-items: center;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .db-support-label {
+    width: auto !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .comparison-table-scroll-outer {
+    position: relative;
+  }
+  .ac-ui .comparison-table-scroll-outer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 28px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08));
+    border-radius: 0 1.5rem 1.5rem 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ac-ui .faq-trigger {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  .ac-ui .faq-inner-content.px-8 {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  .ac-ui .comparison-card-active-operator,
+  .ac-ui .comparison-card-active-platform,
+  .ac-ui .comparison-card-inactive {
+    padding: 1.5rem !important;
+  }
+}
 .ac-ui .trust-stat {
   padding: 1.15rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -42782,6 +42989,47 @@ body:has(.headroom--unpinned) .features-cta-area .features-plan-cta-wrapper {
 }
 .overview-v2 .ov2-code-dot--max {
   background: #27c93f;
+}
+.overview-v2 .ov2-code-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.overview-v2 .ov2-code-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+.overview-v2 .ov2-code-copy-btn:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.6);
+  outline-offset: 2px;
+}
+.overview-v2 .ov2-code-copy-icon {
+  display: block;
+}
+.overview-v2 .ov2-code-copy-icon--success {
+  display: none;
+  color: #27c93f;
+}
+.overview-v2 .ov2-code-copy-btn.is-copied {
+  color: #27c93f;
+  border-color: rgba(39, 201, 63, 0.35);
+}
+.overview-v2 .ov2-code-copy-btn.is-copied .ov2-code-copy-icon {
+  display: none;
+}
+.overview-v2 .ov2-code-copy-btn.is-copied .ov2-code-copy-icon--success {
+  display: block;
 }
 .overview-v2 .ov2-code-body pre {
   padding: 1.25rem;
