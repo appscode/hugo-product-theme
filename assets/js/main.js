@@ -540,3 +540,54 @@ function removeDuplicateLeftSidebarItem() {
 }
 
 document.addEventListener("DOMContentLoaded", removeDuplicateLeftSidebarItem, { once: true });
+
+
+// ============================================================
+// Mobile docs drawer UX enhancement
+// Adds a dimmed tap-to-close backdrop and background scroll lock
+// whenever a docs drawer/panel is open. Works alongside the existing
+// responsive-menu toggle logic by observing the open-state classes
+// rather than re-implementing the open/close itself.
+// ============================================================
+(function enhanceDocsDrawers() {
+  // Each drawer/panel and the class that marks it "open".
+  const panels = [
+    { el: document.querySelector(".left-sidebar-wrapper"), openClass: "is-block" },
+    { el: document.querySelector(".right-sidebar"), openClass: "is-block" },
+    { el: document.querySelector(".sidebar-search-area"), openClass: "right-0" },
+  ].filter((p) => p.el);
+
+  const overlay = document.querySelector(".overlay-bg");
+  if (!overlay || panels.length === 0) return;
+
+  const isAnyOpen = () =>
+    panels.some((p) => p.el.classList.contains(p.openClass));
+
+  function closeAll() {
+    panels.forEach((p) => p.el.classList.remove(p.openClass));
+    syncState();
+  }
+
+  function syncState() {
+    const open = isAnyOpen();
+    overlay.classList.toggle("is-show", open);
+    document.body.classList.toggle("drawer-open", open);
+  }
+
+  // Tap the dimmed backdrop to dismiss.
+  overlay.addEventListener("click", closeAll);
+
+  // Escape key closes the drawer (keyboard / accessibility).
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isAnyOpen()) closeAll();
+  });
+
+  // React to the existing toggle logic flipping the open-state classes.
+  const observer = new MutationObserver(syncState);
+  panels.forEach((p) =>
+    observer.observe(p.el, { attributes: true, attributeFilter: ["class"] })
+  );
+
+  // Initial sync in case a panel starts open.
+  syncState();
+})();
