@@ -34407,6 +34407,14 @@ video {
   padding-top: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
+@media screen and (max-width: 1023px) {
+  .mega-menu-wrapper .mega-menu-inner .resource-menu .resource-menu-panel-footer {
+    padding: 8px 16px;
+  }
+  .mega-menu-wrapper .mega-menu-inner .resource-menu .resource-menu-panel-footer .resource-menu-view-all {
+    padding: 0;
+  }
+}
 .mega-menu-wrapper .mega-menu-inner .resource-menu .resource-menu-panel-footer p {
   font-size: 0.92rem;
   line-height: 1.5;
@@ -35426,6 +35434,7 @@ Responsive Classes
     padding: 0;
     margin: 0;
     list-style: none;
+    margin-bottom: 8px;
   }
   .navbar-right .nav-item {
     width: 100%;
