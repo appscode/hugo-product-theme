@@ -76,16 +76,18 @@
           </div>
         </div>
         <script type="text/javascript">
-          let backBtn2 = document.querySelector('.mega-menu-inner.ac-grid-container > .back-button');
+          (function () {
+            var backBtn2 = document.currentScript.previousElementSibling.querySelector('.back-button');
+            if (!backBtn2) return;
 
-          function handleBackButtonClick() {
-            const modalBackdropElement = document.querySelector(".modal-backdrop");
-            // if modal backdrop element is visible then hide it
-            if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
-              modalBackdropElement.classList.remove("is-show")
-            }
-          }
-          backBtn2.addEventListener('click', handleBackButtonClick)
+            backBtn2.addEventListener('click', function handleBackButtonClick() {
+              var modalBackdropElement = document.querySelector(".modal-backdrop");
+              // if modal backdrop element is visible then hide it
+              if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
+                modalBackdropElement.classList.remove("is-show")
+              }
+            });
+          })();
         </script>
         <!-- mega-menu wrapper end  -->
       </li>

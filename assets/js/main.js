@@ -591,3 +591,41 @@ document.addEventListener("DOMContentLoaded", removeDuplicateLeftSidebarItem, { 
   // Initial sync in case a panel starts open.
   syncState();
 })();
+
+// ============================================================
+// Doc content code-block copy button
+// Every fenced code block on a docs page is wrapped in .doc-code-block by
+// layouts/_default/_markup/render-codeblock.html. Wire each one's copy
+// button independently so multiple blocks on the same page work in isolation.
+// ============================================================
+document.querySelectorAll(".doc-code-block").forEach((block) => {
+  const btn = block.querySelector(".doc-code-copy-btn");
+  const code = block.querySelector("pre code");
+  if (!btn || !code) return;
+
+  btn.addEventListener("click", () => {
+    // Chroma renders each line as its own flex row with an optional
+    // line-number span; strip that span so only the actual code copies.
+    const lines = Array.from(code.querySelectorAll('[style*="display:flex"]')).map((row) => {
+      const clone = row.cloneNode(true);
+      const lineNo = clone.querySelector('[style*="user-select:none"]');
+      if (lineNo) lineNo.remove();
+      return clone.textContent.replace(/\n$/, "");
+    });
+    const text = lines.length ? lines.join("\n") : code.textContent;
+
+    navigator.clipboard.writeText(text).then(
+      () => {
+        btn.classList.add("is-copied");
+        btn.title = "Copied";
+        setTimeout(() => {
+          btn.classList.remove("is-copied");
+          btn.title = "Copy";
+        }, 1800);
+      },
+      () => {
+        btn.title = "Copy failed — select the text manually";
+      }
+    );
+  });
+});

@@ -1016,6 +1016,76 @@ body.drawer-open {
   }
 }
 
+// ---- Doc content code-block copy button ----
+// Wraps every fenced code block (layouts/_default/_markup/render-codeblock.html)
+// with a top-right "copy" button. Hidden until hover on devices that support
+// it; always visible on touch devices where hover has no equivalent.
+.doc-code-block {
+  position: relative;
+
+  pre {
+    margin: 0;
+  }
+
+  .doc-code-copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    background: $ac-white;
+    color: $color-text;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      background: hsl(var(--secondary-h), 10%, 95%);
+      color: $ac-primary;
+      border-color: $ac-primary;
+    }
+
+    .doc-code-copy-icon--success {
+      display: none;
+    }
+
+    &.is-copied {
+      color: $ac-green;
+      border-color: $ac-green;
+
+      .doc-code-copy-icon:not(.doc-code-copy-icon--success) {
+        display: none;
+      }
+
+      .doc-code-copy-icon--success {
+        display: inline-flex;
+      }
+    }
+  }
+
+  &:hover .doc-code-copy-btn,
+  &:focus-within .doc-code-copy-btn {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // No hover on touch devices — keep the button reachable at all times.
+  @media (hover: none) {
+    .doc-code-copy-btn {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
 // Extra large devices (large desktops, 1216px and up)
 @media (min-width: 1408px) {
 }
