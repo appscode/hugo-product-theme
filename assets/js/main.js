@@ -614,13 +614,18 @@ document.querySelectorAll(".doc-code-block").forEach((block) => {
     });
     const text = lines.length ? lines.join("\n") : code.textContent;
 
-    navigator.clipboard.writeText(text).then(() => {
-      btn.classList.add("is-copied");
-      btn.title = "Copied";
-      setTimeout(() => {
-        btn.classList.remove("is-copied");
-        btn.title = "Copy";
-      }, 1800);
-    });
+    navigator.clipboard.writeText(text).then(
+      () => {
+        btn.classList.add("is-copied");
+        btn.title = "Copied";
+        setTimeout(() => {
+          btn.classList.remove("is-copied");
+          btn.title = "Copy";
+        }, 1800);
+      },
+      () => {
+        btn.title = "Copy failed — select the text manually";
+      }
+    );
   });
 });
