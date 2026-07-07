@@ -30,8 +30,14 @@
             {{ block "footer-script" . }}
             {{ end }}
 
-            <button class="go-to-top" id="goTop">
-                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            <button class="go-to-top" id="goTop" aria-label="Back to top">
+                <svg class="go-to-top-ring" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="go-to-top-ring-track" cx="22" cy="22" r="19"/>
+                    <circle class="go-to-top-ring-progress" cx="22" cy="22" r="19"/>
+                </svg>
+                <svg class="go-to-top-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </button>
 
         {{- end -}}

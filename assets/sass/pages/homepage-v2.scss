@@ -468,7 +468,7 @@
 
     @include mobile {
       margin: 1rem auto;
-      font-size: clamp(1.5rem,10vw,2rem);
+      font-size: clamp(1.5rem,10vw,1.6rem);
       line-height: 1.1;
       letter-spacing: -0.01em;
     }
@@ -1038,6 +1038,16 @@
     right: -18px;
   }
 
+  @include tablet-only {
+    .console-prev-btn {
+      left: -10px;
+    }
+
+    .console-next-btn {
+      right: -10px;
+    }
+  }
+
   @include mobile {
     .console-prev-btn {
       left: -8px;
@@ -1084,8 +1094,8 @@
 
   .console-body {
     @extend .is-grid;
-    grid-template-columns: 220px 1fr;
-    min-height: 520px;
+    grid-template-columns: clamp(180px, 18%, 220px) 1fr;
+    min-height: clamp(300px, 50vh, 520px);
 
     @include tablet-only {
       grid-template-columns: 1fr;
@@ -1559,6 +1569,266 @@
     }
   }
 
+  // Infra boxes (how-it-works section icon containers)
+  .infra-box-blue {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1.5px solid rgba(37, 99, 235, 0.2);
+  }
+
+  .infra-box-indigo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1.5px solid rgba(99, 102, 241, 0.2);
+  }
+
+  .infra-box-indigo-small {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1.5px solid rgba(99, 102, 241, 0.15);
+  }
+
+  .infra-item-icon-box {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  // Hero best-with row: stack vertically on mobile
+  .is-flex-direction-column-mobile {
+    @include mobile {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+  }
+
+  .cta-stats-col {
+    @include mobile {
+      margin-top: 2rem;
+    }
+  }
+
+  .hiw-footer-badge {
+    @include mobile {
+      white-space: normal;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+
+  // Page hero (products & solutions pages) mobile refinements
+  .page-hero {
+    .home-hero-title {
+      text-wrap: balance;
+    }
+
+    .home-hero-desc {
+      text-wrap: pretty;
+    }
+
+    @include mobile {
+      // JSON content carries hard <br> breaks tuned for desktop widths;
+      // let the text wrap naturally on small screens
+      .home-hero-title span br,
+      .home-hero-desc br {
+        display: none;
+      }
+
+      .hero-page-badge {
+        display: inline-flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.4rem;
+        text-align: center !important;
+        justify-content: center;
+        padding: 0.5rem 0.9rem;
+        max-width: 90%;
+
+        iconify-icon {
+          margin-top: 0.15rem;
+        }
+
+        span {
+          margin-left: 0 !important;
+        }
+      }
+
+      .home-hero-title {
+        font-size: clamp(1.65rem, 7.5vw, 1.9rem);
+        line-height: 1.18;
+      }
+
+      .ac-stat-card {
+        padding: 1rem 0.5rem;
+
+        h3 {
+          font-size: 1.65rem !important;
+          white-space: nowrap;
+        }
+
+        p {
+          font-size: 0.65rem !important;
+        }
+      }
+    }
+  }
+
+  // Architecture layer rows (partner pages): stack label above description on mobile
+  // instead of squeezing a fixed 200px pill next to wrapped text
+  .arch-layer-row {
+    @include mobile {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+  }
+
+  .arch-layer-label {
+    @include mobile {
+      width: 100% !important;
+      text-align: center;
+    }
+  }
+
+  // Architecture stack diagram (partner pages): the image has fine embedded
+  // labels that become illegible if squeezed to mobile width, so let it
+  // scroll horizontally at a legible minimum size instead of shrinking.
+  .arch-diagram-card {
+    @include mobile {
+      padding: 1rem !important;
+    }
+  }
+
+  .arch-diagram-scroll {
+    @include mobile {
+      position: relative;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 1rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 24px;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08));
+      }
+    }
+  }
+
+  .arch-diagram-img {
+    width: 100%;
+
+    @include mobile {
+      width: auto;
+      max-width: none;
+      height: 260px;
+    }
+  }
+
+  // Testimonial quote card (partner pages): stack icon above the quote and
+  // center everything on mobile instead of a cramped icon-beside-text row
+  .quote-card {
+    @include mobile {
+      padding: 1.5rem !important;
+    }
+  }
+
+  .quote-card-inner {
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.25rem;
+    }
+  }
+
+  .quote-card-icon {
+    @include mobile {
+      margin: 0 auto;
+    }
+  }
+
+  // Database support list (partner pages): "Comprehensive Database Support"
+  // banner + category rows. Stack the label above its items on mobile
+  // instead of a fixed 200px column squeezing long comma-separated lists.
+  .db-support-header {
+    @include mobile {
+      padding: 1.75rem 1.5rem !important;
+    }
+  }
+
+  .db-support-body {
+    @include mobile {
+      padding: 1.5rem !important;
+    }
+  }
+
+  .db-support-row {
+    @include mobile {
+      align-items: center;
+      flex-direction: column;
+      gap: 0.6rem;
+      text-align: center;
+    }
+  }
+
+  .db-support-label {
+    @include mobile {
+      width: auto !important;
+    }
+  }
+
+  // Comparison table: hint that the table scrolls horizontally on mobile.
+  // Wrapper stays static so the fade overlay can pin to the visible edge
+  // while the inner element (.comparison-table-scroll) does the scrolling.
+  .comparison-table-scroll-outer {
+    @include mobile {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 28px;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08));
+        border-radius: 0 1.5rem 1.5rem 0;
+      }
+    }
+  }
+
+  // FAQ: tighten trigger padding on mobile
+  @include mobile {
+    .faq-trigger {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .faq-inner-content.px-8 {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .comparison-card-active-operator,
+    .comparison-card-active-platform,
+    .comparison-card-inactive {
+      padding: 1.5rem !important;
+    }
+  }
+
   // Trust stats (inside CTA dark card)
   .trust-stat {
     @extend .is-fullheight;
@@ -1654,6 +1924,26 @@
   .comparison-analogy-panel {
     @include mobile {
       padding: 1.25rem !important;
+    }
+  }
+
+  // ── Landscape mobile ──────────────────────────────────────
+  @media (max-width: 768px) and (orientation: landscape) {
+    .home-hero {
+      padding: 72px 0 32px;
+    }
+
+    .section-header-title,
+    .product-section-title {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+    }
+
+    .trust-stat-val {
+      font-size: 1.4rem;
+    }
+
+    .home-section {
+      padding: 32px 0;
     }
   }
 }

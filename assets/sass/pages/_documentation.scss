@@ -750,27 +750,65 @@ Responsive Classes
     margin-bottom: 15px;
 
     .right-sidebar-area {
-      padding: 32px;
+      position: static !important;
+      top: auto !important;
+      width: 100%;
+      padding: 0 0 32px;
     }
 
     .left-sidebar-wrapper,
     .right-sidebar {
-      display: none;
+      display: block;
       position: fixed;
       top: 0;
       z-index: 9999;
-      width: 80%;
+      width: 86%;
+      max-width: 360px;
       margin-top: 0;
-      height: calc(100vh - 0px);
+      height: 100vh;
+      height: 100dvh;
       background-color: #fff;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      // Off-canvas by default; slide in when opened. Animating transform
+      // (not `display`) keeps the motion smooth and GPU-accelerated.
+      transform: translateX(-100%);
+      visibility: hidden;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.28s;
 
+      // The existing JS toggles `.is-block` (display) to open the drawer.
+      // Reuse that as the open trigger, but drive the slide with transform.
+      &.is-block {
+        display: block;
+        transform: translateX(0);
+        visibility: visible;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+
+    // Zero the desktop top padding so the sticky header sits flush at the top.
+    .left-sidebar-wrapper {
+      padding-top: 0;
     }
 
     .right-sidebar {
       right: 0;
-      height: 100vh;
-      overflow-y: auto;
-      z-index: 9;
+      z-index: 9999;
+      transform: translateX(100%);
+
+      &.is-block {
+        transform: translateX(0);
+      }
+    }
+
+    // The desktop `.documentation-body .right-sidebar` rule (width: 256px,
+    // padding-left: 32px) is more specific than the drawer rule above, so
+    // reassert the mobile drawer sizing here to win the cascade.
+    .documentation-body .right-sidebar {
+      width: 86%;
+      max-width: 360px;
+      padding-left: 0;
     }
 
     .documentation-body {
@@ -803,6 +841,115 @@ Responsive Classes
   }
   .button.is-link.is-medium.is-active.has-text-weight-normal {
     margin-bottom: 10px;
+  }
+
+  // ---- Mobile drawer header (Close button) ----
+  // The global `.back-button { display:none !important }` (components/_navbar.scss)
+  // keeps it hidden otherwise, so re-show it inside each open drawer/panel and
+  // restyle it into one consistent sticky header row (title left, round X
+  // button right) shared by every mobile panel: sidebar menu, table of
+  // contents, search, and the nav mega-menu.
+  .left-sidebar-wrapper.is-block > .back-button,
+  .right-sidebar.is-block .tbl-of-contents > .back-button,
+  .navbar-appscode.documentation-menu > .navbar-right.is-visible > ul > .back-button,
+  .sidebar-search-area.right-0 > .back-button {
+    display: flex !important;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 !important;
+    padding: 14px 16px !important;
+    background: #fff;
+    border-bottom: 1px solid $color-border;
+
+    // Title reads as the header label on the left.
+    > span:not(.icon) {
+      font-size: 16px;
+      font-weight: 600;
+      color: $color-heading;
+    }
+
+    // X icon becomes a round tappable button on the right (>=44px target).
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin: 0 !important;
+      border-radius: 50%;
+      color: $color-text;
+      background: hsl(var(--secondary-h), 10%, 95%);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    &:hover .icon,
+    &:active .icon {
+      background: hsl(var(--primary-h), var(--primary-s), 92%);
+      color: $ac-primary;
+    }
+  }
+
+  // Pull each panel's scrollable body up flush under its sticky header.
+  .left-sidebar-wrapper.is-block .ac-product-left-sidebar {
+    max-height: none;
+    padding-top: 8px;
+  }
+
+  .right-sidebar.is-block .tbl-of-contents {
+    padding: 0;
+
+    h4 {
+      padding: 16px 16px 8px;
+    }
+
+    #TableOfContents {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  .sidebar-search-area.right-0 .search-area-top {
+    padding: 16px 20px 8px;
+
+    // The sticky header already reads "Search"; drop the redundant heading.
+    h5 {
+      display: none;
+    }
+  }
+
+  // ---- Dimmed, tap-to-close backdrop ----
+  .overlay-bg {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+
+    &.is-show {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.28s ease;
+    }
+  }
+}
+
+// Lock background scroll while a mobile drawer is open (toggled from JS).
+body.drawer-open {
+  overflow: hidden;
+}
+
+// Respect users who prefer reduced motion: keep the drawer functional
+// (still shows/hides) but drop the slide/fade transitions.
+@media (prefers-reduced-motion: reduce) {
+  .documentation-area .left-sidebar-wrapper,
+  .documentation-area .right-sidebar,
+  .overlay-bg {
+    transition: none !important;
   }
 }
 

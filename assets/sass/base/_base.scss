@@ -101,14 +101,41 @@
   transition: 0.3s linear;
 }
 
-.item input:checked ~ label span,
-.item input:checked ~ .item > label span {
+.product-sidebar-menu label.item-close-btn {
+  display: none;
+}
+
+.product-sidebar-menu .item input:checked ~ .item > label.item-close-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 8px 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-link;
+  border-top: 1px solid $color-border;
+  cursor: pointer;
+  user-select: none;
+
+  .icon {
+    display: inline-flex;
+    font-size: 12px;
+  }
+
+  &:hover {
+    color: $ac-primary;
+  }
+}
+
+.item input:checked ~ label:not(.item-close-btn) span,
+.item input:checked ~ .item > label:not(.item-close-btn) span {
   transform: rotate(90deg);
   margin-top: 0;
   transform-origin: 0;
 }
 
-.item label span {
+.item label:not(.item-close-btn) span {
   position: absolute;
   right: 15px;
   transition: 0.3s ease-in-out;

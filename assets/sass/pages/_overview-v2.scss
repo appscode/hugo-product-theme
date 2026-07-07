@@ -170,6 +170,55 @@
     &--max   { background: #27c93f; }
   }
 
+  .ov2-code-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(99, 102, 241, 0.6);
+      outline-offset: 2px;
+    }
+  }
+
+  .ov2-code-copy-icon {
+    display: block;
+
+    &--success {
+      display: none;
+      color: #27c93f;
+    }
+  }
+
+  .ov2-code-copy-btn.is-copied {
+    color: #27c93f;
+    border-color: rgba(39, 201, 63, 0.35);
+
+    .ov2-code-copy-icon {
+      display: none;
+
+      &--success {
+        display: block;
+      }
+    }
+  }
+
   .ov2-code-body {
     pre {
       padding: 1.25rem;

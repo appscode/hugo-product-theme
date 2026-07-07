@@ -88,25 +88,32 @@ document.querySelectorAll(".code-block-wrapper").forEach(codeBlockWrapper => {
 
 
 // scroll to top start
-//Get the button
 const goToTopBtn = document.querySelector(".go-to-top");
+const goToTopProgress = document.querySelector(".go-to-top-ring-progress");
+const CIRCUMFERENCE = 119.38; // 2 * π * r (r=19)
+
 if (goToTopBtn) {
-  goToTopBtn.addEventListener('click', topFunction)
+  goToTopBtn.addEventListener('click', topFunction);
 }
 
-
-// When the user scrolls down 20px from the top of the document, show the button
 document.addEventListener('scroll', scrollFunction);
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+
+  if (scrollTop > 20) {
     goToTopBtn.classList.add('is-visible');
   } else {
     goToTopBtn.classList.remove('is-visible');
   }
+
+  if (goToTopProgress) {
+    goToTopProgress.style.strokeDashoffset = CIRCUMFERENCE * (1 - progress);
+  }
 }
 
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
@@ -533,3 +540,54 @@ function removeDuplicateLeftSidebarItem() {
 }
 
 document.addEventListener("DOMContentLoaded", removeDuplicateLeftSidebarItem, { once: true });
+
+
+// ============================================================
+// Mobile docs drawer UX enhancement
+// Adds a dimmed tap-to-close backdrop and background scroll lock
+// whenever a docs drawer/panel is open. Works alongside the existing
+// responsive-menu toggle logic by observing the open-state classes
+// rather than re-implementing the open/close itself.
+// ============================================================
+(function enhanceDocsDrawers() {
+  // Each drawer/panel and the class that marks it "open".
+  const panels = [
+    { el: document.querySelector(".left-sidebar-wrapper"), openClass: "is-block" },
+    { el: document.querySelector(".right-sidebar"), openClass: "is-block" },
+    { el: document.querySelector(".sidebar-search-area"), openClass: "right-0" },
+  ].filter((p) => p.el);
+
+  const overlay = document.querySelector(".overlay-bg");
+  if (!overlay || panels.length === 0) return;
+
+  const isAnyOpen = () =>
+    panels.some((p) => p.el.classList.contains(p.openClass));
+
+  function closeAll() {
+    panels.forEach((p) => p.el.classList.remove(p.openClass));
+    syncState();
+  }
+
+  function syncState() {
+    const open = isAnyOpen();
+    overlay.classList.toggle("is-show", open);
+    document.body.classList.toggle("drawer-open", open);
+  }
+
+  // Tap the dimmed backdrop to dismiss.
+  overlay.addEventListener("click", closeAll);
+
+  // Escape key closes the drawer (keyboard / accessibility).
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isAnyOpen()) closeAll();
+  });
+
+  // React to the existing toggle logic flipping the open-state classes.
+  const observer = new MutationObserver(syncState);
+  panels.forEach((p) =>
+    observer.observe(p.el, { attributes: true, attributeFilter: ["class"] })
+  );
+
+  // Initial sync in case a panel starts open.
+  syncState();
+})();
