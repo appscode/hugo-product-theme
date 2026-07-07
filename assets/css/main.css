@@ -35156,7 +35156,7 @@ Responsive Classes
     background: #fafafd;
     width: 100%;
     left: 0;
-    min-height: calc(100vh - 61px);
+    min-height: calc(100vh - 40px);
     max-height: calc(100vh - 61px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
