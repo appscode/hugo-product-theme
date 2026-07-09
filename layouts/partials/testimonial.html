@@ -15,7 +15,9 @@
       <p>{{ $testi.subtitle | default (printf "See what engineers are saying about %s in production." $p.name) }}</p>
     </div>
     <div class="ac-testi-grid">
-      {{ range first 3 . }}
+      {{ range . }}
+      {{ $company := index $.Site.Data.customers .companyKey | default dict }}
+      {{ $companyName := $company.name | default (.companyKey | title) }}
       <div class="ac-testi-card">
         <div class="ac-testi-stars" aria-label="5 stars">
           <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
@@ -29,7 +31,7 @@
           <img src="{{ .profile }}" alt="{{ .name }}" loading="lazy">
           <div>
             <strong>{{ .name }}</strong>
-            <span>{{ .job }}{{ if .companyKey }} &middot; {{ .companyKey | title }}{{ end }}</span>
+            <span>{{ .job }}{{ if .companyKey }} &middot; {{ $companyName }}{{ end }}</span>
           </div>
         </div>
       </div>
