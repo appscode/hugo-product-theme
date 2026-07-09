@@ -720,12 +720,7 @@
 }
 
 .ac-testi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--ac-space-4);
-
-  @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
-  @media (max-width: 600px)  { grid-template-columns: 1fr; }
+  // Owl Carousel takes over layout; these are pre-init fallback styles
 }
 
 .ac-testi-card {
@@ -735,16 +730,52 @@
   padding: var(--ac-space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--ac-space-4);
   box-shadow: var(--ac-shadow-2);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
   transition:
     background     var(--ac-duration-slow) var(--ac-ease-out),
-    border-color   var(--ac-duration-slow) var(--ac-ease-out);
+    border-color   var(--ac-duration-slow) var(--ac-ease-out),
+    transform      var(--ac-duration-slow) var(--ac-ease-out);
 
   &:hover {
     background: rgba(255,255,255,.07);
-    border-color: rgba(255,255,255,.14);
+    border-color: rgba(102,51,187,.3);
+    transform: translateY(-2px);
   }
+}
+
+.ac-testi-card-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102,51,187,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ac-testi-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ac-space-3);
+  margin-bottom: var(--ac-space-4);
+}
+
+.ac-testi-quote-icon {
+  flex-shrink: 0;
+  opacity: 0.65;
+  width: 28px;
+  height: 21px;
+}
+
+.ac-testi-accent-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(102,51,187,.4) 0%, transparent 100%);
 }
 
 .ac-testi-quote {
@@ -752,19 +783,33 @@
   line-height: 1.75;
   color: rgba(255,255,255,.7);
   flex: 1;
+  margin-bottom: var(--ac-space-5);
 }
 
 .ac-testi-author {
   display: flex;
   align-items: center;
   gap: var(--ac-space-3);
+  padding-top: var(--ac-space-4);
+  border-top: 1px solid rgba(255,255,255,.07);
+  margin-top: auto;
 
   img {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    flex-shrink: 0;
+    flex-grow: 0;
     border-radius: var(--ac-radius-full);
     object-fit: cover;
+    object-position: center top;
     border: 1.5px solid rgba(255,255,255,.12);
+  }
+
+  div {
+    min-width: 0;
+    flex: 1;
   }
 
   strong {
@@ -772,14 +817,89 @@
     font-size: 0.875rem;
     font-weight: 700;
     color: var(--ac-gray-50);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   span {
+    display: block;
     font-size: 0.775rem;
     color: rgba(255,255,255,.4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
+
+// ── Testimonial Owl Carousel overrides ──
+#ac-testi-grid {
+  .owl-stage {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .owl-item {
+    display: flex;
+    align-items: stretch;
+
+    .ac-testi-card {
+      flex: 1;
+      min-height: 0;
+    }
+  }
+
+  .owl-nav {
+    margin-top: var(--ac-space-5);
+    display: flex;
+    justify-content: center;
+    gap: var(--ac-space-3);
+  }
+
+  .owl-nav button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--ac-radius-full) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    background: rgba(255,255,255,.06) !important;
+    color: rgba(255,255,255,.7) !important;
+    transition: background 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      background: rgba(102,51,187,.25) !important;
+      border-color: rgba(102,51,187,.5) !important;
+    }
+
+    iconify-icon { pointer-events: none; }
+  }
+
+  .owl-dots {
+    margin-top: var(--ac-space-4) !important;
+    display: flex;
+    justify-content: center;
+    gap: var(--ac-space-2);
+  }
+
+  .owl-dot {
+    span {
+      width: 7px !important;
+      height: 7px !important;
+      background: rgba(255,255,255,.2) !important;
+      border-radius: var(--ac-radius-full) !important;
+      transition: background 0.15s ease, width 0.15s ease !important;
+      margin: 0 !important;
+    }
+
+    &.active span {
+      background: var(--ac-brand) !important;
+      width: 20px !important;
+    }
+  }
+}
 
 .ac-cta-section { background: var(--ac-bg); }
 
@@ -893,12 +1013,7 @@
   }
 }
 
-// ── Testimonial stars ──
-.ac-testi-stars {
-  display: flex;
-  gap: 3px;
-  color: #fbbf24;
-}
+// ── Testimonial quote icon (SVG, replaces old text quote-mark and stars) ──
 
 // ── Hero trust items ──
 .ac-hero-trust {
