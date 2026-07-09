@@ -394,6 +394,33 @@ if (owlSocialProve.length) {
   });
 }
 
+
+// testimonial grid carousel
+var owlTestiGrid = $('#ac-testi-grid');
+if (owlTestiGrid.length) {
+  owlTestiGrid.owlCarousel({
+    loop: true,
+    margin: 24,
+    nav: true,
+    dots: true,
+    smartSpeed: 400,
+    autoplay: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    responsiveClass: true,
+    navText: [
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>',
+      '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>'
+    ],
+    responsive: {
+      0:    { items: 1 },
+      768:  { items: 2 },
+      1024: { items: 3 }
+    }
+  });
+}
+
 // management console screenshot carousel
 var owlConsoleScreens = $('.console-screenshot-carousel');
 if (owlConsoleScreens.length) {

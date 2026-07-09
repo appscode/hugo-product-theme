@@ -1,8 +1,10 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 {{ $testi := index .Site.Data.products .Site.Params.product_key "homepage" "testimonials" | default dict }}
 {{ $allTestis := $.Site.Data.testimonials | default slice }}
-{{ $productTestis := where $allTestis "productKey" $p.key }}
-{{ $testimonials := cond (gt (len $productTestis) 0) $productTestis $allTestis }}
+{{ $allSlice := slice }}
+{{ range $allTestis }}{{ $allSlice = append . $allSlice }}{{ end }}
+{{ $productTestis := where $allSlice "productKey" $p.key }}
+{{ $testimonials := cond (gt (len $productTestis) 0) $productTestis $allSlice }}
 {{ with $testimonials }}
 <section class="ac-section ac-testimonials" data-product="{{ $p.key }}" data-theme="dark">
   <div class="container">
@@ -14,19 +16,20 @@
       <h2>{{ $testi.headline | default "Trusted by teams <em>worldwide</em>" | safeHTML }}</h2>
       <p>{{ $testi.subtitle | default (printf "See what engineers are saying about %s in production." $p.name) }}</p>
     </div>
-    <div class="ac-testi-grid">
+
+    <div id="ac-testi-grid" class="ac-testi-grid owl-carousel owl-theme">
       {{ range . }}
       {{ $company := index $.Site.Data.customers .companyKey | default dict }}
       {{ $companyName := $company.name | default (.companyKey | title) }}
       <div class="ac-testi-card">
-        <div class="ac-testi-stars" aria-label="5 stars">
-          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
-          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
-          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
-          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
-          <iconify-icon icon="heroicons:star-solid" width="14" height="14"></iconify-icon>
+        <div class="ac-testi-card-glow" aria-hidden="true"></div>
+        <div class="ac-testi-header">
+          <svg class="ac-testi-quote-icon" aria-hidden="true" width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 24V14.4C0 10.56 0.906667 7.28 2.72 4.56C4.53333 1.84 7.06667 0.16 10.32 0L11.52 2.16C9.06667 2.64 7.2 3.73333 5.92 5.44C4.64 7.14667 4 9.12 4 11.36H8.8V24H0ZM20.48 24V14.4C20.48 10.56 21.3867 7.28 23.2 4.56C25.0133 1.84 27.5467 0.16 30.8 0L32 2.16C29.5467 2.64 27.68 3.73333 26.4 5.44C25.12 7.14667 24.48 9.12 24.48 11.36H29.28V24H20.48Z" fill="#9966dd"/>
+          </svg>
+          <div class="ac-testi-accent-line" aria-hidden="true"></div>
         </div>
-        <p class="ac-testi-quote">{{ .testimonial | truncate 220 }}</p>
+        <p class="ac-testi-quote">{{ .testimonial | safeHTML }}</p>
         <div class="ac-testi-author">
           <img src="{{ .profile }}" alt="{{ .name }}" loading="lazy">
           <div>
@@ -37,6 +40,7 @@
       </div>
       {{ end }}
     </div>
+
   </div>
 </section>
 {{ end }}
