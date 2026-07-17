@@ -629,3 +629,39 @@ document.querySelectorAll(".doc-code-block").forEach((block) => {
     );
   });
 });
+
+// ============================================================
+// Overview page hero code editor copy button
+// Rendered by layouts/overview/overview.html with lineNos=inline,
+// so each row carries a user-select:none line-number span that must
+// be stripped before copying, same as the docs code-block handler above.
+// ============================================================
+document.querySelectorAll(".ov2-code-editor").forEach((editor) => {
+  const btn = editor.querySelector(".ov2-code-copy-btn");
+  const code = editor.querySelector("pre code");
+  if (!btn || !code) return;
+
+  btn.addEventListener("click", () => {
+    const lines = Array.from(code.querySelectorAll('[style*="display:flex"]')).map((row) => {
+      const clone = row.cloneNode(true);
+      const lineNo = clone.querySelector('[style*="user-select:none"]');
+      if (lineNo) lineNo.remove();
+      return clone.textContent.replace(/\n$/, "");
+    });
+    const text = lines.length ? lines.join("\n") : code.textContent;
+
+    navigator.clipboard.writeText(text).then(
+      () => {
+        btn.classList.add("is-copied");
+        btn.title = "Copied";
+        setTimeout(() => {
+          btn.classList.remove("is-copied");
+          btn.title = "Copy";
+        }, 1800);
+      },
+      () => {
+        btn.title = "Copy failed — select the text manually";
+      }
+    );
+  });
+});
