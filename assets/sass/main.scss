@@ -4,19 +4,19 @@
 @import "../../node_modules/bulma/bulma.sass";
 
 // 2. Token layer
-@import "base/utilities/_tokens";
+@import "base/_tokens";
 
-// 3. SCSS variables
-@import "base/utilities/_root";
-@import "base/utilities/_initial-variable";
-@import "base/utilities/_default";
-@import "base/utilities/_themes";
+// 3. Base globals — CSS vars, SCSS variable bridges, legacy theme bridge
+@import "base/_root";
+@import "abstracts/_initial-variable";
+@import "utilities/_helpers";
+@import "base/_themes";
 
 // 4. Typography
-@import "base/utilities/_typography";
+@import "base/_typography";
 
 // 5. Mixins
-@import "mixins/_mixin";
+@import "abstracts/_mixins";
 
 // 6. Base globals
 @import "base/_global";
@@ -25,12 +25,12 @@
 // 7. Components
 @import "components/_navbar";
 @import "components/_notificationbar";
-@import "components/search-result-box";
+@import "components/_search-result-box";
 @import "components/_button";
 @import "components/_cookie";
 @import "components/_product-hero-area";
 @import "components/_trusted-logos";
-@import "components/_social-prove_countdown";
+@import "components/_social-proof-countdown";
 @import "components/_features";
 @import "components/_testimonial";
 @import "components/_cta";
@@ -40,7 +40,7 @@
 @import "components/_pagination";
 @import "components/_services";
 @import "components/_video-gallery";
-@import "components/_video-palyer";
+@import "components/_video-player";
 @import "components/_pricing";
 @import "components/_faq";
 @import "components/_ac-accordion";

@@ -1127,7 +1127,7 @@ iframe#notification {
       padding: 0;
       transform: translateY(0px);
 
-      .navbar-appscode .navbar-right { top: 49px; }
+      .navbar-appscode .navbar-right { top: var(--ac-header-stack-height, 49px); }
     }
   }
 
@@ -1176,10 +1176,10 @@ iframe#notification {
       width: 100%;
       left: 0;
       min-height: 0;
-      height: calc(100dvh - 61px);
+      height: calc(100dvh - 60px) !important;
       overflow-y: auto;
       transition: 0.3s ease-in-out;
-      top: 61px;
+      top: 60px !important;
       padding: 15px;
       justify-content: flex-start;
       flex-direction: column;
@@ -1304,14 +1304,14 @@ iframe#notification {
 
   .navbar-appscode-wrapper.navbar-product {
     .navbar-appscode .navbar-right {
-      top: 116px;
-      height: calc(100dvh - 47px);
+      top: var(--ac-header-stack-height, 116px);
+      height: calc(100dvh - var(--ac-header-stack-height, 116px));
     }
 
     // docs section menu drawer — must clear AppCode nav + product nav + docs bar
     .navbar-appscode.documentation-menu .navbar-right {
-      top: 0px;
-      height: 100dvh;
+      top: var(--ac-header-stack-height, 0px);
+      height: calc(100dvh - var(--ac-header-stack-height, 0px));
       width: 100%;
       left: 0;
       border-right: none;

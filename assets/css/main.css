@@ -22126,7 +22126,7 @@ iframe#notification {
     transform: translateY(0px);
   }
   .headroom--unpinned .navbar-appscode-wrapper.navbar-product .navbar-appscode .navbar-right {
-    top: 49px;
+    top: var(--ac-header-stack-height, 49px);
   }
   .navbar-appscode.container {
     padding: 0.5rem 15px;
@@ -22170,10 +22170,10 @@ iframe#notification {
     width: 100%;
     left: 0;
     min-height: 0;
-    height: calc(100dvh - 61px);
+    height: calc(100dvh - 60px) !important;
     overflow-y: auto;
     transition: 0.3s ease-in-out;
-    top: 61px;
+    top: 60px !important;
     padding: 15px;
     justify-content: flex-start;
     flex-direction: column;
@@ -22277,12 +22277,12 @@ iframe#notification {
     background-color: transparent;
   }
   .navbar-appscode-wrapper.navbar-product .navbar-appscode .navbar-right {
-    top: 116px;
-    height: calc(100dvh - 47px);
+    top: var(--ac-header-stack-height, 116px);
+    height: calc(100dvh - var(--ac-header-stack-height, 116px));
   }
   .navbar-appscode-wrapper.navbar-product .navbar-appscode.documentation-menu .navbar-right {
-    top: 0px;
-    height: 100dvh;
+    top: var(--ac-header-stack-height, 0px);
+    height: calc(100dvh - var(--ac-header-stack-height, 0px));
     width: 100%;
     left: 0;
     border-right: none;
@@ -29189,7 +29189,7 @@ Responsive Classes
 *****************************************/
 @media (max-width: 1023.98px) {
   .documentation-area {
-    margin-top: 160px;
+    margin-top: 170px;
     margin-bottom: 15px;
   }
   .documentation-area .right-sidebar-area {
