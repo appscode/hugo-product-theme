@@ -452,10 +452,32 @@ if ($(".yt-video").length) {
 }
 
 
+// Mobile drawer top-offset — measure the real rendered header height instead of
+// hardcoding it. getBoundingClientRect() already accounts for headroom's pin/unpin
+// transforms, so this stays correct across scroll states without separate magic numbers.
+function updateHeaderStackHeight() {
+  var bars = document.querySelectorAll(".navbar-appscode-wrapper");
+  var maxBottom = 0;
+  bars.forEach(function (bar) {
+    var bottom = bar.getBoundingClientRect().bottom;
+    if (bottom > maxBottom) maxBottom = bottom;
+  });
+  if (maxBottom > 0) {
+    document.documentElement.style.setProperty("--ac-header-stack-height", maxBottom + "px");
+  }
+}
+updateHeaderStackHeight();
+window.addEventListener("resize", updateHeaderStackHeight);
+
 // headroomjs start
 var myElement = document.querySelector(".active-headroom");
 if (myElement) {
-  var headroom = new Headroom(myElement);
+  var headroom = new Headroom(myElement, {
+    onPin: updateHeaderStackHeight,
+    onUnpin: updateHeaderStackHeight,
+    onTop: updateHeaderStackHeight,
+    onNotTop: updateHeaderStackHeight,
+  });
   headroom.init();
 }
 // headroomjs end
