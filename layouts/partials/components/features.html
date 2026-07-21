@@ -3,6 +3,7 @@
 {{ $caps := index .Site.Data.products .Site.Params.product_key "homepage" "capabilities" | default dict }}
 
 <!-- How it works -->
+{{ if $steps.steps }}
 <section class="ac-section ac-how" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
     <div class="ac-section-header">
@@ -46,8 +47,10 @@
     steps.forEach(function (el) { obs.observe(el); });
   }());
 </script>
+{{ end }}
 
 <!-- Capability grid — 6 cards 3×2 -->
+{{ if $p.features }}
 <section class="ac-section ac-capabilities" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
     <div class="ac-section-header">
@@ -75,3 +78,4 @@
     </div>
   </div>
 </section>
+{{ end }}
