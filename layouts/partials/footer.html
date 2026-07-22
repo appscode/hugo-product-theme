@@ -10,33 +10,36 @@
           <a href="{{ .Site.Params.domain_appscode }}" class="ac-footer-logo">
             <img src="{{ $.Site.Data.products.appscode.logoWhite.src }}" alt="{{ $.Site.Data.products.appscode.logo.alt }}" loading="lazy" />
           </a>
-          <p class="ac-footer-tagline">Kubernetes-native backup &amp; recovery for every database and workload.</p>
-          <div class="ac-footer-social">
-            {{ with .Site.Params.twitter_url }}
-            <a href="{{ . }}" class="ac-footer-social-link" target="_blank" rel="noopener" aria-label="Twitter / X">
-              <iconify-icon icon="simple-icons:x" width="15" height="15"></iconify-icon>
-            </a>
-            {{ end }}
-            <a href="https://www.linkedin.com/company/appscode" class="ac-footer-social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <iconify-icon icon="simple-icons:linkedin" width="15" height="15"></iconify-icon>
-            </a>
-            {{ with .Site.Params.youtube_url }}
-            <a href="{{ . }}" class="ac-footer-social-link" target="_blank" rel="noopener" aria-label="YouTube">
-              <iconify-icon icon="simple-icons:youtube" width="15" height="15"></iconify-icon>
-            </a>
-            {{ end }}
-            {{ with .Site.Params.facebook_url }}
-            <a href="{{ . }}" class="ac-footer-social-link" target="_blank" rel="noopener" aria-label="Facebook">
-              <iconify-icon icon="simple-icons:facebook" width="15" height="15"></iconify-icon>
-            </a>
-            {{ end }}
-            {{ with $p.socialLinks }}
-              {{ with .github }}
-              <a href="{{ . }}" class="ac-footer-social-link" target="_blank" rel="noopener" aria-label="GitHub">
-                <iconify-icon icon="simple-icons:github" width="15" height="15"></iconify-icon>
-              </a>
-              {{ end }}
-            {{ end }}
+
+          <!-- newsletter subscription form -->
+          <form method="post" action="https://listmonk.appscode.com/subscription/form" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="ac-footer-newsletter" target="_blank" novalidate>
+            <label for="mce-EMAIL" class="ac-footer-newsletter-label">Subscribe to Our Newsletter</label>
+            <p class="ac-footer-newsletter-note">No spam, we promise. Your mail address is secure</p>
+            <div class="ac-footer-newsletter-field">
+              <!-- AppsCode Monthly Newsletter -->
+              <input type="hidden" id="afbbc" name="l" value="d6a7b3b4-15ec-419e-beaf-a503d0bc1b41" />
+              <input class="ac-footer-newsletter-input" name="email" id="mce-EMAIL" type="email" placeholder="Your work email address" required />
+              <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="ac-footer-newsletter-submit" aria-label="Subscribe">
+                <iconify-icon icon="heroicons:paper-airplane" width="16" height="16"></iconify-icon>
+              </button>
+            </div>
+          </form>
+
+          <!-- contact information -->
+          <div class="ac-footer-contact">
+            <p class="ac-footer-contact-title">Have any Inquiry?</p>
+            <ul class="ac-footer-contact-list">
+              <li>
+                <a href="callto:{{ .Site.Params.contact_phone }}">
+                  <span><iconify-icon icon="heroicons:phone" width="14" height="14"></iconify-icon></span>{{ .Site.Params.contact_phone }}
+                </a>
+              </li>
+              <li>
+                <a href="mailto:{{ .Site.Params.contact_email }}">
+                  <span><iconify-icon icon="heroicons:envelope" width="14" height="14"></iconify-icon></span>{{ .Site.Params.contact_email }}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -46,7 +49,10 @@
           <ul class="ac-footer-links">
             {{ range $item := $.Site.Data.config.footerLinks }}
             {{ $fp := (index $.Site.Data.products $item) }}
-            <li><a href="{{ index $.Site.Params $fp.website.domainKey }}{{ $fp.website.path }}">{{ $fp.name }}</a></li>
+            <li><a href="{{ index $.Site.Params $fp.website.domainKey }}{{ $fp.website.path }}">
+              <span>{{ $fp.name }}</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
             {{ end }}
           </ul>
         </div>
@@ -55,9 +61,18 @@
         <div class="ac-footer-col">
           <h3 class="ac-footer-col-title">Services</h3>
           <ul class="ac-footer-links">
-            <li><a href="{{ .Site.Params.domain_appscode }}/consulting/">Consulting</a></li>
-            <li><a href="{{ .Site.Params.domain_appscode }}/training/">Training</a></li>
-            <li><a href="{{ .Site.Params.domain_appscode }}/support/">Support</a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/consulting/">
+              <span>Consulting</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/training/">
+              <span>Training</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/support/">
+              <span>Support</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
           </ul>
         </div>
 
@@ -65,9 +80,18 @@
         <div class="ac-footer-col">
           <h3 class="ac-footer-col-title">Company</h3>
           <ul class="ac-footer-links">
-            <li><a href="{{ .Site.Params.domain_appscode }}/about/">About Us</a></li>
-            <li><a href="{{ .Site.Params.blog_url }}">Blog</a></li>
-            <li><a href="{{ .Site.Params.domain_appscode }}/contact/">Contact Us</a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/about/">
+              <span>About Us</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.blog_url }}">
+              <span>Blog</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/contact/">
+              <span>Contact Us</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
           </ul>
         </div>
 
@@ -75,10 +99,22 @@
         <div class="ac-footer-col">
           <h3 class="ac-footer-col-title">Legal</h3>
           <ul class="ac-footer-links">
-            <li><a href="{{ .Site.Params.domain_appscode }}/legal/tos/">Terms of Service</a></li>
-            <li><a href="{{ .Site.Params.domain_appscode }}/legal/privacy-policy/">Privacy Policy</a></li>
-            <li><a href="{{ .Site.Params.domain_appscode }}/legal/security/">Security</a></li>
-            <li><a href="{{ .Site.Params.domain_appscode }}/legal/sla/">SLA</a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/legal/tos/">
+              <span>Terms of Service</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/legal/privacy-policy/">
+              <span>Privacy Policy</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/legal/security/">
+              <span>Security</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
+            <li><a href="{{ .Site.Params.domain_appscode }}/legal/sla/">
+              <span>Service Level Agreement</span>
+              <span class="ac-footer-link-arrow"><iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon></span>
+            </a></li>
           </ul>
         </div>
 
@@ -88,16 +124,47 @@
 
   <div class="ac-footer-bottom">
     <div class="container">
-      <p class="ac-footer-copy">© {{ now.Format "2006" }} AppsCode Inc. All rights reserved.</p>
-      <p class="ac-footer-credits">
-        <a href="{{ .Site.Params.domain_appscode }}/legal/privacy-policy/">Privacy</a>
-        <span aria-hidden="true">·</span>
-        <a href="{{ .Site.Params.domain_appscode }}/legal/tos/">Terms</a>
-        <span aria-hidden="true">·</span>
-        <a href="{{ .Site.Params.domain_appscode }}/legal/security/">Security</a>
-        <span aria-hidden="true">·</span>
-        <a href="{{ .Site.Params.domain_appscode }}/legal/sla/">SLA</a>
-      </p>
+      <div class="ac-footer-bottom-grid">
+        <div class="ac-footer-bottom-col">
+          <p class="ac-footer-copy">© {{ now.Format "2006" }} AppsCode Inc. All rights reserved.</p>
+        </div>
+        <div class="ac-footer-bottom-col ac-footer-bottom-col-center">
+          <div class="ac-footer-inline-link">
+            <a href="{{ .Site.Params.domain_appscode }}/legal/privacy-policy/">Privacy Policy</a>
+            <a href="{{ .Site.Params.domain_appscode }}/legal/tos/">Terms of Service</a>
+            <a href="https://icons8.com/" target="_blank">Icons by Icons8</a>
+          </div>
+        </div>
+        <div class="ac-footer-bottom-col ac-footer-bottom-col-right">
+          <div class="ac-footer-social">
+            {{ with $p.socialLinks }}
+              {{ with .github }}
+              <a href="{{ . }}" title="{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">
+                <iconify-icon icon="simple-icons:github" width="14" height="14"></iconify-icon>
+              </a>
+              {{ end }}
+            {{ end }}
+            {{ with .Site.Params.twitter_url }}
+            <a href="{{ . }}" title="{{ . }}" target="_blank" rel="noopener" aria-label="Twitter / X">
+              <iconify-icon icon="simple-icons:x" width="12" height="12"></iconify-icon>
+            </a>
+            {{ end }}
+            <a href="https://www.linkedin.com/company/appscode" title="https://www.linkedin.com/company/appscode" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <iconify-icon icon="simple-icons:linkedin" width="14" height="14"></iconify-icon>
+            </a>
+            {{ with .Site.Params.facebook_url }}
+            <a href="{{ . }}" title="{{ . }}" target="_blank" rel="noopener" aria-label="Facebook">
+              <iconify-icon icon="simple-icons:facebook" width="14" height="14"></iconify-icon>
+            </a>
+            {{ end }}
+            {{ with .Site.Params.youtube_url }}
+            <a href="{{ . }}" title="{{ . }}" target="_blank" rel="noopener" aria-label="YouTube">
+              <iconify-icon icon="simple-icons:youtube" width="14" height="14"></iconify-icon>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
