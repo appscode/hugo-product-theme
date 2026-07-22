@@ -1,6 +1,23 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 {{ $hero := index .Site.Data.products .Site.Params.product_key "homepage" "hero" | default dict }}
 <section class="ac-hero" data-product="{{ $p.key }}" data-theme="light">
+
+  <!-- decorative background: mesh orbs + dot grid + ping accents -->
+  <div class="ac-hero-bg" aria-hidden="true">
+    <div class="ac-hero-mesh-orb ac-hero-mesh-orb-tr"></div>
+    <div class="ac-hero-mesh-orb ac-hero-mesh-orb-bl"></div>
+    <svg class="ac-hero-dot-grid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ac-hero-dots" width="80" height="80" patternUnits="userSpaceOnUse">
+          <circle cx="40" cy="40" r="1" fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#ac-hero-dots)" />
+    </svg>
+    <div class="ac-hero-ping ac-hero-ping-1"></div>
+    <div class="ac-hero-ping ac-hero-ping-2"></div>
+  </div>
+
   <div class="container">
     <div class="columns is-vcentered is-multiline" style="row-gap:3rem;">
 

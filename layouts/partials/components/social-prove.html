@@ -2,18 +2,10 @@
 <div class="ac-trusted" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
     <p class="ac-trusted-label mb-8">Trusted by engineers at</p>
-  </div>
-  <div class="ac-logo-carousel" aria-label="Customer logos">
-    <div class="ac-logo-track">
+    <div class="brand-image-wrapper" aria-label="Customer logos">
       {{ range $customer := $.Site.Data.customers }}{{ if $customer.show }}
-      <div class="ac-logo-item">
-        <img src="{{ $customer.logo }}" alt="{{ $customer.name }}" loading="lazy">
-      </div>
-      {{ end }}{{ end }}
-      {{/* Duplicate set for seamless loop */}}
-      {{ range $customer := $.Site.Data.customers }}{{ if $customer.show }}
-      <div class="ac-logo-item" aria-hidden="true">
-        <img src="{{ $customer.logo }}" alt="" loading="lazy">
+      <div class="ac-logo-box">
+        <img src="{{ $customer.logo }}" alt="{{ $customer.name }}">
       </div>
       {{ end }}{{ end }}
     </div>

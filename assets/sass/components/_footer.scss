@@ -1,3 +1,6 @@
+// Footer — values matched literally to kubedb's .footer-area/.dark-bg (the base
+// this component mirrors): font sizes, colors, spacing, copy, wherever kubestash's
+// --ac-* scale doesn't already land on the same number.
 .ac-footer {
   background: var(--ac-gray-950);
   border-top: 1px solid var(--ac-border);
@@ -5,7 +8,8 @@
 
 // ── Top grid ──────────────────────────────────────────────
 .ac-footer-top {
-  padding: 64px 0 48px;
+  padding: 50px 0 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ac-footer-grid {
@@ -28,50 +32,122 @@
 .ac-footer-brand {
   display: flex;
   flex-direction: column;
-  gap: var(--ac-space-4);
 }
 
 .ac-footer-logo {
-  display: inline-flex;
+  display: inline-block;
+  max-width: 160px;
+
   img {
-    height: 32px;
-    width: auto;
+    max-width: 100%;
+    height: auto;
   }
 }
 
-.ac-footer-tagline {
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--ac-fg-subtle);
-  max-width: 260px;
-  margin: 0;
+// ── Newsletter form ───────────────────────────────────────
+.ac-footer-newsletter {
+  margin-top: 10px;
 }
 
-.ac-footer-social {
-  display: flex;
-  align-items: center;
-  gap: var(--ac-space-2);
-  margin-top: var(--ac-space-2);
+.ac-footer-newsletter-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #adb2b0;
 }
 
-.ac-footer-social-link {
+.ac-footer-newsletter-note {
+  font-size: 14px;
+  color: #d4d6d5;
+  margin: 0 0 8px;
+}
+
+.ac-footer-newsletter-field {
+  position: relative;
+  display: inline-block;
+}
+
+.ac-footer-newsletter-input {
+  width: 300px;
+  max-width: 100%;
+  height: 40px;
+  padding: 8px 50px 8px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #f2f2f2;
+  font-size: 16px;
+  transition: border-color var(--ac-duration-fast) var(--ac-ease-out);
+
+  &::placeholder {
+    color: #adb2b0;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--ac-brand);
+  }
+}
+
+.ac-footer-newsletter-submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--ac-radius-base);
-  border: 1px solid var(--ac-border);
-  color: var(--ac-fg-subtle);
-  transition:
-    background var(--ac-duration-fast) var(--ac-ease-out),
-    border-color var(--ac-duration-fast) var(--ac-ease-out),
-    color var(--ac-duration-fast) var(--ac-ease-out);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--ac-brand-300);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background var(--ac-duration-base) var(--ac-ease-out), color var(--ac-duration-base) var(--ac-ease-out);
 
   &:hover {
-    background: var(--ac-brand-subtle);
-    border-color: var(--ac-brand-border);
-    color: var(--ac-brand);
+    background: var(--ac-brand);
+    color: #fff;
+  }
+}
+
+// ── Contact info ──────────────────────────────────────────
+.ac-footer-contact {
+  margin-top: 28px;
+}
+
+.ac-footer-contact-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d4d6d5;
+  margin: 0;
+}
+
+.ac-footer-contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    display: inline-block;
+    color: #adb2b0;
+    font-size: 14px;
+    padding: 5px 0;
+    text-decoration: none;
+    transition: color var(--ac-duration-fast) var(--ac-ease-out);
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      padding-right: 10px;
+
+      iconify-icon { color: inherit; }
+    }
+
+    &:hover {
+      color: var(--ac-brand);
+    }
   }
 }
 
@@ -79,92 +155,166 @@
 .ac-footer-col {
   display: flex;
   flex-direction: column;
-  gap: var(--ac-space-3);
 }
 
 .ac-footer-col-title {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ac-fg);
-  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #e6e7e6;
+  margin: 0 0 4px;
 }
 
 .ac-footer-links {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ac-space-2);
 
   li a {
-    font-size: 0.875rem;
-    color: var(--ac-fg-muted);
+    display: inline-block;
+    font-size: 14px;
+    color: #d4d6d5;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--ac-space-1);
-    transition: color var(--ac-duration-fast) var(--ac-ease-out);
+    padding: 8px 0;
+    transition: color var(--ac-duration-base) var(--ac-ease-out), padding-left var(--ac-duration-base) var(--ac-ease-out);
 
     &:hover {
-      color: var(--ac-fg);
+      color: var(--ac-brand);
+      padding-left: 5px;
     }
   }
+
+  li:last-child a {
+    padding-bottom: 0;
+  }
+}
+
+// Inline (not flex) so a wrapped link label keeps the arrow attached to its
+// last word instead of centering it vertically across both wrapped lines.
+.ac-footer-link-arrow {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 4px;
 }
 
 // ── Bottom bar ────────────────────────────────────────────
 .ac-footer-bottom {
-  padding: 20px 0;
-  border-top: 1px solid var(--ac-border);
+  padding: 30px 0;
+}
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--ac-space-4);
-    flex-wrap: wrap;
-  }
+.ac-footer-bottom-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ac-space-4);
+  flex-wrap: wrap;
+}
+
+.ac-footer-bottom-col-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.ac-footer-bottom-col-right {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .ac-footer-copy {
-  font-size: 0.8125rem;
-  color: var(--ac-fg-subtle);
+  font-size: 14px;
+  color: #d4d6d5;
   margin: 0;
 }
 
-.ac-footer-credits {
+.ac-footer-inline-link {
   display: flex;
-  align-items: center;
-  gap: var(--ac-space-3);
-  margin: 0;
+  flex-wrap: wrap;
+  row-gap: var(--ac-space-2);
 
   a {
-    font-size: 0.8125rem;
-    color: var(--ac-fg-subtle);
+    font-size: 14px;
+    color: #adb2b0;
     text-decoration: none;
-    transition: color var(--ac-duration-fast) var(--ac-ease-out);
+    white-space: nowrap;
+    margin-right: 30px;
+    transition: color var(--ac-duration-base) var(--ac-ease-out);
 
-    &:hover { color: var(--ac-fg); }
+    &:hover {
+      color: var(--ac-brand);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
+}
 
-  span {
-    color: var(--ac-border-strong);
+.ac-footer-social {
+  display: flex;
+  align-items: center;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border: 1px solid #8a8a8a;
+    border-radius: 50%;
+    color: #8a8a8a;
+    transition: background var(--ac-duration-base) var(--ac-ease-out), color var(--ac-duration-base) var(--ac-ease-out), border-color var(--ac-duration-base) var(--ac-ease-out);
+
+    &:hover {
+      background: var(--ac-brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
 // ── Responsive ────────────────────────────────────────────
 @media (max-width: 600px) {
-  .ac-footer-top { padding: 48px 0 36px; }
+  .ac-footer-top { padding: 36px 0; }
 
-  .ac-footer-tagline { max-width: 100%; }
+  .ac-footer-logo { margin: 0 auto; }
 
-  .ac-footer-bottom .container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--ac-space-2);
+  .ac-footer-newsletter,
+  .ac-footer-contact {
+    text-align: center;
   }
 
-  .ac-footer-credits { flex-wrap: wrap; gap: var(--ac-space-2); }
+  // The fixed 220px desktop width leaves too little room for the placeholder
+  // once the 50px button gutter is subtracted — let it fill the column instead.
+  .ac-footer-newsletter-field {
+    display: block;
+    width: 100%;
+  }
+
+  .ac-footer-newsletter-input {
+    width: 100%;
+  }
+
+  .ac-footer-contact-list a span {
+    padding-right: 6px;
+  }
+
+  .ac-footer-bottom-grid {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ac-footer-bottom-col-center,
+  .ac-footer-bottom-col-right {
+    justify-content: center;
+  }
+
+  .ac-footer-inline-link {
+    a { margin-right: 16px; }
+  }
 }
