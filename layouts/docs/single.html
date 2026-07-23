@@ -48,7 +48,7 @@
 
             <!-- product start  -->
             <div class="product-menu database-list">
-              {{ range .Children }}
+              {{ range .Children.ByName }}
                 {{ if ne .Weight -1 }}
                 <!-- databases  start  -->
                 <a href="{{ .URL }}" class="single-product">
