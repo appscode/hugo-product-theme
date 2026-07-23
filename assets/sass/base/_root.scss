@@ -1,0 +1,56 @@
+:root {
+
+  // Sidebar widths — used by docs/app layouts
+  --sidebar-width:    320px;
+  --sidebar-sm-width: 300px;
+
+  @include until-fullhd {
+    --sidebar-sm-width: 280px;
+  }
+
+  @media (min-width: 1408px) and (max-width: 1600px) {
+    --sidebar-sm-width: 260px;
+  }
+
+  @include desktop-only {
+    --sidebar-width:    300px;
+    --sidebar-sm-width: 200px;
+  }
+
+  // Container width scale
+  --ac-container-sm:  640px;
+  --ac-container-md:  768px;
+  --ac-container-lg:  1024px;
+  --ac-container-xl:  1280px;
+  --ac-container-2xl: 1536px;
+
+  // Responsive grid
+  --ac-grid-cols-tablet:  8;
+  --ac-grid-cols-desktop: 12;
+  --ac-grid-gutter:       var(--ac-space-6);
+
+  // Navbar height (used by sticky offset calculations)
+  --ac-navbar-height:      64px;
+  --ac-navbar-height-docs: 110px;
+}
+
+
+// Legacy HSL channel vars — powers older component SCSS via $ac-primary / var(--ac-primary)
+// New components should use --ac-brand-* from _tokens.scss instead.
+:root {
+  --primary-h: 256;
+  --primary-s: 55%;
+  --primary-l: 45%;
+  --secondary-h: 256;
+  --ac-primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

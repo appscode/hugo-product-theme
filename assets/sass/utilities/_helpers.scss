@@ -1,0 +1,112 @@
+// Generated margin / padding / font-size helpers (px-exact, legacy use)
+// New templates should prefer .ac-mt-* / .ac-p-* token-aware aliases below.
+
+@for $i from 0 through 100 {
+  .m-#{$i}  { margin:          #{$i}px !important; }
+  .mt-#{$i} { margin-top:      #{$i}px !important; }
+  .mb-#{$i} { margin-bottom:   #{$i}px !important; }
+  .ml-#{$i} { margin-left:     #{$i}px !important; }
+  .mr-#{$i} { margin-right:    #{$i}px !important; }
+
+  .p-#{$i}  { padding:         #{$i}px !important; }
+  .pt-#{$i} { padding-top:     #{$i}px !important; }
+  .pb-#{$i} { padding-bottom:  #{$i}px !important; }
+  .pl-#{$i} { padding-left:    #{$i}px !important; }
+  .pr-#{$i} { padding-right:   #{$i}px !important; }
+
+  .vh-#{$i}        { height:    #{$i}vh !important; }
+  .vw-#{$i}        { width:     #{$i}vw !important; }
+  .font-size-#{$i} { font-size: #{$i}px !important; }
+}
+
+
+@for $i from 0 through 300 {
+  .height-#{$i} { height: #{$i}px !important; }
+  .width-#{$i}  { width:  #{$i}px !important; }
+}
+
+
+@for $i from 0 through 10 {
+  .z-index-#{$i}        { z-index:     #{$i} !important; }
+  .font-weight-#{$i * 100} { font-weight: #{$i * 100} !important; }
+}
+
+
+@for $i from 0 through 10 {
+  .is-ellipsis-#{$i} {
+    overflow:            hidden;
+    text-overflow:       ellipsis;
+    display:             -webkit-box;
+    line-clamp:          #{$i};
+    -webkit-line-clamp:  #{$i};
+    box-orient:          vertical;
+    -webkit-box-orient:  vertical;
+  }
+}
+
+
+// Token-aware spacing aliases (reference --ac-space-* scale)
+$ac-space-steps: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 16, 20, 24);
+
+@each $step in $ac-space-steps {
+  .ac-mt-#{$step} { margin-top:      var(--ac-space-#{$step}) !important; }
+  .ac-mb-#{$step} { margin-bottom:   var(--ac-space-#{$step}) !important; }
+  .ac-ml-#{$step} { margin-left:     var(--ac-space-#{$step}) !important; }
+  .ac-mr-#{$step} { margin-right:    var(--ac-space-#{$step}) !important; }
+  .ac-mx-#{$step} { margin-left:     var(--ac-space-#{$step}) !important;
+                    margin-right:    var(--ac-space-#{$step}) !important; }
+  .ac-my-#{$step} { margin-top:      var(--ac-space-#{$step}) !important;
+                    margin-bottom:   var(--ac-space-#{$step}) !important; }
+  .ac-m-#{$step}  { margin:          var(--ac-space-#{$step}) !important; }
+
+  .ac-pt-#{$step} { padding-top:     var(--ac-space-#{$step}) !important; }
+  .ac-pb-#{$step} { padding-bottom:  var(--ac-space-#{$step}) !important; }
+  .ac-pl-#{$step} { padding-left:    var(--ac-space-#{$step}) !important; }
+  .ac-pr-#{$step} { padding-right:   var(--ac-space-#{$step}) !important; }
+  .ac-px-#{$step} { padding-left:    var(--ac-space-#{$step}) !important;
+                    padding-right:   var(--ac-space-#{$step}) !important; }
+  .ac-py-#{$step} { padding-top:     var(--ac-space-#{$step}) !important;
+                    padding-bottom:  var(--ac-space-#{$step}) !important; }
+  .ac-p-#{$step}  { padding:         var(--ac-space-#{$step}) !important; }
+
+  .ac-gap-#{$step} { gap: var(--ac-space-#{$step}) !important; }
+}
+
+
+// Token-aware z-index aliases
+.ac-z-base     { z-index: var(--ac-z-base,     0)   !important; }
+.ac-z-raised   { z-index: var(--ac-z-raised,   10)  !important; }
+.ac-z-dropdown { z-index: var(--ac-z-dropdown, 100) !important; }
+.ac-z-sticky   { z-index: var(--ac-z-sticky,   200) !important; }
+.ac-z-fixed    { z-index: var(--ac-z-fixed,    300) !important; }
+.ac-z-overlay  { z-index: var(--ac-z-overlay,  400) !important; }
+.ac-z-modal    { z-index: var(--ac-z-modal,    500) !important; }
+.ac-z-toast    { z-index: var(--ac-z-toast,    600) !important; }
+.ac-z-tooltip  { z-index: var(--ac-z-tooltip,  700) !important; }
+
+
+// Display helpers
+.is-hidden        { display: none !important; }
+.is-block         { display: block !important; }
+.is-inline-block  { display: inline-block !important; }
+.is-flex          { display: flex !important; }
+.is-inline-flex   { display: inline-flex !important; }
+.is-grid          { display: grid !important; }
+
+.is-relative      { position: relative !important; }
+.is-absolute      { position: absolute !important; }
+.is-sticky        { position: sticky !important; }
+
+.is-full-width    { width:  100% !important; }
+.is-full-height   { height: 100% !important; }
+
+.is-overflow-hidden { overflow: hidden !important; }
+.is-overflow-auto   { overflow: auto !important; }
+
+.is-pointer       { cursor: pointer !important; }
+.is-no-select     { user-select: none !important; }
+.is-truncate      {
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  white-space:   nowrap;
+}

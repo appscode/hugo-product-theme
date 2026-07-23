@@ -4,17 +4,25 @@
 {{ $menu := .Params.menu_name }}
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
 <!-- documentation and search start   -->
-<div class="responsive-menu is-hidden-desktop is-flex is-justify-content-center">
-  <div class="is-flex is-justify-content-space-between is-fullwidth pl-20 pr-20">
-    <button class="button"><span class="icon">
-      <iconify-icon icon="heroicons:bars-3-bottom-left" width="18" height="18"></iconify-icon>
-
-      </span></button>
-    <button class="button">Docs</button>
-    <button class="button">On this page</button>
-    <button class="button p-10"><i class="fa fa-search"></i></button>
-  </div>
+<div class="docs-mobile-bar is-hidden-desktop">
+  <button class="docs-mobile-btn" data-responsive-target=".left-sidebar-wrapper" data-toggle-class="is-open">
+    <iconify-icon icon="heroicons:bars-3-bottom-left" width="20" height="20"></iconify-icon>
+    <span>Menu</span>
+  </button>
+  <button class="docs-mobile-btn" data-responsive-target=".navbar-appscode.documentation-menu > .navbar-right" data-toggle-class="is-visible">
+    <iconify-icon icon="heroicons:book-open" width="20" height="20"></iconify-icon>
+    <span>Docs</span>
+  </button>
+  <button class="docs-mobile-btn" data-responsive-target=".right-sidebar" data-toggle-class="is-open">
+    <iconify-icon icon="heroicons:list-bullet" width="20" height="20"></iconify-icon>
+    <span>On this page</span>
+  </button>
+  <button class="docs-mobile-btn" data-responsive-target=".sidebar-search-area" data-toggle-class="right-0">
+    <iconify-icon icon="heroicons:magnifying-glass" width="20" height="20"></iconify-icon>
+    <span>Search</span>
+  </button>
 </div>
+<div class="docs-mobile-overlay" id="docsMobileOverlay"></div>
 <div class="navbar-appscode documentation-menu">
 
   <!-- searchbar component start  -->
@@ -37,69 +45,41 @@
 
         <!-- mega-menu wrapper start  -->
         <div class="mega-menu-wrapper">
-          <div class="mega-menu-inner ac-grid-container">
-            <button class="button ac-button inline-button back-button">
+          <div class="mega-menu-inner">
+            <!-- <button class="button ac-button inline-button back-button">
               <span class="icon arrow-back">
                 <iconify-icon icon="heroicons:arrow-small-left" width="18" height="18"></iconify-icon>
               </span>
               <span>Back</span>
-            </button>
-
-            <!-- product start  -->
-            <div class="product-menu database-list">
+            </button> -->
+            <ul class="resources-card-list">
               {{ range .Children }}
                 {{ if ne .Weight -1 }}
-                <!-- databases  start  -->
-                <a href="{{ .URL }}" class="single-product">
-                  <div class="product-logo">
-                    <img src="{{ partial "menu/get-logo.html" (dict "target" .Name "menus" site.Menus.main ) }}" alt="{{ .Name }}" loading="lazy">
-                  </div>
-                  <div class="product-info">
-                    <h6>{{ .Name }}</h6>
-                    <!-- <p>static content</p> -->
-                  </div>
-                  <div class="navigate-icon">
-                    <span class="icon arrow-forward">
-                      <iconify-icon icon="heroicons:arrow-small-right" width="18" height="18"></iconify-icon>
+                <li>
+                  <a href="{{ .URL }}" class="resource-card-item">
+                    <span class="resource-icon">
+                      <iconify-icon icon="heroicons:book-open" width="20" height="20"></iconify-icon>
                     </span>
-                  </div>
-                </a>
-                <!-- databases  end -->
+                    <span class="resource-text">
+                      <span class="resource-title">{{ .Name }}</span>
+                    </span>
+                  </a>
+                </li>
                 {{ end }}
               {{ end }}
-
-            </div>
-            <!-- product end -->
-
-            <!-- product description start  -->
-            <!-- single product description start  -->
-            <div class="product-description is-block">
-               <div class="video-content">
-                 <div class="yt-thumbnail">
-                   <a href="https://www.youtube.com/watch?v=hBHxMtSjKo4" class="play-icon yt-video">
-                    <iconify-icon icon="heroicons:play-circle" width="48" height="48"  style="color: white"></iconify-icon>
-                   </a>
-                   <img
-                     src="https://img.youtube.com/vi/hBHxMtSjKo4/sddefault.jpg"
-                     alt="">
-                 </div>
-               </div>
-            </div>
-            <!-- single product description end  -->
-            <!-- product description end -->
+            </ul>
           </div>
         </div>
         <script type="text/javascript">
-          let backBtn2 = document.querySelector('.mega-menu-inner.ac-grid-container > .back-button');
-
-          function handleBackButtonClick() {
-            const modalBackdropElement = document.querySelector(".modal-backdrop");
-            // if modal backdrop element is visible then hide it
-            if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
-              modalBackdropElement.classList.remove("is-show")
-            }
+          {
+            const backBtn2 = document.querySelector('.mega-menu-inner.ac-grid-container > .back-button');
+            if (backBtn2) backBtn2.addEventListener('click', function() {
+              const modalBackdropElement = document.querySelector(".modal-backdrop");
+              if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
+                modalBackdropElement.classList.remove("is-show");
+              }
+            });
           }
-          backBtn2.addEventListener('click', handleBackButtonClick)
         </script>
         <!-- mega-menu wrapper end  -->
       </li>
@@ -297,7 +277,7 @@
             </span>
             <span>Close</span>
             </button>
-            <h4>What's on this Page</h4>
+            <h4>What's on this Pages</h4>
             {{.TableOfContents}}
           </div>
           <!-- table of contents area end -->

@@ -1,85 +1,126 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-<!-- new hero area start   -->
-<!-- style="background-image: url(/assets/images/products/kubedb/hero-product-bg-dark.png);" -->
-<section class="hero-area is-product is-gradient is-dark has-image-bg" style="background-image:
-url(./assets/images/bg-image/gradient-bg.webp);">
-  <div class="shape">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
+{{ $hero := index .Site.Data.products .Site.Params.product_key "homepage" "hero" | default dict }}
+<section class="ac-hero" data-product="{{ $p.key }}" data-theme="light">
+
+  <!-- decorative background: mesh orbs + dot grid + ping accents -->
+  <div class="ac-hero-bg" aria-hidden="true">
+    <div class="ac-hero-mesh-orb ac-hero-mesh-orb-tr"></div>
+    <div class="ac-hero-mesh-orb ac-hero-mesh-orb-bl"></div>
+    <svg class="ac-hero-dot-grid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ac-hero-dots" width="80" height="80" patternUnits="userSpaceOnUse">
+          <circle cx="40" cy="40" r="1" fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#ac-hero-dots)" />
+    </svg>
+    <div class="ac-hero-ping ac-hero-ping-1"></div>
+    <div class="ac-hero-ping ac-hero-ping-2"></div>
   </div>
-  <div class="shape">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-  </div>
+
   <div class="container">
-    <div class="columns is-vcentered is-multiline">
+    <div class="columns is-vcentered is-multiline" style="row-gap:3rem;">
+
+      <!-- Left copy -->
       <div class="column is-6 is-full-touch">
-         <!-- news connect-message start  -->
+
+        <!-- dynamic news badge -->
         <div class="news-message-wrapper">
-           <a href="" class="news-message is-hidden"><span>cool stuff!</a>
+          <a href="" class="news-message is-hidden"><span></span></a>
+        </div>
+        <script type="text/javascript">
+          (function () {
+            var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                var result = JSON.parse(xhr.responseText);
+                if (result.content) {
+                  var wrapper = document.querySelector(".news-message-wrapper");
+                  var a = wrapper.querySelector(".news-message");
+                  a.querySelector("span").innerHTML = result.content;
+                  if (result.link) { a.href = result.link; a.target = "_blank"; }
+                  a.classList.remove('is-hidden');
+                  wrapper.style.marginBottom = '1.25rem';
+                }
+              }
+            };
+            xhr.open('GET', 'https://x.appscode.com/_/news?p={{ $p.name }}');
+            xhr.send();
+          }());
+        </script>
+
+        <h1>{{ $hero.headline | default $p.tagline | safeHTML }}</h1>
+
+        <p class="ac-hero-sub">{{ $p.summary | safeHTML }}</p>
+
+        <div class="ac-hero-actions">
+          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary is-normal">
+            <iconify-icon icon="heroicons:bolt" width="18" height="18"></iconify-icon>
+            {{ default "Get Started Free" $hero.cta_primary }}
+          </a>
+          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary is-normal">
+            <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>
+            {{ default "Talk to Sales" $hero.cta_secondary }}
+          </a>
         </div>
 
-         <script type="text/javascript">
-           (function () {
-             var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-             xhr.onreadystatechange = function () {
-               if (xhr.readyState === 4) {
-                 if (xhr.status === 200) {
-                   var result = JSON.parse(xhr.responseText);
-                   if (result.content) {
-                     let a = document.querySelector(".news-message");
-                     a.innerHTML = `<span>${result.content}</span>`;
-                     if (result.link) {
-                       a.href = result.link;
-                       a.target = "_blank";
-                     }
-                     a.classList.remove('is-hidden');
-                   }
-                 }
-               }
-             } //
-             xhr.open('GET', 'https://x.appscode.com/_/news?p={{$p.name}}');
-             xhr.send();
-           }());
-         </script>
-         <!-- news connect-message end -->
-        <h1> {{ $p.tagline | safeHTML }}</h1>
-        <!-- <h1> Run Production-Grade Databases on Kubernetes</h1> -->
-        <p>{{ $p.summary | safeHTML }}</p>
-        <div class="buttons">
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-white">TRY NOW FREE</a>
-          <a href="{{ $.Site.Params.domain_appscode }}/contact/" class="button ac-button is-secondary">
-             <span class="icon">
-              <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>     
-             </span>
-             <span>GET IN TOUCH</span></a>
+        {{ with $hero.trust_items }}
+        <div class="ac-hero-trust">
+          {{ range . }}
+          <span class="ac-hero-trust-item">
+            <iconify-icon icon="{{ .icon }}" width="14" height="14"></iconify-icon>
+            {{ .label }}
+          </span>
+          {{ end }}
         </div>
+        {{ end }}
+
       </div>
+
+      <!-- Right: Helm install terminal -->
       <div class="column is-6 is-full-touch">
-        <div class="hero-area-right">
-          <!-- code editor start  -->
-          <div class="hero-area-code-editor">
-            <div class="editor-header">
-              <span class="action close"></span>
-              <span class="action maximize"></span>
-              <span class="action minimize"></span>
-            </div>
-            {{ partial "components/installation-code.html" . }}
+        {{ $helmCmd := printf "helm install %s \\\n  oci://ghcr.io/appscode-charts/%s \\\n  --version %s \\\n  --namespace %s --create-namespace" $p.key $p.key $p.latestVersion $p.key }}
+        <div class="ac-install-snippet" data-helm-cmd="{{ $helmCmd }}">
+          <div class="ac-install-snippet-header">
+            <span class="ac-install-snippet-dots"><i></i><i></i><i></i></span>
+            <span class="ac-install-snippet-title">Terminal</span>
+            <button class="ac-copy-btn" aria-label="Copy to clipboard" title="Copy">
+              <iconify-icon icon="heroicons:clipboard-document" width="15" height="15" class="ac-copy-icon"></iconify-icon>
+              <iconify-icon icon="heroicons:check" width="15" height="15" class="ac-copy-check" style="display:none"></iconify-icon>
+            </button>
+          </div>
+          <div class="ac-install-snippet-body">
+            <span class="t-cmd">$ helm install {{ $p.key }} \</span><br>
+            &nbsp;&nbsp;<span class="t-val">oci://ghcr.io/appscode-charts/{{ $p.key }}</span> <span class="t-cmd">\</span><br>
+            &nbsp;&nbsp;<span class="t-flag">--version</span> <span class="t-val">{{ $p.latestVersion }}</span> <span class="t-cmd">\</span><br>
+            &nbsp;&nbsp;<span class="t-flag">--namespace</span> <span class="t-val">{{ $p.key }}</span> <span class="t-flag">--create-namespace</span><br>
+            <span class="t-ok">✓ {{ $p.name }} installed successfully</span>
           </div>
         </div>
-        <!-- code editor end  -->
-        <!-- <img src="/assets/images/products/kubedb/hero-right-image.png" alt=""> -->
+        <script>
+          (function () {
+            var card = document.querySelector('.ac-install-snippet[data-helm-cmd]');
+            if (!card) return;
+            var btn = card.querySelector('.ac-copy-btn');
+            var iconCopy  = btn.querySelector('.ac-copy-icon');
+            var iconCheck = btn.querySelector('.ac-copy-check');
+            btn.addEventListener('click', function () {
+              var text = card.getAttribute('data-helm-cmd');
+              navigator.clipboard.writeText(text).then(function () {
+                iconCopy.style.display  = 'none';
+                iconCheck.style.display = '';
+                btn.classList.add('ac-copy-btn--copied');
+                setTimeout(function () {
+                  iconCopy.style.display  = '';
+                  iconCheck.style.display = 'none';
+                  btn.classList.remove('ac-copy-btn--copied');
+                }, 2000);
+              });
+            });
+          }());
+        </script>
       </div>
+
     </div>
   </div>
 </section>
-<!-- new hero area end   -->

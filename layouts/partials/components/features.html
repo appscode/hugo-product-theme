@@ -1,46 +1,81 @@
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-<!-- product features area start  -->
-<section class="product-feaures-area section-padding">
+{{ $steps := index .Site.Data.products .Site.Params.product_key "homepage" "steps" | default dict }}
+{{ $caps := index .Site.Data.products .Site.Params.product_key "homepage" "capabilities" | default dict }}
+
+<!-- How it works -->
+{{ if $steps.steps }}
+<section class="ac-section ac-how" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="section-title has-text-centered">
-          <h2 class="is-gradient">Special Features</h2>
-          {{ if $p.summary }}
-          <p>
-            {{ $p.summary | plainify }}
-          </p>
-          {{ end }}
+    <div class="ac-section-header">
+      <span class="ac-overline">
+        <iconify-icon icon="heroicons:map" width="11" height="11"></iconify-icon>
+        How it works
+      </span>
+      <h2>{{ $steps.title | default "Get started in <em>minutes</em>" | safeHTML }}</h2>
+      <p>{{ $steps.subtitle | default $p.summary }}</p>
+    </div>
+    <div class="ac-steps">
+      {{ range $i, $s := $steps.steps }}
+      <div class="ac-step" style="--step-i:{{ $i }}">
+        <div class="ac-step-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</div>
+        <div class="ac-step-body">
+          <h3>{{ $s.title }}</h3>
+          <p>{{ $s.description }}</p>
+          <span class="ac-step-code-chip">
+            <iconify-icon icon="heroicons:command-line" width="11" height="11"></iconify-icon>
+            <code>{{ $s.code }}</code>
+          </span>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <!-- is-centered -->
-    <div class="columns is-multiline is-centered">
-      <!-- single feature information start  -->
-      {{ range $f := $p.features }}
-      <div class="column is-half-tablet is-one-third-widescreen">
-        <a href="/features/{{ $f.url }}" class="single-features-item">
-          <div class="feature-icon">
-            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy"/>
-          </div>
-          <div class="feature-information">
-          
-            <h3>{{ $f.title }}</h3>
-            {{  if $f.summary }} 
-            <p class="is-ellipsis-2">{{ $f.summary }}</p>
-            {{ end }}
-            <p class="is-ellipsis-2">{{ $f.description }}</p>
-            <button class="readmore-button"><span>Read More</span><span class="icon">
-              <iconify-icon icon="heroicons:arrow-small-right"></iconify-icon>
-            </span></button>
-          </div>
-        </a>
-      </div>
-      {{end}}
-      <!-- single feature information end -->
+      {{ end }}
     </div>
   </div>
 </section>
-<!-- product features area end -->
+<script>
+  (function () {
+    var steps = document.querySelectorAll('.ac-step');
+    if (!steps.length) return;
+    if (!('IntersectionObserver' in window)) {
+      steps.forEach(function(el) { el.classList.add('ac-in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('ac-in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    steps.forEach(function (el) { obs.observe(el); });
+  }());
+</script>
+{{ end }}
+
+<!-- Capability grid — 6 cards 3×2 -->
+{{ if $p.features }}
+<section class="ac-section ac-capabilities" data-product="{{ $p.key }}" data-theme="light">
+  <div class="container">
+    <div class="ac-section-header">
+      <span class="ac-overline">
+        <iconify-icon icon="heroicons:sparkles" width="11" height="11"></iconify-icon>
+        Capabilities
+      </span>
+      <h2>{{ $caps.title | default "Built for <em>production reliability</em>" | safeHTML }}</h2>
+      <p>{{ $caps.subtitle | default $p.summary }}</p>
+    </div>
+    <div class="ac-cap-grid">
+      {{ $tags := $caps.tags | default (slice "Core" "Recovery" "Security" "Storage" "Performance" "Deployment") }}
+      {{ range $i, $f := first 6 ($p.features | default slice) }}
+      <div class="ac-cap-card">
+        <div class="ac-cap-card-top">
+          <div class="ac-cap-icon">
+            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy">
+          </div>
+          <span class="ac-cap-tag">{{ index $tags $i }}</span>
+        </div>
+        <h3>{{ $f.title }}</h3>
+        <p>{{ $f.description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

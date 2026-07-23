@@ -1,0 +1,82 @@
+// Fonts
+$ac-font-sans:      Roboto, "Segoe UI", system-ui, sans-serif;
+$ac-font-heading:   Inter, "Segoe UI", system-ui, sans-serif;
+$ac-font-mono:      "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+$ac-font-paragraph: $ac-font-sans; // legacy alias
+
+$ac-indigo-light: #9a66ef; // gradient heading endpoint (--ac-purple-400)
+
+
+// Semantic color SCSS vars — reference CSS custom properties at runtime
+$ac-primary:        var(--ac-brand);
+$ac-primary-hover:  var(--ac-brand-hover);
+$ac-primary-active: var(--ac-brand-active);
+$ac-primary-subtle: var(--ac-brand-subtle);
+$ac-primary-border: var(--ac-brand-border);
+$ac-primary-solid:  var(--ac-brand-solid);
+
+$color-text:    var(--ac-fg);
+$color-heading: var(--ac-fg);
+$color-label:   var(--ac-fg-muted);
+$color-link:    var(--ac-link);
+
+$color-border-light: var(--ac-border);
+$color-border:       var(--ac-border);
+$color-border-dark:  var(--ac-border-strong);
+
+$ac-bg:    var(--ac-bg);
+$ac-white: #ffffff;
+$ac-black: #000000;
+
+
+// Status color vars
+$ac-green:   var(--ac-status-success);
+$ac-amber:   var(--ac-status-warning);
+$ac-orange:  var(--ac-status-warning); // legacy alias
+$ac-yellow:  var(--ac-status-warning); // legacy alias
+$ac-red:     var(--ac-status-error);
+$ac-blue:    var(--ac-status-info);
+$ac-purple:  #6633BB; // fixed brand primitive
+
+
+// Elevation vars (mirror of --ac-shadow-*)
+$ac-shadow-1: 0 1px 2px rgba(0,0,0,.06);
+$ac-shadow-2: 0 2px 8px -2px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+$ac-shadow-3: 0 4px 16px -4px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.06);
+$ac-shadow-4: 0 8px 32px -8px rgba(0,0,0,.16), 0 2px 8px rgba(0,0,0,.08);
+$ac-shadow-5: 0 16px 48px -12px rgba(0,0,0,.22), 0 4px 12px rgba(0,0,0,.10);
+
+$shadow-sm: $ac-shadow-1; // legacy aliases
+$shadow-lg: $ac-shadow-3;
+$shadow-xl: $ac-shadow-4;
+
+
+// Type size vars
+$font-size-medium:      16px;
+$font-size-semi-normal: 15px;
+$font-size-normal:      14px;
+$font-size-small:       13px;
+$font-size-extra-small: 12px;
+$font-size-tiny:        11px;
+
+
+// Heading size scale
+$ac-size-1: 48px;
+$ac-size-2: 36px;
+$ac-size-3: 28px;
+$ac-size-4: 22px;
+$ac-size-5: 18px;
+$ac-size-6: 16px;
+$ac-size-7: 14px;
+
+
+// Legacy HSL SCSS bridge — keeps older component files compiling
+$primary-light-grey: hsl(var(--primary-h), 10%, 96%);
+$primary-dark-grey:  hsl(var(--primary-h), 10%, 10%);
+$primary-light-gray: hsl(var(--primary-h), 10%, 96%);
+$primary-dark-gray:  hsl(var(--primary-h), 10%, 10%);
+
+$secondary-light-grey: hsl(var(--secondary-h, 196), 10%, 96%);
+$secondary-dark-grey:  hsl(var(--secondary-h, 196), 10%, 10%);
+$secondary-light-gray: hsl(var(--secondary-h, 196), 10%, 96%);
+$secondary-dark-gray:  hsl(var(--secondary-h, 196), 10%, 10%);

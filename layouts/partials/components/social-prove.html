@@ -1,17 +1,13 @@
-<!-- social prove logo area start   -->
-<div class="social-prove-brand-area">
+{{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+<div class="ac-trusted" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
-    <div class="columns">
-      <div class="column is-12">
-        <div class="brand-image-wrapper owl-carousel">
-          {{ range $customer := $.Site.Data.customers }}
-          {{ if $customer.show }}
-          <div class="single-brand"><img src="{{ $customer.logo }}" alt="{{ $customer.name }}" loading="lazy"></div>
-          {{ end }}
-          {{ end }}
-        </div>
+    <p class="ac-trusted-label mb-8">Trusted by engineers at</p>
+    <div class="brand-image-wrapper" aria-label="Customer logos">
+      {{ range $customer := $.Site.Data.customers }}{{ if $customer.show }}
+      <div class="ac-logo-box">
+        <img src="{{ $customer.logo }}" alt="{{ $customer.name }}">
       </div>
+      {{ end }}{{ end }}
     </div>
   </div>
 </div>
-<!-- social prove logo area end -->

@@ -1,6 +1,6 @@
 .testimonial-area {
-  background-color: hsl(var(--primary-h), 20%, 98%);
-  padding: 60px 0;
+  background-color: var(--ac-bg-subtle);
+  padding: 96px 0;
   
   .section-title {
     h2 {
@@ -13,7 +13,7 @@
   }
 
   .single-testimonial-item {
-    background: $ac-white;
+    background: var(--ac-surface);
     box-shadow: 0px 2px 30px rgba(44, 60, 74, 0.08);
     border-radius: 4px;
     padding: 50px 40px;
@@ -43,7 +43,7 @@
         p {
           font-size: 14px;
           line-height: 160%;
-          color: $color-text;
+          color: var(--ac-fg);
         }
       }
     }
@@ -78,7 +78,7 @@
     &:hover {
       .icon-outlined {
         transform: scale(1.2);
-        color: $ac-primary;
+        color: var(--ac-brand);
       }
     }
 
@@ -94,7 +94,7 @@ Responsive Classes
 *****************************************/
 @media (max-width: 768px) {
   .testimonial-area {
-    padding-top: 30px;
+    padding: 56px 0;
 
     .section-title {
       text-align: center;

@@ -1,641 +1,726 @@
 {{ block "header" . }}
+{{ $productName := .Params.product_name }}
+{{ $p := (index .Site.Data.products (default "appscode" $productName)) }}
+{{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
+
 <header>
   {{ block "header-top" . }}
-  <!-- new navbar area start  -->
-  <div class="navbar-area active-headroom header--fixed">
-  
-  
-    {{ $currentPageType := index (split .Page.Permalink "/") 3 }} 
+  <!-- new navbar area start .active-headroom  -->
+  <div class="navbar-area header--fixed">
 
-    <!-- notification message  -->
-    {{ if fileExists (printf "layouts/partials/components/notification-message.html") }}
-      {{ if ne $currentPageType "docs" }}
-        {{ partial "components/notification-message.html" . }}
-      {{ end }}
-    {{ end }}
-  
-    <!-- iframe ".is-flex | is-hidden" -->
-    {{ if .Site.Params.appscode_notification_show }}
-    <iframe src="https://appscode.com/notification-top/" id="notification" class="{{ if eq $currentPageType "docs" }} is-hidden {{ else }} is-flex {{ end }}" frameborder="0" scrolling="no" onload="resizeIframe()" style="width: 100%; overflow: hidden;" title="Notification"></iframe>
-    
+    <!-- iframe for top notification; IMPORTANT:- "display: flex||none;" | display: none; overflow: hidden; height: 0px; -->
+    <iframe src="/notification-top/" id="notification" frameborder="0" scrolling="no" style="display: flex; width: 100%; height: 0px;" title="notification"></iframe>
     <script>
-        function resizeIframe() {
-        var iframe = document.getElementById("notification");
-        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      window.addEventListener("message", receiveMessageFromIframe, false);
+
+      function receiveMessageFromIframe(event) {
+          // Check the origin of the message for security purposes
+          let baseURL = "{{$.Site.BaseURL}}"
+
+          if (baseURL.endsWith("/")) {
+            baseURL = baseURL.slice(0, -1);
+          }
+           if (event.origin !== baseURL) {
+              return;
+          }
+          const notification = document.querySelector("#notification");
+          notification.style.height = `${event.data}px`
       }
     </script>
-    <!-- iframe  -->
-    {{ end }}
+    <!-- iframe for top notification  -->
+    <div class="navbar-area navbar-fixed">
+      <div class="navbar-appscode-wrapper ">
+        <!-- appscode navbar start  -->
+        {{ $currentPageType := cond (hasPrefix .Page.RelPermalink "/docs/") "docs" "products" }}
+        <div class="navbar-appscode{{ if eq $currentPageType "products" }} container {{ end }} height-60">
 
-    <div class="navbar-appscode-wrapper ">
-      <!-- appscode navbar start  -->
-      {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
-      <div class="navbar-appscode{{ if ne $currentPageType "docs" }} container {{ end }} height-60">
-        <div class="navbar-left">
-          <!-- brand logo  -->
-          <div class="navbar-brand">
-            <a href="{{.Site.Params.domain_appscode}}">
-              <img src="{{$.Site.Data.products.appscode.logo.src}}"
-                alt="{{$.Site.Data.products.appscode.logo.alt}}" />
-            </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+          <div class="navbar-left">
+            <!-- brand logo  -->
+            <div class="navbar-brand">
+              <a href="{{.Site.Params.domain_appscode}}">
+                <img src="{{$.Site.Data.products.appscode.logo.src}}"
+                  alt="{{$.Site.Data.products.appscode.logo.alt}}" loading="eager" height="30" width="auto"/>
+              </a>
+              <a role="button" class="navbar-burger is-hidden-desktop" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- brand logo  -->
           </div>
-          <!-- brand logo  -->
-        </div>
 
 
-        <div class="navbar-right">
-          <div class="is-flex is-justify-content-space-between is-fullwidth">
-            <div class="navbar-left-group">
+          <div class="navbar-right">
+            <div class="is-flex is-justify-content-space-between is-fullwidth">
               <!-- navbar items start -->
-            <ul>
-              <li class="nav-item">
-                <button class="link">Products <i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                <div class="mega-menu-wrapper">
+              <ul class="navbar-left-group">
 
-                  <!-- ac-grid-container -->
-                  <div class="mega-menu-inner container">
-                    <button class="button ac-button inline-button back-button">
-                    <span
-                        class="icon back-icon">
-                        <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
-                      </span>Back</button>
-                    <!-- product start  -->
-                    <div class="product-menu">
+              </ul>
+              <!-- navbar items end -->
+              <!-- if webinar exist script  -->
+              <script type="text/javascript">
+                (function () {
+                  var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                  xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                        var result = JSON.parse(xhr.responseText);
+                        if (result.schedules) {
+                          let endDate = new Date(result.schedules[0]).getTime();
+                          let startDate = new Date().getTime();
+                          let timeRemaining = parseInt((endDate - startDate) / 1000);
+                          if (timeRemaining >= 0) {
+                            const whatsNew = document.querySelector('.whats-new');
+                            if (whatsNew) whatsNew.classList.add('is-block')
+                          }
+                        }
+                      }
+                    }
+                  } //
+                  // console.log('GET', 'https://x.appscode.com/_/webinars/');
+                  xhr.open('GET', 'https://x.appscode.com/_/webinars/');
+                  xhr.send();
+                }());
+              </script>
+              <!-- navbar items start -->
+            <div class="navbar-right-group">
+              <ul>
+                 <li class="nav-item">
+
+                  <button class="link">Products <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                  <div class="mega-menu-wrapper">
+
+                    <!-- ac-grid-container -->
+                    <div class="mega-menu-inner container">
+                      <!-- product start  -->
+                      <div class="product-menu">
+                        {{ range $item := $.Site.Data.config.productMenu.c0 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}" loading="lazy">
+                          </div>
+                          <div class="product-info">
+                            <h2 class="is-flex">{{ $p.name }}
+                              {{ if eq ($p.name) "KubeStash" }}
+                              <span class="whats-new is-relative is-block" style="right: -2px; top: -12px;">New</span>
+                              {{ end }}
+                            </h2>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+
+                        {{ range $item := $.Site.Data.config.productMenu.c1 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}" loading="lazy">
+                          </div>
+                          <div class="product-info">
+                            <h2>{{ $p.name }}</h2>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+
+                        {{ range $item := $.Site.Data.config.productMenu.c2 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}" loading="lazy">
+                          </div>
+                          <div class="product-info">
+                            <h2>{{ $p.name }}</h2>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+
+                        {{ range $item := $.Site.Data.config.productMenu.c3 }}
+                        {{ $p := (index $.Site.Data.products $item) }}
+                        <!-- single product start  -->
+                        <a class="single-product"
+                          href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
+                          <div class="product-logo">
+                            <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}" loading="lazy">
+                          </div>
+                          <div class="product-info">
+                            <h2>{{ $p.name }}</h2>
+                            <p>{{ $p.tagline | plainify }}</p>
+                          </div>
+                          <div class="navigate-icon">
+                            <span class="icon">
+                              <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
+                            </span>
+                          </div>
+                        </a>
+                        <!-- single product end -->
+                        {{ end }}
+                      </div>
+                      <!-- product end -->
+
+                      <!-- product description start  -->
                       {{ range $item := $.Site.Data.config.productMenu.c0 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}" loading="lazy" height="30" width="auto">
                         </div>
-                        <div class="product-info">
-                          <h6 class="is-flex">{{ $p.name }}
-                            {{ if eq ($p.name) "KubeStash" }}
-                            <span class="whats-new is-relative is-block" style="right: -2px; top: -12px;">New</span>
-                            {{ end }}
-                          </h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                            
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        {{ $showAllFeatures := "false" }}
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li>
+                            <span class="icon">
+                              <img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"  loading="lazy">
+                            </span>
+                            <span> {{ $item.title }}</span>
+                          </li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
 
                       {{ range $item := $.Site.Data.config.productMenu.c1 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}" loading="lazy">
                         </div>
-                        <div class="product-info">
-                          <h6>{{ $p.name }}</h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                             
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li>
+                            <span class="icon">
+                              <img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"  loading="lazy">
+                            </span>
+                            <span>{{ $item.title }}</span>
+                            </li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
+                      <!-- product description end -->
 
                       {{ range $item := $.Site.Data.config.productMenu.c2 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}" loading="lazy">
                         </div>
-                        <div class="product-info">
-                          <h6>{{ $p.name }}</h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                            
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
+
+                        <p>{{ $p.summary | safeHTML }}</p>
+
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li>
+                            <span class="icon">
+                              <img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"  loading="lazy">
+                            </span>
+                            <span>{{ $item.title }}</span>
+                          </li>
+                          {{ end }}
+                          {{ end }}
+                        </ul>
+                      </div>
+                      <!-- single product description end  -->
                       {{ end }}
+                      <!-- product description end -->
 
                       {{ range $item := $.Site.Data.config.productMenu.c3 }}
                       {{ $p := (index $.Site.Data.products $item) }}
-                      <!-- single product start  -->
-                      <a class="single-product"
-                        href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}">
-                        <div class="product-logo">
-                          <img src="{{ $p.icon.src }}" alt="{{ $p.icon.alt }}">
+                      <!-- single product description start  -->
+                      <div class="product-description">
+                        <div class="brand">
+                          <img src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}" loading="lazy">
                         </div>
-                        <div class="product-info">
-                          <h6>{{ $p.name }}</h6>
-                          <p>{{ $p.tagline | plainify }}</p>
-                        </div>
-                        <div class="navigate-icon">
-                          <span class="icon arrow-forward">
-                            <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>                            
-                          </span>
-                        </div>
-                      </a>
-                      <!-- single product end -->
-                      {{ end }}
-                    </div>
-                    <!-- product end -->
 
-                    <!-- product description start  -->
-                    {{ range $item := $.Site.Data.config.productMenu.c0 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
+                        <p>{{ $p.summary | safeHTML }}</p>
 
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      {{ $showAllFeatures := "false" }}
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-
-                    {{ range $item := $.Site.Data.config.productMenu.c1 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-                    <!-- product description end -->
-
-
-                    {{ range $item := $.Site.Data.config.productMenu.c2 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-                    <!-- product description end -->
-
-                    {{ range $item := $.Site.Data.config.productMenu.c3 }}
-                    {{ $p := (index $.Site.Data.products $item) }}
-                    <!-- single product description start  -->
-                    <div class="product-description">
-                      <div class="brand">
-                        <img loading="lazy" src="{{ $p.logo.src }}" alt="{{ $p.logo.alt }}">
-                      </div>
-
-
-                      <p>{{ $p.summary | safeHTML }}</p>
-
-                      <ul class="features">
-                        {{ range $index, $item := $p.features }}
-                        {{ if lt $index 8 }}
-                        <li><span class="icon"><img loading="lazy" src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span></span><span>{{ $item.title }}</span></li>
-                        {{ end }}
-                        {{ end }}
-                      </ul>
-                      <!-- <a href="{{ index $.Site.Params $p.website.domainKey}}{{ $p.website.path }}"
-                    class="button ac-button inline-button">Learn More <span
-                      class="material-icons">arrow_forward</span></a> -->
-                    </div>
-                    <!-- single product description end  -->
-                    {{ end }}
-                    <!-- product description end -->
-                  </div>
-                </div>
-                <script type="text/javascript">
-                  const productDescriptions = document.querySelectorAll(".product-description");
-                  const products = document.querySelectorAll(".single-product");
-
-                  productDescriptions[0].classList.add("is-block");
-                  products[0].classList.add('is-active');
-
-                  products.forEach((product, index) => {
-                    product.addEventListener("mouseover", function () {
-                      const currentActiveProduct = document.querySelector(".product-description.is-block");
-                      const currentActiveItem = document.querySelector(".single-product.is-active");
-
-                      currentActiveProduct.classList.remove("is-block");
-                      currentActiveItem.classList.remove('is-active');
-
-                      productDescriptions[index].classList.add("is-block");
-                      products[index].classList.add("is-active");
-                    });
-                  });
-                </script>
-
-              </li>
-
-              <li class="nav-item">
-                <button class="link">Resources <i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                <div class="mega-menu-wrapper">
-                  <!-- ac-grid-container -->
-                  <div class="mega-menu-inner container">
-                    <button class="button ac-button inline-button back-button">
-                      <span class="icon">
-                        <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
-                      </span>
-                      <span>Back to Resources</span></button>
-                    <!-- list menu items start  -->
-                    <div class="resources-list">
-                      <!-- single resources list  -->
-                      <div class="list-items">
-                        <h6>RESOURCES</h6>
-                        <ul>
-                          <!-- <li><a href="#" target="_blank">Forum</a></li> -->
-                          <li><a href="{{.Site.Params.blog_url}}" class="is-flex is-gap-4">
-                            <span>Blog</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
+                        <ul class="features">
+                          {{ range $index, $item := $p.features }}
+                          {{ if lt $index 8 }}
+                          <li>
+                            <span class="icon">
+                              <img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box"  loading="lazy">
                             </span>
-                          </a></li>
-                          <li><a href="{{.Site.Params.docs_url}}" class="is-flex is-gap-4">
-                            <span>Docs</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <li><a
-                              href="https://www.youtube.com/watch?v=4lkBt5UUEAQ&list=PLoiT1Gv2KR1hAtDDW7fHEi-s2y2H3DOgx"
-                              target="_blank" class="is-flex is-gap-4">
-                              <span>Webinars</span>
-                              <span class="is-flex is-align-items-center">
-                                <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                              </span>
-                            </a></li>
-                          <li><a href="{{.Site.Params.learn_url}}" class="is-flex is-gap-4">
-                            <span>Learn</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <li><a href="{{.Site.Params.youtube_url}}" target="_blank" class="is-flex is-gap-4">
-                            <span>Demos</span>
-                            <span class="is-flex is-align-items-center">
-                              <iconify-icon icon="heroicons:arrow-up-right" width="14" height="14"></iconify-icon>
-                            </span>
-                          </a></li>
-                          <!-- <li><a
-                              href="https://www.youtube.com/watch?v=xSq0OdlVLRI&list=PLoiT1Gv2KR1gE-WK7dIQ5bsJ_RAVZnzP8"
-                              target="_blank">Tutorials</a></li> -->
-                          <!-- <li><a href="#" target="_blank">Community</a></li> -->
+                            <span>{{ $item.title }}</span>
+                          </li>
+                          {{ end }}
+                          {{ end }}
                         </ul>
                       </div>
-                      <!-- single resources list  -->
+                      <!-- single product description end  -->
+                      {{ end }}
+                      <!-- product description end -->
                     </div>
-                    <!-- list menu items end -->
                   </div>
-                </div>
-              </li>
-              
-              <li class="nav-item">
-                <a href="https://appscode.com/webinar" target="_blank" class="link">Webinar <span
-                    class="whats-new">New</span></a>
-              </li>
-            </ul>
-            <!-- navbar items end -->
-            <!-- if webinar exist script  -->
-            <script type="text/javascript">
-              (function () {
-                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-                xhr.onreadystatechange = function () {
-                  if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                      var result = JSON.parse(xhr.responseText);
-                      if (result.schedules) {
-                        let endDate = new Date(result.schedules[0]).getTime();
-                        let startDate = new Date().getTime();
-                        let timeRemaining = parseInt((endDate - startDate) / 1000);
-                        if (timeRemaining >= 0) {
-                          document.querySelector('.whats-new').classList.add('is-block')
+                  <script type="text/javascript">
+                    const productDescriptions = document.querySelectorAll(".product-description");
+                    const products = document.querySelectorAll(".single-product");
+
+                    if (productDescriptions.length > 0 && products.length > 0) {
+                      const setActiveProduct = (index) => {
+                        const currentActiveProduct = document.querySelector(".product-description.is-block");
+                        const currentActiveItem = document.querySelector(".single-product.is-active");
+
+                        if (currentActiveProduct) {
+                          currentActiveProduct.classList.remove("is-block");
                         }
-                      }
+                        if (currentActiveItem) {
+                          currentActiveItem.classList.remove("is-active");
+                        }
+
+                        if (productDescriptions[index]) {
+                          productDescriptions[index].classList.add("is-block");
+                        }
+                        if (products[index]) {
+                          products[index].classList.add("is-active");
+                        }
+                      };
+
+                      setActiveProduct(0);
+
+                      products.forEach((product, index) => {
+                        product.addEventListener("mouseover", function () {
+                          setActiveProduct(index);
+                        });
+
+                        product.addEventListener("focusin", function () {
+                          setActiveProduct(index);
+                        });
+
+                        product.addEventListener("click", function () {
+                          setActiveProduct(index);
+                        });
+                      });
                     }
-                  }
-                } //
-                console.error('GET', 'https://license-issuer.appscode.com/_/webinars/');
-                xhr.open('GET', 'https://license-issuer.appscode.com/_/webinars/');
-                xhr.send();
-              }());
-            </script>
-            <!-- navbar items start -->
-            </div>
-            <div class="navbar-right-group">
-              <ul>
-                <li class="nav-item">
-                  <a href="https://appscode.com/partner/" class="link">Partner</a>
+                  </script>
+                </li>
+
+                <!-- services start -->
+                <li class="nav-item services-menu">
+                  <button class="link" type="button">
+                    Services <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </button>
+
+                  <div class="mega-menu-wrapper">
+                    <div class="mega-menu-inner container">
+
+                      <!-- Services Grid -->
+                      <div class="product-menu services-grid" id="servicesGrid">
+                        {{ range $index, $service := site.Data.services.services_menu.servicesMenu }}
+                          <div class="single-product {{ if eq $index 0 }} is-active {{ end }}" data-service-id="{{ $service.title | urlize }}">
+                            <div class="product-logo">
+                              <iconify-icon {{ printf "icon=%s" $service.lucide_icon | safeHTMLAttr }} width="24" height="24"></iconify-icon>
+                            </div>
+                            <div class="product-info">
+                              <h2>{{ $service.title }}</h2>
+                              <p>{{ $service.description }}</p>
+                            </div>
+                          </div>
+                        {{ end }}
+                      </div>
+
+                      <!-- Offerings Description Area -->
+                      <div class="product-description-container offering-description-container">
+                        {{ range $index, $service := site.Data.services.services_menu.servicesMenu }}
+                          <div class="product-description offering-content {{ if eq $index 0 }}is-block{{ end }}" id="offerings-{{ $service.title | urlize }}" style="border-left: none;padding-left: 0;">
+                            {{ range $offering := $service.offerings }}
+                              <a href="{{$.Site.Params.domain_appscode}}/services/{{ $offering.id }}" class="single-product">
+                                <div class="product-info">
+                                  <h2 class="is-flex is-align-items-center gap-8">{{ $offering.title }} <span class="arrow-right icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg>
+                                  </span></h2>
+                                  <p>{{ $offering.description }}</p>
+                                </div>
+                              </a>
+                            {{ end }}
+                          </div>
+                        {{ end }}
+                      </div>
+
+                    </div>
+                  </div>
+                </li>
+
+               <script>
+                  document.querySelectorAll('#servicesGrid .single-product').forEach(item => {
+                    const activateService = function() {
+                      const serviceId = this.getAttribute('data-service-id');
+                      if (!serviceId) return;
+
+                      document.querySelectorAll('#servicesGrid .single-product').forEach(el => {
+                        el.classList.remove('is-active');
+                      });
+                      this.classList.add('is-active');
+
+                      document.querySelectorAll('.offering-content').forEach(el => {
+                        el.classList.remove('is-block');
+                      });
+                      const panel = document.getElementById('offerings-' + serviceId);
+                      if (panel) panel.classList.add('is-block');
+                    };
+
+                    item.addEventListener('mouseenter', activateService);
+                    item.addEventListener('focusin', activateService);
+                    item.addEventListener('click', activateService);
+                  });
+                </script>
+                <!-- services end -->
+
+                <li class="nav-item resources-menu">
+                  <button class="link">Resources <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                  <div class="mega-menu-wrapper">
+                    <div class="mega-menu-inner">
+                      <ul class="resources-card-list">
+                        <li>
+                          <a href="{{.Site.Params.blog_url}}" class="resource-card-item">
+                            <span class="resource-icon">
+                              <iconify-icon icon="heroicons:pencil-square" width="20" height="20"></iconify-icon>
+                            </span>
+                            <span class="resource-text">
+                              <span class="resource-title">Blog</span>
+                              <span class="resource-desc">Articles, tutorials &amp; insights</span>
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="{{.Site.Params.docs_url}}" class="resource-card-item">
+                            <span class="resource-icon">
+                              <iconify-icon icon="heroicons:book-open" width="20" height="20"></iconify-icon>
+                            </span>
+                            <span class="resource-text">
+                              <span class="resource-title">Docs</span>
+                              <span class="resource-desc">Guides, references &amp; API docs</span>
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.youtube.com/watch?v=4lkBt5UUEAQ&list=PLoiT1Gv2KR1hAtDDW7fHEi-s2y2H3DOgx" target="_blank" class="resource-card-item">
+                            <span class="resource-icon">
+                              <iconify-icon icon="heroicons:video-camera" width="20" height="20"></iconify-icon>
+                            </span>
+                            <span class="resource-text">
+                              <span class="resource-title">Webinars</span>
+                              <span class="resource-desc">Live &amp; on-demand sessions</span>
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="{{.Site.Params.learn_url}}" class="resource-card-item">
+                            <span class="resource-icon">
+                              <iconify-icon icon="heroicons:academic-cap" width="20" height="20"></iconify-icon>
+                            </span>
+                            <span class="resource-text">
+                              <span class="resource-title">Learn</span>
+                              <span class="resource-desc">Hands-on learning paths</span>
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="{{.Site.Params.youtube_url}}" target="_blank" class="resource-card-item">
+                            <span class="resource-icon">
+                              <iconify-icon icon="heroicons:play-circle" width="20" height="20"></iconify-icon>
+                            </span>
+                            <span class="resource-text">
+                              <span class="resource-title">Videos</span>
+                              <span class="resource-desc">Tutorials, demos &amp; walkthroughs</span>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <a href="https://appscode.freshdesk.com" class="link">Support</a>
+                  <a href="https://appscode.com/partner/partner/" class="link">Partner</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://support.appscode.com" class="link">Support</a>
                 </li>
               </ul>
               <!-- navbar items end -->
-
-              {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
               <div class="buttons">
-                <iframe src="https://appscode.com/embed/?color={{ .Site.Params.primary_color }}" frameborder="0" scrolling="no" style="height: 40px; margin-bottom: 8px; width: 185px;  overflow: hidden;" title="Console"></iframe>
-                <!-- <a id="ac-sign-in-button" href="https://accounts.appscode.com/user/login"
-                class="button ac-button is-loading {{ if eq $currentPageType "docs" }} is-hidden {{ end }}"><span>SIGN IN</span></a> -->
+                <iframe src="https://appscode.com/embed/?color={{ .Site.Params.primary_color }}" frameborder="0" scrolling="no" class="embeded-console-button" title="embeded-console-button"></iframe>
                 <a href="{{ $.Site.Params.domain_appscode }}/contact/"
-                  class="button ac-button is-primary {{ if eq $currentPageType "docs" }} is-outlined {{ end }}">
-                  <span class="icon"><iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon></span>
-                  <span>CONTACT SALES</span>
-                </a>
-              </div>
-
-            </div>
-          
-          </div>
-        </div>
-      </div>
-      <!-- appscode navbar end -->
-    </div>
-    {{ block "header-bottom" . }}
-    {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-    {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
-    <div class="navbar-appscode-wrapper navbar-product {{ if eq $currentPageType "docs" }} is-docs-page {{ end }}">
-      <!-- product navbar start  -->
-      <div class="navbar-appscode{{ if eq $currentPageType "docs" }} bb-1 {{ else }}
-        container{{ end }}">
-        <!-- navbar left start  -->
-        <div class="navbar-left">
-          <div class="navbar-brand">
-            <a href="{{ index $.Site.Params $p.website.domainKey }}{{ $p.website.path }}"><img src="{{ $p.logo.src }}"
-                alt="{{ $p.logo.alt }}" alt="{{ $p.logo.alt }}"></a>
-
-            <!-- {{ $currentPageType := index (split .Page.Permalink "/") 3 }} -->
-            {{ if eq $currentPageType "docs" }}
-            <!-- version select start  -->
-            {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
-            {{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
-            <div class="product-version ml-8">
-              <div class="dropdown">
-                <div class="dropdown-trigger">
-                  <button class="button is-justify-content-space-between" aria-haspopup="true"
-                    aria-controls="dropdown-menu3">
-
-
-                    {{ range $v := $p.versions }}
-                    {{ if $v.show }}
-                    {{ if and $v.hostDocs (eq $v.version $currentBranch) }}
-                    <span>{{ $v.version }}</span>
-                    {{ if eq $v.version $p.latestVersion }}
-                    <span class="new-item">Latest</span>
-                    {{ end }}
-                    {{ end }}
-                    {{ end }}
-                    {{ end }}
-                    <span class="arrow">
-                      <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                  <div class="dropdown-content">
-                    {{ range $v := $p.versions }}
-                    {{ if $v.show }}
-                    {{ if $v.hostDocs }}
-                    <a href="/docs/{{ $v.version }}/" class="dropdown-item">{{ $v.version }}
-                      {{ if eq $v.version $p.latestVersion }} <div class="new-item ml-15">Latest</div> {{ end }}</a>
-                    {{ else }}
-                    <a href="https://github.com/{{ $p.docRepo }}/tree/{{ $v.version }}/docs" target="_blank"
-                      class="dropdown-item">{{ $v.version }}</a>
-                    {{ end }}
-                    {{ end }}
-                    {{ end }}
-                  </div>
-                </div>
+                class="button ac-button is-primary {{ if eq $currentPageType "docs" }} is-hidden {{ end }}">
+                <span class="icon">
+                  <iconify-icon icon="heroicons:chat-bubble-bottom-center" width="18" height="18"></iconify-icon>
+                </span>
+                <span>CONTACT SALES</span>
+              </a>
               </div>
             </div>
-            <!-- version select end -->
-            {{ end }}
 
-            <a role="button" class="navbar-burger width-65 font-size-14 has-text-weight-bold pl-6 pr-6"
-              aria-label="menu" aria-expanded="false">
-              MENU <i class="fa fa-angle-down pl-5"></i>
-            </a>
+            </div>
+            {{ $currentPageType := cond (hasPrefix .Page.RelPermalink "/docs/") "docs" "products" }}
+
           </div>
         </div>
-        <!-- navbar left end -->
-        <!-- navbar right start  -->
-        <div class="navbar-right">
-          <ul>
-
-            {{ $addons := "" }}
-            {{ range .Site.Menus.main }}
-              {{ if eq .Name "Addons" }}
-                {{ $addons = . }}
-              {{ end }}
-            {{ if .HasChildren }}
-            <li class="nav-item">
-              <button href="#" class="link">{{ .Name }} <i class="fa fa-angle-down"></i></button>
-
-              <!-- mega-menu wrapper -->
-              <div class="mega-menu-wrapper">
-
-                <!-- ac-grid-container -->
-                <div class="mega-menu-inner container">
-                  <button class="button ac-button inline-button back-button">
-                    <span class="icon arrow-back">
-                      <iconify-icon icon="heroicons:arrow-uturn-left"></iconify-icon>
-                    </span>
-                    <span>Back</span>
-                  </button>
-                  <!-- product start  -->
-                  <div class="product-menu database-list">
-                    {{ range .Children }}
-                    {{ if eq .Parent $.Site.Params.main_menu_dropdown_item }}
-                    <!-- single product start  -->
-                
-                    <a href="{{ if eq $.Site.Params.product_key "kubevault" }}/features/{{ .Identifier }}{{ else if $addons }}{{ .PageRef }}{{ else }}/kubernetes/databases/run-and-manage-{{ .Identifier }}-on-kubernetes{{ end }}" class="single-product">
-                      {{ if .Pre }}
-                      <div class="product-logo">
-                        <img src="{{ .Pre }}" alt="{{ .Name }}" >
-                      </div>
-                      {{ end }}
-                      <div class="product-info">
-                        <h6>{{ .Name }}</h6>
-                        <!-- <p>static content</p> -->
-                      </div>
-                      <div class="navigate-icon">
-                        <span class="icon arrow-forward">
-                          <iconify-icon icon="heroicons:arrow-up-right" width="1.2rem" height="1.2rem"></iconify-icon>
-                        </span>
-                      </div>
-                    </a>
-                    <!-- single product end -->
-                    {{ else }}
-                    <a href="{{.URL}}" class="single-database">{{ .Name }}</a>
-                    {{ end }}
-                    {{ end }}
-
-                  </div>
-                  <!-- product end -->
-
-                  <!-- product description start  -->
-
-                  <!-- single product description start  -->
-                  <div class="product-description is-block">
-                    <div class="video-content">
-                      <div class="yt-thumbnail">
-                        <a href="https://www.youtube.com/watch?v=hBHxMtSjKo4" class="play-icon yt-video">
-                          <iconify-icon icon="heroicons:play-circle"  style="color: white" width="48" height="48"></iconify-icon>
-                        </a>
-                        <img loading="lazy" src="https://img.youtube.com/vi/hBHxMtSjKo4/sddefault.jpg"
-                          alt="kubedb-youtube-intro">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- single product description end  -->
-
-                  <!-- product description end -->
-                </div>
-              </div>
-              <!-- mega-menu wrapper -->
-            </li>
-            {{else}}
-            {{ if eq .Name "Documentation" }}
-            <li class="nav-item">
-              <a href="/docs/{{ $p.latestVersion }}/welcome/" class="link">{{ .Name }}</a>
-            </li>
-            {{ else }}
-            <li class="nav-item is-relative">
-              <a href="{{.URL}}" class="link">{{ .Name }}</a>
-            </li>
-            {{ end }}
-            {{ end }}
-            {{end}}
-          </ul>
-
-          <!-- Community link start  -->
-          <div class="community-items ml-70">
-            {{ if $p.socialLinks.github }}
-            <a href="{{$p.socialLinks.github}}" class="community-item" target="_blank" title="Github">
-              <img loading="auto" src="/assets/images/icon/community/github-icon.svg" alt="github-icon">
-            </a>
-            {{ end }}
-            {{ if $p.socialLinks.twitter }}
-            <a href="{{$p.socialLinks.twitter}}" class="community-item" target="_blank" title="X(Twitter)">
-              <img loading="auto" src="/assets/images/icon/community/twitterx-icon.svg" alt="twitterx-icon">
-            </a>
-            {{ end }}
-          </div>
-          <!-- Community link end -->
-          <!-- action button start  -->
-          {{ $currentPageType := index (split .Page.Permalink "/") 3 }}
-          {{ if eq $currentPageType "docs" }}
-          <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary ml-8 height-40">TRY NOW
-            FREE</a>
-          {{ end }}
-          <!-- action button end -->
-
-        </div>
-        <!-- navbar right end -->
+        <!-- appscode navbar end -->
       </div>
-      <!-- product navbar end -->
-      <!-- docs navbar start  -->
-      {{ block "documentation-menu" . }}
-      {{ end }}
-      <!-- docs navbar end -->
 
-    </div>
-    {{ end }}
+      <!-- navbar product end -->
 
-    <script type="text/javascript">
-      const navbarRightAll = document.querySelectorAll(".navbar-right");
-      const navbarBurgerAll = document.querySelectorAll(".navbar-burger");
+      <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+          const navbarBurgerAll = document.querySelectorAll(".navbar-burger");
 
-      // Create event listeners for each navbar-burger button
-      Array.from(navbarBurgerAll).forEach((el, idx) => {
-        el.addEventListener("click", function () {
+          const closeAllNavPanels = () => {
+            document.querySelectorAll(".navbar-appscode .navbar-right.is-visible").forEach((panel) => {
+              panel.classList.remove("is-visible");
+            });
+            navbarBurgerAll.forEach((burger) => {
+              burger.classList.remove("is-active");
+              burger.setAttribute("aria-expanded", "false");
+            });
+            document.body.classList.remove("mobile-nav-open");
+          };
 
-          // Remove visible class from previous selected navbar right
-          Array.from(navbarRightAll).forEach((rightEl, rightElIdx) => {
-            if (idx !== rightElIdx && navbarRightAll[rightElIdx].classList.contains("is-visible")) {
-              navbarRightAll[rightElIdx].classList.remove("is-visible");
-              navbarBurgerAll[rightElIdx].classList.remove("is-active");
+          navbarBurgerAll.forEach((burger) => {
+            burger.addEventListener("click", function () {
+              const navbarAppscode = burger.closest(".navbar-appscode");
+              if (!navbarAppscode) return;
+
+              const navPanel = navbarAppscode.querySelector(".navbar-right");
+              if (!navPanel) return;
+
+              const willOpen = !navPanel.classList.contains("is-visible");
+
+              closeAllNavPanels();
+
+              if (willOpen) {
+                navPanel.classList.add("is-visible");
+                burger.classList.add("is-active");
+                burger.setAttribute("aria-expanded", "true");
+                document.body.classList.add("mobile-nav-open");
+              }
+
+              const modalBackdropElement = document.querySelector(".modal-backdrop.is-show");
+              if (modalBackdropElement) {
+                modalBackdropElement.classList.remove("is-show");
+              }
+
+              document.querySelectorAll(".navbar-appscode .nav-item.is-active").forEach((item) => {
+                item.classList.remove("is-active");
+              });
+            });
+          });
+
+          window.addEventListener("resize", function () {
+            if (window.innerWidth > 1023) {
+              closeAllNavPanels();
             }
           });
 
-          const modalBackdropElement = document.querySelector(".modal-backdrop");
-
-          // if modal backdrop element is visible then hide it
-          if (modalBackdropElement && modalBackdropElement.classList.contains("is-show")) {
-            modalBackdropElement.classList.remove("is-show")
-          }
-
-          // if any nav element is visible then hide it
-          const activeNavItem = document.querySelector(".nav-item.is-active");
-          if (activeNavItem && activeNavItem.classList.contains("is-active")) {
-            activeNavItem.classList.remove("is-active");
-          }
-
-          navbarRightAll[idx].classList.toggle("is-visible");
+          document.addEventListener("click", function (event) {
+            if (window.innerWidth > 1023) return;
+            // exclude clicks inside any navbar-appscode OR its wrapper
+            // (responsive-menu buttons live in the wrapper but outside .navbar-appscode)
+            if (event.target.closest(".navbar-appscode-wrapper")) return;
+            closeAllNavPanels();
+          });
         });
-      })
-    </script>
-  </div>
+      </script>
+    </div>
   <!-- new navbar area end -->
   {{ end }}
+
+
+  <!-- navabar product start  -->
+  {{ block "header-bottom" . }}
+  {{ $productName := default $.Site.Params.product_key .Params.product_name }}
+  {{ if $productName }}
+  {{ $p := (index $.Site.Data.products $productName) }}
+  <div class="navbar-appscode-wrapper navbar-product">
+    <!-- product navbar start  -->
+    {{ $currentPageType := cond (hasPrefix .Page.RelPermalink "/docs/") "docs" "products" }}
+    <div class="navbar-appscode{{ if eq $currentPageType "docs" }} bb-1 {{ else }} container{{ end }}">
+
+      <!-- navbar left start  -->
+      <div class="navbar-left">
+        <div class="navbar-brand">
+          <a href="{{ index $.Site.Params $p.website.domainKey }}{{ $p.website.path }}"><img src="{{ $p.logo.src }}"
+              alt="{{ $p.logo.alt }}" alt="{{ $p.logo.alt }}" loading="eager" height="30" width="auto"></a>
+
+          {{ if eq $currentPageType "docs" }}
+          <!-- version select start  -->
+          {{ $currentBranch := (index (split .Params.menu_name "_") 1) }}
+
+          <div class="product-version ml-20">
+            <div class="dropdown">
+              <div class="dropdown-trigger">
+                <button class="button is-justify-content-space-between" aria-haspopup="true"
+                  aria-controls="dropdown-menu3">
+
+                  {{ range $v := $p.versions }}
+                  {{ if $v.show }}
+                  {{ if and $v.hostDocs (eq $v.version $currentBranch) }}
+                  <span>{{ $v.version }}</span>
+                  {{ if eq $v.version $p.latestVersion }}
+                  <span class="new-item">Latest</span>
+                  {{ end }}
+                  {{ end }}
+                  {{ end }}
+                  {{ end }}
+                  <span class="arrow">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                <div class="dropdown-content">
+                  {{ range $v := $p.versions }}
+                  {{ if $v.show }}
+                  {{ if $v.hostDocs }}
+                  <a href="/products/{{$p.key}}/{{ $v.version }}/" class="dropdown-item">{{ $v.version }}
+                    {{ if eq $v.version $p.latestVersion }} <div class="new-item ml-15">Latest</div> {{ end }}</a>
+                  {{ else }}
+                  <a href="https://github.com/{{ $p.docRepo }}/tree/{{ $v.version }}/docs" target="_blank"
+                    class="dropdown-item">{{ $v.version }}</a>
+                  {{ end }}
+                  {{ end }}
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- version select end -->
+          {{ end }}
+
+          <a role="button" class="navbar-burger width-65 font-size-14 has-text-weight-bold pl-6 pr-6"
+            aria-label="menu" aria-expanded="false">
+            MENU <i class="fa fa-angle-down pl-5"></i>
+          </a>
+        </div>
+      </div>
+      <!-- navbar left end -->
+      <!-- navbar right start  -->
+      <div class="navbar-right">
+        <ul>
+          {{ range (index .Site.Menus (printf "product_%s" $productName)) }}
+          {{ if .HasChildren }}
+          {{ $menuItemName := .Name }}
+          <li class="nav-item addons-menu">
+            <button href="#" class="link">{{ .Name }} <i class="fa fa-angle-down"></i></button>
+
+            <!-- mega-menu wrapper -->
+            <div class="mega-menu-wrapper">
+              <div class="mega-menu-inner">
+                <div class="addons-header">
+                  <span>{{ $menuItemName }}</span>
+                </div>
+                <div class="addons-grid">
+                  {{ range .Children }}
+                  <a href="{{ .PageRef }}" class="addon-card">
+                    {{ if .Pre }}
+                    <div class="addon-icon">
+                      <img src="{{ .Pre }}" alt="{{ .Name }}" loading="lazy">
+                    </div>
+                    {{ end }}
+                    <span class="addon-name">{{ .Name }}</span>
+                  </a>
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+            <!-- mega-menu wrapper -->
+          </li>
+          {{else}}
+          {{ if eq .Name "Documentation" }}
+          <li class="nav-item">
+            <a href="/products/{{ $productName }}/{{ $p.latestVersion }}/welcome/" class="link">{{ .Name }}</a>
+          </li>
+          {{ else }}
+          <li class="nav-item">
+            <a href="{{.URL}}" class="link">{{ .Name }}</a>
+          </li>
+          {{ end }}
+          {{ end }}
+          {{end}}
+        </ul>
+
+        <!-- Community link start  -->
+        <div class="community-items ml-70">
+          {{ if $p.socialLinks.github }}
+          <a href="{{$p.socialLinks.github}}" class="community-item" target="_blank">
+            <img src="/assets/images/icon/community/github-icon.svg" alt="github-icon">
+          </a>
+          {{ end }}
+          {{ if $p.socialLinks.twitter }}
+          <a href="{{$p.socialLinks.twitter}}" class="community-item" target="_blank">
+            <img src="/assets/images/icon/community/twitterx-icon.svg" alt="twitter-icon">
+          </a>
+          {{ end }}
+        </div>
+        <!-- Community link end -->
+        <!-- action button start  -->
+        {{ $currentPageType := cond (hasPrefix .Page.RelPermalink "/docs/") "docs" "products" }}
+        {{ if eq $currentPageType "docs" }}
+        <a href="/docs/{{ $p.latestVersion }}/setup/" class="button ac-button is-primary ml-8 height-40">TRY NOW
+          FREE</a>
+        {{ end }}
+        <!-- action button end -->
+
+      </div>
+      <!-- navbar right end -->
+    </div>
+    <!-- product navbar end -->
+
+     <!-- docs navbar start  -->
+     {{ block "documentation-menu" . }}
+     {{ end }}
+     <!-- docs navbar end -->
+
+  </div>
+ {{ end }}
+ {{ end }}
+
+
+
+  <!-- navabar product end  -->
+</div>
 
 </header>
 {{ end }}
