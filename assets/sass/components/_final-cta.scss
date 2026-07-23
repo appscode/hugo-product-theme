@@ -130,14 +130,6 @@ section.ac-final-cta {
     align-items: stretch;
   }
 
-  .button.ac-button {
-    height: 60px;
-    font-size: var(--ac-text-lg);
-
-    &.is-white { padding: 0 2.5rem; }
-    &.is-ghost { padding: 0 2rem; }
-  }
-
   // Primary button text/icon is literal black on the white button, not the
   // brand-purple that .is-white uses elsewhere on the site.
   .button.ac-button.is-white {
