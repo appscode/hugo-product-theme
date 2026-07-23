@@ -681,7 +681,7 @@ Responsive Classes
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 48px;
+  padding: 0;
   min-height: 280px;
 
   .fl-section--reversed & {
@@ -727,7 +727,6 @@ Responsive Classes
     border-left: none;
     border-top: 1px solid var(--ac-border);
     min-height: 200px;
-    padding: 28px;
 
     .fl-section--reversed & {
       border-right: none;
