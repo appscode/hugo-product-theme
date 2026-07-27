@@ -25,12 +25,12 @@ body {
   }
 
   &.kubevault {
-    --primary-h:      199;
-    --primary-s:      89%;
-    --primary-l:      48%;
+    --primary-h:      220;
+    --primary-s:      77%;
+    --primary-l:      55%;
     --secondary-h:    199;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #0EA5E9;
+    --ac-brand-solid: #326CE5;
   }
 
   &.voyager {
