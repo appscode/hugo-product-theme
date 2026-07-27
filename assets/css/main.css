@@ -22334,7 +22334,7 @@ iframe#notification {
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu {
     grid-template-columns: auto;
-    width: calc(50% - 5rem);
+    width: 100%;
   }
   .mega-menu-wrapper .mega-menu-inner .product-description {
     border-left: none;
@@ -22369,7 +22369,7 @@ iframe#notification {
   }
   .mega-menu-wrapper .mega-menu-inner .product-menu {
     grid-template-columns: auto;
-    width: calc(50% - 5rem);
+    width: 100%;
   }
   .mega-menu-wrapper .mega-menu-inner .product-description {
     border-left: none;
