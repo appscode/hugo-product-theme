@@ -10319,17 +10319,17 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   --ac-indigo-800: #312e81;
   --ac-indigo-900: #1e1b4b;
   --ac-indigo-950: #12103a;
-  --ac-sky-50: #f0f9ff;
-  --ac-sky-100: #e0f2fe;
-  --ac-sky-200: #bae6fd;
-  --ac-sky-300: #7dd3fc;
-  --ac-sky-400: #38bdf8;
-  --ac-sky-500: #0EA5E9;
-  --ac-sky-600: #0284c7;
-  --ac-sky-700: #0369a1;
-  --ac-sky-800: #075985;
-  --ac-sky-900: #0c4a6e;
-  --ac-sky-950: #082f49;
+  --ac-sky-50: #f3f6fd;
+  --ac-sky-100: #e3ebfb;
+  --ac-sky-200: #cedcf9;
+  --ac-sky-300: #8cadf0;
+  --ac-sky-400: #5988ea;
+  --ac-sky-500: #326CE5;
+  --ac-sky-600: #1a55cf;
+  --ac-sky-700: #1544a7;
+  --ac-sky-800: #10337e;
+  --ac-sky-900: #0b2457;
+  --ac-sky-950: #061532;
   --ac-violet-50: #f5f3ff;
   --ac-violet-100: #ede9fe;
   --ac-violet-200: #ddd6fe;
@@ -10605,10 +10605,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   --ac-brand-active: var(--ac-sky-600);
   --ac-brand-subtle: var(--ac-sky-50);
   --ac-brand-border: var(--ac-sky-700);
-  --ac-brand-solid: #0EA5E9;
+  --ac-brand-solid: #326CE5;
   --ac-fg-on-brand: #ffffff;
-  --ac-shadow-focus-ring: 0 0 0 3px rgba(14,165,233,.35);
-  --ac-shadow-brand-glow: 0 0 0 3px rgba(14,165,233,.20);
+  --ac-shadow-focus-ring: 0 0 0 3px rgba(50,108,229,.35);
+  --ac-shadow-brand-glow: 0 0 0 3px rgba(50,108,229,.20);
 }
 
 [data-product=voyager] {
