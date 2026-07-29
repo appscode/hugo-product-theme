@@ -27988,7 +27988,7 @@ code:not(pre code) {
 .ac-install-snippet-title {
   font-size: 0.65rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.48);
   letter-spacing: 0.06em;
   font-family: var(--ac-font-mono);
   flex: 1;
@@ -28330,6 +28330,16 @@ code:not(pre code) {
     grid-template-columns: 1fr;
   }
 }
+@media (min-width: 1025px) {
+  .ac-cap-grid > *:last-child:nth-child(3n-2) {
+    grid-column: 2;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .ac-cap-grid > *:last-child:nth-child(2n-1) {
+    grid-column: 1/-1;
+  }
+}
 
 .ac-cap-card {
   background: var(--ac-surface);
@@ -28398,10 +28408,6 @@ code:not(pre code) {
   line-height: 1.65;
   color: var(--ac-fg-muted);
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .ac-testimonials {

@@ -49,7 +49,7 @@
 </script>
 {{ end }}
 
-<!-- Capability grid — 6 cards 3×2 -->
+<!-- Capability grid — shows first 6 by default; set homepage.capabilities.showAll: true to show every feature -->
 {{ if $p.features }}
 <section class="ac-section ac-capabilities" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
@@ -63,16 +63,20 @@
     </div>
     <div class="ac-cap-grid">
       {{ $tags := $caps.tags | default (slice "Core" "Recovery" "Security" "Storage" "Performance" "Deployment") }}
-      {{ range $i, $f := first 6 ($p.features | default slice) }}
+      {{ $capItems := $p.features | default slice }}
+      {{ if not $caps.showAll }}
+        {{ $capItems = first 6 $capItems }}
+      {{ end }}
+      {{ range $i, $f := $capItems }}
       <div class="ac-cap-card">
         <div class="ac-cap-card-top">
           <div class="ac-cap-icon">
             <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy">
           </div>
-          <span class="ac-cap-tag">{{ index $tags $i }}</span>
+          <span class="ac-cap-tag">{{ with $f.tag }}{{ . }}{{ else }}{{ index $tags (mod $i (len $tags)) }}{{ end }}</span>
         </div>
         <h3>{{ $f.title }}</h3>
-        <p>{{ $f.description }}</p>
+        <p class="ac-cap-desc">{{ $f.description }}</p>
       </div>
       {{ end }}
     </div>
