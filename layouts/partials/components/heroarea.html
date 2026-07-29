@@ -79,7 +79,7 @@
 
       <!-- Right: Helm install terminal -->
       <div class="column is-6 is-full-touch">
-        {{ $helmCmd := printf "helm install %s \\\n  oci://ghcr.io/appscode-charts/%s \\\n  --version %s \\\n  --namespace %s --create-namespace" $p.key $p.key $p.latestVersion $p.key }}
+        {{ $helmCmd := printf "helm install %s \\\n  oci://ghcr.io/appscode-charts/%s \\\n  --version %s \\\n  --namespace %s --create-namespace \\\n  --set-file global.license=/path/to/the/license.txt" $p.key $p.key $p.latestVersion $p.key }}
         <div class="ac-install-snippet" data-helm-cmd="{{ $helmCmd }}">
           <div class="ac-install-snippet-header">
             <span class="ac-install-snippet-dots"><i></i><i></i><i></i></span>
@@ -93,7 +93,8 @@
             <span class="t-cmd">$ helm install {{ $p.key }} \</span><br>
             &nbsp;&nbsp;<span class="t-val">oci://ghcr.io/appscode-charts/{{ $p.key }}</span> <span class="t-cmd">\</span><br>
             &nbsp;&nbsp;<span class="t-flag">--version</span> <span class="t-val">{{ $p.latestVersion }}</span> <span class="t-cmd">\</span><br>
-            &nbsp;&nbsp;<span class="t-flag">--namespace</span> <span class="t-val">{{ $p.key }}</span> <span class="t-flag">--create-namespace</span><br>
+            &nbsp;&nbsp;<span class="t-flag">--namespace</span> <span class="t-val">{{ $p.key }}</span> <span class="t-flag">--create-namespace</span> <span class="t-cmd">\</span><br>
+            &nbsp;&nbsp;<span class="t-flag">--set-file</span> <span class="t-val">global.license=/path/to/the/license.txt</span><br>
             <span class="t-ok">✓ {{ $p.name }} installed successfully</span>
           </div>
         </div>
