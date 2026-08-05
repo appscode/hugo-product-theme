@@ -672,6 +672,26 @@ Responsive Classes
     max-width: 420px;
     margin-bottom: 0;
   }
+
+  .fl-section-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 18px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ac-brand);
+    text-decoration: none;
+    width: fit-content;
+
+    iconify-icon {
+      transition: transform 0.15s ease;
+    }
+
+    &:hover iconify-icon {
+      transform: translateX(3px);
+    }
+  }
 }
 
 // Visual side
