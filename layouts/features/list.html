@@ -40,38 +40,39 @@
 </section>
 <!-- features hero end -->
 
-<!-- feature sections start -->
-<div class="fl-sections">
-  {{ range $idx, $f := $p.features }}
-  <section class="fl-section {{ if modBool $idx 2 }}fl-section--reversed{{ end }}">
-    <div class="container">
-      <div class="fl-section-inner">
-
-        <!-- text -->
-        <div class="fl-section-text">
-          <div class="fl-section-num">{{ printf "%02d" (add $idx 1) }}</div>
-          <h2>{{ $f.title }}</h2>
-          <p>{{ $f.description }}</p>
-          {{ if $f.url }}
-          <a href="/features/{{ $f.url }}" class="fl-section-more">
-            See More
-            <iconify-icon icon="heroicons:arrow-right" width="14" height="14"></iconify-icon>
-          </a>
-          {{ end }}
-        </div>
-
-        <!-- illustration -->
-        <div class="fl-section-visual">
-          <div class="fl-section-image-wrap">
-            <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" loading="lazy" />
+<!-- feature cards start -->
+<section class="ac-section ac-capabilities" data-product="{{ $p.key }}" data-theme="light">
+  <div class="container">
+    <div class="ac-cap-grid">
+      {{ range $f := $p.features }}
+      {{ if $f.url }}
+      <a href="/features/{{ $f.url }}" class="ac-cap-card" style="text-decoration:none;">
+      {{ else }}
+      <div class="ac-cap-card">
+      {{ end }}
+        <div class="ac-cap-card-top">
+          <div class="ac-cap-icon">
+            <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy">
           </div>
+          {{ if $f.tag }}<span class="ac-cap-tag">{{ $f.tag }}</span>{{ end }}
         </div>
-
+        <h3>{{ $f.title }}</h3>
+        <p>{{ $f.description }}</p>
+        {{ if $f.url }}
+        <span class="ac-cap-more" style="margin-top:auto;padding-top:var(--ac-space-2);display:inline-flex;align-items:center;gap:4px;font-size:0.8rem;font-weight:600;color:var(--ac-brand);">
+          Read More
+          <iconify-icon icon="heroicons:arrow-right" width="14" height="14"></iconify-icon>
+        </span>
+        {{ end }}
+      {{ if $f.url }}
+      </a>
+      {{ else }}
       </div>
+      {{ end }}
+      {{ end }}
     </div>
-  </section>
-  {{ end }}
-</div>
-<!-- feature sections end -->
+  </div>
+</section>
+<!-- feature cards end -->
 
 {{ end }}
