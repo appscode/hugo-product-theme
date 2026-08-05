@@ -52,6 +52,12 @@
           <div class="fl-section-num">{{ printf "%02d" (add $idx 1) }}</div>
           <h2>{{ $f.title }}</h2>
           <p>{{ $f.description }}</p>
+          {{ if $f.url }}
+          <a href="/features/{{ $f.url }}" class="fl-section-more">
+            See More
+            <iconify-icon icon="heroicons:arrow-right" width="14" height="14"></iconify-icon>
+          </a>
+          {{ end }}
         </div>
 
         <!-- illustration -->
