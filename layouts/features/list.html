@@ -1,6 +1,15 @@
 {{ define "main" }}
 
 {{ $p := (index .Site.Data.products .Site.Params.product_key) }}
+{{ $cardFeatures := slice }}
+{{ $listFeatures := slice }}
+{{ range $p.features }}
+  {{ if .url }}
+    {{ $cardFeatures = $cardFeatures | append . }}
+  {{ else }}
+    {{ $listFeatures = $listFeatures | append . }}
+  {{ end }}
+{{ end }}
 
 <!-- features hero start -->
 <section class="features-hero">
@@ -40,16 +49,13 @@
 </section>
 <!-- features hero end -->
 
-<!-- feature cards start -->
+{{ if $cardFeatures }}
+<!-- feature cards start: features with a child/detail page render as a small card with a "See more" link -->
 <section class="ac-section ac-capabilities" data-product="{{ $p.key }}" data-theme="light">
   <div class="container">
     <div class="ac-cap-grid">
-      {{ range $f := $p.features }}
-      {{ if $f.url }}
+      {{ range $f := $cardFeatures }}
       <a href="/features/{{ $f.url }}" class="ac-cap-card" style="text-decoration:none;">
-      {{ else }}
-      <div class="ac-cap-card">
-      {{ end }}
         <div class="ac-cap-card-top">
           <div class="ac-cap-icon">
             <img src="{{ $f.icon.src }}" alt="{{ $f.icon.alt }}" loading="lazy">
@@ -58,21 +64,44 @@
         </div>
         <h3>{{ $f.title }}</h3>
         <p>{{ $f.description }}</p>
-        {{ if $f.url }}
         <span class="ac-cap-more" style="margin-top:auto;padding-top:var(--ac-space-2);display:inline-flex;align-items:center;gap:4px;font-size:0.8rem;font-weight:600;color:var(--ac-brand);">
-          Read More
+          See More
           <iconify-icon icon="heroicons:arrow-right" width="14" height="14"></iconify-icon>
         </span>
-        {{ end }}
-      {{ if $f.url }}
       </a>
-      {{ else }}
-      </div>
-      {{ end }}
       {{ end }}
     </div>
   </div>
 </section>
 <!-- feature cards end -->
+{{ end }}
+
+{{ if $listFeatures }}
+<!-- feature sections start: features without a child/detail page render as a full-width alternating card -->
+<div class="fl-sections">
+  {{ range $idx, $f := $listFeatures }}
+  <section class="fl-section {{ if modBool $idx 2 }}fl-section--reversed{{ end }}">
+    <div class="container">
+      <div class="fl-section-inner">
+
+        <div class="fl-section-text">
+          <div class="fl-section-num">{{ printf "%02d" (add $idx 1) }}</div>
+          <h2>{{ $f.title }}</h2>
+          <p>{{ $f.description }}</p>
+        </div>
+
+        <div class="fl-section-visual">
+          <div class="fl-section-image-wrap">
+            <img src="{{ $f.image.src }}" alt="{{ $f.image.alt }}" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  {{ end }}
+</div>
+<!-- feature sections end -->
+{{ end }}
 
 {{ end }}
