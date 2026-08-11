@@ -4,7 +4,9 @@ $ac-font-heading:   Inter, "Segoe UI", system-ui, sans-serif;
 $ac-font-mono:      "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
 $ac-font-paragraph: $ac-font-sans; // legacy alias
 
-$ac-indigo-light: #9a66ef; // gradient heading endpoint (--ac-purple-400)
+// Gradient heading endpoint — follows the active product brand ramp so
+// .is-gradient headings stay on-brand. Falls back to KubeStash purple 400.
+$ac-indigo-light: var(--ac-brand-400, #9a66ef);
 
 
 // Semantic color SCSS vars — reference CSS custom properties at runtime
@@ -36,7 +38,7 @@ $ac-orange:  var(--ac-status-warning); // legacy alias
 $ac-yellow:  var(--ac-status-warning); // legacy alias
 $ac-red:     var(--ac-status-error);
 $ac-blue:    var(--ac-status-info);
-$ac-purple:  #6633BB; // fixed brand primitive
+$ac-purple:  #6633BB; // fixed KubeStash brand primitive (not product-aware)
 
 
 // Elevation vars (mirror of --ac-shadow-*)
