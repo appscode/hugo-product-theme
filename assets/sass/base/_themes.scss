@@ -16,12 +16,12 @@ body {
   }
 
   &.kubedb {
-    --primary-h:      243;
-    --primary-s:      75%;
-    --primary-l:      59%;
-    --secondary-h:    243;
+    --primary-h:      240;
+    --primary-s:      55%;
+    --primary-l:      55%;
+    --secondary-h:    240;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #4F46E5;
+    --ac-brand-solid: #4D4DCB;
   }
 
   &.kubevault {
@@ -34,21 +34,21 @@ body {
   }
 
   &.voyager {
-    --primary-h:      263;
-    --primary-s:      80%;
-    --primary-l:      57%;
-    --secondary-h:    263;
+    --primary-h:      242;
+    --primary-s:      48%;
+    --primary-l:      32%;
+    --secondary-h:    242;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #7C3AED;
+    --ac-brand-solid: #2D2A78;
   }
 
   &.stash {
     --primary-h:      256;
-    --primary-s:      55%;
-    --primary-l:      45%;
+    --primary-s:      82%;
+    --primary-l:      55%;
     --secondary-h:    256;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #6633BB;
+    --ac-brand-solid: #5E2DEA;
   }
 
   &.gateway {
@@ -62,12 +62,12 @@ body {
 
   &.kubesheild,
   &.kubeshield {
-    --primary-h:      331;
-    --primary-s:      73%;
+    --primary-h:      245;
+    --primary-s:      80%;
     --primary-l:      43%;
-    --secondary-h:    331;
+    --secondary-h:    245;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #C2185B;
+    --ac-brand-solid: #2516C7;
   }
 
   &.configsyncer {
@@ -79,75 +79,75 @@ body {
     --ac-brand-solid: #1C7BD4;
   }
 
-  &.service-broker {
-    --primary-h:      174;
-    --primary-s:      80%;
-    --primary-l:      40%;
-    --secondary-h:    174;
-    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #14B8A6;
-  }
-
   &.pharmer {
-    --primary-h:      272;
-    --primary-s:      81%;
-    --primary-l:      56%;
-    --secondary-h:    272;
+    --primary-h:      282;
+    --primary-s:      44%;
+    --primary-l:      47%;
+    --secondary-h:    282;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #9333EA;
+    --ac-brand-solid: #8E44AD;
   }
 
   &.kubeform {
-    --primary-h:      16;
-    --primary-s:      72%;
-    --primary-l:      34%;
-    --secondary-h:    16;
+    --primary-h:      10;
+    --primary-s:      59%;
+    --primary-l:      22%;
+    --secondary-h:    10;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #9A3412;
+    --ac-brand-solid: #592217;
   }
 
   &.kubeci {
-    --primary-h:      215;
-    --primary-s:      28%;
-    --primary-l:      27%;
-    --secondary-h:    215;
+    --primary-h:      210;
+    --primary-s:      29%;
+    --primary-l:      24%;
+    --secondary-h:    210;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #334155;
+    --ac-brand-solid: #2C3E50;
   }
 
   &.searchlight {
-    --primary-h:      213;
-    --primary-s:      51%;
-    --primary-l:      24%;
-    --secondary-h:    213;
+    --primary-h:      231;
+    --primary-s:      53%;
+    --primary-l:      14%;
+    --secondary-h:    231;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #1E3A5F;
+    --ac-brand-solid: #111738;
   }
 
   &.swift {
-    --primary-h:      243;
-    --primary-s:      75%;
-    --primary-l:      59%;
-    --secondary-h:    243;
+    --primary-h:      231;
+    --primary-s:      49%;
+    --primary-l:      48%;
+    --secondary-h:    231;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #4F46E5;
+    --ac-brand-solid: #3F51B6;
   }
 
   &.kubed {
-    --primary-h:      199;
-    --primary-s:      95%;
-    --primary-l:      34%;
-    --secondary-h:    199;
+    --primary-h:      209;
+    --primary-s:      77%;
+    --primary-l:      47%;
+    --secondary-h:    209;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #0369A1;
+    --ac-brand-solid: #1C7BD4;
   }
 
   &.guard {
-    --primary-h:      22;
+    --primary-h:      13;
     --primary-s:      69%;
-    --primary-l:      47%;
-    --secondary-h:    22;
+    --primary-l:      50%;
+    --secondary-h:    13;
     --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --ac-brand-solid: #D05A1E;
+    --ac-brand-solid: #D84E27;
+  }
+
+  &.service-broker {
+    --primary-h:      172;
+    --primary-s:      63%;
+    --primary-l:      43%;
+    --secondary-h:    172;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #29B4A2;
   }
 }
