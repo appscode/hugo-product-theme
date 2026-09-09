@@ -1,0 +1,153 @@
+// Bridge the legacy body-class system to --ac-brand-* tokens.
+// Each body class sets --primary-h/s/l so older component SCSS still resolves.
+// New components should use [data-product] + --ac-brand-* from _tokens.scss.
+
+$ac-primary: var(--ac-primary);
+
+body {
+
+  &.kubestash {
+    --primary-h:      256;
+    --primary-s:      55%;
+    --primary-l:      45%;
+    --secondary-h:    256;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #6633BB;
+  }
+
+  &.kubedb {
+    --primary-h:      240;
+    --primary-s:      55%;
+    --primary-l:      55%;
+    --secondary-h:    240;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #4D4DCB;
+  }
+
+  &.kubevault {
+    --primary-h:      220;
+    --primary-s:      77%;
+    --primary-l:      55%;
+    --secondary-h:    199;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #326CE5;
+  }
+
+  &.voyager {
+    --primary-h:      242;
+    --primary-s:      48%;
+    --primary-l:      32%;
+    --secondary-h:    242;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #2D2A78;
+  }
+
+  &.stash {
+    --primary-h:      256;
+    --primary-s:      82%;
+    --primary-l:      55%;
+    --secondary-h:    256;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #5E2DEA;
+  }
+
+  &.gateway {
+    --primary-h:      331;
+    --primary-s:      73%;
+    --primary-l:      43%;
+    --secondary-h:    331;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #C2185B;
+  }
+
+  &.kubesheild,
+  &.kubeshield {
+    --primary-h:      245;
+    --primary-s:      80%;
+    --primary-l:      43%;
+    --secondary-h:    245;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #2516C7;
+  }
+
+  &.configsyncer {
+    --primary-h:      210;
+    --primary-s:      76%;
+    --primary-l:      47%;
+    --secondary-h:    210;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #1C7BD4;
+  }
+
+  &.pharmer {
+    --primary-h:      282;
+    --primary-s:      44%;
+    --primary-l:      47%;
+    --secondary-h:    282;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #8E44AD;
+  }
+
+  &.kubeform {
+    --primary-h:      10;
+    --primary-s:      59%;
+    --primary-l:      22%;
+    --secondary-h:    10;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #592217;
+  }
+
+  &.kubeci {
+    --primary-h:      210;
+    --primary-s:      29%;
+    --primary-l:      24%;
+    --secondary-h:    210;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #2C3E50;
+  }
+
+  &.searchlight {
+    --primary-h:      231;
+    --primary-s:      53%;
+    --primary-l:      14%;
+    --secondary-h:    231;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #111738;
+  }
+
+  &.swift {
+    --primary-h:      231;
+    --primary-s:      49%;
+    --primary-l:      48%;
+    --secondary-h:    231;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #3F51B6;
+  }
+
+  &.kubed {
+    --primary-h:      209;
+    --primary-s:      77%;
+    --primary-l:      47%;
+    --secondary-h:    209;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #1C7BD4;
+  }
+
+  &.guard {
+    --primary-h:      13;
+    --primary-s:      69%;
+    --primary-l:      50%;
+    --secondary-h:    13;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #D84E27;
+  }
+
+  &.service-broker {
+    --primary-h:      172;
+    --primary-s:      63%;
+    --primary-l:      43%;
+    --secondary-h:    172;
+    --ac-primary:     hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --ac-brand-solid: #29B4A2;
+  }
+}

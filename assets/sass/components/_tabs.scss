@@ -23,10 +23,10 @@ li.nav-item:before {
 
 .nav-tabs a {
   align-items: center;
-  border-bottom-color: #dbdbdb;
+  border-bottom-color: var(--ac-border);
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  color: $color-link;
+  color: var(--ac-link);
   display: flex;
   justify-content: center;
   margin-bottom: -1px;
@@ -40,10 +40,10 @@ li.nav-item a {
 }
 
 a.nav-link.active {
-  background-color: $ac-white;
-  border-left: 1px solid #dbdbdb;
-  border-right: 1px solid #dbdbdb;
-  border-top: 1px solid #dbdbdb;
+  background-color: var(--ac-surface);
+  border-left: 1px solid var(--ac-border);
+  border-right: 1px solid var(--ac-border);
+  border-top: 1px solid var(--ac-border);
   border-bottom-color: transparent !important;
   border-radius: 4px 4px 0 0;
   position: relative;
@@ -53,7 +53,7 @@ a.nav-link.active {
 a.nav-link.active:after {
   position: absolute;
   content: "";
-  background: $ac-primary;
+  background: var(--ac-brand);
   top: 0;
   left: 0;
   width: 100%;
@@ -72,7 +72,7 @@ a.nav-link.active:after {
 }
 
 .tab-content {
-  border: 1px solid #dbdbdb;
+  border: 1px solid var(--ac-border);
   padding: 20px;
   border-radius: 4px;
   margin-bottom: 15px;
@@ -88,9 +88,9 @@ a.nav-link.active:after {
     margin-bottom: -2px !important;
     a{
       border-bottom-width: 0;
-      color: $color-link;
+      color: var(--ac-link);
       &.active {
-        color: $ac-primary;
+        color: var(--ac-brand);
       }
       &::after{
         display: none !important;

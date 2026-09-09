@@ -1,6 +1,6 @@
 // public pricing  
 .public-pricing-wrapper { 
-  background-color: $ac-white;
+  background-color: var(--ac-surface);
   padding: 30px 20px;
   border-radius: 4px;
   margin-bottom: 30px;
@@ -10,7 +10,6 @@
   align-items: center;
   position: relative;
   z-index: 1;
-  // border: 2px solid $ac-primary;
 
   &:after {
     position: absolute;
@@ -19,7 +18,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: var(--ac-surface);
     background-image: url("/assets/images/features-plan/features-plan-cta-bg.svg");
     z-index: -1;
     background-repeat: no-repeat;
@@ -58,7 +57,7 @@
 		}
 
 		p { 
-      color: #54657e;
+      color: var(--ac-fg-muted);
       text-align: center;
 			strong { 
         letter-spacing: 0;
@@ -77,7 +76,7 @@
 	}
 
 	.notification-message { 
-    background-color: #EDF5FD;
+    background-color: var(--ac-status-info-bg, #EDF5FD);
     padding: 12px 24px;
     display: inline-flex;
     border-radius: 4px;
@@ -96,12 +95,12 @@
       }
 
 			a { 
-        color: $ac-primary;
+        color: var(--ac-brand);
         font-weight: 500;
         text-decoration: underline;
         transition: 0.3s ease-in-out;
         &:hover {
-          color: #1c1c1c;
+          color: var(--ac-fg);
         }
 			}
 		}
@@ -112,7 +111,7 @@
 /* pricing section style */
 .pricing-button .kd-button {
   padding: 8px 20px;
-  background: $ac-primary;
+  background: var(--ac-brand);
   width: 180px;
 }
 
@@ -135,7 +134,7 @@
   }
 }
 .pricing-heading {
-  background: #e1e1e1;
+  background: var(--ac-surface-raised, #e1e1e1);
   padding: 10px 40px;
   border-radius: 7px 7px 0 0;
   position: relative;
@@ -147,7 +146,7 @@
   position: absolute;
   content: "";
   bottom: -10px;
-  border-top: 10px solid #e1e1e1;
+  border-top: 10px solid var(--ac-surface-raised, #e1e1e1);
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   right: 50%;
@@ -156,59 +155,59 @@
 
 .pricing-body {
   border-radius: 0 0 8px 8px;
-  border: 1px solid #dedede;
+  border: 1px solid var(--ac-border);
 }
 .pricing-top.kd-green,
 .kd-button.kd-green {
-  background: $ac-primary !important;
+  background: var(--ac-brand) !important;
 }
 .pricing-button .button {
   font-size: 15px;
   min-width: 190px;
-  font-family: $ac-font-paragraph;
+  font-family: $ac-font-sans;
   padding: 7px;
   transition: 0.3s ease-in-out;
 }
 .pricing-top.kd-orange,
 .kd-button.kd-orange {
-  background-color: $ac-orange !important;
+  background-color: var(--ac-status-warning) !important;
 }
 .pricing-button .kubedb-transparent-btn {
-  color: $ac-primary;
-  border: 1px solid $ac-primary;
+  color: var(--ac-brand);
+  border: 1px solid var(--ac-brand);
 }
 .pricing-button .kubedb-transparent-btn:hover {
-  color: $ac-white !important;
-  border: 1px solid $ac-primary;
-  background-color: $ac-primary;
+  color: var(--ac-surface) !important;
+  border: 1px solid var(--ac-brand);
+  background-color: var(--ac-brand);
 }
 .pricing-button .primary-transparent-btn {
-  color: $ac-primary;
-  border: 1px solid $ac-primary;
+  color: var(--ac-brand);
+  border: 1px solid var(--ac-brand);
 }
 .pricing-button .primary-transparent-btn:hover {
-  color: $ac-white;
-  border: 1px solid $ac-primary;
-  background-color: $ac-primary;
+  color: var(--ac-surface);
+  border: 1px solid var(--ac-brand);
+  background-color: var(--ac-brand);
 }
 .pricing-button .red-transparent-btn {
-  color: $ac-red;
-  border: 1px solid $ac-red;
+  color: var(--ac-status-error);
+  border: 1px solid var(--ac-status-error);
 }
 .pricing-button .red-transparent-btn:hover {
-  color: $ac-white;
-  border: 1px solid $ac-red;
-  background-color: $ac-red;
+  color: var(--ac-surface);
+  border: 1px solid var(--ac-status-error);
+  background-color: var(--ac-status-error);
 }
 
 .pricing-top.kd-red,
 .kd-button.kd-red {
-  background-color: $ac-red !important;
+  background-color: var(--ac-status-error) !important;
 }
 .pricing-top {
-  background: $ac-primary;
+  background: var(--ac-brand);
   box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.16);
-  color: $ac-white;
+  color: var(--ac-surface);
   padding: 10px 20px;
   margin: 0 auto;
   border-radius: 0px 8px 8px 8px;
@@ -219,8 +218,8 @@
   height: 171px;
 }
 .round-shape {
-  background: #fff;
-  color: $ac-orange;
+  background: var(--ac-surface);
+  color: var(--ac-status-warning);
   font-size: 14px;
   display: inline-block;
   border-radius: 50px;
@@ -233,7 +232,7 @@
   position: absolute;
   top: -60px;
   width: 100%;
-  color: #242a31;
+  color: var(--ac-fg);
   font-size: 18px;
   font-weight: 600;
   transition: 0.3s ease-in-out;
@@ -243,12 +242,12 @@
 }
 .single-pricing-table.silver {
   .discount-text {
-    color: $ac-primary;
+    color: var(--ac-brand);
   }
 }
 .single-pricing-table.gold {
   .discount-text {
-    color: $ac-orange;
+    color: var(--ac-status-warning);
   }
 }
 .single-pricing-table.silver .pricing-top {
@@ -270,7 +269,7 @@
 }
 .pricing-top h4 {
   font-size: 20px;
-  color: $ac-white;
+  color: var(--ac-surface);
   font-weight: 700;
 }
 
@@ -283,7 +282,7 @@
     font-weight: 400;
   }
   strong {
-    color: $ac-white;
+    color: var(--ac-surface);
   }
 }
 
@@ -298,13 +297,13 @@
   content: "";
   left: -12px;
   top: 0;
-  // border-right: 12px solid darken($ac-primary, 15%);
+  // border-right: 12px solid darken(var(--ac-brand), 15%);
   border-top: 22px solid transparent;
 }
 
 .pricing-type .select select {
   font-size: 14px;
-  color: #74818d;
+  color: var(--ac-fg-muted);
   height: 35px !important;
   border: none;
 }
@@ -329,7 +328,7 @@
   position: absolute;
   top: 0;
   line-height: 35px;
-  color: #74818d;
+  color: var(--ac-fg-muted);
 }
 
 .custom-arrow-down {
@@ -343,15 +342,15 @@
 
 .pricing-body li {
   font-size: 14px;
-  color: #32325d;
-  border-bottom: 1px solid #dfdfdf;
+  color: var(--ac-fg);
+  border-bottom: 1px solid var(--ac-border);
   padding: 5px 20px;
   height: 60px;
   display: table;
   width: 100%;
 }
 .pricing-body ul li:first-child {
-  background-color: #fff;
+  background-color: var(--ac-surface);
   padding-top: 10px;
 }
 .pricing-body li span {
@@ -371,7 +370,7 @@
   margin-top: 265px;
   margin-right: 10px;
   padding-bottom: 70px;
-  background-color: $ac-white;
+  background-color: var(--ac-surface);
   padding-top: 5px;
 }
 .single-pricing-table.details .pricing-body ul li:first-child {
@@ -416,7 +415,7 @@
   border-right-color: #b20b32;
 }
 .pricing-description ul li {
-  color: #74818d;
+  color: var(--ac-fg-muted);
   font-size: 14px;
   line-height: 1.6;
   font-weight: 400;

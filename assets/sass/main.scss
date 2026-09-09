@@ -1,75 +1,60 @@
-// dev: sass --watch ./themes/hugo-product-theme/assets/sass/main.scss:./themes/hugo-product-theme/assets/css/main.css
-// release: sass ./assets/sass/main.scss:./assets/css/main.css
+// dev:  sass --watch themes/hugo-product-theme/assets/sass/main.scss:themes/hugo-product-theme/assets/css/main.css
 
+// 1. Framework
 @import "../../node_modules/bulma/bulma.sass";
-//BASE - Base styles, variables, mixins
-@import "base/utilities/_root";
-@import "base/utilities/_initial-variable";
-@import "base/utilities/_default";
-@import "base/utilities/_themes";
-@import "base/utilities/_typography";
 
-// mixins
-@import "mixins/_mixin";
+// 2. Token layer
+@import "base/_tokens";
 
-// @import "base/_variables";
+// 3. Base globals — CSS vars, SCSS variable bridges, legacy theme bridge
+@import "base/_root";
+@import "abstracts/_initial-variable";
+@import "utilities/_helpers";
+@import "base/_themes";
+
+// 4. Typography
+@import "base/_typography";
+
+// 5. Mixins
+@import "abstracts/_mixins";
+
+// 6. Base globals
 @import "base/_global";
 @import "base/_base";
 
-// components SCSS
+// 7. Components
 @import "components/_navbar";
-@import "components/search-result-box";
-@import "components/_cookie";
-@import "components/_case-studies";
 @import "components/_notificationbar";
+@import "components/_search-result-box";
 @import "components/_button";
-@import "components/_video-palyer";
-// @import "components/_hero";
+@import "components/_cookie";
 @import "components/_product-hero-area";
+@import "components/_trusted-logos";
+@import "components/_social-proof-countdown";
 @import "components/_features";
+@import "components/_testimonial";
+@import "components/_cta";
+@import "components/_final-cta";
 @import "components/_tabs";
 @import "components/_tables";
-@import "components/_trusted-logos";
-@import "components/_social-prove_countdown";
 @import "components/_press-area";
 @import "components/_pagination";
-@import "components/_testimonial";
 @import "components/_services";
 @import "components/_video-gallery";
-@import "components/_cta";
+@import "components/_video-player";
 @import "components/_pricing";
 @import "components/_faq";
 @import "components/_ac-accordion";
 @import "components/_back-to-top";
 @import "components/_footer";
 
-// LAYOUTS 
+// 8. Layouts
 @import "layouts/_ads";
 @import "layouts/_articles";
 @import "layouts/_content";
 
-
-// pages SCSS
-// @import "pages/_webinar";
-// @import "pages/_training";
-// @import "pages/_consulting";
-// @import "pages/_contactus";
-// @import "pages/_homepage";
-// @import "pages/_innerpage";
+// 9. Pages
+@import "pages/_homepage";
 @import "pages/_documentation";
 @import "pages/_features-plan";
-
-
-// @import "themes/_kubeci";
-// @import "themes/_kubed";
-// @import "themes/_kubeshield";
-// @import "themes/_kubevault";
-// @import "themes/_pharmer";
-// @import "themes/_searchlight";
-// @import "themes/_service-broker";
-// @import "themes/_stash";
-// @import "themes/_swift";
-// @import "themes/_voyager";
-
-//Responsive SCSS
-// @import "layouts/_responsive";
+@import "pages/_overview";

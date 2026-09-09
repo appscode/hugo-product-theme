@@ -5,8 +5,8 @@
 
 .search-result-box {
   position: absolute;
-  background-color: #fff;
-  box-shadow: 0px 4px 18px 5px rgba(77, 77, 203, 0.13);
+  background-color: var(--ac-surface);
+  box-shadow: var(--ac-shadow-4);
   border-radius: 0px 0px 8px 8px;
   width: 600px;
   left: 0;
@@ -24,7 +24,7 @@
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: #ebebeb #fafafd;
+    scrollbar-color: var(--ac-border-strong) var(--ac-bg-subtle);
   }
 
   /* Chrome, Edge, and Safari */
@@ -33,11 +33,11 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: #fafafd;
+    background: var(--ac-bg-subtle);
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #ebebeb;
+    background-color: var(--ac-border-strong);
     border-radius: 10px;
     border: 3px solid #fafafd;
   }
@@ -49,11 +49,11 @@
 
   .search-footer {
     padding: 8px 32px 4px;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid var(--ac-border);
 
     p {
       font-size: 13px;
-      color: #666;
+      color: var(--ac-fg-muted);
     }
   }
 }
@@ -61,49 +61,49 @@
 .single-result-item {
   padding: 16px 32px;
   transition: 0.3s ease-in-out;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--ac-border);
 
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background-color: #f7f7fd;
+    background-color: var(--ac-brand-subtle);
 
     h2 {
       text-decoration: underline;
 
       a {
-        color: $ac-primary;
+        color: var(--ac-brand);
       }
     }
   }
 
   h2 {
-    font-family: "Roboto";
+    font-family: $ac-font-sans;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 130%;
-    color: $ac-primary;
+    color: var(--ac-brand);
   }
 
   .url {
-    font-family: "Roboto";
+    font-family: $ac-font-sans;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 15px;
-    color: #00a651;
+    color: var(--ac-status-success);
   }
 
   p {
-    font-family: "Roboto";
+    font-family: $ac-font-sans;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 150%;
-    color: #3e393e;
+    color: var(--ac-fg);
 
     strong {
       font-weight: 500;
@@ -111,10 +111,10 @@
   }
 
   em {
-    background: #e6e7e9;
+    background: var(--ac-brand-subtle);
     padding: 2px 4px;
     font-style: normal;
-    color: $ac-primary;
+    color: var(--ac-brand);
     border-radius: 2px;
     font-size: 90%;
     font-weight: 500;

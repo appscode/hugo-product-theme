@@ -1,18 +1,18 @@
 .trusted-logo {
   .trusted-action {
-    background: #e0f2e9;
+    background: var(--ac-status-success-bg, #d1fae5);
     padding: 6px 30px;
     border-radius: 4px;
     font-size: 16px;
     display: inline-block;
     margin: 0 auto;
     a {
-      color: $ac-primary;
+      color: var(--ac-brand);
     }
   }
   .trusted-company {
     a {
-    color: $ac-primary;
+    color: var(--ac-brand);
   }
   p {
     font-weight: 500;

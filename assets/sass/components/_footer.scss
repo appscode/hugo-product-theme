@@ -1,248 +1,320 @@
-.footer-area {
-  margin-top: 60px;
-  position: relative;
-  z-index: 1;
-  &:after {
-   position: absolute;
-   content: "";
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height: 100%;
-   z-index: -1;
-   @extend .decorative-el-large;
+// Footer — values matched literally to kubedb's .footer-area/.dark-bg (the base
+// this component mirrors): font sizes, colors, spacing, copy, wherever kubestash's
+// --ac-* scale doesn't already land on the same number.
+.ac-footer {
+  background: var(--ac-gray-950);
+  border-top: 1px solid var(--ac-border);
+}
+
+// ── Top grid ──────────────────────────────────────────────
+.ac-footer-top {
+  padding: 50px 0 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ac-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: var(--ac-space-8);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    .ac-footer-brand { grid-column: 1 / -1; }
   }
- }
- .single-footer-widget {
-   .footer-logo {
-     max-width: 160px;
-   }
- }
- 
- .subscription-form {
-   margin-top: 10px;
-   label {
-     font-size: 18px;
-     font-weight: 600;
-     display: block;
-     font-family: $ac-font-heading;
-   }
- 
-   input {
-     background: rgba(255,255,255, 0.2);
-     border: 1px solid rgba(255,255,255, 0.3);
-     box-shadow: none;
-     font-size: 16px;
-     border-radius: 4px;
-     padding: 8px 50px 8px 10px;
-     height: 40px;
-     position: relative;
-     z-index: 1;
-     color: #f2f2f2;
-     &::placeholder {
-       color: #ADB2B0;
-     }
-     &:focus {
-       border: 1px solid $ac-primary;
-     }
-   }
- 
-   .button {
-     color: hsl(var(--primary-h), var(--primary-s), 70%);
-     font-size: 16px;
-     height: 40px;
-     box-shadow: none;
-     transition: 0.3s ease-in-out;
-     cursor: pointer;
-     border: 1px solid transparent;
-     position: absolute;
-     top: 0;
-     right: 0;
-     z-index: 9 !important;
-     background: transparent;
- 
-     &:hover {
-       background-color: $ac-primary;
-       color: $ac-white !important;
-       outline: none;
-       box-shadow: none;
-     }
-   }
- }
- 
- .contact-information {
-   margin-top: 28px;
- 
-   h4 {
-     font-size: 18px;
-     color: $color-heading;
-   }
- }
- 
- .all-contact-info li a,
- p.spam-message {
-   color: $color-text;
-   display: inline-block;
-   font-size: 14px;
-   font-family: $ac-font-paragraph;
-   padding: 5px 0;
- }
- 
- .all-contact-info {
-   li {
-     a {
-       span {
-         padding-right: 10px;
-       }
-     }
-   }
- }
- 
- .footer-menu {
-   label {
-     font-size: 18px;
-     margin-bottom: 4px;
-     font-weight: 500;
-   }
- }
- 
- .footer-link {
-   li {
-     a {
-       color: #D4D6D5;
-       font-size: 14px;
-       display: block;
-       padding: 8px 0;
-       transition: 0.3s linear;
- 
-       &:last-child {
-         padding-bottom: 0;
-       }
- 
-       &:hover {
-         color: $ac-primary;
-         padding-left: 5px;
-       }
-     }
-   }
- }
- 
- .footer-top {
-   padding: 50px 0 30px 0;
-   border-bottom: 1px solid rgba(255,255,255, 0.1);
- }
- 
- .footer-bottom {
-   padding: 30px 0;
- 
-   p {
-     font-size: 14px;
-     color: $color-text;
-     margin-bottom: 0;
-   }
- }
- 
- .footer-inline-link {
-   a {
-     color: $color-link;
-     font-size: 14px;
-     margin-right: 30px;
-     transition: 0.3s ease-in-out;
- 
-     &:hover {
-       color: $ac-primary;
-     }
- 
-     &:last-child {
-       margin-right: 0;
-     }
-   }
- }
- 
- .socail-link-inline {
-   li {
-     margin-right: 10px;
-     display: inline-block;
- 
-     a{
-       color: #8a8a8a;
-       font-size: 14px;
-       display: inline-block;
-       width: 30px;
-       height: 30px;
-       text-align: center;
-       line-height: 30px;
-       border: 1px solid #8a8a8a;
-       border-radius: 50%;
-       transition: 0.3s ease-in-out;
- 
-       &:hover {
-         background: $ac-primary;
-         color: $ac-white;
-         border: 1px solid transparent;
-       }
-     }
- 
-     &:last-child {
-       margin-right: 0;
-     }
-   }
- }
- 
- /****************************************
- Responsive Classes
- *****************************************/
- @include mobile {
-   .footer-area {
-     .footer-top {
-       // padding-top: 0;
-       .is-1-mobile {
-         .column {
-           padding: 0.25rem;
-         }
-       }
-     }
-     .single-footer-widget {
-       height: 100%;
-       .footer-logo {
-         margin: 0 auto;
-       }
-       .subscription-form {
-         text-align: center;
-       }
-       .field.has-addons {
-         justify-content: center;
-       }
-     }
-     .footer-menu {
-       background-color: #4d4dcb0d;
-       height: 100%;
-       padding: 20px 5px;
-       border-radius: 4px;
-       &.is-info {
-         background-color: #0aafff2e;
-       }
-       &.is-danger {
-         background-color: #ea3d2f24;
-       }
-       &.is-warning {
-         background: #f7ad2a36;
-       }
-       &.is-success {
-         background-color: #27b06430;
-       }
-       h4 {
-         margin-bottom: 0;
-       }
-     }
-     .contact-information {
-       text-align: center;
-     }
-   }
-   .footer-inline-link {
-     padding: 10px 0;
-   }
-   .footer-bottom {
-     padding: 20px 0;
-   }
- }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    .ac-footer-brand { grid-column: 1 / -1; }
+  }
+}
+
+// ── Brand column ──────────────────────────────────────────
+.ac-footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.ac-footer-logo {
+  display: inline-block;
+  max-width: 160px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// ── Newsletter form ───────────────────────────────────────
+.ac-footer-newsletter {
+  margin-top: 10px;
+}
+
+.ac-footer-newsletter-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #adb2b0;
+}
+
+.ac-footer-newsletter-note {
+  font-size: 14px;
+  color: #d4d6d5;
+  margin: 0 0 8px;
+}
+
+.ac-footer-newsletter-field {
+  position: relative;
+  display: inline-block;
+}
+
+.ac-footer-newsletter-input {
+  width: 300px;
+  max-width: 100%;
+  height: 40px;
+  padding: 8px 50px 8px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #f2f2f2;
+  font-size: 16px;
+  transition: border-color var(--ac-duration-fast) var(--ac-ease-out);
+
+  &::placeholder {
+    color: #adb2b0;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--ac-brand);
+  }
+}
+
+.ac-footer-newsletter-submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--ac-brand-300);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background var(--ac-duration-base) var(--ac-ease-out), color var(--ac-duration-base) var(--ac-ease-out);
+
+  &:hover {
+    background: var(--ac-brand);
+    color: #fff;
+  }
+}
+
+// ── Contact info ──────────────────────────────────────────
+.ac-footer-contact {
+  margin-top: 28px;
+}
+
+.ac-footer-contact-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d4d6d5;
+  margin: 0;
+}
+
+.ac-footer-contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    display: inline-block;
+    color: #adb2b0;
+    font-size: 14px;
+    padding: 5px 0;
+    text-decoration: none;
+    transition: color var(--ac-duration-fast) var(--ac-ease-out);
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      padding-right: 10px;
+
+      iconify-icon { color: inherit; }
+    }
+
+    &:hover {
+      color: var(--ac-brand);
+    }
+  }
+}
+
+// ── Link columns ──────────────────────────────────────────
+.ac-footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ac-footer-col-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #e6e7e6;
+  margin: 0 0 4px;
+}
+
+.ac-footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li a {
+    display: inline-block;
+    font-size: 14px;
+    color: #d4d6d5;
+    text-decoration: none;
+    padding: 8px 0;
+    transition: color var(--ac-duration-base) var(--ac-ease-out), padding-left var(--ac-duration-base) var(--ac-ease-out);
+
+    &:hover {
+      color: var(--ac-brand);
+      padding-left: 5px;
+    }
+  }
+
+  li:last-child a {
+    padding-bottom: 0;
+  }
+}
+
+// Inline (not flex) so a wrapped link label keeps the arrow attached to its
+// last word instead of centering it vertically across both wrapped lines.
+.ac-footer-link-arrow {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+// ── Bottom bar ────────────────────────────────────────────
+.ac-footer-bottom {
+  padding: 30px 0;
+}
+
+.ac-footer-bottom-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ac-space-4);
+  flex-wrap: wrap;
+}
+
+.ac-footer-bottom-col-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.ac-footer-bottom-col-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ac-footer-copy {
+  font-size: 14px;
+  color: #d4d6d5;
+  margin: 0;
+}
+
+.ac-footer-inline-link {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--ac-space-2);
+
+  a {
+    font-size: 14px;
+    color: #adb2b0;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 30px;
+    transition: color var(--ac-duration-base) var(--ac-ease-out);
+
+    &:hover {
+      color: var(--ac-brand);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.ac-footer-social {
+  display: flex;
+  align-items: center;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border: 1px solid #8a8a8a;
+    border-radius: 50%;
+    color: #8a8a8a;
+    transition: background var(--ac-duration-base) var(--ac-ease-out), color var(--ac-duration-base) var(--ac-ease-out), border-color var(--ac-duration-base) var(--ac-ease-out);
+
+    &:hover {
+      background: var(--ac-brand);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────
+@media (max-width: 600px) {
+  .ac-footer-top { padding: 36px 0; }
+
+  .ac-footer-logo { margin: 0 auto; }
+
+  .ac-footer-newsletter,
+  .ac-footer-contact {
+    text-align: center;
+  }
+
+  // The fixed 220px desktop width leaves too little room for the placeholder
+  // once the 50px button gutter is subtracted — let it fill the column instead.
+  .ac-footer-newsletter-field {
+    display: block;
+    width: 100%;
+  }
+
+  .ac-footer-newsletter-input {
+    width: 100%;
+  }
+
+  .ac-footer-contact-list a span {
+    padding-right: 6px;
+  }
+
+  .ac-footer-bottom-grid {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ac-footer-bottom-col-center,
+  .ac-footer-bottom-col-right {
+    justify-content: center;
+  }
+
+  .ac-footer-inline-link {
+    a { margin-right: 16px; }
+  }
+}
