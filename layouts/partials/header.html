@@ -570,7 +570,7 @@
 
   <!-- navabar product start  -->
   {{ block "header-bottom" . }}
-  {{ $productName := default $.Site.Params.product_key .Params.product_name }}
+  {{ $productName := default .Params.product_name $.Site.Params.product_key }}
   {{ if $productName }}
   {{ $p := (index $.Site.Data.products $productName) }}
   <div class="navbar-appscode-wrapper navbar-product">
