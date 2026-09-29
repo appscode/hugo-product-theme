@@ -1366,9 +1366,13 @@
 }
 
 iframe#notification {
-  height: 40px;
+  height: 28px;
+  
+   @media (max-width: 600px) {
+    height: 40px;
+  }
 
-  @media (max-width: 368px) {
+  @media (max-width: 300px) {
     height: 70px;
   }
 }

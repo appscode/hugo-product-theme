@@ -35094,9 +35094,14 @@ video {
 }
 
 iframe#notification {
-  height: 40px;
+  height: 28px;
 }
-@media (max-width: 368px) {
+@media (max-width: 600px) {
+  iframe#notification {
+    height: 40px;
+  }
+}
+@media (max-width: 300px) {
   iframe#notification {
     height: 70px;
   }
