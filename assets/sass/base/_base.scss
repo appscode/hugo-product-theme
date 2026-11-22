@@ -1,9 +1,13 @@
-/* call to action area */
+//
+// form fields, and the schedule-demo section.
+//
+
+
 
 .cta-padding {
-  padding: 80px 100px;
-  box-shadow: 0px 8px 57px rgba(38, 102, 151, 0.17);
-  border-radius: 4px;
+  padding: var(--ac-space-20, 80px) var(--ac-space-24, 96px);
+  box-shadow: var(--ac-shadow-3);
+  border-radius: var(--ac-radius-md);
 }
 
 .cta-text h2 {
@@ -15,28 +19,28 @@
 .cta-text p {
   font-size: 26px;
   color: $color-text;
-  margin-top: 10px;
+  margin-top: var(--ac-space-2, 8px);
   margin-bottom: 0;
 }
 
-/*====================================
-    Support page CSS
-====================================*/
+
+
 .pricing-plan-area {
-  background-color: #f9f9f9;
+  background-color: var(--ac-bg-subtle, #f9f9f9);
 }
 
 .support-page .hero-content-inner h1 {
-  margin-bottom: 30px;
+  margin-bottom: var(--ac-space-7, 28px);
   color: $color-heading;
   font-weight: 500;
   line-height: 64px;
 }
 
-/* Payment Method section style */
+
+
 .single-payment-method {
   display: inline-block;
-  margin-left: 30px;
+  margin-left: var(--ac-space-7, 30px);
 }
 
 .single-payment-method:first-child {
@@ -45,7 +49,7 @@
 
 .payment-method-innner-text h2 {
   color: $color-heading;
-  margin-bottom: 20px;
+  margin-bottom: var(--ac-space-5, 20px);
 }
 
 .payment-method-innner-text p {
@@ -58,7 +62,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
-  margin-top: 120px;
+  margin-top: var(--ac-space-24, 96px);
 }
 
 .payment-method-area:after {
@@ -75,17 +79,19 @@
   z-index: -1;
 }
 
+
+
 .item ul,
 .item input[type="checkbox"] {
   display: none;
   overflow: hidden;
-  transition: 0.3s;
+  transition: var(--ac-duration-base, 150ms) var(--ac-ease-out, ease);
 }
 
 .product-sidebar-menu .item label a {
   font-weight: 500;
-  color: $color-heading;
-  padding: 8px 16px;
+  color: var(--ac-fg);
+  padding: var(--ac-space-2, 8px) var(--ac-space-4, 16px);
   line-height: 1.2;
   display: block;
   width: calc(100% - 8px);
@@ -110,15 +116,15 @@
 
 .item label span {
   position: absolute;
-  right: 15px;
-  transition: 0.3s ease-in-out;
+  right: var(--ac-space-3, 12px);
+  transition: var(--ac-duration-base, 150ms) var(--ac-ease-in-out, ease-in-out);
   top: 4px;
 }
 
 .item ul li a {
   display: block;
-  padding: 8px 16px;
-  font-family: $ac-font-paragraph;
+  padding: var(--ac-space-2, 8px) var(--ac-space-4, 16px);
+  font-family: $ac-font-sans;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -132,28 +138,16 @@
 .product-sidebar-menu li a {
   font-size: 14px;
   font-weight: 500;
-  color: $color-link;
+  color: var(--ac-fg-muted);
   display: block;
   cursor: pointer;
   user-select: none;
-  transition: 0.3s;
+  transition: var(--ac-duration-base, 150ms) var(--ac-ease-out, ease);
 }
 
 .product-sidebar-menu li a:hover {
-  color: $ac-primary;
+  color: var(--ac-fg);
 }
-
-// .product-sidebar-menu .item ul {
-  // margin-left: 20px;
-  // padding-left: 15px;
-  // border-left: 1px solid $color-border;
-// }
-// border remove style
-// .item input:checked ~ label,
-// .item input:checked ~ .item > label {
-//   border: 1px solid $color-border;
-//   background: $ac-white;
-// }
 
 .item:first-child input:checked ~ label,
 .item:first-child input:checked ~ .item:first-child > label {
@@ -166,22 +160,23 @@
 
 .item input:checked ~ ul,
 .item input:checked ~ .item > ul > .item {
-  margin-left: 8px;
+  margin-left: var(--ac-space-2, 8px);
 }
 
 .ac-product-left-sidebar {
   position: sticky;
   top: 180px;
-  z-index: 9;
+  z-index: var(--ac-z-raised, 10);
   width: 100%;
   height: 100%;
   overflow-y: auto;
   max-height: calc(100vh - 190px);
   overflow-x: hidden;
-  transition: 0.3s ease-in-out;
+  transition: var(--ac-duration-base, 150ms) var(--ac-ease-in-out, ease-in-out);
 }
+
 body {
-  &:has(.headroom--pinned ) {
+  &:has(.headroom--pinned) {
     .ac-product-left-sidebar {
       top: 180px;
       @include touch {
@@ -189,7 +184,7 @@ body {
       }
     }
   }
-  &:has(.headroom--unpinned ) {
+  &:has(.headroom--unpinned) {
     .ac-product-left-sidebar {
       top: 120px;
       @include touch {
@@ -203,12 +198,13 @@ body {
   border: 1px solid transparent;
   position: relative;
   z-index: 1;
-  border-radius: 3px 0 0 3px;
+  border-radius: var(--ac-radius-sm, 3px) 0 0 var(--ac-radius-sm, 3px);
 }
 
-/* datasheet style start */
+
+
 .datasheet-wrapper {
-  padding: 0 100px;
+  padding: 0 var(--ac-space-24, 96px);
 }
 
 .download-question h4 {
@@ -220,19 +216,19 @@ body {
 .download-question p {
   color: $color-text;
   font-size: 16px;
-  font-family: $ac-font-paragraph;
+  font-family: $ac-font-sans;
 }
 
 .download-question p strong {
-  color: #32325d;
+  color: $color-heading;
   font-weight: 500;
-  font-family: $ac-font-paragraph;
-  margin: 10px 0;
+  font-family: $ac-font-sans;
+  margin: var(--ac-space-2, 8px) 0;
   display: block;
 }
 
 .download-question a {
-  font-family: $ac-font-paragraph;
+  font-family: $ac-font-sans;
   font-size: 16px;
 }
 
@@ -240,29 +236,39 @@ body {
   font-size: 18px;
   color: $color-heading;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: var(--ac-space-7, 28px);
 }
+
+
 
 .single-input-field label {
   display: block;
-  color: #32325d;
-  font-family: $ac-font-paragraph;
+  color: $color-heading;
+  font-family: $ac-font-sans;
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: var(--ac-space-1, 4px);
 }
 
 .single-input-field input {
-  padding: 12px 15px;
-  border: 1px solid #c4cbd3;
-  border-radius: 4px;
+  padding: var(--ac-space-3, 12px) var(--ac-space-3, 12px);
+  border: 1px solid var(--ac-border-strong);
+  border-radius: var(--ac-radius-base);
   font-size: 16px;
-  font-family: $ac-font-paragraph;
-  color: #242a31;
+  font-family: $ac-font-sans;
+  color: var(--ac-fg);
+  background: var(--ac-surface);
   width: 100%;
+  transition: border-color var(--ac-duration-base, 150ms) var(--ac-ease-out, ease);
+
+  &:focus {
+    outline: none;
+    border-color: var(--ac-brand);
+    box-shadow: var(--ac-shadow-focus-ring);
+  }
 }
 
 .single-input-field input::placeholder {
-  color: $color-border;
+  color: var(--ac-fg-subtle);
 }
 
 .single-input-field .select,
@@ -272,17 +278,16 @@ select {
 }
 
 .single-input-field .select select:not([multiple]) {
-  padding-left: 15px;
-  color: $color-border;
+  padding-left: var(--ac-space-3, 12px);
+  color: var(--ac-fg-muted);
 }
 
 .download-button .icon {
-  padding-right: 25px;
+  padding-right: var(--ac-space-6, 24px);
 }
 
-/* datasheet style end */
 
-/* schedule-demo start */
+
 embed,
 iframe,
 object,
@@ -292,9 +297,7 @@ video {
 }
 
 .schedule-title {
-  margin-top: 65px;
-  color: #242a31;
-  margin-bottom: 30px;
+  margin-top: var(--ac-space-16, 64px);
+  color: var(--ac-fg);
+  margin-bottom: var(--ac-space-7, 28px);
 }
-
-/* schedule-demo end */

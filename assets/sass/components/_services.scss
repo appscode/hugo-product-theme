@@ -14,7 +14,7 @@
   h4 {
     font-weight: 700;
     margin-bottom: 10px;
-    color: #242a31;
+    color: var(--ac-fg);
   }
   p {
     font-size: 16px;
@@ -30,13 +30,13 @@
   .inline-button {
     width: 100px;
     height: 100px;
-    background: $ac-primary;
+    background: var(--ac-brand);
     display: inline-block;
     text-align: left;
     padding-left: 40px;
     line-height: 80px;
     font-size: 30px;
-    color: $ac-white;
+    color: var(--ac-fg-on-brand);
     border-radius: 50%;
     position: absolute;
     right: -100px;
@@ -61,7 +61,7 @@
     top: 0;
     width: 100%;
     height: 0;
-    background: $ac-primary;
+    background: var(--ac-brand);
     border-radius: 4px 4px 0 0;
     transition: 0.3s ease;
   }
@@ -73,10 +73,10 @@
 }
 .color-2 {
   &:after {
-    background: $ac-blue;
+    background: var(--ac-status-info);
   }
   .inline-button {
-    background: $ac-blue;
+    background: var(--ac-status-info);
   }
 }
 .color-3 {
@@ -89,10 +89,10 @@
 }
 .color-4 {
   &:after {
-    // background: lighten($ac-primary, 10%);
+    // background: lighten(var(--ac-brand), 10%);
   }
   .inline-button {
-    // background: lighten($ac-primary, 10%);
+    // background: lighten(var(--ac-brand), 10%);
   }
 }
 // service area end

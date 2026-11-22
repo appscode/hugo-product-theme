@@ -5,8 +5,8 @@
   position: relative;
   position: fixed;
   width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid $color-border;
+  background-color: var(--ac-surface);
+  border-bottom: 1px solid var(--ac-border);
   .navbar-left {
     .navbar-brand {
       display: flex;
@@ -14,7 +14,7 @@
       align-items: center;
 
       span {
-        color: #3c3c3c;
+        color: var(--ac-fg);
       }
       .appscode-logo {
         height: 20px;
@@ -31,7 +31,7 @@
 .ads-hero-area {
   position: relative;
   z-index: 1;
-  background-color: #f3f3fc;
+  background-color: var(--ac-brand-subtle);
   min-height: 100vh;
   &:after {
     position: absolute;
@@ -39,7 +39,7 @@
     content: url("/assets/images/ads/hero-1.png");
     right: 0;
     top: 0;
-    background: #fbfbfe;
+    background: var(--ac-bg-subtle);
     width: 42%;
     height: 100%;
     z-index: -1;
@@ -58,7 +58,7 @@
     }
 
     p {
-      color: #3c3c3c;
+      color: var(--ac-fg);
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
@@ -74,7 +74,7 @@
     font-weight: 500;
   }
   .single-brand {
-    border: 1px solid $color-border;
+    border: 1px solid var(--ac-border);
     display: flex;
     align-items: center;
     padding: 12px 24px;
@@ -90,7 +90,7 @@
 }
 
 .supported-platforms-area {
-  background-color: #f3f3fc;
+  background-color: var(--ac-brand-subtle);
   .right-content {
     padding-left: 60px;
   }
@@ -137,10 +137,10 @@
 .ads-support-plan {
   table {
     thead {
-      background-color: $ac-primary;
+      background-color: var(--ac-brand);
       tr {
         th {
-          color: #ffffff;
+          color: var(--ac-fg-on-brand);
           padding: 8px 16px;
           text-align: center !important;
         }
@@ -166,7 +166,7 @@
 // ads footer area
 .ads-footer-area {
   .footer-top {
-    background-color: #f3f3fc;
+    background-color: var(--ac-brand-subtle);
     padding: 70px 0;
     .brand-logo {
       margin-bottom: 16px;
@@ -182,7 +182,7 @@
       .info-text {
         display: inline-flex;
         align-items: baseline;
-        color: #3c3c3c;
+        color: var(--ac-fg);
         gap: 8px;
 
         span:not(.icon) {
@@ -193,7 +193,7 @@
   }
   .footer-bottom {
     a{
-      color: #3c3c3c;
+      color: var(--ac-fg);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -207,7 +207,7 @@
         font-size: 14px;
       }
       &:hover {
-        color: $ac-primary;
+        color: var(--ac-brand);
       }
     }
   }
@@ -218,8 +218,8 @@
   overflow: hidden;
   .editor-header {
     height: 50px;
-    background: #f3f3fc;
-    border-bottom: 1px solid #e7e7e7;
+    background: var(--ac-brand-subtle);
+    border-bottom: 1px solid var(--ac-border);
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -229,7 +229,7 @@
     span {
       width: 15px;
       height: 15px;
-      background-color: #ddd;
+      background-color: var(--ac-surface-raised, #ddd);
       display: block;
       border-radius: 50%;
       margin-right: 8px;

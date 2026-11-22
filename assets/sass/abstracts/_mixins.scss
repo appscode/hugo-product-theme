@@ -1,0 +1,51 @@
+@mixin ac-button($colorName, $hoverColor: $colorName) {
+  background-color: $colorName;
+  color: var(--ac-fg-on-brand);
+  border: none;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $hoverColor;
+    color: var(--ac-fg-on-brand);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ac-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &.is-light {
+    background-color: var(--ac-brand-subtle);
+    color: var(--ac-brand);
+    border: 1px solid var(--ac-brand-border);
+
+    &:hover {
+      background-color: var(--ac-brand-subtle);
+      color: var(--ac-brand-hover);
+      text-decoration: none;
+    }
+  }
+
+  &.is-outlined {
+    background-color: transparent;
+    border: 1px solid $colorName;
+    color: $colorName;
+
+    &:hover {
+      background-color: $hoverColor;
+      color: var(--ac-fg-on-brand);
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin absulate-shape($colorName, $width, $height) {
+  position: absolute;
+  content: "";
+  width: $width;
+  height: $height;
+  background-color: $colorName;
+  left: 0;
+  top: 0;
+}

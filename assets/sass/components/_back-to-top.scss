@@ -1,27 +1,68 @@
-
-//  go to top area start
 .go-to-top {
   position: fixed;
-  display: block;
-  font-size: 16px;
+  right: 24px;
+  bottom: 32px;
   z-index: 999;
-  right: 20px;
-  bottom: 40px;
-  width: 40px;
-  height: 40px;
-  line-height: 30px;
-  border-radius: 50%;
-  color: #fff;
-  background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.5);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ac-surface-raised, var(--ac-gray-900));
   border: none;
-  opacity: 0;
+  border-radius: 50%;
+  color: var(--ac-fg);
   cursor: pointer;
-  transition: opacity 0.4s linear;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ac-ease-out),
+    transform 0.25s var(--ac-ease-out),
+    background 0.2s var(--ac-ease-out);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
   &:hover {
-    background: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    background: var(--ac-brand-subtle);
+    color: var(--ac-brand);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ac-focus-ring);
+    outline-offset: 2px;
   }
 }
-.go-to-top.is-visible {
-  opacity: 1;
+
+// SVG ring sits absolutely over the button face
+.go-to-top-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  // Start from the top (12 o'clock)
+  transform: rotate(-90deg);
+  pointer-events: none;
 }
-//  go to top area end
+
+.go-to-top-track {
+  stroke: var(--ac-border);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.go-to-top-progress {
+  stroke: var(--ac-brand);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  // circumference of r=19: 2π×19 ≈ 119.38
+  stroke-dasharray: 119.38;
+  stroke-dashoffset: 119.38; // JS updates this
+  transition: stroke-dashoffset 0.1s linear;
+}
